@@ -1,0 +1,514 @@
+[
+  {
+    "id": "6bc1703d-6bca-42db-9b37-f0436a6ec4e2",
+    "taxList": [],
+    "totalHoldingCharges": null,
+    "updateDate": null,
+    "distance": "32.5575",
+    "rejectedDriverId": null,
+    "intercityService": {
+      "image": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/intercityService%2FXL_1733546701069.jpg?alt=media&token=2ada4d9f-d1e0-496a-9774-0a9efb32e5a6",
+      "enable": true,
+      "kmCharge": "15",
+      "name": "Eartiga, XL, Carense",
+      "offerRate": true,
+      "id": "UmQ2bjWTnlwoKqdCIlTr",
+      "adminCommission": {
+        "amount": "0",
+        "isEnabled": false,
+        "type": "fix"
+      }
+    },
+    "destinationLocationLAtLng": {
+      "latitude": 21.1220023,
+      "longitude": 73.1135988
+    },
+    "sourceLocationName": "Surat,395008,Gujarat,India",
+    "paymentType": "Cash",
+    "zone": {
+      "area": [
+        {
+          "_latitude": 25.377272751018143,
+          "_longitude": 70.86863624386196
+        },
+        {
+          "_latitude": 23.819007821830457,
+          "_longitude": 67.08933936886196
+        },
+        {
+          "_latitude": 16.14449784801137,
+          "_longitude": 73.76902686886196
+        },
+        {
+          "_latitude": 20.4923641807527,
+          "_longitude": 76.7542182140768
+        },
+        {
+          "_latitude": 25.664788790910755,
+          "_longitude": 78.3362494640768
+        }
+      ],
+      "publish": true,
+      "latitude": 25.377272751018143,
+      "name": "Gujarat",
+      "id": "2ppOAGHvrcElw8i3VYSJ",
+      "longitude": 70.86863624386196
+    },
+    "intercityServiceId": "UmQ2bjWTnlwoKqdCIlTr",
+    "distanceType": "Km",
+    "parcelWeight": null,
+    "zoneId": "2ppOAGHvrcElw8i3VYSJ",
+    "parcelImage": null,
+    "unloading": null,
+    "finalRate": null,
+    "sourceCity": "Surat,395008,Gujarat,India",
+    "paymentStatus": false,
+    "comments": "",
+    "whenTime": "13:19",
+    "holdingChargeMinute": null,
+    "parcelDimension": null,
+    "otp": "916614",
+    "holdingCharges": null,
+    "whenDates": "21-Feb-2025",
+    "loading": null,
+    "userId": "zgTXbfNEtGNylqi3sVaAXwcs4gh1",
+    "freightWeight": null,
+    "adminCommission": {
+      "amount": "0",
+      "isEnabled": false,
+      "type": "fix"
+    },
+    "destinationCity": "Bardoli,394600,Gujarat,India",
+    "rideHoldTime": null,
+    "createdDate": {
+      "_seconds": 1740124208,
+      "_nanoseconds": 782388000
+    },
+    "driverId": null,
+    "sourceLocationLAtLng": {
+      "latitude": 21.2094892,
+      "longitude": 72.8317058
+    },
+    "destinationLocationName": "Bardoli,394600,Gujarat,India",
+    "loadingUnloadingCharges": null,
+    "offerRate": "2000",
+    "numberOfPassenger": "3",
+    "position": {
+      "geohash": "tegb9m46j",
+      "geopoint": {
+        "_latitude": 21.2094892,
+        "_longitude": 72.8317058
+      }
+    },
+    "acceptedDriverId": [],
+    "status": "Ride Canceled"
+  },
+  {
+    "id": "a5ef1652-e924-4949-84e0-2de866f97583",
+    "taxList": [],
+    "totalHoldingCharges": null,
+    "updateDate": null,
+    "distance": "150.983",
+    "rejectedDriverId": null,
+    "intercityService": {
+      "image": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/intercityService%2FIMG-20250117-WA0015_1737458415184.jpg?alt=media&token=31263474-3cc0-4516-bcf4-447688f4f665",
+      "enable": true,
+      "kmCharge": "18",
+      "name": "Tempo Traveler",
+      "offerRate": true,
+      "id": "647f340e35553",
+      "adminCommission": {
+        "amount": "0",
+        "isEnabled": false,
+        "type": "fix"
+      }
+    },
+    "destinationLocationLAtLng": {
+      "latitude": 16.0498975,
+      "longitude": 73.46866050000001
+    },
+    "sourceLocationName": "Kolhapur, Maharashtra, India",
+    "paymentType": "Cash",
+    "zone": {
+      "area": [
+        {
+          "_latitude": 20.066792514851564,
+          "_longitude": 72.79618748906252
+        },
+        {
+          "_latitude": 20.561335503300747,
+          "_longitude": 73.76298436406252
+        },
+        {
+          "_latitude": 21.463829949029556,
+          "_longitude": 73.63114842656252
+        },
+        {
+          "_latitude": 22.320122737608934,
+          "_longitude": 74.02665623906252
+        },
+        {
+          "_latitude": 21.62732853780406,
+          "_longitude": 79.43192967656252
+        },
+        {
+          "_latitude": 20.97223682770254,
+          "_longitude": 80.92607030156252
+        },
+        {
+          "_latitude": 19.15609111735971,
+          "_longitude": 80.88212498906252
+        },
+        {
+          "_latitude": 18.740452150451034,
+          "_longitude": 80.35478123906252
+        },
+        {
+          "_latitude": 19.65347711390221,
+          "_longitude": 78.50907811406252
+        },
+        {
+          "_latitude": 18.156839184934277,
+          "_longitude": 77.76200780156252
+        },
+        {
+          "_latitude": 17.403613089646143,
+          "_longitude": 76.17997655156252
+        },
+        {
+          "_latitude": 16.26796750729489,
+          "_longitude": 74.46610936406252
+        },
+        {
+          "_latitude": 15.4648246990586,
+          "_longitude": 73.49931248906252
+        },
+        {
+          "_latitude": 18.365499750784746,
+          "_longitude": 72.88407811406252
+        }
+      ],
+      "publish": true,
+      "latitude": 20.066792514851564,
+      "name": "Maharashtra",
+      "id": "qvV8TwYoSyeFZNsIrSxx",
+      "longitude": 72.79618748906252
+    },
+    "intercityServiceId": "647f340e35553",
+    "distanceType": "Km",
+    "parcelWeight": null,
+    "zoneId": "qvV8TwYoSyeFZNsIrSxx",
+    "parcelImage": null,
+    "unloading": null,
+    "finalRate": null,
+    "sourceCity": "Kolhapur",
+    "paymentStatus": false,
+    "comments": "",
+    "whenTime": "07:00",
+    "holdingChargeMinute": null,
+    "parcelDimension": null,
+    "otp": "621331",
+    "holdingCharges": null,
+    "whenDates": "02-Feb-2025",
+    "loading": null,
+    "userId": "EsMh445FC8dvAFIuZLmgvnXsgtC2",
+    "freightWeight": null,
+    "adminCommission": {
+      "amount": "0",
+      "isEnabled": false,
+      "type": "fix"
+    },
+    "destinationCity": "Malvan Beach",
+    "rideHoldTime": null,
+    "createdDate": {
+      "_seconds": 1738139734,
+      "_nanoseconds": 453339000
+    },
+    "driverId": null,
+    "sourceLocationLAtLng": {
+      "latitude": 16.7049873,
+      "longitude": 74.24325270000001
+    },
+    "destinationLocationName": "Malvan Beach, Maharashtra, India",
+    "loadingUnloadingCharges": null,
+    "offerRate": "2000",
+    "numberOfPassenger": "10",
+    "position": {
+      "geohash": "tduz13n39",
+      "geopoint": {
+        "_latitude": 16.7049873,
+        "_longitude": 74.24325270000001
+      }
+    },
+    "acceptedDriverId": [],
+    "status": "Ride Canceled"
+  },
+  {
+    "id": "b6deef62-4feb-4db5-bb88-1459a1d12b34",
+    "parcelImage": [],
+    "taxList": [],
+    "acceptedDriverId": [],
+    "totalHoldingCharges": null,
+    "updateDate": {
+      "_seconds": 1737461493,
+      "_nanoseconds": 153704000
+    },
+    "distance": "4.91",
+    "rejectedDriverId": null,
+    "intercityService": {
+      "image": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/intercityService%2FSUV_1735706168112.jpg?alt=media&token=8feb43ca-4246-45ca-8fd4-001a2fc46085",
+      "enable": true,
+      "kmCharge": "15",
+      "name": "Freight",
+      "offerRate": true,
+      "id": "Kn2VEnPI3ikF58uK8YqY"
+    },
+    "destinationLocationLAtLng": {
+      "latitude": 21.2305574,
+      "longitude": 72.901545
+    },
+    "sourceLocationName": "Hirabaugh, Surat, Gujarat 395006, India",
+    "paymentType": "Cash",
+    "zone": {
+      "area": [
+        {
+          "_latitude": 25.377272751018143,
+          "_longitude": 70.86863624386196
+        },
+        {
+          "_latitude": 23.819007821830457,
+          "_longitude": 67.08933936886196
+        },
+        {
+          "_latitude": 16.14449784801137,
+          "_longitude": 73.76902686886196
+        },
+        {
+          "_latitude": 20.4923641807527,
+          "_longitude": 76.7542182140768
+        },
+        {
+          "_latitude": 25.664788790910755,
+          "_longitude": 78.3362494640768
+        }
+      ],
+      "publish": true,
+      "latitude": 25.377272751018143,
+      "name": "Gujarat",
+      "id": "2ppOAGHvrcElw8i3VYSJ",
+      "longitude": 70.86863624386196
+    },
+    "intercityServiceId": "Kn2VEnPI3ikF58uK8YqY",
+    "distanceType": "Km",
+    "parcelWeight": "",
+    "zoneId": "2ppOAGHvrcElw8i3VYSJ",
+    "unloading": null,
+    "finalRate": "360",
+    "sourceCity": "Hirabaugh",
+    "paymentStatus": true,
+    "comments": "test",
+    "coupon": {
+      "amount": null,
+      "code": null,
+      "enable": null,
+      "id": null,
+      "validity": null,
+      "title": null,
+      "type": null
+    },
+    "whenTime": "17:40",
+    "holdingChargeMinute": null,
+    "parcelDimension": "",
+    "otp": "200381",
+    "holdingCharges": null,
+    "whenDates": "21-Jan-2025",
+    "loading": null,
+    "userId": "zgTXbfNEtGNylqi3sVaAXwcs4gh1",
+    "freightWeight": "50",
+    "adminCommission": {
+      "amount": "0",
+      "isEnabled": false,
+      "type": "fix"
+    },
+    "destinationCity": "Sarthana Jakat Naka",
+    "freightVehicle": {
+      "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fcar_model_2_1722498680934.png?alt=media&token=d4cca61b-e6b5-4b27-85d2-7fb852dfaa76",
+      "length": "1.82",
+      "holdingChargeMinute": "30",
+      "weight": "50",
+      "description": "Best for Sending\n1. FMCG Food Products\n2. Chemicals\n3. Fruits & Vegetable\n",
+      "holdingCharges": "50",
+      "enable": true,
+      "kmCharge": "27",
+      "width": "1",
+      "name": "Three Wheeler Tempo",
+      "loadingUnloadingCharges": "50",
+      "id": "VSPfpRhcJ18eDRZFFPS7",
+      "basicFareCharges": "220",
+      "basicFareKm": "1",
+      "height": "1.54"
+    },
+    "rideHoldTime": null,
+    "createdDate": {
+      "_seconds": 1737461423,
+      "_nanoseconds": 860980000
+    },
+    "driverId": "zMpiXQvrTrWRPLYzpPDjbFN7lNo1",
+    "sourceLocationLAtLng": {
+      "latitude": 21.211125,
+      "longitude": 72.8630434
+    },
+    "destinationLocationName": "Sarthana Jakat Naka, Nana Varachha, Surat, Gujarat 395006, India",
+    "loadingUnloadingCharges": null,
+    "offerRate": "326",
+    "numberOfPassenger": null,
+    "position": {
+      "geohash": "tegbdj35z",
+      "geopoint": {
+        "_latitude": 21.211125,
+        "_longitude": 72.8630434
+      }
+    },
+    "status": "Ride Completed"
+  },
+  {
+    "id": "c44b7b52-42b6-4daa-b29c-773cdfb49887",
+    "taxList": [],
+    "acceptedDriverId": [],
+    "totalHoldingCharges": null,
+    "updateDate": null,
+    "distance": "232.328",
+    "rejectedDriverId": null,
+    "intercityService": {
+      "image": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/intercityService%2FIMG-20250117-WA0015_1737458415184.jpg?alt=media&token=31263474-3cc0-4516-bcf4-447688f4f665",
+      "enable": true,
+      "kmCharge": "18",
+      "name": "Tempo Traveler",
+      "offerRate": true,
+      "id": "647f340e35553",
+      "adminCommission": {
+        "amount": "0",
+        "isEnabled": false,
+        "type": "fix"
+      }
+    },
+    "destinationLocationLAtLng": {
+      "latitude": 18.528913,
+      "longitude": 73.87441989999999
+    },
+    "sourceLocationName": "C, Shaniwar Peth, D Ward, Papachi Tikati, Kolhapur, Maharashtra 416002, India",
+    "paymentType": "Cash",
+    "zone": {
+      "area": [
+        {
+          "_latitude": 20.066792514851564,
+          "_longitude": 72.79618748906252
+        },
+        {
+          "_latitude": 20.561335503300747,
+          "_longitude": 73.76298436406252
+        },
+        {
+          "_latitude": 21.463829949029556,
+          "_longitude": 73.63114842656252
+        },
+        {
+          "_latitude": 22.320122737608934,
+          "_longitude": 74.02665623906252
+        },
+        {
+          "_latitude": 21.62732853780406,
+          "_longitude": 79.43192967656252
+        },
+        {
+          "_latitude": 20.97223682770254,
+          "_longitude": 80.92607030156252
+        },
+        {
+          "_latitude": 19.15609111735971,
+          "_longitude": 80.88212498906252
+        },
+        {
+          "_latitude": 18.740452150451034,
+          "_longitude": 80.35478123906252
+        },
+        {
+          "_latitude": 19.65347711390221,
+          "_longitude": 78.50907811406252
+        },
+        {
+          "_latitude": 18.156839184934277,
+          "_longitude": 77.76200780156252
+        },
+        {
+          "_latitude": 17.403613089646143,
+          "_longitude": 76.17997655156252
+        },
+        {
+          "_latitude": 16.26796750729489,
+          "_longitude": 74.46610936406252
+        },
+        {
+          "_latitude": 15.4648246990586,
+          "_longitude": 73.49931248906252
+        },
+        {
+          "_latitude": 18.365499750784746,
+          "_longitude": 72.88407811406252
+        }
+      ],
+      "publish": true,
+      "latitude": 20.066792514851564,
+      "name": "Maharashtra",
+      "id": "qvV8TwYoSyeFZNsIrSxx",
+      "longitude": 72.79618748906252
+    },
+    "intercityServiceId": "647f340e35553",
+    "distanceType": "Km",
+    "parcelWeight": null,
+    "zoneId": "qvV8TwYoSyeFZNsIrSxx",
+    "parcelImage": null,
+    "unloading": null,
+    "finalRate": null,
+    "sourceCity": "C, Shaniwar Peth, D Ward, Papachi Tikati, Kolhapur",
+    "paymentStatus": false,
+    "comments": "",
+    "whenTime": "14:38",
+    "holdingChargeMinute": null,
+    "parcelDimension": null,
+    "otp": "265902",
+    "holdingCharges": null,
+    "whenDates": "01-Feb-2025",
+    "loading": null,
+    "userId": "o6ngV0UvhyYTtowNtOlHs3ATGfX2",
+    "freightWeight": null,
+    "adminCommission": {
+      "amount": "0",
+      "isEnabled": false,
+      "type": "fix"
+    },
+    "destinationCity": "Railway station, Pune",
+    "rideHoldTime": null,
+    "createdDate": {
+      "_seconds": 1738310988,
+      "_nanoseconds": 485504000
+    },
+    "driverId": null,
+    "sourceLocationLAtLng": {
+      "latitude": 16.7008157,
+      "longitude": 74.2208425
+    },
+    "destinationLocationName": "Railway station, Agarkar Nagar, Pune, Maharashtra 411001, India",
+    "loadingUnloadingCharges": null,
+    "offerRate": "4182",
+    "numberOfPassenger": "3",
+    "position": {
+      "geohash": "tduz0bmcq",
+      "geopoint": {
+        "_latitude": 16.7008157,
+        "_longitude": 74.2208425
+      }
+    },
+    "status": "Ride Canceled"
+  }
+]

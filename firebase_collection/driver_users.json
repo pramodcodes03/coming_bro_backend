@@ -1,0 +1,4638 @@
+[
+  {
+    "id": "2EVKl6nKdLgM16hm9JmGKE5qnfx1",
+    "address": "569G+F65, Katrap, Badlapur, Maharashtra 421503, India",
+    "city": "TOyXIrpL67O7e7Kprm1T",
+    "cobNumber": "COB - MH 10/2025",
+    "complimentary_rides": 0,
+    "countryCode": "+91",
+    "createdAt": {
+      "_seconds": 1756810907,
+      "_nanoseconds": 310720000
+    },
+    "email": "vgajare65@gmail.com",
+    "fcmToken": "dXT123WubETZnvwFP6JTVb:APA91bH1KhWQXog_MHzAfG_XCMaceeGSAjiNNNt7zyGXza3_6oysJRAiwqusKlC-ep4WxxuZNR9mfulFyig59ddwrB--qR2B3Z5C24oOKs0uEjiHXfaKjaM",
+    "fullName": "CB136",
+    "gender": "Male",
+    "group_name": "",
+    "insuranceDetails": {
+      "agentCode": "",
+      "agentName": "",
+      "insuaranceCompany": "",
+      "insuaranceType": "",
+      "insuranceAmount": "",
+      "insuranceExpiryDate": "",
+      "insuranceNumber": "",
+      "insurancePremium": "",
+      "nomineeAge": "",
+      "nomineeName": "",
+      "nomineeNumber": "",
+      "nomineeRelation": "",
+      "paid_receipt_number": "",
+      "paymentDate": "",
+      "paymentType": ""
+    },
+    "isOnline": false,
+    "isSubscriptionEnable": false,
+    "location": null,
+    "loginType": "phone",
+    "phoneNumber": "9594702853",
+    "pincode": "421503",
+    "profilePic": "",
+    "referenceName": "",
+    "referenceNumber": "",
+    "remainingRides": null,
+    "reviewsCount": "0.0",
+    "reviewsSum": "0.0",
+    "rotation": null,
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "serviceType": "City Ride",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "subscriptionExpiredAt": null,
+    "vehicleInformation": {
+      "acPerkmRate": "19",
+      "carrier": false,
+      "chassisNumber": "111111111",
+      "companyName": "CtVlx1XmvbXYxRurJTri",
+      "district": "Thane",
+      "districtId": "23oEsZZYXwQyv4VkvJI3",
+      "driverRules": [],
+      "engineNumber": "111111111",
+      "nonAcPerkmRate": "19",
+      "permitNumber": "CH111",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2F2EVKl6nKdLgM16hm9JmGKE5qnfx1%2Fimage_picker_0D10CE5F-844B-4AD5-8C0F-B17F33462C0C-6156-00000196B31DE598.jpg?alt=media&token=e4ad0938-5234-4b09-8ed7-30dcadcf65ea",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2F2EVKl6nKdLgM16hm9JmGKE5qnfx1%2Fimage_picker_54DD9AA1-9A9F-4A44-8CDE-B424BD0AA6B1-6156-000001969B582864.jpg?alt=media&token=16d45c3c-5efd-4a6a-b171-bb1c8c287a82",
+      "rcNumber": "111111111",
+      "registrationDate": {
+        "_seconds": 1756811040,
+        "_nanoseconds": 642301000
+      },
+      "registrationType": "null",
+      "seats": "4",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2F2EVKl6nKdLgM16hm9JmGKE5qnfx1%2Fimage_picker_6E5A2F8A-6596-403F-8B4A-F7F218D8140C-6156-00000196C07CC3F1.jpg?alt=media&token=97f7766c-53a8-47d2-bee8-544ceac4e220",
+      "vehicleColor": "Black",
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "vehicleModel": "Ma80VnKEh9NAriarJRwk",
+      "vehicleNumber": "CB136",
+      "vehicleType": "Auto",
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "vehicle_manufactureDate": "2025-09-02",
+      "vehicle_registrationDate": "2025-09-02"
+    },
+    "walletAmount": "0.0",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "documentVerification": false,
+    "panCardNumber": null,
+    "panCardPhoto": null,
+    "aadharCardNumber": null,
+    "aadharCardPhoto": null
+  },
+  {
+    "id": "4vefaUEpzUZrWKcgqOKgHCWQedM2",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "city": "7SN4DiTRnYZicjTkUjmi",
+    "loginType": "phone",
+    "panCardPhoto": "",
+    "isOnline": false,
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/732f4d01-06c0-4bfc-8ccb-49a3895ceefa3737950675444825430.jpg",
+    "createdAt": {
+      "_seconds": 1764911564,
+      "_nanoseconds": 451555000
+    },
+    "referenceNumber": "8181",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "aauPMwizcKjSyCFmZJTG",
+    "email": "lk@gmail.com",
+    "referenceName": "testinh",
+    "pincode": "919198l",
+    "address": "Sankar Lal Society, Khodiyaar Nagar, Arjun Nagar Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test",
+    "cobNumber": "COB - MH 29/2025",
+    "profilePic": "",
+    "rotation": null,
+    "aadharCardNumber": "123456789000",
+    "fullName": "",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9980808070",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "",
+    "location": null,
+    "complimentary_rides": 0,
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "fcmToken": "f1FjnFUWQ9e6QDdOWtJ9kL:APA91bGOXXKb9gGXRsK5kA7PTtmKITnFhq-ur-yqJiXSjHYeA3UDhqOKYguPpY8GUz85v2iIuc2BeKvF6F1cvt2ziTcPPefqsmZ4NZ9qaJJGnYCp7E9PvF8"
+  },
+  {
+    "id": "6zEAqnDiAIXiHvzJ9ePq9uHpgXE3",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2F6zEAqnDiAIXiHvzJ9ePq9uHpgXE3%2F1000004000.jpg?alt=media&token=04036bb9-46a4-4be9-9b3f-563105852f05",
+    "aadharCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2F6zEAqnDiAIXiHvzJ9ePq9uHpgXE3%2F1000011157.jpg?alt=media&token=e4852a94-36d3-4903-af8e-87498bcbfc82",
+    "createdAt": {
+      "_seconds": 1771570487,
+      "_nanoseconds": 90891000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "email": "khandukudke2@gmail.com",
+    "referenceName": "",
+    "pincode": "410111",
+    "address": "QV44+5VR, Talegaon - Chakan Hwy, Maharashtra 410501, India",
+    "group_name": "",
+    "cobNumber": "COB - MH 14/2026",
+    "profilePic": "",
+    "aadharCardNumber": "374078434901",
+    "fullName": "khandu",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "8856868921",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "HJTPK0806B",
+    "complimentary_rides": 0,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "isSubscriptionEnable": true,
+    "remainingRides": "10",
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1771571517,
+        "_nanoseconds": 760113000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.42",
+      "remainingDays": "10",
+      "id": "Ltdf0HVwFIa6BYBTM6BN",
+      "subscription_role": "driver",
+      "start_date": {
+        "_seconds": 1771571517,
+        "_nanoseconds": 760114000
+      },
+      "subscription_plan": {
+        "duration": "unlimited",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "tds": "0",
+        "amount": "30",
+        "enable": true,
+        "name": "30 Rs ",
+        "gst": "18",
+        "description": "Unlimited Days 10 Ride",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10",
+        "image": ""
+      }
+    },
+    "insuranceDetails": {
+      "insuaranceCompany": "",
+      "insuaranceType": "",
+      "insuranceNumber": "",
+      "insuranceExpiryDate": "",
+      "insuranceAmount": "",
+      "insurancePremium": "",
+      "paymentType": "",
+      "paid_receipt_number": "",
+      "paymentDate": "",
+      "nomineeName": "",
+      "nomineeNumber": "",
+      "nomineeRelation": "",
+      "nomineeAge": "",
+      "agentName": "",
+      "agentCode": ""
+    },
+    "accept_terms": true,
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2F6zEAqnDiAIXiHvzJ9ePq9uHpgXE3%2F1000010785.jpg?alt=media&token=daf0ef2a-594e-4427-aef8-c8abd25b5d3c",
+      "companyName": "CtVlx1XmvbXYxRurJTri",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2F6zEAqnDiAIXiHvzJ9ePq9uHpgXE3%2F1000030392.jpg?alt=media&token=47a9cda9-5c56-4077-9d26-9d06c9c491e3",
+      "seats": "20",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "nonAcPerkmRate": "20",
+      "registrationDate": {
+        "_seconds": 1771571442,
+        "_nanoseconds": 782964000
+      },
+      "vehicleModel": "5HSBUy0gYz6JzS4AOLq2",
+      "vehicleNumber": "MH14LS2528",
+      "vehicleType": "Auto",
+      "vehicleColor": "Black",
+      "engineNumber": "AZXWRG12271",
+      "selfiPhoto": "",
+      "chassisNumber": "MD2B47AX1RWG40162",
+      "carrier": false,
+      "permitNumber": "MH14LS2528",
+      "vehicle_manufactureDate": "2024-11-14",
+      "districtId": "S0sMF8RaqaGzmLZy7REM",
+      "acPerkmRate": "",
+      "district": "Pune",
+      "vehicle_registrationDate": "2024-11-14",
+      "registrationType": "null",
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "rcNumber": ""
+    },
+    "documentVerification": false,
+    "fcmToken": "dtXAc20tQZOe4EUGepzsk2:APA91bGKtD6FkTdqvj5qUgzr0udj00DvWfJvvj2g5suBbgPx1LsqIJpJ77_irMUOF4SevsTk6H2IYA_Tqq271iIdDRvY5xMmjN6YpVrd3k9nYPyrjwmYxnY",
+    "rotation": 0,
+    "position": {
+      "geohash": "tek9bw2f3",
+      "geopoint": {
+        "_latitude": 18.623615,
+        "_longitude": 73.8512083
+      }
+    },
+    "location": null,
+    "isOnline": true
+  },
+  {
+    "id": "7r93Y0juqhQH977YZv1VHk9YcDt2",
+    "loginType": "google",
+    "isSubscriptionEnable": null,
+    "profilePic": "https://lh3.googleusercontent.com/a/ACg8ocKB8JoRIhlnUWhaEVJfNNkGlndgoOtoCmPPR3uiY_BWBVZLNfn5=s96-c",
+    "rotation": null,
+    "fullName": "JACOB ALHAT",
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "createdAt": {
+      "_seconds": 1761304043,
+      "_nanoseconds": 324540000
+    },
+    "phoneNumber": "8180045316",
+    "zoneIds": null,
+    "countryCode": "+91",
+    "documentVerification": false,
+    "reviewsSum": "0.0",
+    "location": null,
+    "serviceId": null,
+    "fcmToken": null,
+    "email": "alhatjacob@gmail.com"
+  },
+  {
+    "id": "9rcKxNaxr1Y6BgRkzmbu5kHgB7z2",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "TOyXIrpL67O7e7Kprm1T",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "DicSuP6axRZ4CK89R5dX",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2F9rcKxNaxr1Y6BgRkzmbu5kHgB7z2%2Fb88176f5-7285-4fdb-b930-99acbd1913d15030586363457579223.jpg?alt=media&token=cf52dc44-9121-403f-a4b2-ab529deeae53",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2F9rcKxNaxr1Y6BgRkzmbu5kHgB7z2%2Ff17b58e5-65de-4384-9c47-221105efdfc6582280033047098868.jpg?alt=media&token=b4d9f8af-c89f-4a1d-a175-e240614d5501",
+      "seats": "4",
+      "driverRules": [],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "rcNumber": "CB111",
+      "nonAcPerkmRate": "19",
+      "registrationDate": {
+        "_seconds": 1756469533,
+        "_nanoseconds": 995631000
+      },
+      "vehicleNumber": "CB11111",
+      "vehicleModel": "jtcg6vOTisE2FOG8S9ug",
+      "vehicleType": "Auto",
+      "vehicleColor": "Black",
+      "engineNumber": "CB111",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2F9rcKxNaxr1Y6BgRkzmbu5kHgB7z2%2F28723aef-a85e-405f-9af2-61d0ba8e7ce52912844717010575943.jpg?alt=media&token=d752debd-54c9-411e-b6e1-ad1425a913f7",
+      "chassisNumber": "CB111",
+      "permitNumber": "31616568",
+      "carrier": false,
+      "vehicle_manufactureDate": "2025-08-29",
+      "districtId": "23oEsZZYXwQyv4VkvJI3",
+      "registrationType": "null",
+      "acPerkmRate": "",
+      "district": "Thane",
+      "vehicle_registrationDate": "2025-08-29"
+    },
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1756469357,
+      "_nanoseconds": 584999000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "fcmToken": null,
+    "email": "info@comingbro.in",
+    "referenceName": "",
+    "pincode": "421503",
+    "complimentary_rides": 0,
+    "address": "565R+J6V, Kulgaon, Badlapur, Maharashtra 421503, India",
+    "group_name": "",
+    "cobNumber": "COB - MH 04/2025",
+    "profilePic": "",
+    "rotation": null,
+    "fullName": "Coming Bro",
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "8691959619",
+    "reviewsSum": "0.0",
+    "location": {
+      "latitude": 3213515,
+      "longitude": 1511530
+    },
+    "isSubscriptionEnable": true,
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1756469999,
+        "_nanoseconds": 91000000
+      },
+      "start_date": {
+        "_seconds": 1756469999,
+        "_nanoseconds": 91000000
+      },
+      "end_date": null,
+      "remainingDays": null,
+      "gst_amount": 4.576271186440678,
+      "subscription_amount": 25.423728813559322,
+      "subscription_plan": {
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "description": "Unlimited Days 10 Ride",
+        "ride": "10",
+        "name": "30 Rs ",
+        "image": "",
+        "gst": "18",
+        "tds": "0",
+        "duration": "unlimited",
+        "amount": "30",
+        "enable": true,
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        }
+      },
+      "subscription_role": "driver"
+    },
+    "remainingRides": "10",
+    "insuranceDetails": {
+      "insuaranceCompany": "0zGnrSD9bF5aQ3RVEtnx",
+      "insuaranceType": "",
+      "insuranceNumber": "+₹₹",
+      "insuranceExpiryDate": "2025-08-29",
+      "insuranceAmount": "66565",
+      "insurancePremium": "6565",
+      "paymentType": "",
+      "paid_receipt_number": "6865",
+      "paymentDate": "2025-08-29",
+      "nomineeName": "hxhd",
+      "nomineeNumber": "null",
+      "nomineeRelation": "ydydud",
+      "nomineeAge": "12",
+      "agentName": "",
+      "agentCode": ""
+    },
+    "accept_terms": true,
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "documentVerification": true
+  },
+  {
+    "id": "FcZodAIKf0Ufi8b5oju4SwKeFlk2",
+    "gender": null,
+    "zoneIds": null,
+    "group_name": null,
+    "rotation": null,
+    "complimentary_rides": 0,
+    "createdAt": {
+      "_seconds": 1746821246,
+      "_nanoseconds": 314657000
+    },
+    "referenceName": null,
+    "isSubscriptionEnable": false,
+    "walletAmount": "0.0",
+    "email": "aarifshaikh894aa@gmail.com",
+    "countryCode": "+91",
+    "subscriptionExpiredAt": null,
+    "fullName": "Aarif Shaikh",
+    "address": null,
+    "reviewsCount": "0.0",
+    "city": null,
+    "reviewsSum": "0.0",
+    "location": null,
+    "profilePic": "https://lh3.googleusercontent.com/a/ACg8ocLvV68yErRSfKRDcOaIb_bcfZPioB38vlGSjp6O_zIzZ6Gmlw=s96-c",
+    "fcmToken": "dv0fCNRMTOaWNMkqFs68Se:APA91bGhl3WmtF_-Qa8dn_iKMKf4XVrhZvf1QJLvn9QJeoEBhmiYL7B3EJESpb2fbIA4IbEGUN7guPtxkmRHEJVOor96Ldp4rCB7X4wZ2J-j2Kfh3wtrOFk",
+    "pincode": null,
+    "serviceType": null,
+    "state": null,
+    "serviceId": null,
+    "remainingRides": null,
+    "referenceNumber": null,
+    "phoneNumber": "7607400356",
+    "isOnline": false,
+    "documentVerification": false,
+    "cobNumber": null,
+    "loginType": "google"
+  },
+  {
+    "id": "Fr6c1QCkZdTqq0mvcLTaha33Sp43",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "google",
+    "city": "cnzGKQOVHqNlL2g89JMw",
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FFr6c1QCkZdTqq0mvcLTaha33Sp43%2F1000452120.jpg?alt=media&token=3c16c32b-fd72-40c5-b160-d82e11f1bc0a",
+    "aadharCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FFr6c1QCkZdTqq0mvcLTaha33Sp43%2F1000452120.jpg?alt=media&token=39633b1a-49e8-4b1b-bede-19ec78671320",
+    "createdAt": {
+      "_seconds": 1770741880,
+      "_nanoseconds": 311896000
+    },
+    "referenceNumber": "87172",
+    "countryCode": "+91",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "email": "omiimore13@gmail.com",
+    "referenceName": "Dummy",
+    "pincode": "400602",
+    "address": "BLOCK-B1, SHIVANJALI SOCIETY SHANTI, Raigad Aali Marg, Shivanjali CHS, Panch Pakhdi, Thane West, Thane, Maharashtra 400602, India",
+    "group_name": "Abc",
+    "cobNumber": "COB - MH 12/2026",
+    "profilePic": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FFr6c1QCkZdTqq0mvcLTaha33Sp43%2F1000452120.jpg?alt=media&token=df53b4db-0b7b-48c9-9f01-6e909eb00bb1",
+    "aadharCardNumber": "hshshsh",
+    "fullName": "Omkar More",
+    "subscriptionExpiredAt": null,
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "phoneNumber": "9619994237",
+    "panCardNumber": "dbsbsbsb",
+    "complimentary_rides": 0,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "serviceId": "JCH5ciDxfOeuQDX2nbyZ",
+    "vehicleInformation": {
+      "vehicleTypeId": "2yH3nXHjdumO1yfUfm0d",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FFr6c1QCkZdTqq0mvcLTaha33Sp43%2F1000452120.jpg?alt=media&token=09674335-e75c-4b7c-aad9-efbf6205120c",
+      "companyName": "FyFOOjKUePq4JnpoiKQ6",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FFr6c1QCkZdTqq0mvcLTaha33Sp43%2F1000452120.jpg?alt=media&token=7b09cd7a-6569-479c-98ad-458483a8e227",
+      "seats": "4",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        }
+      ],
+      "vehicleFuel": "KYUmefrt1EYfGWnFCo7L",
+      "rcNumber": "Sjajjajdjdj",
+      "nonAcPerkmRate": "12",
+      "registrationDate": {
+        "_seconds": 1770742002,
+        "_nanoseconds": 134593000
+      },
+      "vehicleModel": "8QbOhPHILMmh1H6Nb2KR",
+      "vehicleNumber": "Mmmsjjs",
+      "vehicleType": "Cab ",
+      "vehicleColor": "Black",
+      "engineNumber": "nhsjjsjs",
+      "selfiPhoto": "",
+      "chassisNumber": "djdjdjdj",
+      "permitNumber": "dhdjdjd",
+      "carrier": false,
+      "districtId": "f6x3RlqwamGKLkDHtMix",
+      "vehicle_manufactureDate": "2026-02-10",
+      "acPerkmRate": "25",
+      "district": "Mumbai",
+      "vehicle_registrationDate": "2026-02-01",
+      "registrationType": "null"
+    },
+    "isSubscriptionEnable": true,
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1770743031,
+        "_nanoseconds": 665000000
+      },
+      "start_date": {
+        "_seconds": 1770743031,
+        "_nanoseconds": 665000000
+      },
+      "end_date": null,
+      "remainingDays": null,
+      "subscription_plan": {
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "tds": "0",
+        "amount": "30",
+        "description": "Unlimited Days 10 Ride",
+        "name": "30 Rs ",
+        "ride": "10",
+        "duration": "unlimited",
+        "gst": "18",
+        "image": "",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "enable": true
+      },
+      "subscription_role": "driver",
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.423728813559322",
+      "id": null
+    },
+    "documentVerification": true,
+    "insuranceDetails": {
+      "insuaranceCompany": "",
+      "insuaranceType": "",
+      "insuranceNumber": "",
+      "insuranceExpiryDate": "",
+      "insuranceAmount": "",
+      "insurancePremium": "",
+      "paymentType": "",
+      "paid_receipt_number": "",
+      "paymentDate": "",
+      "nomineeName": "",
+      "nomineeNumber": "",
+      "nomineeRelation": "",
+      "nomineeAge": "",
+      "agentName": "",
+      "agentCode": ""
+    },
+    "accept_terms": true,
+    "remainingRides": "9",
+    "fcmToken": "fvt5sFMWSXWA46uLJ8s079:APA91bH_boIAUGT0a4JqjQgi8PadkOYMcfqlhjaWsnZkAbKOr3c1tfv-BazUyHUtNsybOkoh0X-zhPU9F0H-r2YvJe31O8ZaKkXVe3uqtghNC6Iz80KYT_Y",
+    "rotation": 0,
+    "isOnline": true,
+    "location": null,
+    "position": {
+      "geohash": "te7vhqqz6",
+      "geopoint": {
+        "_latitude": 19.1957637,
+        "_longitude": 72.9695942
+      }
+    }
+  },
+  {
+    "id": "GYnDnk6dqfM9M5NGwjCMItzwEuZ2",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "Kolhapur",
+    "vehicleInformation": {
+      "vehicleTypeId": "nGi5FvL9dy1uQwQyR5QK",
+      "companyName": "yS20pN79C51jjRjDwjnL",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FGYnDnk6dqfM9M5NGwjCMItzwEuZ2%2F19410d88-dafb-4a46-8c1c-69e0585cfa567953711821746735449.jpg?alt=media&token=f7b41606-32da-4dba-a600-1bffea9d5065",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FGYnDnk6dqfM9M5NGwjCMItzwEuZ2%2Fc9eab69c-7d8f-4f5b-aa18-9f726e77de097942020893555554772.jpg?alt=media&token=03ad925e-ff9d-40c4-8477-8cdce1cddb8c",
+      "seats": "7",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "vehicleFuel": "KYUmefrt1EYfGWnFCo7L",
+      "rcNumber": "mh06af1488",
+      "nonAcPerkmRate": "17",
+      "registrationDate": {
+        "_seconds": 1770052116,
+        "_nanoseconds": 995180000
+      },
+      "vehicleNumber": "mh06af1488",
+      "vehicleModel": "e2Et0bFs5vkSZ6vv66jc",
+      "vehicleType": "Suv",
+      "vehicleColor": "Gray",
+      "engineNumber": "kun407036480306/2kd96",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FGYnDnk6dqfM9M5NGwjCMItzwEuZ2%2Fa10bd9b5-25aa-474d-9b8b-2d18aecb01cc9004555043199881621.jpg?alt=media&token=152fba04-ff40-4d13-b973-4a45aa4ae5bf",
+      "chassisNumber": "kun40703648036/2kd96",
+      "permitNumber": "mh06af1488",
+      "carrier": false,
+      "vehicle_manufactureDate": "2006-01-01",
+      "districtId": "uHh68RXw89TfgOBEuGL2",
+      "registrationType": "null",
+      "acPerkmRate": "18",
+      "district": "Kolhapur",
+      "vehicle_registrationDate": "2006-02-01"
+    },
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1770052249,
+        "_nanoseconds": 105436000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.42",
+      "remainingDays": "10",
+      "id": "Ltdf0HVwFIa6BYBTM6BN",
+      "subscription_role": "driver",
+      "subscription_plan": {
+        "duration": "unlimited",
+        "image": "",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "amount": "30",
+        "tds": "0",
+        "enable": true,
+        "name": "30 Rs ",
+        "description": "Unlimited Days 10 Ride",
+        "gst": "18",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10"
+      },
+      "start_date": {
+        "_seconds": 1770052249,
+        "_nanoseconds": 105440000
+      }
+    },
+    "isOnline": true,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1770051473,
+      "_nanoseconds": 303683000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "state": "Maharastra",
+    "serviceId": "vGIpx48e4L5KgW55M5FW",
+    "fcmToken": null,
+    "email": "stakade028@gmail.com",
+    "referenceName": "no",
+    "pincode": "416101",
+    "complimentary_rides": 0,
+    "address": "MHQV+G6V, Kurundwad, Maharashtra 416106, India",
+    "group_name": "self",
+    "cobNumber": "COB - MH 09/2026",
+    "isSubscriptionEnable": true,
+    "profilePic": "",
+    "rotation": null,
+    "fullName": "sanket sukumar takade",
+    "remainingRides": "10",
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "7522996472",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "reviewsSum": "0.0",
+    "location": null,
+    "documentVerification": true
+  },
+  {
+    "id": "Gt8gdgTWyoX7OH9vqbHk2fMjUJJ2",
+    "serviceType": "City Ride, Rental, Outstation",
+    "gender": "Male",
+    "city": "TMHO9TjU19e9HeXKBmjZ",
+    "loginType": "phone",
+    "panCardPhoto": "/data/user/0/com.comingbro.driver/cache/80839a6d-43ca-47fa-813f-08adfb1482ef6343932245483480456.jpg",
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/fc765bdf-c505-49a3-bd3a-d6213262892a8050172006049877425.jpg",
+    "createdAt": {
+      "_seconds": 1769768940,
+      "_nanoseconds": 480841000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "email": "vedamttours14@gmil.com",
+    "referenceName": "",
+    "pincode": "416005",
+    "address": "P757+R3F, Mukt Sainik Colony, Kolhapur, Maharashtra 416005, India",
+    "group_name": "",
+    "cobNumber": "COB - MH 04/2026",
+    "profilePic": "",
+    "aadharCardNumber": "682719005495",
+    "fullName": "shivanand ",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9623282358",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "",
+    "complimentary_rides": 0,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "fcmToken": "eaBfhXhwQzakeNDcCz2HNh:APA91bEIg4hvhL4iqtSIBK4QL9c2BmaMf4Ik8tol5I0wexM8le9pNnq-qJa3VSMxguuX3vnq_iH1I6Emak_N5jQzb9cSV5E_93ysJPeH8nKSWXhTVHunqg8",
+    "serviceId": "VXmBuNgKxOomZzc8iOgV",
+    "vehicleInformation": {
+      "vehicleTypeId": "bc8ItwNooNAtcME5CiTo",
+      "companyName": "bctz9i661HD8p6g1u1oS",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FGt8gdgTWyoX7OH9vqbHk2fMjUJJ2%2F1000505171.jpg?alt=media&token=d62223e4-b81b-42e4-ac68-c64908344938",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FGt8gdgTWyoX7OH9vqbHk2fMjUJJ2%2F1782512f-232d-4ab9-97f0-f016157c94ff-1_all_7271.jpg?alt=media&token=1cd4a914-36ae-449f-93c6-c26b0b293a52",
+      "seats": "4",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        }
+      ],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "nonAcPerkmRate": "18",
+      "rcNumber": "Mh14ll6627",
+      "registrationDate": {
+        "_seconds": 1770364474,
+        "_nanoseconds": 750996000
+      },
+      "vehicleModel": "VMDLMSf4oqnYTYobY2IA",
+      "vehicleNumber": "MH14LL6627",
+      "vehicleType": "Sedan ",
+      "vehicleColor": "White",
+      "engineNumber": "K12NP164560",
+      "selfiPhoto": "",
+      "chassisNumber": "MBHCZFB3SRE569925",
+      "carrier": false,
+      "permitNumber": "MH14LL6627",
+      "vehicle_manufactureDate": "2024-08-10",
+      "districtId": "uHh68RXw89TfgOBEuGL2",
+      "acPerkmRate": "20",
+      "district": "Kolhapur",
+      "vehicle_registrationDate": "2024-09-02",
+      "registrationType": "null"
+    },
+    "isSubscriptionEnable": true,
+    "remainingRides": "10",
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1770364571,
+        "_nanoseconds": 510320000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.42",
+      "remainingDays": "10",
+      "id": "Ltdf0HVwFIa6BYBTM6BN",
+      "subscription_role": "driver",
+      "start_date": {
+        "_seconds": 1770364571,
+        "_nanoseconds": 510321000
+      },
+      "subscription_plan": {
+        "duration": "unlimited",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "tds": "0",
+        "amount": "30",
+        "enable": true,
+        "name": "30 Rs ",
+        "gst": "18",
+        "description": "Unlimited Days 10 Ride",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10",
+        "image": ""
+      }
+    },
+    "rotation": 0,
+    "location": {
+      "latitude": 16.5690704,
+      "longitude": 74.315642
+    },
+    "position": {
+      "geohash": "tduy706cz",
+      "geopoint": {
+        "_latitude": 16.5690704,
+        "_longitude": 74.315642
+      }
+    },
+    "isOnline": true
+  },
+  {
+    "id": "Guz2tIUdxQXiXvxZBcXYQ3fxMUz1",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "isOnline": false,
+    "createdAt": {
+      "_seconds": 1770030135,
+      "_nanoseconds": 599668000
+    },
+    "referenceNumber": "818181",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "email": "klm@gmail.com",
+    "referenceName": "test",
+    "pincode": "818181918",
+    "address": "Sankar Lal Society, Khodiyaar Nagar, Arjun Nagar Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "191991",
+    "cobNumber": "COB - MH 05/2026",
+    "rotation": null,
+    "aadharCardNumber": "191991",
+    "fullName": "klm",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "phoneNumber": "9988773030",
+    "panCardNumber": "9191919",
+    "location": null,
+    "complimentary_rides": 0,
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "DicSuP6axRZ4CK89R5dX",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FGuz2tIUdxQXiXvxZBcXYQ3fxMUz1%2F0d727ac9-be23-433a-8bcf-33964e8c437a2982121700175035002.jpg?alt=media&token=0e6275a4-918a-4463-a6bb-9ae710cd9ca7",
+      "seats": "3",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FGuz2tIUdxQXiXvxZBcXYQ3fxMUz1%2F6d1aede4-dfdf-4c8a-b0da-7914ffb4accb4436449483013846234.jpg?alt=media&token=6ffb0531-4bd7-4053-80a1-17461beffe21",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        }
+      ],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "rcNumber": "1717",
+      "nonAcPerkmRate": "10",
+      "registrationDate": {
+        "_seconds": 1770094174,
+        "_nanoseconds": 880964000
+      },
+      "vehicleModel": "jtcg6vOTisE2FOG8S9ug",
+      "vehicleNumber": "81819",
+      "vehicleType": "Auto",
+      "vehicleColor": "Gold",
+      "engineNumber": "191919",
+      "selfiPhoto": "",
+      "chassisNumber": "17717",
+      "permitNumber": "188181",
+      "carrier": false,
+      "districtId": "9ASmtp0GgwSYMGvgf6DD",
+      "vehicle_manufactureDate": "2015-02-03",
+      "acPerkmRate": "",
+      "district": "Chatrapati Sambhaji Nagar",
+      "vehicle_registrationDate": "2015-02-03",
+      "registrationType": "null"
+    },
+    "aadharCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FyH62GjfqYJNArGekRTBN59NRnRL2%2Fa8b425ff-6b3e-4153-a0c5-f2891528e5c79168484221594529558.jpg?alt=media&token=6e8dd649-e722-49a0-aad3-4ba76656d162",
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FyH62GjfqYJNArGekRTBN59NRnRL2%2Fa8b425ff-6b3e-4153-a0c5-f2891528e5c79168484221594529558.jpg?alt=media&token=6e8dd649-e722-49a0-aad3-4ba76656d162",
+    "fcmToken": "eWcpF4Q6Tme9MG7NU-cyMm:APA91bHHujXK1OhD_k2dlonbVN8nkJrvHgDJYIdFw5fQYFCnks-IDTiH7Y2i9z_5_oHzWZCnssvBOAofs6qVX2rl0F2dB8kUiWMXxiZRlMNSayGFOD4qFJQ",
+    "city": "Ahilyanagar",
+    "profilePic": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/profileImage%2FGuz2tIUdxQXiXvxZBcXYQ3fxMUz1%2Ff682f561-35ac-4a9c-be5e-ed43b98d2c516230318944704027221.jpg?alt=media&token=9f1bed2f-6f3d-43d4-88b7-2b8eb12fa539",
+    "state": "Maharastra"
+  },
+  {
+    "id": "HaPLGDLnMdXELy2IaZoV4AjmnXm1",
+    "serviceType": null,
+    "gender": "",
+    "loginType": "phone",
+    "city": "",
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1756606649,
+      "_nanoseconds": 215902000
+    },
+    "referenceNumber": null,
+    "countryCode": "+91",
+    "documentVerification": true,
+    "insuranceDetails": {
+      "insuranceAmount": "",
+      "insurancePremium": "",
+      "agentCode": "",
+      "nomineeRelation": "",
+      "agentName": "",
+      "insuaranceType": "",
+      "nomineeName": "",
+      "paid_receipt_number": "",
+      "paymentType": "",
+      "insuranceNumber": "",
+      "nomineeAge": "",
+      "insuaranceCompany": "",
+      "paymentDate": "",
+      "insuranceExpiryDate": "",
+      "nomineeNumber": ""
+    },
+    "state": "",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "email": "gpavara098@gmail.com",
+    "referenceName": null,
+    "pincode": "",
+    "complimentary_rides": 0,
+    "address": "",
+    "group_name": "",
+    "cobNumber": null,
+    "profilePic": "",
+    "fullName": "Ganesh P",
+    "walletAmount": "0.6039999999999992",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9850338462",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "reviewsSum": "0.0",
+    "panCardNumber": null,
+    "panCardPhoto": null,
+    "aadharCardNumber": null,
+    "aadharCardPhoto": null,
+    "isSubscriptionEnable": true,
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1770298442,
+        "_nanoseconds": 112329000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.42",
+      "remainingDays": "10",
+      "id": "Ltdf0HVwFIa6BYBTM6BN",
+      "subscription_role": "driver",
+      "start_date": {
+        "_seconds": 1770298442,
+        "_nanoseconds": 112330000
+      },
+      "subscription_plan": {
+        "duration": "unlimited",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "amount": "30",
+        "tds": "0",
+        "enable": true,
+        "name": "30 Rs ",
+        "gst": "18",
+        "description": "Unlimited Days 10 Ride",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10",
+        "image": ""
+      }
+    },
+    "fcmToken": "cdKNS66bRtKXg9DJXOX1fl:APA91bGYD5rWjqTxEwjM88MAYgC_8zmAzB_NBHn6oWxGj0VFFmghS-jFXdQvCHgD7Y6a_BkbzSO8Pp9zUbwnI1zaEqfZFhC71rmnSTRF37jPgHVxVN4A9n0",
+    "remainingRides": "6",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FHaPLGDLnMdXELy2IaZoV4AjmnXm1%2Ff1c8111c-d8df-437e-9390-ebdc508754ef534083558482110523.jpg?alt=media&token=907211a1-8cdd-4df8-bcc9-22e548d25e35",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FHaPLGDLnMdXELy2IaZoV4AjmnXm1%2F48f998cb-af21-4217-b5f9-ba0a525824523764204290777199505.jpg?alt=media&token=1828cb3d-52d3-4336-99ba-7d957ffee798",
+      "seats": "5",
+      "driverRules": [],
+      "vehicleFuel": "",
+      "rcNumber": "xyz",
+      "nonAcPerkmRate": "null",
+      "registrationDate": {
+        "_seconds": 1756902490,
+        "_nanoseconds": 955619000
+      },
+      "vehicleNumber": "xyz",
+      "vehicleModel": "",
+      "vehicleType": "Auto",
+      "vehicleColor": "Black",
+      "engineNumber": "null",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FHaPLGDLnMdXELy2IaZoV4AjmnXm1%2Fcd080334-4903-4ac0-87fc-f2e8144aeb0f2994800346813544374.jpg?alt=media&token=a2f7b43a-e1bf-4764-897d-74c86199bcd3",
+      "chassisNumber": "null",
+      "permitNumber": "xyz ",
+      "carrier": false,
+      "vehicle_manufactureDate": "",
+      "districtId": "ONz8bvO78jMltZ1aSVqy",
+      "registrationType": "null",
+      "district": "Nagpur",
+      "vehicle_registrationDate": "",
+      "acPerkmRate": "0"
+    },
+    "isOnline": true,
+    "rotation": 0,
+    "location": {
+      "latitude": 19.0328367,
+      "longitude": 75.9048349
+    },
+    "position": {
+      "geohash": "temur2b4q",
+      "geopoint": {
+        "_latitude": 19.0328367,
+        "_longitude": 75.9048349
+      }
+    }
+  },
+  {
+    "id": "IYkBZBFYTMPgWmELaoNppt4f6qK2",
+    "serviceType": "City Ride",
+    "gender": "Female",
+    "loginType": "phone",
+    "city": "6BgzRL4WTWg2yNwY2uJJ",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "DicSuP6axRZ4CK89R5dX",
+      "rcImage": "",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FIYkBZBFYTMPgWmELaoNppt4f6qK2%2Fbf21542a-4dfb-4a94-918a-3be4b5ce18f49045907194036846522.jpg?alt=media&token=d2632931-0308-4ed7-bc35-4d8b2087a8c9",
+      "seats": "2",
+      "driverRules": [],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "rcNumber": "",
+      "nonAcPerkmRate": "10",
+      "registrationDate": {
+        "_seconds": 1764672453,
+        "_nanoseconds": 286262000
+      },
+      "vehicleNumber": "811111",
+      "vehicleModel": "jtcg6vOTisE2FOG8S9ug",
+      "vehicleType": "Auto",
+      "vehicleColor": "Green",
+      "engineNumber": "91919",
+      "selfiPhoto": "",
+      "chassisNumber": "91919",
+      "permitNumber": "11111",
+      "carrier": false,
+      "vehicle_manufactureDate": "2015-12-02",
+      "districtId": "aW8ipOz8iWzdfRuxRfua",
+      "registrationType": "null",
+      "acPerkmRate": "",
+      "district": "Amethi",
+      "vehicle_registrationDate": "2015-12-01"
+    },
+    "panCardPhoto": "",
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/d1ad3beb-1cdb-47ae-9649-78bb9cbb4a212252815831852611375.jpg",
+    "createdAt": {
+      "_seconds": 1764672385,
+      "_nanoseconds": 828238000
+    },
+    "referenceNumber": "19919",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "aauPMwizcKjSyCFmZJTG",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "fcmToken": "e9WPCzGiTOGAogvnGBCswH:APA91bGqByOeV8jqid_KJJsQZREHc95kFO7-zJSoFnZ32CrT4aVp6eKemgVpx7qvfRvpBt_bDTixE2AOPvEYAiWOK4dLzKCaSegtaFq--7gMhXiOfgwY0NI",
+    "email": "kl@gmail.com",
+    "referenceName": "testing",
+    "pincode": "81881",
+    "complimentary_rides": 0,
+    "address": "Sankar Lal Society, B-102, Khodiyaar Nagar, Arjun Nagar Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test ",
+    "cobNumber": "COB - MH 24/2025",
+    "isSubscriptionEnable": false,
+    "profilePic": "",
+    "rotation": 0,
+    "aadharCardNumber": "18978",
+    "fullName": "kl",
+    "remainingRides": null,
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9960606060",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "",
+    "reviewsSum": "0.0",
+    "location": null,
+    "position": {
+      "geohash": "tegbdk6hz",
+      "geopoint": {
+        "_latitude": 21.2058022,
+        "_longitude": 72.8753636
+      }
+    }
+  },
+  {
+    "id": "J3IK7lLFVcMwf5DldKOqlBOP1CG2",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1758298919,
+      "_nanoseconds": 531005000
+    },
+    "referenceNumber": "9890630468",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "serviceId": null,
+    "fcmToken": "ca0FZcajRvKs2xj5WOj0-f:APA91bG5sQz0xMB-uewm2_iXeQRbuKZY6CwXJ0jSLYP2MT1JhjAwBmP8Uu94uGc-SrLMiu7dHsjyuEqIF4oQVYzhlcW19gY1I9AAuf99y18ra4G3BNV-UD4",
+    "email": "arun98kadam@gimell.com",
+    "referenceName": "arun kadam ",
+    "pincode": "411035",
+    "complimentary_rides": 0,
+    "address": "RPMG+28G, Beed, Maharashtra 431125, India",
+    "group_name": "ask",
+    "cobNumber": "COB - MH 14/2025",
+    "isSubscriptionEnable": false,
+    "profilePic": "/data/user/0/com.comingbro.driver/cache/f6648682-88cf-46a2-8328-9848a765df90/1000134225.jpg",
+    "rotation": null,
+    "fullName": "arun kadam ",
+    "remainingRides": null,
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9860350468",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "reviewsSum": "0.0",
+    "location": null,
+    "panCardNumber": null,
+    "panCardPhoto": null,
+    "aadharCardNumber": null,
+    "aadharCardPhoto": null
+  },
+  {
+    "id": "JYE22J9UhWOXtPdlql9vOso46tq1",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "city": "7SN4DiTRnYZicjTkUjmi",
+    "loginType": "phone",
+    "panCardPhoto": "",
+    "isOnline": false,
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/61e0abf1-cf3d-4c48-a6c3-14582fcab73e1766802851253305382.jpg",
+    "createdAt": {
+      "_seconds": 1764677719,
+      "_nanoseconds": 552775000
+    },
+    "referenceNumber": "1010",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "aauPMwizcKjSyCFmZJTG",
+    "email": "abc@gmail.com",
+    "referenceName": "testinh",
+    "pincode": "91919",
+    "address": "Sankar Lal Society, B-102, Khodiyaar Nagar, Arjun Nagar Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test",
+    "cobNumber": "COB - MH 28/2025",
+    "rotation": null,
+    "profilePic": "",
+    "aadharCardNumber": "9191",
+    "fullName": "abc",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9966332255",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "",
+    "location": null,
+    "complimentary_rides": 0,
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "fcmToken": "d_FykouEQGyZie8Z5g-_TR:APA91bEqCR9RLt--wWEUd0LHDGzYlK3JzZnCv9iL57kY0UXtzSn-kLnFE2F_2PuqdDu5FmxxN0cTRfeh100zmgc32rI2SMx2e3IszI5SGZ5-hBj-6F6cdD4",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "DicSuP6axRZ4CK89R5dX",
+      "rcImage": "",
+      "seats": "3",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FJYE22J9UhWOXtPdlql9vOso46tq1%2F27b71665-0b00-4830-b46e-7339e3d18dd94588728005774736977.jpg?alt=media&token=18489a59-b253-4a5d-8414-a7044e3fa399",
+      "driverRules": [],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "nonAcPerkmRate": "10",
+      "rcNumber": "",
+      "vehicleModel": "jtcg6vOTisE2FOG8S9ug",
+      "vehicleNumber": "81881",
+      "vehicleType": "Auto",
+      "vehicleColor": "Red",
+      "engineNumber": "199191",
+      "selfiPhoto": "",
+      "chassisNumber": "1818",
+      "carrier": false,
+      "permitNumber": "1111",
+      "districtId": "fjpkfQhQnWENQfsgARVg",
+      "vehicle_manufactureDate": "2025-12-01",
+      "acPerkmRate": "",
+      "district": "Amravati",
+      "vehicle_registrationDate": "2025-12-02",
+      "registrationDate": {
+        "_seconds": 1764677889,
+        "_nanoseconds": 818843000
+      },
+      "registrationType": "null"
+    }
+  },
+  {
+    "id": "JrRVLgf0Kxc60Cl0zVXy5EFk7vu2",
+    "rotation": null,
+    "cobNumber": "COB - MH 13/2025",
+    "gender": "Male",
+    "isOnline": false,
+    "loginType": "phone",
+    "zoneIds": [
+      "Pp2A2UlkFQ7yZnIG7ZVT"
+    ],
+    "walletAmount": "0.0",
+    "referenceName": "",
+    "documentVerification": false,
+    "phoneNumber": "9028252576",
+    "subscriptionExpiredAt": null,
+    "fullName": "Balasaheb Solanke ",
+    "serviceId": null,
+    "location": null,
+    "remainingRides": null,
+    "serviceType": "Outstation",
+    "profilePic": "",
+    "reviewsCount": "0.0",
+    "fcmToken": "dfgufwegThu9AnWG5_VkSN:APA91bHrUPir4NNRuXIUTp0JGdYKIumcC9oQDiw0dhD4lOBYr8tE1uZdX7HYW_hPtdDxk6EAc5sVIvwvZC_0JcqGoz5BWlOnmL1HOc-zk4HfoklK5m8E3GA",
+    "address": "Shop no 3 Ground, Athashree, next to Supreme Amadore, off Pan Card Club Road, Baner, Pune, Maharashtra 411069, India",
+    "pincode": "411045",
+    "group_name": "no",
+    "email": "balasahabsolanki086@gmail.com",
+    "countryCode": "+91",
+    "complimentary_rides": 0,
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "createdAt": {
+      "_seconds": 1757406102,
+      "_nanoseconds": 762499000
+    },
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "referenceNumber": ""
+  },
+  {
+    "id": "LWTf6KCd1iNM4probd6Tz0Q5Ji73",
+    "loginType": "google",
+    "referenceName": "",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "reviewsCount": "0.0",
+    "documentVerification": false,
+    "email": "nitinpawar472722@gmail.com",
+    "location": null,
+    "isSubscriptionEnable": false,
+    "createdAt": {
+      "_seconds": 1758768833,
+      "_nanoseconds": 243849000
+    },
+    "group_name": "झीज",
+    "fcmToken": "czn8wgJMRcGLLqhKWa9wtg:APA91bFdXGutNvg5V45Y2BcnGgh9lGYq1qUvSUyzgZLgqYvCK_Wj-J7Fm19LsJSLJRxwRMLzFXmmTZ0NYFS7cL8cz3Q7KP2EmqQO5paDFw20tzV5w-NZzw0",
+    "countryCode": "+91",
+    "subscriptionExpiredAt": null,
+    "serviceType": "City Ride",
+    "isOnline": false,
+    "fullName": "NITIN PAWAR",
+    "walletAmount": "0.0",
+    "referenceNumber": "",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "phoneNumber": "8080110453",
+    "rotation": null,
+    "address": "Beed, Maharashtra 431122, India",
+    "remainingRides": null,
+    "gender": "Male",
+    "city": "AEmP6aUwyZMEzt8laVMq",
+    "pincode": "431122",
+    "serviceId": null,
+    "reviewsSum": "0.0",
+    "cobNumber": "COB - MH 16/2025",
+    "complimentary_rides": 0,
+    "profilePic": ""
+  },
+  {
+    "id": "Lo747yqvvYQp4v9onQQd0ZhhXmL2",
+    "serviceType": "City Ride",
+    "gender": "Female",
+    "loginType": "phone",
+    "city": "35xMqy0JOOkCOeR7sB0A",
+    "panCardPhoto": "/data/user/0/com.comingbro.driver/cache/c55d083b-02c1-4e14-a6a3-4478fad58e2b2099600932017678619.jpg",
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/8ff55c68-e82e-4a80-9f4b-fb3dd92dd2586024884325169921045.jpg",
+    "createdAt": {
+      "_seconds": 1764668662,
+      "_nanoseconds": 165988000
+    },
+    "referenceNumber": "191919",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "serviceId": null,
+    "fcmToken": "e9WPCzGiTOGAogvnGBCswH:APA91bGqByOeV8jqid_KJJsQZREHc95kFO7-zJSoFnZ32CrT4aVp6eKemgVpx7qvfRvpBt_bDTixE2AOPvEYAiWOK4dLzKCaSegtaFq--7gMhXiOfgwY0NI",
+    "email": "kk@gmail.com",
+    "referenceName": "testing",
+    "pincode": "534333",
+    "complimentary_rides": 0,
+    "address": "6V5F+2F7, Pushpak Nagar Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test ",
+    "cobNumber": "COB - MH 22/2025",
+    "isSubscriptionEnable": false,
+    "profilePic": "",
+    "rotation": null,
+    "aadharCardNumber": "19222",
+    "fullName": "kkkkkkkkkkkkkkkkjjjjjjjjjjjjjjjjjj",
+    "remainingRides": null,
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9980808080",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "99100",
+    "reviewsSum": "0.0",
+    "location": null
+  },
+  {
+    "id": "MK91x1Z4U0cRwlL1WQAcePTxZbJ3",
+    "serviceType": "City Ride, Outstation, Rental",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "panCardPhoto": "/data/user/0/com.comingbro.driver/cache/dceb95ce-97b7-4327-a67d-b89ec475911c6538818123867174436.jpg",
+    "isOnline": false,
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/1f240d12-2be9-4337-a34f-cd0ed5021db83133480452670197683.jpg",
+    "createdAt": {
+      "_seconds": 1770039539,
+      "_nanoseconds": 517117000
+    },
+    "referenceNumber": "al",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "serviceId": null,
+    "email": "kyuchavan@gmail.com",
+    "referenceName": "ao",
+    "pincode": "413273",
+    "address": "Shreeji Heights, Old DP Rd, Surya Nagar, Katrap, Badlapur, Maharashtra 421503, India",
+    "group_name": "ao",
+    "cobNumber": "COB - MH 08/2026",
+    "profilePic": "",
+    "rotation": null,
+    "aadharCardNumber": "112211221122",
+    "fullName": "",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9823203222",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "3161",
+    "location": null,
+    "complimentary_rides": 0,
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "fcmToken": "ch2W_XWQSpiQIWcRQPaFr1:APA91bEwuaxDHwcNYDXz5ziWLl6D-I0SjkF5rPXs0uYskOZT_e4K5nWHA3omgwW0djNCREs4W277ZwMtf8qePwvFQ0p52gX1LmfDYIZS9jCJ3kc9zcuCXd4"
+  },
+  {
+    "id": "RBXeR2y1PvPzfrYOPqSrI9oZgio2",
+    "serviceType": "City Ride, Rental",
+    "gender": "Male",
+    "city": "CAbgfJ4yGPxpOykpJCnr",
+    "loginType": "google",
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FRBXeR2y1PvPzfrYOPqSrI9oZgio2%2F68290a8e-d38d-4c8d-ae2e-c8184d8d924d5102840182425188054.jpg?alt=media&token=6e1a5f03-e6b7-471d-bea6-7d4561263429",
+    "isOnline": false,
+    "aadharCardPhoto": "",
+    "createdAt": {
+      "_seconds": 1770736450,
+      "_nanoseconds": 180120000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "email": "pramodpsawant18@gmail.com",
+    "referenceName": "",
+    "pincode": "416630",
+    "address": "21, Oswal Nagari, Nalasopara East, Vasai-Virar, Nala Sopara, Maharashtra 401209, India",
+    "group_name": "",
+    "cobNumber": "COB - MH 11/2026",
+    "rotation": null,
+    "profilePic": "",
+    "aadharCardNumber": "",
+    "fullName": "Pramod Sawant",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "7620263259",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "bgZXCCC",
+    "location": null,
+    "complimentary_rides": 0,
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "fcmToken": "fG_y62WlQ92Ptaw0Z28-kM:APA91bGADFRzTg9YhlTYXesDCIWMz0RSgEH_vR82JWijmO9GwRq3IXynpeELGdNUiTLC7vL3W9I6XgeKLyQGOejIpGKf29wfw9U1kI0RigynhpxI4nXSxkE",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "DicSuP6axRZ4CK89R5dX",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FRBXeR2y1PvPzfrYOPqSrI9oZgio2%2Ff4a1ef25-99a3-4fff-ac31-2295e9eccd181111440744237456993.jpg?alt=media&token=c6122b43-b564-45c5-9c9b-c97dfb3ea2b5",
+      "seats": "3",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FRBXeR2y1PvPzfrYOPqSrI9oZgio2%2Fc04935ca-9e3c-4564-bed8-743180005b7e5874127484793666898.jpg?alt=media&token=f22f5ab5-9cd2-47ce-b6e4-809a981673ac",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        }
+      ],
+      "vehicleFuel": "KYUmefrt1EYfGWnFCo7L",
+      "rcNumber": "fff",
+      "nonAcPerkmRate": "6",
+      "vehicleNumber": "hh",
+      "vehicleModel": "jtcg6vOTisE2FOG8S9ug",
+      "vehicleType": "Auto",
+      "vehicleColor": "Purple",
+      "engineNumber": "gfg",
+      "selfiPhoto": "",
+      "chassisNumber": "ggg",
+      "carrier": false,
+      "permitNumber": "ffgg",
+      "vehicle_manufactureDate": "2026-02-10",
+      "districtId": "sl2MphSfTlkBDqh2oiis",
+      "acPerkmRate": "",
+      "district": "Chandrapur",
+      "vehicle_registrationDate": "2026-02-10",
+      "registrationDate": {
+        "_seconds": 1770742634,
+        "_nanoseconds": 454788000
+      },
+      "registrationType": "null"
+    }
+  },
+  {
+    "id": "T49bJD7CCrRXZUNFxLyUkC0iGpl1",
+    "gender": "Male",
+    "loginType": "phone",
+    "panCardPhoto": "/data/user/0/com.comingbro.driver/cache/8a959c2f-2814-445a-9e94-36e54c80d8f0/4070.jpg",
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/613fea10-41d5-4de8-b8ea-f650f7d8270e/4070.jpg",
+    "createdAt": {
+      "_seconds": 1769768267,
+      "_nanoseconds": 574206000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "email": "rahulmpcob@gmail.com",
+    "referenceName": "",
+    "pincode": "411017",
+    "address": "HQXP+X4Q, Shivraj Nagar, Rahatani, Pimpri-Chinchwad, Maharashtra 411017, India",
+    "group_name": "",
+    "cobNumber": "COB - MH 03/2026",
+    "aadharCardNumber": "123456789012",
+    "fullName": "RAHUL M PARDESHI ",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9960509713",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "1234567890",
+    "complimentary_rides": 0,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "documentVerification": true,
+    "fcmToken": "fPm3xV9ZSxKGsbJtsa32Gk:APA91bFblkVPjtGZfuj9w0FqI2fBMjUrA0cWLSDT8igQjYxVlDkhmfMr0uHpluzWydswGzg3FYcIpTE8uCNHOz3_YuOOFbSza09fayJ2IdgTglJMvbU9QZc",
+    "profilePic": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/profileImage%2FT49bJD7CCrRXZUNFxLyUkC0iGpl1%2F4610.jpg?alt=media&token=452f7982-b3d0-4726-a3e9-cfa694d0166a",
+    "serviceId": "VXmBuNgKxOomZzc8iOgV",
+    "isSubscriptionEnable": true,
+    "remainingRides": "10",
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1770044831,
+        "_nanoseconds": 262000000
+      },
+      "start_date": {
+        "_seconds": 1770044831,
+        "_nanoseconds": 262000000
+      },
+      "end_date": null,
+      "remainingDays": null,
+      "subscription_plan": {
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "name": "30 Rs ",
+        "gst": "18",
+        "ride": "10",
+        "tds": "0",
+        "image": "",
+        "enable": true,
+        "amount": "30",
+        "duration": "unlimited",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "description": "Unlimited Days 10 Ride"
+      },
+      "subscription_role": "driver",
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.423728813559322",
+      "id": null
+    },
+    "isOnline": true,
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "vehicleInformation": {
+      "vehicleTypeId": "bc8ItwNooNAtcME5CiTo",
+      "companyName": "bctz9i661HD8p6g1u1oS",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FT49bJD7CCrRXZUNFxLyUkC0iGpl1%2F1000296782.jpg?alt=media&token=d3c249a9-7743-4145-9c6f-579c1baa4263",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FT49bJD7CCrRXZUNFxLyUkC0iGpl1%2F1000126486.jpg?alt=media&token=1fcd0c49-6cbc-4c7e-8fa5-65dbed8b4827",
+      "seats": "4",
+      "vehicleFuel": "StMUHxyOmoRa8yBXQ09g",
+      "rcNumber": "MH8474849",
+      "nonAcPerkmRate": "20",
+      "vehicleNumber": "MH12TT99",
+      "vehicleModel": "PacewOzGVJnKaJjhqeV2",
+      "vehicleType": "Sedan ",
+      "vehicleColor": "White",
+      "engineNumber": "3837493929",
+      "selfiPhoto": "",
+      "chassisNumber": "Mh83836484",
+      "permitNumber": "MH12TT99",
+      "carrier": false,
+      "vehicle_manufactureDate": "2023-01-01",
+      "districtId": "S0sMF8RaqaGzmLZy7REM",
+      "acPerkmRate": "22",
+      "district": "Pune",
+      "vehicle_registrationDate": "2023-02-02",
+      "registrationDate": {
+        "_seconds": 1770045236,
+        "_nanoseconds": 490391000
+      },
+      "registrationType": "null",
+      "driverRules": [
+        {
+          "id": "BaX6hD159PFPcT0rRsP6",
+          "isDeleted": false,
+          "enable": true,
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "name": "Eating is not allowed in the car"
+        },
+        {
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz",
+          "isDeleted": false,
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "enable": true
+        },
+        {
+          "enable": true,
+          "isDeleted": false,
+          "id": "dvjtqymfqvwX892QIx9A",
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "name": "Please, no smoking in the car"
+        },
+        {
+          "id": "lROKcZhOfJ7dWqsvphpH",
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open"
+        }
+      ]
+    },
+    "insuranceDetails": {
+      "insuaranceCompany": "",
+      "insuaranceType": "",
+      "insuranceNumber": "",
+      "insuranceExpiryDate": "",
+      "insuranceAmount": "",
+      "insurancePremium": "",
+      "paymentType": "",
+      "paid_receipt_number": "",
+      "paymentDate": "",
+      "nomineeName": "",
+      "nomineeNumber": "",
+      "nomineeRelation": "",
+      "nomineeAge": "",
+      "agentName": "",
+      "agentCode": ""
+    },
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "accept_terms": true,
+    "serviceType": "City Ride, Rental, Outstation",
+    "rotation": 257.7052001953125,
+    "position": {
+      "geohash": "tes92pyg1",
+      "geopoint": {
+        "_latitude": 19.9503343,
+        "_longitude": 73.8374736
+      }
+    },
+    "location": null
+  },
+  {
+    "id": "T5DLCcVVIyNqNHJMUazJXfiDHZC3",
+    "serviceType": "City Ride, Rental, Outstation",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "TOyXIrpL67O7e7Kprm1T",
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FT5DLCcVVIyNqNHJMUazJXfiDHZC3%2F1000461635.jpg?alt=media&token=ea19a537-1f31-4462-9121-6515419e79cf",
+    "isOnline": false,
+    "aadharCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FT5DLCcVVIyNqNHJMUazJXfiDHZC3%2F1000462205.jpg?alt=media&token=2b59835a-9764-4193-960d-dc6cb81e5d6d",
+    "createdAt": {
+      "_seconds": 1772450093,
+      "_nanoseconds": 588452000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "email": "omi@gmail.com",
+    "referenceName": "",
+    "pincode": "400602",
+    "address": "6X8G+PCV, Subhash Nagar, Thane West, Thane, Maharashtra 400601, India",
+    "group_name": "Dummy",
+    "cobNumber": "COB - MH 16/2026",
+    "profilePic": "",
+    "rotation": null,
+    "aadharCardNumber": "872837456342",
+    "fullName": "omiii",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "phoneNumber": "9619994237",
+    "panCardNumber": "Jana238jjs",
+    "location": null,
+    "complimentary_rides": 0,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "isSubscriptionEnable": false,
+    "serviceId": null,
+    "walletAmount": "30",
+    "fcmToken": "chNz-ZvWuU3Xi29j7wV19h:APA91bGE300bUOBD9fSLj0nc-J3Jto5iskAIL_glHTRxb50tew_gUitEXWhrzoDwHJdFc-T_tli6tf2bLcSgisIZcGDlZuOk2OvEQYGhxAGTDT_JVdrpuTw",
+    "vehicleInformation": {
+      "vehicleTypeId": "bc8ItwNooNAtcME5CiTo",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FT5DLCcVVIyNqNHJMUazJXfiDHZC3%2F1000466069.jpg?alt=media&token=0549ae2e-7226-438b-b67c-e95830355e8b",
+      "companyName": "4ez2wgeqyijTgBaIwYvt",
+      "seats": "4",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FT5DLCcVVIyNqNHJMUazJXfiDHZC3%2F1000466923.jpg?alt=media&token=f72fb7df-4f27-40b4-b64f-af2098fd6801",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        }
+      ],
+      "vehicleFuel": "V2Y3DG1R4U8JzMHUaJ6s",
+      "rcNumber": "dbhs",
+      "registrationDate": {
+        "_seconds": 1772643808,
+        "_nanoseconds": 162874000
+      },
+      "vehicleNumber": "Mamassn",
+      "vehicleModel": "WuRVORcdWgZD0zpWPXbo",
+      "vehicleType": "Sedan ",
+      "vehicleColor": "Black",
+      "engineNumber": "",
+      "selfiPhoto": "",
+      "chassisNumber": "",
+      "permitNumber": "hahshs",
+      "carrier": false,
+      "districtId": "f6x3RlqwamGKLkDHtMix",
+      "vehicle_manufactureDate": "2026-01-04",
+      "district": "Mumbai",
+      "vehicle_registrationDate": "2026-02-01",
+      "registrationType": "null",
+      "acPerkmRate": "22",
+      "nonAcPerkmRate": "16"
+    }
+  },
+  {
+    "id": "TerSsMAFJfTJwmwq195nRPUL1Op1",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "Pune",
+    "vehicleInformation": {
+      "vehicleTypeId": "bc8ItwNooNAtcME5CiTo",
+      "companyName": "bctz9i661HD8p6g1u1oS",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FTerSsMAFJfTJwmwq195nRPUL1Op1%2FIMG_20240410_090304.jpg?alt=media&token=137c9369-ffb7-4b0b-85bb-9e436b2d8b58",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FTerSsMAFJfTJwmwq195nRPUL1Op1%2FIMG_20250710_174558.jpg?alt=media&token=6a7d7724-8a80-4c07-8a83-8800e1ce8e89",
+      "seats": "4",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        }
+      ],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "rcNumber": "MH10DT4307 ",
+      "nonAcPerkmRate": "13",
+      "registrationDate": {
+        "_seconds": 1756862677,
+        "_nanoseconds": 396697000
+      },
+      "vehicleNumber": "MH10DT4307 ",
+      "vehicleModel": "VMDLMSf4oqnYTYobY2IA",
+      "vehicleType": "Sedan ",
+      "vehicleColor": "White",
+      "engineNumber": "k12np73369160",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FTerSsMAFJfTJwmwq195nRPUL1Op1%2F38dc0210-8260-4c1d-bd5a-980f995eb46f9031520820887831885.jpg?alt=media&token=4bbe2ac4-d850-4be7-a1cf-1b776fcf5737",
+      "chassisNumber": "484601",
+      "permitNumber": "MH10DT4307 ",
+      "carrier": false,
+      "vehicle_manufactureDate": "2023-09-03",
+      "districtId": "S0sMF8RaqaGzmLZy7REM",
+      "registrationType": "null",
+      "acPerkmRate": "21",
+      "district": "Pune",
+      "vehicle_registrationDate": "2023-09-23"
+    },
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1756863380,
+        "_nanoseconds": 432222000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.42",
+      "remainingDays": "10",
+      "id": "Ltdf0HVwFIa6BYBTM6BN",
+      "subscription_role": "driver",
+      "subscription_plan": {
+        "duration": "unlimited",
+        "image": "",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "amount": "30",
+        "tds": "0",
+        "enable": true,
+        "name": "30 Rs ",
+        "description": "Unlimited Days 10 Ride",
+        "gst": "18",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10"
+      },
+      "start_date": {
+        "_seconds": 1756863380,
+        "_nanoseconds": 432225000
+      }
+    },
+    "isOnline": true,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1756829327,
+      "_nanoseconds": 781048000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "documentVerification": true,
+    "insuranceDetails": {
+      "insuranceAmount": "25432",
+      "insurancePremium": "25432",
+      "agentCode": "na",
+      "nomineeRelation": "wife",
+      "agentName": "vijay",
+      "insuaranceType": "Comprehensive + Third Party",
+      "nomineeName": "pooja hankare",
+      "paid_receipt_number": "26499959",
+      "paymentType": "UPI",
+      "insuranceNumber": "10003/31/25/391973",
+      "nomineeAge": "28",
+      "insuaranceCompany": "vbffy7uLYDuZ5ek214Vy",
+      "paymentDate": "2024-10-17",
+      "insuranceExpiryDate": "2025-10-16",
+      "nomineeNumber": "null"
+    },
+    "state": "Maharastra",
+    "serviceId": "VXmBuNgKxOomZzc8iOgV",
+    "fcmToken": "c277udYUSoq3SfG6UWInx-:APA91bExBrHVzKF85CaKPEkSJ8mZmyNlYkFkkgMKhFh5uDnrXXFqPd5hatkupTU8voZYeIYDW2x4LKrR6HbH2WVFBlApm6a6R8u99rxxhaLe3WNgecC13eE",
+    "email": "sanjay26061988@gmail.com",
+    "referenceName": "",
+    "pincode": "411057",
+    "complimentary_rides": 0,
+    "address": "HW75+XJX, Sakore Nagar, Viman Nagar, Pune, Maharashtra 411014, India",
+    "group_name": "",
+    "cobNumber": "COB - MH 11/2025",
+    "isSubscriptionEnable": true,
+    "profilePic": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/profileImage%2FTerSsMAFJfTJwmwq195nRPUL1Op1%2F43b48336-c91c-4d55-a215-7ff81a5979e47259750016480166620.jpg?alt=media&token=d8b6c43b-2c83-40b2-a54d-f89dd370e45c",
+    "rotation": 0,
+    "fullName": "sanjay bajarang hankare ",
+    "remainingRides": "10",
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "7387948963",
+    "zoneIds": [
+      "Pp2A2UlkFQ7yZnIG7ZVT"
+    ],
+    "reviewsSum": "0.0",
+    "location": {
+      "latitude": 18.6835217,
+      "longitude": 73.904825
+    },
+    "position": {
+      "geohash": "tekd39pz7",
+      "geopoint": {
+        "_latitude": 18.6835217,
+        "_longitude": 73.904825
+      }
+    }
+  },
+  {
+    "id": "UTdjfE11P3a7J1uTFnkmCMU3Vyr2",
+    "serviceType": "City Ride",
+    "gender": "Female",
+    "loginType": "phone",
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "ttU3fbcellItU5CYsGu3",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FUTdjfE11P3a7J1uTFnkmCMU3Vyr2%2F2f31f1a1-ec05-47e5-b314-66bc1154f7f68770016054769240057.jpg?alt=media&token=3bbc83ae-4be4-44e6-b9ed-902d93e2ab8d",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FUTdjfE11P3a7J1uTFnkmCMU3Vyr2%2F1604ba15-9ccf-4da4-9231-599c5791611b1855728569022433579.jpg?alt=media&token=a2e3c340-2291-4fd4-b7b0-4e530ab9a4c6",
+      "seats": "3",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        }
+      ],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "rcNumber": "25",
+      "nonAcPerkmRate": "23",
+      "registrationDate": {
+        "_seconds": 1756542545,
+        "_nanoseconds": 796429000
+      },
+      "vehicleNumber": "123",
+      "vehicleModel": "6yMifTtlOqcsZIYfnMWi",
+      "vehicleType": "Auto",
+      "vehicleColor": "Yellow",
+      "engineNumber": "1234",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FUTdjfE11P3a7J1uTFnkmCMU3Vyr2%2F281d7ad1-19b2-479c-b0aa-83f92dc26d9d6737549719777805019.jpg?alt=media&token=ab39c065-1784-4bd4-887d-10d3c53d4837",
+      "chassisNumber": "123",
+      "permitNumber": "1234",
+      "carrier": false,
+      "vehicle_manufactureDate": "2025-05-13",
+      "districtId": "S0sMF8RaqaGzmLZy7REM",
+      "registrationType": "null",
+      "acPerkmRate": "",
+      "district": "Pune",
+      "vehicle_registrationDate": "2025-06-19"
+    },
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1756546835,
+        "_nanoseconds": 511000000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.423728813559322",
+      "remainingDays": null,
+      "id": null,
+      "subscription_role": "driver",
+      "subscription_plan": {
+        "duration": "unlimited",
+        "image": "",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "amount": "30",
+        "tds": "0",
+        "enable": true,
+        "name": "30 Rs ",
+        "description": "Unlimited Days 10 Ride",
+        "gst": "18",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10"
+      },
+      "start_date": {
+        "_seconds": 1756546835,
+        "_nanoseconds": 511000000
+      }
+    },
+    "isOnline": true,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1756542368,
+      "_nanoseconds": 360704000
+    },
+    "referenceNumber": "1234",
+    "countryCode": "+91",
+    "documentVerification": true,
+    "insuranceDetails": {
+      "insuranceAmount": "50000",
+      "insurancePremium": "12000",
+      "agentCode": "224",
+      "nomineeRelation": "qwet",
+      "agentName": "asd",
+      "insuaranceType": "Third Party",
+      "nomineeName": "sass",
+      "paid_receipt_number": "123",
+      "paymentType": "",
+      "insuranceNumber": "g",
+      "nomineeAge": "25",
+      "insuaranceCompany": "7vrSvHLppCLxz23oRfoi",
+      "paymentDate": "2025-08-30",
+      "insuranceExpiryDate": "2025-08-15",
+      "nomineeNumber": "null"
+    },
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "fcmToken": "fKaSaH_gToKjfec1sVQr4G:APA91bEzx2UYg6LViatCs2VySX9Roif9UQL0R75ib-UwQnt6Rxk3GauROh7EoAFr_QI6k74VghAWRhlYHa1oRCb2T-61lFMY5e5hKzi1U_vbn-giGLAvX64",
+    "email": "sanikachoutre29@gmail.com",
+    "referenceName": "12356",
+    "pincode": "411045",
+    "complimentary_rides": 12,
+    "address": "Sr. No 106/2/10/1, Laxman Nagar Rd, Laxman Nagar, Baner, Pune, Maharashtra 411045, India",
+    "group_name": "Cob",
+    "cobNumber": "COB - MH 06/2025",
+    "isSubscriptionEnable": true,
+    "profilePic": "",
+    "rotation": 0,
+    "fullName": "sanika Choutre ",
+    "remainingRides": "4",
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9834426365",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "reviewsSum": "0.0",
+    "location": {
+      "latitude": 18.5638608,
+      "longitude": 73.7828261
+    },
+    "position": {
+      "geohash": "tek3wgrn2",
+      "geopoint": {
+        "_latitude": 18.5638608,
+        "_longitude": 73.7828261
+      }
+    }
+  },
+  {
+    "id": "VImrIHtmSHUBtfspCVzvISWrI8K2",
+    "serviceType": "City Ride, Rental, Outstation",
+    "gender": "Female",
+    "loginType": "phone",
+    "isOnline": false,
+    "createdAt": {
+      "_seconds": 1770039418,
+      "_nanoseconds": 826861000
+    },
+    "referenceNumber": "Test 1234",
+    "countryCode": "+91",
+    "email": "ashurp261991@gmail.com",
+    "referenceName": "Test Test",
+    "pincode": "411017",
+    "address": "28/29/54, Shivraj Nagar, Kalewadi, Pimpri-Chinchwad, Maharashtra 411017, India",
+    "group_name": "Test",
+    "cobNumber": "COB - MH 07/2026",
+    "rotation": null,
+    "aadharCardNumber": "123457789012",
+    "fullName": "Ashwini Rahul ",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "phoneNumber": "9022169575",
+    "panCardNumber": "1234",
+    "complimentary_rides": 0,
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "serviceId": "JCH5ciDxfOeuQDX2nbyZ",
+    "fcmToken": "dm75yas-SUKZ_5UzyGAeSp:APA91bFevxDZixQ1E3OncCgR_IhLmZw_W9n4VvWkPvFRD0uKp0i-mqBhiNNlQeeBLS1mEY86lvukGKns2Cd1BBrNSAMKNuTQQO5mDgzPTNuPVvihmg9Wru8",
+    "vehicleInformation": {
+      "vehicleTypeId": "2yH3nXHjdumO1yfUfm0d",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FVImrIHtmSHUBtfspCVzvISWrI8K2%2Fa569d1f7-2343-4e8d-9340-9fb690f4e94e4177424659597375598.jpg?alt=media&token=e970b95b-ad84-4758-bfe1-e118b6985e23",
+      "companyName": "bctz9i661HD8p6g1u1oS",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FVImrIHtmSHUBtfspCVzvISWrI8K2%2Ff4aeceb4-b3fe-482f-b135-1a1438ca03004206912629593831884.jpg?alt=media&token=d39d443b-9c26-4038-94d4-4c3e734af1b5",
+      "seats": "4",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "vehicleFuel": "StMUHxyOmoRa8yBXQ09g",
+      "rcNumber": "MH12DJDISH44567",
+      "nonAcPerkmRate": "20",
+      "vehicleModel": "J1tYiSXv5gBFwlYiF3LA",
+      "vehicleNumber": "MH15RP345",
+      "vehicleType": "Cab ",
+      "vehicleColor": "Black",
+      "engineNumber": "akdjdj29373737",
+      "selfiPhoto": "",
+      "chassisNumber": "sjdhd82737372",
+      "carrier": false,
+      "permitNumber": "MH14RP345",
+      "districtId": "S0sMF8RaqaGzmLZy7REM",
+      "vehicle_manufactureDate": "2023-01-04",
+      "acPerkmRate": "22",
+      "district": "Pune",
+      "vehicle_registrationDate": "2023-02-02",
+      "registrationDate": {
+        "_seconds": 1770041312,
+        "_nanoseconds": 190852000
+      },
+      "registrationType": "null"
+    },
+    "documentVerification": true,
+    "city": "4OksC0wmQhi7DxWUa9xa",
+    "insuranceDetails": {
+      "insuaranceCompany": "",
+      "insuaranceType": "",
+      "insuranceNumber": "",
+      "insuranceExpiryDate": "",
+      "insuranceAmount": "",
+      "insurancePremium": "",
+      "paymentType": "",
+      "paid_receipt_number": "",
+      "paymentDate": "",
+      "nomineeName": "",
+      "nomineeNumber": "",
+      "nomineeRelation": "",
+      "nomineeAge": "",
+      "agentName": "",
+      "agentCode": ""
+    },
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "accept_terms": true,
+    "aadharCardPhoto": "",
+    "panCardPhoto": "",
+    "profilePic": "",
+    "location": null
+  },
+  {
+    "id": "VuIZQenmYhfjI5aEAXTqF4B0y4c2",
+    "serviceType": "City Ride, Rental, Outstation",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "TMHO9TjU19e9HeXKBmjZ",
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FVuIZQenmYhfjI5aEAXTqF4B0y4c2%2F2aa62cfe-aa7a-429d-9d5b-d8d8e560150a1179008336490198183.jpg?alt=media&token=a6ab2ee0-dd60-4268-9e3a-739211523a06",
+    "aadharCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FVuIZQenmYhfjI5aEAXTqF4B0y4c2%2F1000483319.jpg?alt=media&token=bb2a1271-a3cf-4850-b9ff-40e7788a9dd2",
+    "createdAt": {
+      "_seconds": 1771395182,
+      "_nanoseconds": 396183000
+    },
+    "referenceNumber": "no",
+    "countryCode": "+91",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "email": "sukumar771@gmail.com",
+    "referenceName": "no",
+    "pincode": "416105",
+    "address": "MMXC+2GG, Shedshal, Maharashtra 416105, India",
+    "group_name": "no",
+    "cobNumber": "COB - MH 13/2026",
+    "profilePic": "",
+    "aadharCardNumber": "515494157115",
+    "fullName": "Sukumar Nagesh Keripale",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9420353771",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "AUYPK2782K",
+    "complimentary_rides": 0,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "serviceId": "JCH5ciDxfOeuQDX2nbyZ",
+    "vehicleInformation": {
+      "vehicleTypeId": "2yH3nXHjdumO1yfUfm0d",
+      "companyName": "4ez2wgeqyijTgBaIwYvt",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FVuIZQenmYhfjI5aEAXTqF4B0y4c2%2F5bdef799-1b77-44f2-8d05-6336042b0c33575037288015976405.jpg?alt=media&token=6d452909-f4c7-49c0-ab82-727d4b8126fc",
+      "seats": "5",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FVuIZQenmYhfjI5aEAXTqF4B0y4c2%2Fb7d51f87-50f7-4e1a-9915-9be0133f91b76054227691363350547.jpg?alt=media&token=b2cfeb16-6c51-4f43-a48f-b301480a29c7",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "vehicleFuel": "V2Y3DG1R4U8JzMHUaJ6s",
+      "rcNumber": "MH09DV3825",
+      "nonAcPerkmRate": "18",
+      "registrationDate": {
+        "_seconds": 1771395828,
+        "_nanoseconds": 242592000
+      },
+      "vehicleNumber": "MH09DV3825",
+      "vehicleModel": "WuRVORcdWgZD0zpWPXbo",
+      "vehicleType": "Cab ",
+      "vehicleColor": "White",
+      "engineNumber": "HA10EYHK38700",
+      "selfiPhoto": "",
+      "chassisNumber": "MBLHA10CAFHK08610",
+      "permitNumber": "MH09DV3825",
+      "carrier": true,
+      "districtId": "uHh68RXw89TfgOBEuGL2",
+      "vehicle_manufactureDate": "2015-10-01",
+      "acPerkmRate": "20",
+      "district": "Kolhapur",
+      "vehicle_registrationDate": "2015-11-30",
+      "registrationType": "null"
+    },
+    "isSubscriptionEnable": true,
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1771396032,
+        "_nanoseconds": 306089000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.42",
+      "remainingDays": "10",
+      "id": "Ltdf0HVwFIa6BYBTM6BN",
+      "subscription_role": "driver",
+      "start_date": {
+        "_seconds": 1771396032,
+        "_nanoseconds": 306091000
+      },
+      "subscription_plan": {
+        "duration": "unlimited",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "tds": "0",
+        "amount": "30",
+        "enable": true,
+        "name": "30 Rs ",
+        "description": "Unlimited Days 10 Ride",
+        "gst": "18",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10",
+        "image": ""
+      }
+    },
+    "documentVerification": true,
+    "insuranceDetails": {
+      "insuaranceCompany": "",
+      "insuaranceType": "",
+      "insuranceNumber": "",
+      "insuranceExpiryDate": "",
+      "insuranceAmount": "",
+      "insurancePremium": "",
+      "paymentType": "",
+      "paid_receipt_number": "",
+      "paymentDate": "",
+      "nomineeName": "",
+      "nomineeNumber": "",
+      "nomineeRelation": "",
+      "nomineeAge": "",
+      "agentName": "",
+      "agentCode": ""
+    },
+    "accept_terms": false,
+    "fcmToken": "eDMbceOkS1GlGpAVPzDcla:APA91bEqsA7m9lHrfc2TSFN1R2VN4-HPDzzUSiP2-8gVXHyqytKl9II_gdiB0iO8QaglIpQIfG91TkFCXUitJc8Zt_tv5d4EUmDzxP_S9JJ8T6IlxHryhnQ",
+    "remainingRides": "4",
+    "isOnline": true,
+    "rotation": 0,
+    "location": null,
+    "position": {
+      "geohash": "tdvngpk6z",
+      "geopoint": {
+        "_latitude": 16.6955989,
+        "_longitude": 74.6692523
+      }
+    }
+  },
+  {
+    "id": "X2QxL8U94hPNYoB6IaLUVecOn7K2",
+    "isSubscriptionEnable": false,
+    "walletAmount": "0.0",
+    "fcmToken": "emEQ_V6nSoGNX-izZ5qslD:APA91bEiezjwb8AqUCZQY1IzA3mcgUnGVHtBZO6G6Je4lmvZdTjS5AhdyWSGE5FWVDgI1e1NqECcu4Bt58GlPdpZQvuTyINt55WZNN8SsqxM4fwpCwt7p9k",
+    "serviceType": "City Ride",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "documentVerification": false,
+    "countryCode": "+91",
+    "createdAt": {
+      "_seconds": 1758343206,
+      "_nanoseconds": 909459000
+    },
+    "remainingRides": null,
+    "location": null,
+    "pincode": "411062",
+    "rotation": null,
+    "address": "551/3, Pant Nagar, Datta Nagar, Sahayog Nagar Jadhavwadi, Chikhali, Pimpri Chinchwad, Pimpri-Chinchwad, Maharashtra 411062, India",
+    "reviewsCount": "0.0",
+    "gender": "Male",
+    "serviceId": null,
+    "referenceNumber": "",
+    "phoneNumber": "9322081750",
+    "reviewsSum": "0.0",
+    "loginType": "phone",
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "group_name": "",
+    "fullName": "Gangaram maruti valunj ",
+    "isOnline": false,
+    "referenceName": "",
+    "profilePic": "",
+    "subscriptionExpiredAt": null,
+    "cobNumber": "COB - MH 15/2025",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "complimentary_rides": 0,
+    "email": "riteshwalunj4@gmail.com"
+  },
+  {
+    "id": "aahtmHIWucVg53idLNS6J8p2avo2",
+    "serviceType": "City Ride, Rental, Outstation",
+    "gender": "Male",
+    "loginType": "phone",
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FaahtmHIWucVg53idLNS6J8p2avo2%2Faa096b2d-1e69-451f-b678-cb494de8b0937762894749107273342.jpg?alt=media&token=e60eb398-d84f-4857-a312-e31dde14c165",
+    "aadharCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FaahtmHIWucVg53idLNS6J8p2avo2%2F4ae9d09e-f735-4c6e-891d-7b1e99ef26878998896055994862760.jpg?alt=media&token=ef9b1123-1881-4994-841c-7ada9355fe89",
+    "createdAt": {
+      "_seconds": 1770565367,
+      "_nanoseconds": 11114000
+    },
+    "referenceNumber": "no",
+    "countryCode": "+91",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "email": "dhirajchougule11@gmail.com",
+    "referenceName": "no",
+    "group_name": "no",
+    "cobNumber": "COB - MH 10/2026",
+    "profilePic": "",
+    "aadharCardNumber": "442494536878",
+    "fullName": "Dhiraj balaso Chougule ",
+    "subscriptionExpiredAt": null,
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "phoneNumber": "7888280284",
+    "panCardNumber": "CIOPC9078C",
+    "complimentary_rides": 0,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "serviceId": "VXmBuNgKxOomZzc8iOgV",
+    "address": "Narhe Ambegaon Rd, Pune, Maharashtra, India",
+    "isSubscriptionEnable": true,
+    "remainingRides": "10",
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1770566838,
+        "_nanoseconds": 185665000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.42",
+      "remainingDays": "10",
+      "id": "Ltdf0HVwFIa6BYBTM6BN",
+      "subscription_role": "driver",
+      "start_date": {
+        "_seconds": 1770566838,
+        "_nanoseconds": 185669000
+      },
+      "subscription_plan": {
+        "duration": "unlimited",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "tds": "0",
+        "amount": "30",
+        "enable": true,
+        "name": "30 Rs ",
+        "description": "Unlimited Days 10 Ride",
+        "gst": "18",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10",
+        "image": ""
+      }
+    },
+    "documentVerification": true,
+    "insuranceDetails": {
+      "insuaranceCompany": "",
+      "insuaranceType": "",
+      "insuranceNumber": "",
+      "insuranceExpiryDate": "",
+      "insuranceAmount": "",
+      "insurancePremium": "",
+      "paymentType": "",
+      "paid_receipt_number": "",
+      "paymentDate": "",
+      "nomineeName": "",
+      "nomineeNumber": "",
+      "nomineeRelation": "",
+      "nomineeAge": "",
+      "agentName": "",
+      "agentCode": ""
+    },
+    "vehicleInformation": {
+      "vehicleTypeId": "bc8ItwNooNAtcME5CiTo",
+      "companyName": "bctz9i661HD8p6g1u1oS",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FaahtmHIWucVg53idLNS6J8p2avo2%2F2f247360-0dc1-42f6-82f2-69846bd5fa247442797398026325788.jpg?alt=media&token=a5046e6f-6e6c-488d-894a-232b280a4a3d",
+      "seats": "5",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FaahtmHIWucVg53idLNS6J8p2avo2%2F1000420383.jpg?alt=media&token=8caf51d6-b73d-4e99-89c9-7d9fce7b001d",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "nonAcPerkmRate": "20",
+      "rcNumber": "MH091851",
+      "vehicleNumber": "MH09GJ1851",
+      "vehicleModel": "VMDLMSf4oqnYTYobY2IA",
+      "vehicleType": "Sedan ",
+      "vehicleColor": "White",
+      "engineNumber": "K12NP7341531",
+      "selfiPhoto": "",
+      "chassisNumber": "MBHCZFB3SPH470488",
+      "carrier": false,
+      "permitNumber": "MH09GJ1851",
+      "districtId": "uHh68RXw89TfgOBEuGL2",
+      "vehicle_manufactureDate": "2023-08-01",
+      "acPerkmRate": "25",
+      "district": "Kolhapur",
+      "vehicle_registrationDate": "2023-10-05",
+      "registrationDate": {
+        "_seconds": 1770566874,
+        "_nanoseconds": 852942000
+      },
+      "registrationType": "null",
+      "vehicleFuel": "StMUHxyOmoRa8yBXQ09g"
+    },
+    "accept_terms": true,
+    "fcmToken": "dLdPdWPLTHaCvqC6QjyjL0:APA91bGJeoUdnd85Pav6eM_6AGSMnyZmivbGk6OvUJUWNUXvRc1ovs7tdTnkC5qn1uKQLOvq_2nipf4MXM5q8Y999_UwgdHDYXK3gn2Ie4xBY2lOoaw5nLU",
+    "rotation": 0,
+    "pincode": "416105",
+    "city": "TMHO9TjU19e9HeXKBmjZ",
+    "isOnline": true,
+    "location": {
+      "latitude": 18.4526179,
+      "longitude": 73.8219675
+    },
+    "position": {
+      "geohash": "tek2zz5w2",
+      "geopoint": {
+        "_latitude": 18.4526179,
+        "_longitude": 73.8219675
+      }
+    }
+  },
+  {
+    "id": "cu54sqrkzLNbfj0FcRYOujwPVIb2",
+    "serviceType": "City Ride, Rental, Outstation",
+    "gender": "Male",
+    "city": "TMHO9TjU19e9HeXKBmjZ",
+    "loginType": "phone",
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fcu54sqrkzLNbfj0FcRYOujwPVIb2%2Fb1c16e45-8760-4d21-8e0e-61ea3866d71d1113939492258013375.jpg?alt=media&token=11b524a1-9f8b-44bd-a800-e284440f6564",
+    "aadharCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fcu54sqrkzLNbfj0FcRYOujwPVIb2%2Ff5311461-588f-4aa2-8e17-b9526d28a1db6995678307089122619.jpg?alt=media&token=c5173a71-d9d1-4cce-9be3-da31b4af37e9",
+    "createdAt": {
+      "_seconds": 1773459667,
+      "_nanoseconds": 116929000
+    },
+    "referenceNumber": "no",
+    "countryCode": "+91",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "email": "sunilnaik7517@gmail.com",
+    "referenceName": "no",
+    "pincode": "416105",
+    "address": "MMW9+C9X, Shedshal, Maharashtra 416105, India",
+    "group_name": "no",
+    "cobNumber": "COB - MH 18/2026",
+    "profilePic": "",
+    "aadharCardNumber": "868232313940",
+    "fullName": "Sunil Naik",
+    "subscriptionExpiredAt": null,
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "phoneNumber": "8687555771",
+    "panCardNumber": "ARQPN9876N",
+    "complimentary_rides": 0,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "serviceId": "vGIpx48e4L5KgW55M5FW",
+    "vehicleInformation": {
+      "vehicleTypeId": "nGi5FvL9dy1uQwQyR5QK",
+      "companyName": "bctz9i661HD8p6g1u1oS",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fcu54sqrkzLNbfj0FcRYOujwPVIb2%2F3f008637-c6b8-42ba-a6d0-db1a7bc11fcb4307827757158795201.jpg?alt=media&token=1e2dc4d8-2461-4ab4-8285-61716a940f2c",
+      "seats": "7",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fcu54sqrkzLNbfj0FcRYOujwPVIb2%2Fffb60ae1-2c67-4234-85f8-29d48ab8d8608282838028170209942.jpg?alt=media&token=7e13ed6d-8ffe-4bbb-96d8-de7f241e4801",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "vehicleFuel": "KYUmefrt1EYfGWnFCo7L",
+      "nonAcPerkmRate": "14",
+      "rcNumber": "mh09cm0084",
+      "vehicleNumber": "mh09cm0084",
+      "vehicleModel": "AYeDHv3sGC1pdKnYwyz5",
+      "vehicleType": "Suv",
+      "vehicleColor": "White",
+      "engineNumber": "3dm148964",
+      "selfiPhoto": "",
+      "chassisNumber": "ma6abce5cch000098",
+      "permitNumber": "mh09cm0084",
+      "carrier": false,
+      "districtId": "uHh68RXw89TfgOBEuGL2",
+      "vehicle_manufactureDate": "2012-05-05",
+      "acPerkmRate": "16",
+      "district": "Kolhapur",
+      "vehicle_registrationDate": "2012-06-30",
+      "registrationDate": {
+        "_seconds": 1773460382,
+        "_nanoseconds": 261343000
+      },
+      "registrationType": "null"
+    },
+    "isSubscriptionEnable": true,
+    "remainingRides": "10",
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1773460478,
+        "_nanoseconds": 871290000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.42",
+      "remainingDays": "10",
+      "id": "Ltdf0HVwFIa6BYBTM6BN",
+      "subscription_role": "driver",
+      "start_date": {
+        "_seconds": 1773460478,
+        "_nanoseconds": 871291000
+      },
+      "subscription_plan": {
+        "duration": "unlimited",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "tds": "0",
+        "amount": "30",
+        "enable": true,
+        "name": "30 Rs ",
+        "description": "Unlimited Days 10 Ride",
+        "gst": "18",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10",
+        "image": ""
+      }
+    },
+    "fcmToken": "cpVh9HM5SZ-_zNdeSGwdX_:APA91bHNGpv6T89THtmWD1zjtRCZaXVfB3eCa6UuGtEaHVxB8lFnh2hJS_IQfUY2mDGGFo8xxPZdFUmr7riA46LvOYHv-Ix4xNFR0r3XHn7gjUzHVBL46rE",
+    "rotation": 0,
+    "documentVerification": true,
+    "insuranceDetails": {
+      "insuaranceCompany": "",
+      "insuaranceType": "",
+      "insuranceNumber": "",
+      "insuranceExpiryDate": "",
+      "insuranceAmount": "",
+      "insurancePremium": "",
+      "paymentType": "",
+      "paid_receipt_number": "",
+      "paymentDate": "",
+      "nomineeName": "",
+      "nomineeNumber": "",
+      "nomineeRelation": "",
+      "nomineeAge": "",
+      "agentName": "",
+      "agentCode": ""
+    },
+    "accept_terms": true,
+    "isOnline": true,
+    "location": {
+      "latitude": 16.6962537,
+      "longitude": 74.6683261
+    },
+    "position": {
+      "geohash": "tdvngp7yd",
+      "geopoint": {
+        "_latitude": 16.6962537,
+        "_longitude": 74.6683261
+      }
+    }
+  },
+  {
+    "id": "dKNzuRp0QmdjyolXCJwpHGs7T1E3",
+    "serviceType": "City Ride",
+    "reviewsSum": "0.0",
+    "createdAt": {
+      "_seconds": 1759310577,
+      "_nanoseconds": 598814000
+    },
+    "remainingRides": null,
+    "referenceName": "",
+    "referenceNumber": "",
+    "isSubscriptionEnable": null,
+    "serviceId": null,
+    "email": "dixitcm@gmail.com",
+    "rotation": null,
+    "gender": "Male",
+    "fcmToken": null,
+    "pincode": "415110",
+    "fullName": "Chidambar Dixit",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "reviewsCount": "0.0",
+    "subscriptionExpiredAt": null,
+    "profilePic": "",
+    "cobNumber": "COB - MH 18/2025",
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "address": "5th Floor, Ag Trade Center, NDA Pashan Rd, above Croma, Ram Nagar, Bavdhan, Pune, Maharashtra 411021, India",
+    "complimentary_rides": 0,
+    "documentVerification": false,
+    "location": null,
+    "countryCode": "+91",
+    "group_name": "",
+    "loginType": "google",
+    "isOnline": false,
+    "phoneNumber": "9921443444",
+    "walletAmount": "0.0"
+  },
+  {
+    "id": "dTz9miopC5UOyqeb6QnZxJvBf3O2",
+    "serviceType": "City Ride",
+    "gender": "Female",
+    "loginType": "phone",
+    "city": "5pGF3WbrM3cpqjnTUfwt",
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1764594242,
+      "_nanoseconds": 317212000
+    },
+    "referenceNumber": "1001",
+    "countryCode": "+91",
+    "state": "N86fGl4znS1UOz7IYXpx",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "fcmToken": "e9WPCzGiTOGAogvnGBCswH:APA91bGqByOeV8jqid_KJJsQZREHc95kFO7-zJSoFnZ32CrT4aVp6eKemgVpx7qvfRvpBt_bDTixE2AOPvEYAiWOK4dLzKCaSegtaFq--7gMhXiOfgwY0NI",
+    "email": "krishna@gmail.com",
+    "referenceName": "testing ",
+    "pincode": "303002",
+    "complimentary_rides": 0,
+    "address": "Sankar Lal Society, B-102, Khodiyaar Nagar, Arjun Nagar Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test",
+    "cobNumber": "COB - MH 21/2025",
+    "isSubscriptionEnable": false,
+    "profilePic": "",
+    "rotation": null,
+    "fullName": "krishna",
+    "remainingRides": null,
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9990909090",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "reviewsSum": "0.0",
+    "panCardNumber": "CDMPV0666C",
+    "aadharCardNumber": "586540757242",
+    "insuranceDetails": {
+      "insuaranceCompany": "",
+      "insuaranceType": "",
+      "insuranceNumber": "",
+      "insuranceExpiryDate": "",
+      "insuranceAmount": "",
+      "insurancePremium": "",
+      "paymentType": "",
+      "paid_receipt_number": "",
+      "paymentDate": "",
+      "nomineeName": "",
+      "nomineeNumber": "",
+      "nomineeRelation": "",
+      "nomineeAge": "",
+      "agentName": "",
+      "agentCode": ""
+    },
+    "location": {
+      "latitude": 23,
+      "longitude": 72
+    },
+    "accept_terms": false,
+    "aadharCardPhoto": "",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "DicSuP6axRZ4CK89R5dX",
+      "permitPhoto": "",
+      "seats": "1",
+      "driverRules": [],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "nonAcPerkmRate": "10",
+      "registrationDate": {
+        "_seconds": 1764660353,
+        "_nanoseconds": 116888000
+      },
+      "vehicleNumber": "118",
+      "vehicleModel": "jtcg6vOTisE2FOG8S9ug",
+      "vehicleType": "Auto",
+      "vehicleColor": "Blue",
+      "engineNumber": "999",
+      "chassisNumber": "1111",
+      "carrier": false,
+      "vehicle_manufactureDate": "2025-12-02",
+      "districtId": "y99UJ2DeRFQnoBo4mvFc",
+      "registrationType": "null",
+      "acPerkmRate": "",
+      "district": "Ahilya Nagar",
+      "vehicle_registrationDate": "2025-12-01",
+      "permitNumber": "",
+      "rcNumber": "test121",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fdefault_user_1764682207893.png?alt=media&token=050d2a4c-c7ee-40f6-97f5-cfc4cbe0a068",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fdefault_user_1764683419835.png?alt=media&token=759003a2-3510-40a2-9cbf-22ee28c2c4a0"
+    },
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fdefault_user_1764683400095.png?alt=media&token=8968e1e7-cae7-40fd-a91d-d3406872ffab",
+    "documentVerification": true
+  },
+  {
+    "id": "iEcmbE0occP3nm0uAYTNvQMdztR2",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FiEcmbE0occP3nm0uAYTNvQMdztR2%2Fbc81c8b2-672d-4b13-963f-3785844048603097416156630836335.jpg?alt=media&token=a2e50b1f-670b-4e2f-9a70-8abe0bffb9e8",
+    "isOnline": false,
+    "aadharCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FiEcmbE0occP3nm0uAYTNvQMdztR2%2Fb1abfa48-069e-4132-9184-eaaf8f4274016383561809796435891.jpg?alt=media&token=e5fbf6a1-38f2-40bb-acaf-ac1ad78f66d0",
+    "createdAt": {
+      "_seconds": 1771672725,
+      "_nanoseconds": 252871000
+    },
+    "referenceNumber": "no",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "fcmToken": null,
+    "email": "nishikantdongare93550@gmail.com",
+    "referenceName": "no",
+    "pincode": "412307",
+    "address": "FXHR+H7, Saykarwadi, Maharashtra 412308, India",
+    "group_name": "sk group",
+    "cobNumber": "COB - MH 15/2026",
+    "rotation": null,
+    "profilePic": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FiEcmbE0occP3nm0uAYTNvQMdztR2%2F4fe39462-f0f7-4855-a1cd-1eb50209cdee5882236347034690011.jpg?alt=media&token=bfabd694-3c83-4df1-ad68-71a32a11c55f",
+    "aadharCardNumber": "551145333805",
+    "fullName": "Bajaj RE",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9665413684",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "HZLPD9624Q",
+    "location": null,
+    "complimentary_rides": 0,
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "CtVlx1XmvbXYxRurJTri",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FiEcmbE0occP3nm0uAYTNvQMdztR2%2F1000146451.jpg?alt=media&token=051f8a2f-5192-4557-8099-ef52ac74b8f5",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FiEcmbE0occP3nm0uAYTNvQMdztR2%2F8895808d-dce9-448e-9441-0df41dec48e65084338924318921747.jpg?alt=media&token=c56d431b-41eb-4b40-af64-71eb99c27125",
+      "seats": "3",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "nonAcPerkmRate": "17 per km",
+      "rcNumber": "MH12VW6821",
+      "registrationDate": {
+        "_seconds": 1771673851,
+        "_nanoseconds": 83209000
+      },
+      "vehicleNumber": "MH12VW6821",
+      "vehicleModel": "Ma80VnKEh9NAriarJRwk",
+      "vehicleType": "Auto",
+      "vehicleColor": "Black",
+      "engineNumber": "AZXWRK66199",
+      "selfiPhoto": "",
+      "chassisNumber": "MD2B47AX2RWK17006",
+      "carrier": false,
+      "permitNumber": "MH2520004262",
+      "districtId": "S0sMF8RaqaGzmLZy7REM",
+      "vehicle_manufactureDate": "2026-02-21",
+      "acPerkmRate": "",
+      "district": "Pune",
+      "vehicle_registrationDate": "2026-02-21",
+      "registrationType": "null"
+    }
+  },
+  {
+    "id": "lebvGEQPsAXouysAsEeLxmcptG13",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "vehicleInformation": {
+      "vehicleTypeId": "bc8ItwNooNAtcME5CiTo",
+      "companyName": "bctz9i661HD8p6g1u1oS",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FlebvGEQPsAXouysAsEeLxmcptG13%2F4c4368d5-ab2a-4825-b5a6-82c64921478a9012913780883956636.jpg?alt=media&token=edaa0c4f-ffc7-4bac-aa80-318c1ed7e41f",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FlebvGEQPsAXouysAsEeLxmcptG13%2Fd3ed7cc3-bc3e-406d-9464-9241030e39025818229519317459138.jpg?alt=media&token=16f23b8a-e942-40d0-ae72-92e4c80b2da3",
+      "seats": "7",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "vehicleFuel": "V2Y3DG1R4U8JzMHUaJ6s",
+      "rcNumber": "mh09123456789",
+      "nonAcPerkmRate": "25",
+      "registrationDate": {
+        "_seconds": 1756968891,
+        "_nanoseconds": 652097000
+      },
+      "vehicleNumber": "MH09FQ0422",
+      "vehicleModel": "VMDLMSf4oqnYTYobY2IA",
+      "vehicleType": "Sedan ",
+      "vehicleColor": "Red",
+      "engineNumber": "123456789",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FlebvGEQPsAXouysAsEeLxmcptG13%2F4527a193-94b0-47fb-94d8-d11c21688ebd8690295959351072354.jpg?alt=media&token=994316af-8ed6-476e-b211-fe63e162c49e",
+      "chassisNumber": "987654321",
+      "permitNumber": "mh09fq0422",
+      "carrier": true,
+      "vehicle_manufactureDate": "2018-12-31",
+      "districtId": "S0sMF8RaqaGzmLZy7REM",
+      "registrationType": "null",
+      "acPerkmRate": "28",
+      "district": "Pune",
+      "vehicle_registrationDate": "2019-10-10"
+    },
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1757420397,
+        "_nanoseconds": 786000000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.423728813559322",
+      "remainingDays": null,
+      "id": null,
+      "subscription_role": "driver",
+      "subscription_plan": {
+        "duration": "unlimited",
+        "image": "",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "amount": "30",
+        "tds": "0",
+        "enable": true,
+        "name": "30 Rs ",
+        "description": "Unlimited Days 10 Ride",
+        "gst": "18",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10"
+      },
+      "start_date": {
+        "_seconds": 1757420397,
+        "_nanoseconds": 786000000
+      }
+    },
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1756968583,
+      "_nanoseconds": 333275000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "documentVerification": true,
+    "insuranceDetails": {
+      "insuranceAmount": "700000",
+      "insurancePremium": "7000",
+      "agentCode": "82",
+      "nomineeRelation": "wife",
+      "agentName": "xyz",
+      "insuaranceType": "",
+      "nomineeName": "RPPatil",
+      "paid_receipt_number": "45678",
+      "paymentType": "",
+      "insuranceNumber": "8308126100",
+      "nomineeAge": "36",
+      "insuaranceCompany": "FGSiD8aaLuxrvyQ2isaO",
+      "paymentDate": "2024-09-04",
+      "insuranceExpiryDate": "2026-01-31",
+      "nomineeNumber": "null"
+    },
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "serviceId": "VXmBuNgKxOomZzc8iOgV",
+    "fcmToken": "cTWgwym7SgOPl6V8LyCZ6l:APA91bEQqgzrBGsFRFd1lU-J15eot9MKh5oNLRmP5VUrk7YlJ1uB-cLqhIb2dGYuPLa6uehHFOlqd6FJRQLxbEwrvst_oH2Gmz8lXH5XKUVlO7guSevqkf4",
+    "email": "divineshiv301114@gmail.com",
+    "referenceName": "",
+    "pincode": "411041",
+    "complimentary_rides": 10,
+    "address": "Wadgaon Budruk, Narhe, Pune, Maharashtra 411068, India",
+    "group_name": "Cob",
+    "cobNumber": "COB - MH 12/2025",
+    "isSubscriptionEnable": true,
+    "profilePic": "/data/user/0/com.comingbro.driver/cache/00c46370-765d-42a2-8d26-939b078d547b/1000403220.jpg",
+    "rotation": 0,
+    "fullName": "Prakash Patil",
+    "remainingRides": "10",
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "8308126100",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "reviewsSum": "0.0",
+    "location": null,
+    "position": {
+      "geohash": "tekd1r1sn",
+      "geopoint": {
+        "_latitude": 18.67198,
+        "_longitude": 73.8854084
+      }
+    }
+  },
+  {
+    "id": "m4UwIEjKJoafjNLOUjIuqiRuP3j2",
+    "serviceType": "City Ride, Rental, Outstation",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "TOyXIrpL67O7e7Kprm1T",
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fm4UwIEjKJoafjNLOUjIuqiRuP3j2%2Fd549709b-b66a-46be-8cd9-3e073fef21154516798721174349317.jpg?alt=media&token=52f5d2eb-5211-4940-b096-9b36b0289948",
+    "aadharCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fm4UwIEjKJoafjNLOUjIuqiRuP3j2%2F2a7d8bee-cd18-45ee-b0ac-32dd1cea6eab7141165282679620641.jpg?alt=media&token=aa75dff9-2ca6-4460-8c2f-bb52678eedb1",
+    "createdAt": {
+      "_seconds": 1773144613,
+      "_nanoseconds": 108676000
+    },
+    "referenceNumber": "a",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "email": "demo@demo.com",
+    "referenceName": "a",
+    "pincode": "421301",
+    "group_name": "a",
+    "cobNumber": "COB - MH 17/2026",
+    "aadharCardNumber": "616164664646",
+    "fullName": "demo ",
+    "subscriptionExpiredAt": null,
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "phoneNumber": "9111111111",
+    "panCardNumber": "vshsh83(28",
+    "complimentary_rides": 0,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "address": "Mithila Nagari, Pimple Saudagar, Pimpri-Chinchwad, Maharashtra 411027, India",
+    "profilePic": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/profileImage%2Fm4UwIEjKJoafjNLOUjIuqiRuP3j2%2F4610.jpg?alt=media&token=743a150f-35a2-45a4-81f1-6b33a35b6631",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "DicSuP6axRZ4CK89R5dX",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fm4UwIEjKJoafjNLOUjIuqiRuP3j2%2F4f97920b-bc10-497e-babb-3b742905c32f2943947727669247669.jpg?alt=media&token=df4ee8a5-8ac6-44ed-b75b-f42dc73ccd06",
+      "seats": "4",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fm4UwIEjKJoafjNLOUjIuqiRuP3j2%2F27167f5d-78f9-4812-a05f-b4574881a1807876866612195885148.jpg?alt=media&token=ff05e457-4777-4822-808f-6427e17a545a",
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "rcNumber": "7273747474",
+      "vehicleModel": "jtcg6vOTisE2FOG8S9ug",
+      "vehicleNumber": "ASH66BB",
+      "vehicleType": "Auto",
+      "vehicleColor": "Black",
+      "engineNumber": "",
+      "selfiPhoto": "",
+      "chassisNumber": "",
+      "carrier": false,
+      "permitNumber": "8384748827",
+      "vehicle_manufactureDate": "2026-03-10",
+      "districtId": "y99UJ2DeRFQnoBo4mvFc",
+      "district": "Ahilya Nagar",
+      "vehicle_registrationDate": null,
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "acPerkmRate": "20",
+      "nonAcPerkmRate": "18",
+      "registrationDate": {
+        "_seconds": 1773751235,
+        "_nanoseconds": 369348000
+      },
+      "registrationType": "null"
+    },
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1773839689,
+        "_nanoseconds": 496000000
+      },
+      "start_date": {
+        "_seconds": 1773839689,
+        "_nanoseconds": 496000000
+      },
+      "end_date": null,
+      "remainingDays": null,
+      "subscription_plan": {
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "amount": "30",
+        "image": "",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "gst": "18",
+        "duration": "unlimited",
+        "ride": "10",
+        "tds": "0",
+        "name": "30 Rs ",
+        "enable": true,
+        "description": "Unlimited Days 10 Ride"
+      },
+      "subscription_role": "driver",
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.423728813559322",
+      "id": null
+    },
+    "isSubscriptionEnable": false,
+    "remainingRides": null,
+    "rotation": 0,
+    "position": {
+      "geohash": "tekj43hfv",
+      "geopoint": {
+        "_latitude": 19.1661293,
+        "_longitude": 73.2306399
+      }
+    },
+    "location": null,
+    "fcmToken": "cbDu1TJYjkhLtA9B5r54Ij:APA91bGwtvxlKC4HE-eKtWlIq0SQL-1bAMbBItcoCa7k7tXDlbkuck2LPlMhE9QZ_i89ftGJsHkXcHmH1-ZewbPxs_WgY2PixhyBEce2sXC6yoVuDPZ7x8I",
+    "isOnline": true
+  },
+  {
+    "id": "mDn4g5irPxbjzpEZY6GEcmU4rev1",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "google",
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1763704947,
+        "_nanoseconds": 795000000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.423728813559322",
+      "remainingDays": null,
+      "id": null,
+      "subscription_role": "driver",
+      "subscription_plan": {
+        "duration": "unlimited",
+        "image": "",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "amount": "30",
+        "tds": "0",
+        "enable": true,
+        "name": "30 Rs ",
+        "description": "Unlimited Days 10 Ride",
+        "gst": "18",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10"
+      },
+      "start_date": {
+        "_seconds": 1763704947,
+        "_nanoseconds": 795000000
+      }
+    },
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1763697870,
+      "_nanoseconds": 312343000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "fcmToken": "dlgA-aZASCG-e3TzWL9lPl:APA91bF-gN_137heeSy4mbddMtJn7wppOlNh1fouunJc_T0q6LFN3BjBIv1noBFRUurXhullQJhWVSgJPaaexWKMdXuXal8FK8-21kF0XOPHhqjMauHxdu0",
+    "email": "buntymali568@gmail.com",
+    "referenceName": "",
+    "pincode": "411017",
+    "complimentary_rides": 0,
+    "address": "28/29/43, Shivraj Nagar, Kalewadi, Pimpri-Chinchwad, Maharashtra 411017, India",
+    "cobNumber": "COB - MH 19/2025",
+    "isSubscriptionEnable": true,
+    "profilePic": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/profileImage%2FmDn4g5irPxbjzpEZY6GEcmU4rev1%2F956acf49-1c87-40ef-9062-14ddb47235808038607069977189585.jpg?alt=media&token=0219bb03-c48b-4536-b2fc-dae0f6fa9306",
+    "fullName": "Bunty Mali",
+    "remainingRides": "10",
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9284757273",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "reviewsSum": "0.0",
+    "documentVerification": true,
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "ttU3fbcellItU5CYsGu3",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FmDn4g5irPxbjzpEZY6GEcmU4rev1%2F1000327187.jpg?alt=media&token=0bf0885d-250b-4a5a-8b3d-560014ef7832",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FmDn4g5irPxbjzpEZY6GEcmU4rev1%2F1000327185.jpg?alt=media&token=2f57d402-f829-4ae0-9930-86fa9658c3f8",
+      "seats": "3",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "vehicleFuel": "StMUHxyOmoRa8yBXQ09g",
+      "rcNumber": "MH14KU4013",
+      "vehicleNumber": "MH14KU4013",
+      "vehicleModel": "6yMifTtlOqcsZIYfnMWi",
+      "vehicleType": "Auto",
+      "vehicleColor": "Black",
+      "engineNumber": "MD614CF1P4K00046",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FmDn4g5irPxbjzpEZY6GEcmU4rev1%2Fb0306413-e5f3-4bbb-9846-1f89358283f64824605261934558650.jpg?alt=media&token=f96646d9-9d68-44ee-af2b-43c4ac75f105",
+      "chassisNumber": "MD614CF1P4K00046",
+      "permitNumber": "MH14KU4013",
+      "carrier": false,
+      "vehicle_manufactureDate": "2023-09-22",
+      "districtId": "S0sMF8RaqaGzmLZy7REM",
+      "acPerkmRate": "0",
+      "district": "Pune",
+      "vehicle_registrationDate": "2023-10-10",
+      "nonAcPerkmRate": "20",
+      "registrationDate": {
+        "_seconds": 1770298940,
+        "_nanoseconds": 997096000
+      },
+      "registrationType": "null"
+    },
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "group_name": "Own",
+    "panCardNumber": "CBXPM3121L",
+    "aadharCardNumber": "943796467954",
+    "panCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FIMG20260205191020_1770299016355.jpg?alt=media&token=520714b2-b528-4db6-9248-aa53b854fd9b",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "accept_terms": true,
+    "aadharCardPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FIMG20260205191020_1770299010126.jpg?alt=media&token=564ae378-ef7f-454c-b024-70922a3f19da",
+    "insuranceDetails": {
+      "insuaranceCompany": "Cvg6vG4b6LUYbzBTzA9V",
+      "insuaranceType": "Comprehensive + Third Party",
+      "insuranceNumber": "85788",
+      "insuranceExpiryDate": "2025-11-21",
+      "insuranceAmount": "2500000",
+      "insurancePremium": "3500",
+      "paid_receipt_number": "86889",
+      "paymentDate": "2025-11-21",
+      "nomineeName": "Mali",
+      "nomineeNumber": "null",
+      "nomineeRelation": "self",
+      "nomineeAge": "32",
+      "agentName": "manjesh ",
+      "agentCode": "1234",
+      "paymentType": "null"
+    },
+    "isOnline": true,
+    "rotation": 182,
+    "location": {
+      "latitude": 18.5991183,
+      "longitude": 73.7859383
+    },
+    "position": {
+      "geohash": "tek3z1c78",
+      "geopoint": {
+        "_latitude": 18.5991183,
+        "_longitude": 73.7859383
+      }
+    }
+  },
+  {
+    "id": "mG48nRJo8XRQwBQezq1Wc0nIEWn2",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "lCp8QqQ240cZMKlq97ZD",
+    "vehicleInformation": {
+      "vehicleTypeId": "nGi5FvL9dy1uQwQyR5QK",
+      "companyName": "bctz9i661HD8p6g1u1oS",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FmG48nRJo8XRQwBQezq1Wc0nIEWn2%2F1000559931.jpg?alt=media&token=8b952fa7-6531-4bf8-9e65-bd52c6c8e2bd",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FmG48nRJo8XRQwBQezq1Wc0nIEWn2%2F1000559932.jpg?alt=media&token=6b74f2e0-54ee-42fb-b47a-74cc6d12a59c",
+      "seats": "6",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        }
+      ],
+      "vehicleFuel": "StMUHxyOmoRa8yBXQ09g",
+      "rcNumber": "RJ20UB5352",
+      "nonAcPerkmRate": "18",
+      "registrationDate": {
+        "_seconds": 1757409629,
+        "_nanoseconds": 615312000
+      },
+      "vehicleNumber": "RJ20UB5352",
+      "vehicleModel": "wxqc3n4kXnMu0HYQveIN",
+      "vehicleType": "Suv",
+      "vehicleColor": "Silver",
+      "engineNumber": "kskjshbdbdb6775rd",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FmG48nRJo8XRQwBQezq1Wc0nIEWn2%2F1000566425.jpg?alt=media&token=8973374d-c38d-494e-8f54-42b6463f0d92",
+      "chassisNumber": "hsjsjjsjdjdjh53335776257hhd",
+      "permitNumber": "RJ20UB5352",
+      "carrier": false,
+      "vehicle_manufactureDate": "2024-04-01",
+      "districtId": "zVwGm0Ni3B2afBX5MtKI",
+      "registrationType": "null",
+      "acPerkmRate": "25",
+      "district": "kota",
+      "vehicle_registrationDate": "2024-05-26"
+    },
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1757414095,
+        "_nanoseconds": 790000000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.423728813559322",
+      "remainingDays": null,
+      "id": null,
+      "subscription_role": "driver",
+      "subscription_plan": {
+        "duration": "unlimited",
+        "image": "",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "amount": "30",
+        "tds": "0",
+        "enable": true,
+        "name": "30 Rs ",
+        "description": "Unlimited Days 10 Ride",
+        "gst": "18",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10"
+      },
+      "start_date": {
+        "_seconds": 1757414095,
+        "_nanoseconds": 790000000
+      }
+    },
+    "isOnline": true,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1756715831,
+      "_nanoseconds": 964949000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "documentVerification": true,
+    "insuranceDetails": {
+      "insuranceAmount": "1155800",
+      "insurancePremium": "27200",
+      "agentCode": "00000278",
+      "nomineeRelation": "Wife",
+      "agentName": "Maruti Nexa Suwalka",
+      "insuaranceType": "Comprehensive + Third Party",
+      "nomineeName": "Anuradha Shrivastava",
+      "paid_receipt_number": "56468793",
+      "paymentType": "null",
+      "insuranceNumber": "7899649470074",
+      "nomineeAge": "28",
+      "insuaranceCompany": "XS4Vz9cr8JVXsWEwIKVu",
+      "paymentDate": "2025-05-09",
+      "insuranceExpiryDate": "2027-05-09",
+      "nomineeNumber": "null"
+    },
+    "state": "j5dPPrJH4wzG2ZMaKz5z",
+    "serviceId": "vGIpx48e4L5KgW55M5FW",
+    "fcmToken": null,
+    "email": "ss007cool.sourabh@gmail.com",
+    "referenceName": "",
+    "pincode": "324002",
+    "complimentary_rides": 0,
+    "address": "6V5J+2HX, Janakpuri, Railway Station Area, Kota, Rajasthan 324002, India",
+    "group_name": "Cob",
+    "cobNumber": "COB - MH 09/2025",
+    "isSubscriptionEnable": true,
+    "profilePic": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/profileImage%2FmG48nRJo8XRQwBQezq1Wc0nIEWn2%2F1000244556.jpg?alt=media&token=050d5cff-f7b8-4c21-8d4f-cb26a3255e59",
+    "rotation": 0,
+    "fullName": "Saurabh Srivastava",
+    "remainingRides": "10",
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9351517133",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "reviewsSum": "0.0",
+    "location": {
+      "latitude": 25.211935,
+      "longitude": 75.8819133
+    },
+    "position": {
+      "geohash": "tsmzqtxw0",
+      "geopoint": {
+        "_latitude": 25.211935,
+        "_longitude": 75.8819133
+      }
+    }
+  },
+  {
+    "id": "pFPZj6TLrQXq3aYRoqPXTUzSTen2",
+    "serviceType": "City Ride",
+    "gender": "Female",
+    "loginType": "phone",
+    "city": "7SN4DiTRnYZicjTkUjmi",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "DicSuP6axRZ4CK89R5dX",
+      "rcImage": "",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FpFPZj6TLrQXq3aYRoqPXTUzSTen2%2F73c2073e-00e9-4f6e-9f63-44622e867e8b287376777441501582.jpg?alt=media&token=c2f6a0d9-70b0-4015-a786-dc468576ed22",
+      "seats": "3",
+      "driverRules": [],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "rcNumber": "",
+      "nonAcPerkmRate": "10",
+      "registrationDate": {
+        "_seconds": 1764676865,
+        "_nanoseconds": 705817000
+      },
+      "vehicleNumber": "1919",
+      "vehicleModel": "jtcg6vOTisE2FOG8S9ug",
+      "vehicleType": "Auto",
+      "vehicleColor": "Purple",
+      "engineNumber": "91919",
+      "selfiPhoto": "",
+      "chassisNumber": "1919",
+      "permitNumber": "111",
+      "carrier": false,
+      "vehicle_manufactureDate": "2025-12-01",
+      "districtId": "aW8ipOz8iWzdfRuxRfua",
+      "registrationType": "null",
+      "acPerkmRate": "",
+      "district": "Amethi",
+      "vehicle_registrationDate": "2025-12-01"
+    },
+    "panCardPhoto": "",
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/34906e2e-b8b9-46fc-b25b-1044c36c9e484566514468758172323.jpg",
+    "createdAt": {
+      "_seconds": 1764675793,
+      "_nanoseconds": 314229000
+    },
+    "referenceNumber": "testing",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "aauPMwizcKjSyCFmZJTG",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "fcmToken": "eozg_m8VTEWrqFc1WkI2da:APA91bGSbfGg_xT_7xP5xG6VyHEVZSlxuEEUH5ct2KNTXbXgj90gx-sgZ-ZoJP-6-fOUFjrAFB6tuhw61MMkckDRbi_l326hzf3jVHai-9Wo8NenvsTPNTI",
+    "email": "pk@gmail.com",
+    "referenceName": "191991",
+    "pincode": "199918",
+    "complimentary_rides": 0,
+    "address": "Ramdev Nagar Society, Parasmani Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test",
+    "cobNumber": "COB - MH 26/2025",
+    "isSubscriptionEnable": false,
+    "profilePic": "",
+    "rotation": null,
+    "aadharCardNumber": "9191",
+    "fullName": "pk",
+    "remainingRides": null,
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9988008899",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "",
+    "reviewsSum": "0.0",
+    "location": null
+  },
+  {
+    "id": "pULoLiGuY9cPaDIp8P3ifxzlVmL2",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "city": "35xMqy0JOOkCOeR7sB0A",
+    "loginType": "phone",
+    "panCardPhoto": "/data/user/0/com.comingbro.driver/cache/88e1d6c7-2a26-4d06-ba08-a84703581d155092862499916662811.jpg",
+    "isOnline": false,
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/03f62041-59fe-4cce-b650-3b5720b58b658131949355834794026.jpg",
+    "createdAt": {
+      "_seconds": 1770036772,
+      "_nanoseconds": 583059000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "serviceId": null,
+    "email": "krishna@gmail.com",
+    "referenceName": "",
+    "pincode": "8191819",
+    "address": "Sankar Lal Society, Khodiyaar Nagar, Arjun Nagar Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test",
+    "cobNumber": "COB - MH 06/2026",
+    "rotation": null,
+    "profilePic": "",
+    "aadharCardNumber": "99991",
+    "fullName": "krishna vadoliya ",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9988772020",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "91991",
+    "location": null,
+    "complimentary_rides": 0,
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "fcmToken": "dCXRuvEVReakMp2LaJ9iET:APA91bHY-cmGz4h3p7pmQnhJbfCfMoGEisSXD_plkwZfalVa5pMEYlgdJZF7pRiHsqjbhjHEkJYSv2yhoVgxkpZFv3z_gZ25v8GkbqRMwwQFnohgZZ3lgWw"
+  },
+  {
+    "id": "pY8OMecgaXOQoMd7W6KaZqIhHTr2",
+    "serviceType": "City Ride",
+    "gender": "Female",
+    "loginType": "phone",
+    "city": "GybCSy8tMWnNRVeub6uC",
+    "panCardPhoto": "",
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/6c9e37f1-22e1-4cb1-95cb-7284b6b996d44886020732694699427.jpg",
+    "createdAt": {
+      "_seconds": 1764671765,
+      "_nanoseconds": 974181000
+    },
+    "referenceNumber": "188181",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "1BK4PJ6raZaegx3EMYTH",
+    "serviceId": null,
+    "fcmToken": "e9WPCzGiTOGAogvnGBCswH:APA91bGqByOeV8jqid_KJJsQZREHc95kFO7-zJSoFnZ32CrT4aVp6eKemgVpx7qvfRvpBt_bDTixE2AOPvEYAiWOK4dLzKCaSegtaFq--7gMhXiOfgwY0NI",
+    "email": "kp@gmail.com",
+    "referenceName": "testing",
+    "pincode": "27727",
+    "complimentary_rides": 0,
+    "address": "29, Khodiyaar Nagar, Pushpak Nagar Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test",
+    "cobNumber": "COB - MH 23/2025",
+    "isSubscriptionEnable": false,
+    "profilePic": "",
+    "rotation": null,
+    "aadharCardNumber": "111",
+    "fullName": "kkpp",
+    "remainingRides": null,
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9970707070",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "",
+    "reviewsSum": "0.0",
+    "location": null
+  },
+  {
+    "id": "r1lWusmkPicV9HJ0419NzXpyJmK2",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "Thane",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "DicSuP6axRZ4CK89R5dX",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fr1lWusmkPicV9HJ0419NzXpyJmK2%2F96a366ea-5576-45c8-8440-47feb9e49fe5643303548380948677.jpg?alt=media&token=0e005073-1896-4a63-9db3-428c414d9575",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fr1lWusmkPicV9HJ0419NzXpyJmK2%2Fec2f9602-06e3-454d-a739-88f6a226a4a96961066647586525726.jpg?alt=media&token=361761d6-bbde-4782-a84c-d594d925cc6e",
+      "seats": "3",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        }
+      ],
+      "vehicleFuel": "StMUHxyOmoRa8yBXQ09g",
+      "rcNumber": "123456789",
+      "nonAcPerkmRate": "18.5",
+      "registrationDate": {
+        "_seconds": 1756721084,
+        "_nanoseconds": 126329000
+      },
+      "vehicleNumber": "MH23S4572",
+      "vehicleModel": "jtcg6vOTisE2FOG8S9ug",
+      "vehicleType": "Auto",
+      "vehicleColor": "Black",
+      "engineNumber": "123456789",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fr1lWusmkPicV9HJ0419NzXpyJmK2%2F1000828300.jpg?alt=media&token=6cd172ac-45cc-426a-ae4e-de9335bc9a12",
+      "chassisNumber": "123456789",
+      "permitNumber": "MH23S4572 ",
+      "carrier": false,
+      "vehicle_manufactureDate": "2025-08-23",
+      "districtId": "23oEsZZYXwQyv4VkvJI3",
+      "registrationType": "null",
+      "acPerkmRate": "0",
+      "district": "Thane",
+      "vehicle_registrationDate": "2025-08-01"
+    },
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1756472873,
+        "_nanoseconds": 762000000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.423728813559322",
+      "remainingDays": null,
+      "id": null,
+      "subscription_role": "driver",
+      "subscription_plan": {
+        "duration": "unlimited",
+        "image": "",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "amount": "30",
+        "tds": "0",
+        "enable": true,
+        "name": "30 Rs ",
+        "description": "Unlimited Days 10 Ride",
+        "gst": "18",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10"
+      },
+      "start_date": {
+        "_seconds": 1756472873,
+        "_nanoseconds": 762000000
+      }
+    },
+    "isOnline": true,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1756468012,
+      "_nanoseconds": 80581000
+    },
+    "referenceNumber": "1",
+    "countryCode": "+91",
+    "documentVerification": true,
+    "insuranceDetails": {
+      "insuranceAmount": "5000",
+      "insurancePremium": "500",
+      "agentCode": "1",
+      "nomineeRelation": "sistar ",
+      "agentName": "Shiv",
+      "insuaranceType": "Third Party",
+      "nomineeName": "Kyu",
+      "paid_receipt_number": "123456",
+      "paymentType": "null",
+      "insuranceNumber": "123456789",
+      "nomineeAge": "8",
+      "insuaranceCompany": "5j3ur7bjGJYvbxix42Bx",
+      "paymentDate": "2025-08-31",
+      "insuranceExpiryDate": "2025-08-31",
+      "nomineeNumber": "null"
+    },
+    "state": "Maharastra",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "fcmToken": "cmjl7MB4T_SLqcbLKGakiY:APA91bGO5-RDakZAnSUMhCHo2eAY9yVpXiT0lbXvaXUl5H3mw8sVo7v0o8i5bg91hxURshye7cAEfZ45l12XDLAbnqu2FZ1egRDJsN57AZyZ8Ih8NEOj9LA",
+    "email": "kyuchavan@gmail.com",
+    "referenceName": "Shiv",
+    "pincode": "421503",
+    "complimentary_rides": 8,
+    "address": "Shreeji Heights, Old DP Rd, Surya Nagar, Katrap, Badlapur, Maharashtra 421503, India",
+    "group_name": "Shivraj ",
+    "cobNumber": "COB - MH 02/2025",
+    "isSubscriptionEnable": true,
+    "profilePic": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/profileImage%2Fr1lWusmkPicV9HJ0419NzXpyJmK2%2F1000790426.jpg?alt=media&token=c6b2a981-cb17-45a2-8b5c-93ee58caf6c8",
+    "rotation": 0,
+    "fullName": "Shivraj ",
+    "remainingRides": "10",
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9823776570",
+    "zoneIds": [
+      "Pp2A2UlkFQ7yZnIG7ZVT"
+    ],
+    "reviewsSum": "0.0",
+    "location": null,
+    "position": {
+      "geohash": "te7vqgytb",
+      "geopoint": {
+        "_latitude": 19.2257258,
+        "_longitude": 73.0790001
+      }
+    }
+  },
+  {
+    "id": "rasBoJeOxydSCjnUnmisxtB5IZF3",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "city": "6BgzRL4WTWg2yNwY2uJJ",
+    "loginType": "phone",
+    "panCardPhoto": "",
+    "isOnline": false,
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/98405ad4-ae7e-4cab-b353-ef29076e553b5029073273381145957.jpg",
+    "createdAt": {
+      "_seconds": 1765258133,
+      "_nanoseconds": 914966000
+    },
+    "referenceNumber": "8181",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "aauPMwizcKjSyCFmZJTG",
+    "email": "mm@gmail.com",
+    "referenceName": "181881",
+    "pincode": "199119",
+    "address": "669, Shanti Nagar 1, Ash Nagar Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "100101",
+    "cobNumber": "COB - MH 31/2025",
+    "profilePic": "",
+    "rotation": null,
+    "aadharCardNumber": "17717",
+    "fullName": "mm",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9900000099",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "919191",
+    "location": null,
+    "complimentary_rides": 0,
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "fcmToken": "f1FjnFUWQ9e6QDdOWtJ9kL:APA91bGOXXKb9gGXRsK5kA7PTtmKITnFhq-ur-yqJiXSjHYeA3UDhqOKYguPpY8GUz85v2iIuc2BeKvF6F1cvt2ziTcPPefqsmZ4NZ9qaJJGnYCp7E9PvF8",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "DicSuP6axRZ4CK89R5dX",
+      "rcImage": "",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FrasBoJeOxydSCjnUnmisxtB5IZF3%2Fb94e31d9-1ba7-4d86-8414-0e8b26cb53cd2251778283334284185.jpg?alt=media&token=430c1c63-160a-413a-8124-42fa2036f118",
+      "seats": "2",
+      "driverRules": [],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "nonAcPerkmRate": "10",
+      "rcNumber": "",
+      "registrationDate": {
+        "_seconds": 1765258861,
+        "_nanoseconds": 466678000
+      },
+      "vehicleModel": "jtcg6vOTisE2FOG8S9ug",
+      "vehicleNumber": "2233",
+      "vehicleType": "Auto",
+      "vehicleColor": "Gray",
+      "engineNumber": "4",
+      "selfiPhoto": "",
+      "chassisNumber": "444",
+      "carrier": false,
+      "permitNumber": "333",
+      "vehicle_manufactureDate": "2025-12-02",
+      "districtId": "5nehguUEAWURQ76eAsfw",
+      "acPerkmRate": "",
+      "district": "Ambala",
+      "vehicle_registrationDate": "2025-12-09",
+      "registrationType": "null"
+    },
+    "serviceId": null
+  },
+  {
+    "id": "ruGHbXsXNyQ2dEWpGVpmVZ8XppN2",
+    "group_name": "rr",
+    "email": "vickyrajvr748850@gmail.com",
+    "city": "3YbXe79MGc9njetxrTvF",
+    "countryCode": "+91",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "7991195084",
+    "referenceNumber": "c",
+    "reviewsSum": "0.0",
+    "remainingRides": null,
+    "referenceName": "f",
+    "location": null,
+    "rotation": null,
+    "createdAt": {
+      "_seconds": 1758907814,
+      "_nanoseconds": 338734000
+    },
+    "cobNumber": "COB - MH 17/2025",
+    "serviceId": null,
+    "documentVerification": false,
+    "pincode": "xas",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "gender": "Male",
+    "complimentary_rides": 0,
+    "walletAmount": "0.0",
+    "fcmToken": null,
+    "profilePic": "",
+    "isOnline": false,
+    "fullName": "Vicky Raj",
+    "reviewsCount": "0.0",
+    "state": "aauPMwizcKjSyCFmZJTG",
+    "serviceType": "City Ride",
+    "isSubscriptionEnable": false,
+    "address": "48CX+88F, Patahin, Muzaffarpur, Bihar 843113, India",
+    "loginType": "google"
+  },
+  {
+    "id": "rxsscujbjfaALjk8OszA8fwqOFl2",
+    "serviceType": "City Ride",
+    "gender": "Female",
+    "loginType": "phone",
+    "city": "5pGF3WbrM3cpqjnTUfwt",
+    "panCardPhoto": "",
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/2a0db927-0560-4426-b45e-3bdad0c56b458444783875880402538.jpg",
+    "createdAt": {
+      "_seconds": 1764673199,
+      "_nanoseconds": 13485000
+    },
+    "referenceNumber": "19918",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "N86fGl4znS1UOz7IYXpx",
+    "serviceId": null,
+    "fcmToken": "eRByBMcCR3akqZ33QOPmcx:APA91bFzOrBwNuYAYmYLyQ1HfCa2c3VZ7in1JsT9G30girMsrl68dTZHwhYTiu1R9bkj26Rr0A-krNy902E1lNO2Wwt8s7W-VBo_c_Uc5wBpk74oBuJUA7o",
+    "email": "kj@gmail.com",
+    "referenceName": "testing",
+    "pincode": "91991",
+    "complimentary_rides": 0,
+    "address": "JD Chambers, B-12, Bombay Market-Punagam Rd, opp. arpan school, Shanti Nagar 1, Sitanagar, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test",
+    "cobNumber": "COB - MH 25/2025",
+    "isSubscriptionEnable": false,
+    "profilePic": "",
+    "rotation": null,
+    "aadharCardNumber": "1111",
+    "fullName": "kj",
+    "remainingRides": null,
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9955005500",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "",
+    "reviewsSum": "0.0",
+    "location": null
+  },
+  {
+    "id": "shlglFp2fFPrGsGAJ83s70GncPd2",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1756638777,
+      "_nanoseconds": 59118000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "fcmToken": null,
+    "email": "satishrgaikwad81@email.com",
+    "referenceName": "",
+    "pincode": "411017",
+    "complimentary_rides": 0,
+    "address": "1, near Kokane Chowk, Jagtap Dairy, Wakad, Pimpri-Chinchwad, Maharashtra 411057, India",
+    "group_name": "",
+    "cobNumber": "COB - MH 08/2025",
+    "profilePic": "/data/user/0/com.comingbro.driver/cache/2a225d6c-c80b-4253-92c8-8994ff8a31619157745870565534316.jpg",
+    "rotation": null,
+    "fullName": "Satish Ramesh Gaikwad",
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9172062501",
+    "reviewsSum": "0.0",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "CtVlx1XmvbXYxRurJTri",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FshlglFp2fFPrGsGAJ83s70GncPd2%2F04b44189-5912-4867-83a0-bf571230ad6b612702568032741261.jpg?alt=media&token=e2d80d0d-43b4-4717-9b2a-5ceba4bf8329",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FshlglFp2fFPrGsGAJ83s70GncPd2%2Fbce86aab-8cc2-42c1-b080-0a25c51c01333192784220221118677.jpg?alt=media&token=343e2444-ac88-4957-8b2e-8ddda11ccbc1",
+      "seats": "3",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "vehicleFuel": "StMUHxyOmoRa8yBXQ09g",
+      "rcNumber": "MH12VW3605",
+      "registrationDate": {
+        "_seconds": 1756639185,
+        "_nanoseconds": 215785000
+      },
+      "vehicleNumber": "MH12VW3605",
+      "vehicleModel": "Ma80VnKEh9NAriarJRwk",
+      "vehicleType": "Auto",
+      "vehicleColor": "Black",
+      "engineNumber": "AZXWPG65901",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FshlglFp2fFPrGsGAJ83s70GncPd2%2F4418f05a-a00c-4533-8f80-b9b7e5bc121f5352921229892418775.jpg?alt=media&token=20ffb1ea-93f2-4740-acb4-33c268960d19",
+      "chassisNumber": "MD2B47AXOPWG44202",
+      "permitNumber": "MH12VW3605",
+      "carrier": false,
+      "vehicle_manufactureDate": "2023-10-10",
+      "districtId": "S0sMF8RaqaGzmLZy7REM",
+      "registrationType": "null",
+      "district": "Pune",
+      "vehicle_registrationDate": "2023-11-23",
+      "acPerkmRate": "0",
+      "nonAcPerkmRate": "17"
+    },
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "documentVerification": true,
+    "location": {
+      "latitude": 43634,
+      "longitude": 3464564634
+    },
+    "accept_terms": true,
+    "isSubscriptionEnable": true,
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1758175696,
+        "_nanoseconds": 994000000
+      },
+      "start_date": {
+        "_seconds": 1758175696,
+        "_nanoseconds": 994000000
+      },
+      "end_date": null,
+      "remainingDays": null,
+      "gst_amount": 4.576271186440678,
+      "subscription_amount": 25.423728813559322,
+      "subscription_plan": {
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "gst": "18",
+        "ride": "10",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "enable": true,
+        "tds": "0",
+        "name": "30 Rs ",
+        "amount": "30",
+        "duration": "unlimited",
+        "description": "Unlimited Days 10 Ride",
+        "image": ""
+      },
+      "subscription_role": "driver"
+    },
+    "remainingRides": "10",
+    "insuranceDetails": {
+      "insuaranceCompany": "Cvg6vG4b6LUYbzBTzA9V",
+      "insuaranceType": "Comprehensive + Third Party",
+      "insuranceNumber": "2695799",
+      "insuranceExpiryDate": "2025-06-11",
+      "insuranceAmount": "300000",
+      "insurancePremium": "3500",
+      "paymentType": "",
+      "paid_receipt_number": "59874",
+      "paymentDate": "2024-06-11",
+      "nomineeName": "A",
+      "nomineeNumber": "null",
+      "nomineeRelation": "A",
+      "nomineeAge": "35",
+      "agentName": "",
+      "agentCode": ""
+    }
+  },
+  {
+    "id": "te3rdBg28hZWd2948FeM1kO6pdN2",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "BWTtiypvMT5Qrr2cJSv7",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "CtVlx1XmvbXYxRurJTri",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fte3rdBg28hZWd2948FeM1kO6pdN2%2Fabceb0d6-21a6-4170-b7b8-7d1aa917f3a75264185336552112472.jpg?alt=media&token=42280bd5-22bc-4d2a-9160-8dc546748a08",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fte3rdBg28hZWd2948FeM1kO6pdN2%2Fe339b648-4efb-4431-bc10-c69f33c51ad36854204975053493796.jpg?alt=media&token=032cc0c5-3c6d-44ff-b322-acce3c4430b6",
+      "seats": "3",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno%20smoking_1691733738568.jpg?alt=media&token=976d152e-8d1f-4874-ab65-0903b47c70a5",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Please, no smoking in the car",
+          "id": "dvjtqymfqvwX892QIx9A"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Falvey_1691792899903.png?alt=media&token=fb3f2e39-e0f4-4b6b-8e2e-e972b1d72798",
+          "isDeleted": false,
+          "enable": true,
+          "name": "No Alcohol closed/open",
+          "id": "lROKcZhOfJ7dWqsvphpH"
+        }
+      ],
+      "vehicleFuel": "StMUHxyOmoRa8yBXQ09g",
+      "rcNumber": "xyz",
+      "nonAcPerkmRate": "22",
+      "registrationDate": {
+        "_seconds": 1763704381,
+        "_nanoseconds": 843278000
+      },
+      "vehicleNumber": "xyz",
+      "vehicleModel": "Ftl6QlgwHE83zVH5lYsJ",
+      "vehicleType": "Auto",
+      "vehicleColor": "Orange",
+      "engineNumber": "123456789",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fte3rdBg28hZWd2948FeM1kO6pdN2%2Fdbf87adc-fb21-40f0-beea-77799ac0edfd126373728226127916.jpg?alt=media&token=48067c4e-2a5f-4adf-9d19-476375cd9a8e",
+      "chassisNumber": "987654321",
+      "permitNumber": "xyz",
+      "carrier": false,
+      "vehicle_manufactureDate": "2020-10-01",
+      "districtId": "S0sMF8RaqaGzmLZy7REM",
+      "registrationType": "null",
+      "acPerkmRate": "0",
+      "district": "Pune",
+      "vehicle_registrationDate": "2020-11-01"
+    },
+    "subscriptionInformation": {
+      "date": {
+        "_seconds": 1763704861,
+        "_nanoseconds": 165000000
+      },
+      "end_date": null,
+      "gst_amount": "4.576271186440678",
+      "subscription_amount": "25.423728813559322",
+      "remainingDays": null,
+      "id": null,
+      "subscription_role": "driver",
+      "subscription_plan": {
+        "duration": "unlimited",
+        "image": "",
+        "createdAt": {
+          "_seconds": 1754757208,
+          "_nanoseconds": 562000000
+        },
+        "amount": "30",
+        "tds": "0",
+        "enable": true,
+        "name": "30 Rs ",
+        "description": "Unlimited Days 10 Ride",
+        "gst": "18",
+        "id": "Ltdf0HVwFIa6BYBTM6BN",
+        "ride": "10"
+      },
+      "start_date": {
+        "_seconds": 1763704861,
+        "_nanoseconds": 165000000
+      }
+    },
+    "isOnline": true,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1763703932,
+      "_nanoseconds": 558505000
+    },
+    "referenceNumber": "",
+    "countryCode": "+91",
+    "insuranceDetails": {
+      "insuranceAmount": "250000",
+      "insurancePremium": "3500",
+      "agentCode": "143",
+      "nomineeRelation": "aasch",
+      "agentName": "yz",
+      "insuaranceType": "Comprehensive + Third Party",
+      "nomineeName": "ypr",
+      "paid_receipt_number": "56555",
+      "paymentType": "UPI",
+      "insuranceNumber": "12 ey",
+      "nomineeAge": "143",
+      "insuaranceCompany": "Cvg6vG4b6LUYbzBTzA9V",
+      "paymentDate": "2025-11-21",
+      "insuranceExpiryDate": "2026-11-21",
+      "nomineeNumber": "null"
+    },
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "fcmToken": "dqSN8rw-RfGPUtJ1gnTp7i:APA91bETi4Hz36oKq3UrSMsGanZRK4DSywORDnbpRg4WhaTdBGesx2AG3SN3EnomfwVLoSVYxFu7CbmDh22GyTpjqpxNIEQMltzYlG0PZQtUB9QjFSn8pe4",
+    "email": "patil.prakash25@gmail.com",
+    "referenceName": "",
+    "pincode": "412105",
+    "complimentary_rides": 0,
+    "address": "Gat No-59.Snehasparsh, s. p. college moshi Alandi BRT Road, Alnadi pune - 412105, Alandi, Maharashtra 412105, India",
+    "group_name": "",
+    "cobNumber": "COB - MH 20/2025",
+    "isSubscriptionEnable": true,
+    "profilePic": "",
+    "rotation": 0,
+    "fullName": "PRY",
+    "remainingRides": "9",
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "8830769210",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "reviewsSum": "0.0",
+    "location": {
+      "latitude": 18.6719692,
+      "longitude": 73.8854495
+    },
+    "position": {
+      "geohash": "tekd1r1sp",
+      "geopoint": {
+        "_latitude": 18.6719692,
+        "_longitude": 73.8854495
+      }
+    },
+    "documentVerification": true
+  },
+  {
+    "id": "ticHw4TOUpbXIwLVYFA0gO8s1NV2",
+    "serviceType": "City Ride",
+    "gender": "Female",
+    "loginType": "phone",
+    "city": "5pGF3WbrM3cpqjnTUfwt",
+    "panCardPhoto": "/data/user/0/com.comingbro.driver/cache/cc75e59d-5d47-43e1-8946-6571870ab2c65953202923587195443.jpg",
+    "isOnline": false,
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/60a03f05-22e8-41cb-87c9-789e482eacec4474491657979541406.jpg",
+    "createdAt": {
+      "_seconds": 1769583656,
+      "_nanoseconds": 946963000
+    },
+    "referenceNumber": "91919",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "N86fGl4znS1UOz7IYXpx",
+    "serviceId": null,
+    "email": "kp@gmail.com",
+    "referenceName": "test",
+    "pincode": "288292",
+    "address": "Sankar Lal Society, Khodiyaar Nagar, Arjun Nagar Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test",
+    "cobNumber": "COB - MH 02/2026",
+    "rotation": null,
+    "profilePic": "",
+    "aadharCardNumber": "181818",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9970607060",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "61616",
+    "location": null,
+    "complimentary_rides": 0,
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "fullName": "kp1",
+    "fcmToken": "d19-Fx-RS-e5OISEHnNvtF:APA91bHvMM5mijluLgT1_iMBO7gWTVQDFd9v8FGlvlmcf64vFoJGnCz6H3qZWb__uQe1jHxnlHkSpOKdA_i3XKdQ45BF59vPiidj-dYVjmBmpFtODyLZ25M"
+  },
+  {
+    "id": "xWi69pBnPtUorqwzBJd3JUVXZgt2",
+    "serviceType": "City Ride, Rental, Outstation",
+    "gender": "Female",
+    "loginType": "phone",
+    "city": "6BgzRL4WTWg2yNwY2uJJ",
+    "panCardPhoto": "",
+    "isOnline": false,
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/2ab7d285-986f-4b25-85d4-8e8c3351acff8731700672446116844.jpg",
+    "createdAt": {
+      "_seconds": 1765260875,
+      "_nanoseconds": 307761000
+    },
+    "referenceNumber": "1771",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "aauPMwizcKjSyCFmZJTG",
+    "email": "ka@gmail.com",
+    "referenceName": "hqhhq",
+    "pincode": "8181",
+    "address": "497-496, beside Brahma Kumaris Rajayoga Meditation Centre, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "testy",
+    "cobNumber": "COB - MH 32/2025",
+    "profilePic": "",
+    "rotation": null,
+    "aadharCardNumber": "81818",
+    "fullName": "ka",
+    "remainingRides": null,
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9988000099",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "",
+    "complimentary_rides": 0,
+    "isSubscriptionEnable": false,
+    "reviewsSum": "0.0",
+    "reviewsCount": "0.0",
+    "walletAmount": "0.0",
+    "fcmToken": "ctJ_8ihlTlGKEOJ4A6Req5:APA91bE592R3snewMKaUOKU1dPfkYXIIDPOTlACkZSITsHYnCVmsCnpzrU3p7C1zr4QtberRSR6j64Ak57ka4Pqyt_ySAN-AU3uuWI9reCZouicQ4fjtBIM",
+    "serviceId": "GlW3GhOBkbu2gtJwr6jH",
+    "vehicleInformation": {
+      "vehicleTypeId": "NJZPuhfsPMm5dNOMXOnp",
+      "companyName": "DicSuP6axRZ4CK89R5dX",
+      "rcImage": "",
+      "seats": "3",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FxWi69pBnPtUorqwzBJd3JUVXZgt2%2F0dae05fd-b525-4598-9cc5-9dbc1e7667f64526645354648753848.jpg?alt=media&token=d2e7e2d1-6370-47ea-86e1-10c51529b103",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        },
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fno-pets-allowed-sign-clipart-1_1691733805076.png?alt=media&token=be1a52fd-492f-42b4-90c6-96ac75cb0cf0",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Sorry, not a pet",
+          "id": "IiKGMctfRkt0K5fKWRxz"
+        }
+      ],
+      "vehicleFuel": "AEfMC3omauZ8RtzAFRRo",
+      "nonAcPerkmRate": "10",
+      "rcNumber": "",
+      "registrationDate": {
+        "_seconds": 1765517157,
+        "_nanoseconds": 576149000
+      },
+      "vehicleNumber": "777",
+      "vehicleModel": "jtcg6vOTisE2FOG8S9ug",
+      "vehicleType": "Auto",
+      "vehicleColor": "Orange",
+      "engineNumber": "1881",
+      "selfiPhoto": "",
+      "chassisNumber": "1880",
+      "carrier": false,
+      "permitNumber": "1881",
+      "vehicle_manufactureDate": "2015-12-12",
+      "districtId": "fjpkfQhQnWENQfsgARVg",
+      "acPerkmRate": "",
+      "district": "Amravati",
+      "vehicle_registrationDate": "2025-12-12",
+      "registrationType": "null"
+    },
+    "insuranceDetails": {
+      "insuaranceCompany": "",
+      "insuaranceType": "",
+      "insuranceNumber": "",
+      "insuranceExpiryDate": "",
+      "insuranceAmount": "",
+      "insurancePremium": "",
+      "paymentType": "",
+      "paid_receipt_number": "",
+      "paymentDate": "",
+      "nomineeName": "",
+      "nomineeNumber": "",
+      "nomineeRelation": "",
+      "nomineeAge": "",
+      "agentName": "",
+      "agentCode": ""
+    },
+    "location": {
+      "latitude": 23,
+      "longitude": 72
+    },
+    "accept_terms": false
+  },
+  {
+    "id": "ybqFVKy1QThAaSgyY4879DRA9vZ2",
+    "serviceType": "City Ride",
+    "gender": "Male",
+    "loginType": "phone",
+    "city": "DYqziBjlwWflpkkiNNn8",
+    "vehicleInformation": {
+      "vehicleTypeId": "bc8ItwNooNAtcME5CiTo",
+      "companyName": "FyFOOjKUePq4JnpoiKQ6",
+      "rcImage": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FybqFVKy1QThAaSgyY4879DRA9vZ2%2Fb33080dd-f9a8-4690-bae3-30a7e695c4a98458073484628714086.jpg?alt=media&token=d298e31d-8075-4b72-8fef-bb453a7a01a0",
+      "permitPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FybqFVKy1QThAaSgyY4879DRA9vZ2%2F22130721-9a6e-4177-ac6f-80d5598ec14d7411927011503428377.jpg?alt=media&token=2ebecd17-3df8-4ba0-ad08-1fba303dfc2b",
+      "seats": "3",
+      "driverRules": [
+        {
+          "image": "https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Feating%20not%20allowed_1691733576802.jpg?alt=media&token=bf3e0ded-eca2-420d-9762-522ee42e2c19",
+          "isDeleted": false,
+          "enable": true,
+          "name": "Eating is not allowed in the car",
+          "id": "BaX6hD159PFPcT0rRsP6"
+        }
+      ],
+      "vehicleFuel": "qpbX1QA875b66DKsh9OY",
+      "rcNumber": "1818",
+      "nonAcPerkmRate": "13",
+      "registrationDate": {
+        "_seconds": 1756466150,
+        "_nanoseconds": 33852000
+      },
+      "vehicleNumber": "1771",
+      "vehicleModel": "8QbOhPHILMmh1H6Nb2KR",
+      "vehicleType": "Sedan ",
+      "vehicleColor": "Red",
+      "engineNumber": "1919",
+      "selfiPhoto": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FybqFVKy1QThAaSgyY4879DRA9vZ2%2F1b3a5bc2-618d-477d-9e0a-ab2eeaa2611d6116545168094424967.jpg?alt=media&token=64919e96-c2b5-4e68-9f60-77f3821850a2",
+      "chassisNumber": "1818",
+      "permitNumber": "17718",
+      "carrier": false,
+      "vehicle_manufactureDate": "2025-08-29",
+      "districtId": "9ASmtp0GgwSYMGvgf6DD",
+      "registrationType": "null",
+      "acPerkmRate": "10",
+      "district": "Chatrapati Sambhaji Nagar",
+      "vehicle_registrationDate": "2025-08-29"
+    },
+    "isOnline": true,
+    "reviewsCount": "0.0",
+    "createdAt": {
+      "_seconds": 1756466053,
+      "_nanoseconds": 603938000
+    },
+    "referenceNumber": "16717",
+    "countryCode": "+91",
+    "insuranceDetails": {
+      "insuranceAmount": "13000",
+      "insurancePremium": "6000",
+      "agentCode": "881818",
+      "nomineeRelation": "father",
+      "agentName": "test",
+      "insuaranceType": "Comprehensive",
+      "nomineeName": "test",
+      "paid_receipt_number": "3131361",
+      "paymentType": "Net Banking",
+      "insuranceNumber": "91991",
+      "nomineeAge": "30",
+      "insuaranceCompany": "XS4Vz9cr8JVXsWEwIKVu",
+      "paymentDate": "2025-08-29",
+      "insuranceExpiryDate": "2025-08-29",
+      "nomineeNumber": "null"
+    },
+    "state": "euTqaIgQL4Nn8sR8iUFr",
+    "serviceId": "VXmBuNgKxOomZzc8iOgV",
+    "fcmToken": "d6TOvXCCTR61jYXQaXVdu1:APA91bFTnl2c57pfIrDCWcytH9ZK7_fqhfGDpKAdotNjDIdtupHX_f0KZJtoOoFChY0ojXsEprqVYLqLVMT9FJzc2Xim6sDeKkF1Flh9YKcZm5asHsyng1E",
+    "email": "k@k.com",
+    "referenceName": "test",
+    "pincode": "1001919",
+    "complimentary_rides": 0,
+    "address": "Sankar Lal Society, B-102, Khodiyaar Nagar, Arjun Nagar Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test",
+    "cobNumber": "COB - MH 01/2025",
+    "isSubscriptionEnable": false,
+    "profilePic": "",
+    "rotation": 359.3716125488281,
+    "fullName": "kk",
+    "remainingRides": null,
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9912345677",
+    "zoneIds": [
+      "Pp2A2UlkFQ7yZnIG7ZVT"
+    ],
+    "reviewsSum": "0.0",
+    "location": null,
+    "position": {
+      "geohash": "tegbdk6hq",
+      "geopoint": {
+        "_latitude": 21.2057534,
+        "_longitude": 72.8753314
+      }
+    },
+    "documentVerification": true
+  },
+  {
+    "id": "zjx4fuHqRWOvSSzjI9PQSPGLke83",
+    "serviceType": "City Ride",
+    "gender": "Female",
+    "loginType": "phone",
+    "city": "6Ug7NirIFUA2IhIpEaaJ",
+    "panCardPhoto": "",
+    "isOnline": false,
+    "reviewsCount": "0.0",
+    "aadharCardPhoto": "/data/user/0/com.comingbro.driver/cache/f340da18-159d-4f67-a942-5652c15c03597176978334157023833.jpg",
+    "createdAt": {
+      "_seconds": 1764677090,
+      "_nanoseconds": 312111000
+    },
+    "referenceNumber": "11001",
+    "countryCode": "+91",
+    "documentVerification": false,
+    "state": "1BK4PJ6raZaegx3EMYTH",
+    "serviceId": null,
+    "fcmToken": null,
+    "email": "jj@gmail.com",
+    "referenceName": "test",
+    "pincode": "1991",
+    "complimentary_rides": 0,
+    "address": "Ramdev Nagar Society, Parasmani Society, Punagam, Varachha, Surat, Gujarat 395011, India",
+    "group_name": "test",
+    "cobNumber": "COB - MH 27/2025",
+    "isSubscriptionEnable": null,
+    "profilePic": "",
+    "rotation": null,
+    "aadharCardNumber": "81818",
+    "fullName": "jj",
+    "remainingRides": null,
+    "walletAmount": "0.0",
+    "subscriptionExpiredAt": null,
+    "phoneNumber": "9988772222",
+    "zoneIds": [
+      "8YIeHEEeJkPMqv2asHAy"
+    ],
+    "panCardNumber": "",
+    "reviewsSum": "0.0",
+    "location": null
+  }
+]

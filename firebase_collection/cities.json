@@ -1,0 +1,362 @@
+[
+  {
+    "id": "35xMqy0JOOkCOeR7sB0A",
+    "name": "Ahilyanagar",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028891,
+      "_nanoseconds": 449000000
+    }
+  },
+  {
+    "id": "4OksC0wmQhi7DxWUa9xa",
+    "name": "Akola",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028286,
+      "_nanoseconds": 3000000
+    }
+  },
+  {
+    "id": "4Vyn6HJwPMfOXC3Ldj3X",
+    "name": "Sindhudurga",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028617,
+      "_nanoseconds": 148000000
+    }
+  },
+  {
+    "id": "9yqk3OuTsc5NibOPjElU",
+    "name": "Nagpur",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028331,
+      "_nanoseconds": 949000000
+    }
+  },
+  {
+    "id": "A54ugC7d6FpAym8LES1v",
+    "name": "Yavatmal",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028391,
+      "_nanoseconds": 420000000
+    }
+  },
+  {
+    "id": "AEmP6aUwyZMEzt8laVMq",
+    "name": "Beed",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028224,
+      "_nanoseconds": 809000000
+    }
+  },
+  {
+    "id": "BWTtiypvMT5Qrr2cJSv7",
+    "name": "Pune",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1753767193,
+      "_nanoseconds": 287000000
+    }
+  },
+  {
+    "id": "Bp0UMtSGZoZkI2h3wN3p",
+    "name": "Sambhaji nagar",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754027776,
+      "_nanoseconds": 509000000
+    }
+  },
+  {
+    "id": "CAbgfJ4yGPxpOykpJCnr",
+    "name": "Parbhani",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028494,
+      "_nanoseconds": 778000000
+    }
+  },
+  {
+    "id": "DYqziBjlwWflpkkiNNn8",
+    "name": "Jalana",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028130,
+      "_nanoseconds": 562000000
+    }
+  },
+  {
+    "id": "DmdbtIPNEYBIqCxRmyA1",
+    "name": "Dhule",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028188,
+      "_nanoseconds": 461000000
+    }
+  },
+  {
+    "id": "EyWQp0yb48fRt5GihQ1p",
+    "name": "Buldhana",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028728,
+      "_nanoseconds": 802000000
+    }
+  },
+  {
+    "id": "FDuPl5oXhpZ3BNgftl6h",
+    "name": "Solapur",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028262,
+      "_nanoseconds": 71000000
+    }
+  },
+  {
+    "id": "FRFZaDvT7RuxKEGP0YE5",
+    "name": "Ratnagiri",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028594,
+      "_nanoseconds": 553000000
+    }
+  },
+  {
+    "id": "H1pY60ICU03AHEDv63j6",
+    "name": "Vardha",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028352,
+      "_nanoseconds": 394000000
+    }
+  },
+  {
+    "id": "KKyFTvU2M5SUZbWN1Gqy",
+    "name": "Raigad",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028664,
+      "_nanoseconds": 692000000
+    }
+  },
+  {
+    "id": "MYDypych47mimcxFoiRl",
+    "name": "Palghar",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028031,
+      "_nanoseconds": 766000000
+    }
+  },
+  {
+    "id": "Sip1WVIwYyQ184R50T1G",
+    "name": "Gadchiroli",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028975,
+      "_nanoseconds": 587000000
+    }
+  },
+  {
+    "id": "TMHO9TjU19e9HeXKBmjZ",
+    "name": "Kolhapur",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754027696,
+      "_nanoseconds": 960000000
+    }
+  },
+  {
+    "id": "TOyXIrpL67O7e7Kprm1T",
+    "name": "Thane",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754027742,
+      "_nanoseconds": 420000000
+    }
+  },
+  {
+    "id": "VL8zsMpEKBtdRH8jc23v",
+    "name": "Bhandara",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028921,
+      "_nanoseconds": 544000000
+    }
+  },
+  {
+    "id": "VrcLGwDYiSubelD3tZsa",
+    "name": "Satara",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028061,
+      "_nanoseconds": 818000000
+    }
+  },
+  {
+    "id": "Y8EU6wcXvd3PLrboIYYd",
+    "name": "Dharashiv",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028710,
+      "_nanoseconds": 312000000
+    }
+  },
+  {
+    "id": "YriM15pt07gIV3gyavsJ",
+    "name": "Gondia",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028939,
+      "_nanoseconds": 569000000
+    }
+  },
+  {
+    "id": "ZIlzXTAfEMcvMocOLATb",
+    "name": "Sangali",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028088,
+      "_nanoseconds": 649000000
+    }
+  },
+  {
+    "id": "cnzGKQOVHqNlL2g89JMw",
+    "name": "Mumbai",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754027650,
+      "_nanoseconds": 488000000
+    }
+  },
+  {
+    "id": "kjqYwWyb6Daj1FaLU2Tl",
+    "name": "Nandurbar",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028800,
+      "_nanoseconds": 34000000
+    }
+  },
+  {
+    "id": "lgXPdcCvCH9QejLWlZbp",
+    "name": "Hingoli",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028151,
+      "_nanoseconds": 403000000
+    }
+  },
+  {
+    "id": "mS2y5LWRqOCcfLeyZrAs",
+    "name": "Jalgaon",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028206,
+      "_nanoseconds": 516000000
+    }
+  },
+  {
+    "id": "n245nuEEKZgaepGhzHia",
+    "name": "Nashik",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754027719,
+      "_nanoseconds": 113000000
+    }
+  },
+  {
+    "id": "pc5JxqMT82o5T1om18r6",
+    "name": "Washim",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028823,
+      "_nanoseconds": 789000000
+    }
+  },
+  {
+    "id": "rAX6GwmV2adKcsdfUUH9",
+    "name": "Chandrapur",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028957,
+      "_nanoseconds": 355000000
+    }
+  },
+  {
+    "id": "sjo6gsTWwwr8c8VzIMS2",
+    "name": "Nanded",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028108,
+      "_nanoseconds": 986000000
+    }
+  },
+  {
+    "id": "wULpHBiH9LEH9YG6CM8T",
+    "name": "Latur",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028241,
+      "_nanoseconds": 645000000
+    }
+  },
+  {
+    "id": "wyFsTTWX832lVX7BZsDo",
+    "name": "Amravati",
+    "stateId": "euTqaIgQL4Nn8sR8iUFr",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754028310,
+      "_nanoseconds": 316000000
+    }
+  },
+  {
+    "id": "z8mOvuPO8QvRPNsOefQA",
+    "name": "Belgaon",
+    "stateId": "QeYIZgldsJqLgu1hHs0K",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1771407803,
+      "_nanoseconds": 196000000
+    }
+  }
+]

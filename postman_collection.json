@@ -1,0 +1,1828 @@
+{
+	"info": {
+		"_postman_id": "cb1a2d3e-4f56-7890-abcd-ef1234567890",
+		"name": "ComingBro Driver API",
+		"description": "Complete API collection for ComingBro Driver App (Laravel backend)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://comingbro.nextgeniusinfotech.com/api/driver",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "driver_id",
+			"value": "DRV_RAJESH_001",
+			"type": "string"
+		},
+		{
+			"key": "customer_id",
+			"value": "CUST_PRIYA_001",
+			"type": "string"
+		},
+		{
+			"key": "order_id",
+			"value": "ORD_20240115_001",
+			"type": "string"
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Send OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.data && jsonData.data.verification_id) {",
+									"    pm.collectionVariables.set('verification_id', jsonData.data.verification_id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone_number\": \"9876543210\",\n    \"country_code\": \"+91\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/send-otp",
+							"host": ["{{base_url}}"],
+							"path": ["send-otp"]
+						},
+						"description": "Send OTP to driver's phone number for login"
+					},
+					"response": []
+				},
+				{
+					"name": "Verify OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.data && jsonData.data.token) {",
+									"    pm.collectionVariables.set('auth_token', jsonData.data.token);",
+									"}",
+									"if (jsonData.data && jsonData.data.user && jsonData.data.user.id) {",
+									"    pm.collectionVariables.set('driver_id', jsonData.data.user.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"verification_id\": \"{{verification_id}}\",\n    \"otp\": \"123456\",\n    \"phone_number\": \"9876543210\",\n    \"country_code\": \"+91\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/verify-otp",
+							"host": ["{{base_url}}"],
+							"path": ["verify-otp"]
+						},
+						"description": "Verify OTP and get auth token"
+					},
+					"response": []
+				},
+				{
+					"name": "Social Login (Google)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.data && jsonData.data.token) {",
+									"    pm.collectionVariables.set('auth_token', jsonData.data.token);",
+									"}",
+									"if (jsonData.data && jsonData.data.user && jsonData.data.user.id) {",
+									"    pm.collectionVariables.set('driver_id', jsonData.data.user.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login_type\": \"google\",\n    \"email\": \"rajesh.sharma@gmail.com\",\n    \"full_name\": \"Rajesh Sharma\",\n    \"profile_pic\": \"https://lh3.googleusercontent.com/a/photo123\",\n    \"id\": \"google_uid_rajesh_001\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/social-login",
+							"host": ["{{base_url}}"],
+							"path": ["social-login"]
+						},
+						"description": "Login via Google or Apple social auth"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/logout",
+							"host": ["{{base_url}}"],
+							"path": ["logout"]
+						},
+						"description": "Logout and revoke current auth token"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/delete-account",
+							"host": ["{{base_url}}"],
+							"path": ["delete-account"]
+						},
+						"description": "Permanently delete driver account"
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication endpoints - OTP, Social Login, Logout"
+		},
+		{
+			"name": "Settings & Onboarding",
+			"item": [
+				{
+					"name": "Get Settings",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/settings",
+							"host": ["{{base_url}}"],
+							"path": ["settings"]
+						},
+						"description": "Get app settings (public endpoint)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment Settings",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/payment-settings",
+							"host": ["{{base_url}}"],
+							"path": ["payment-settings"]
+						},
+						"description": "Get payment gateway settings (public endpoint)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Currency",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/currency",
+							"host": ["{{base_url}}"],
+							"path": ["currency"]
+						},
+						"description": "Get active currency details (public endpoint)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Onboarding Screens",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/onboarding",
+							"host": ["{{base_url}}"],
+							"path": ["onboarding"]
+						},
+						"description": "Get onboarding screen data (public endpoint)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Languages",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/languages",
+							"host": ["{{base_url}}"],
+							"path": ["languages"]
+						},
+						"description": "Get available languages (public endpoint)"
+					},
+					"response": []
+				}
+			],
+			"description": "Public endpoints for app settings, payment config, onboarding, and languages"
+		},
+		{
+			"name": "Driver Profile",
+			"item": [
+				{
+					"name": "Get My Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/profile",
+							"host": ["{{base_url}}"],
+							"path": ["profile"]
+						},
+						"description": "Get authenticated driver's profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\": \"Rajesh Kumar Sharma\",\n    \"email\": \"rajesh.sharma@gmail.com\",\n    \"gender\": \"Male\",\n    \"city\": \"Jaipur\",\n    \"state\": \"Rajasthan\",\n    \"pin_code\": \"302001\",\n    \"address\": \"45, Bapu Nagar, MI Road, Jaipur, Rajasthan 302001\",\n    \"profile_pic\": \"https://comingbro.nextgeniusinfotech.com/storage/drivers/rajesh_profile.jpg\",\n    \"service_id\": \"SVC_AUTO_001\",\n    \"service_type\": \"auto\",\n    \"vehicle_type\": \"Auto Rickshaw\",\n    \"vehicle_type_id\": \"VT_AUTO_01\",\n    \"vehicle_number\": \"RJ14SA1234\",\n    \"vehicle_color\": \"Yellow-Green\",\n    \"vehicle_model\": \"Bajaj RE\",\n    \"company_name\": \"Bajaj\",\n    \"vehicle_fuel\": \"CNG\",\n    \"seats\": \"3\",\n    \"rc_number\": \"RJ14SA1234\",\n    \"engine_number\": \"DUZAEG12345\",\n    \"chassis_number\": \"MD2A25AZ8RWD12345\",\n    \"registration_type\": \"Commercial\",\n    \"vehicle_registration_date\": \"2022-06-15\",\n    \"vehicle_manufacture_date\": \"2022\",\n    \"district\": \"Jaipur\",\n    \"district_id\": \"DIST_JPR_01\",\n    \"aadhar_card_number\": \"234567891234\",\n    \"pan_card_number\": \"ABCPS1234K\",\n    \"permit_number\": \"RJ14/PER/2023/001234\",\n    \"cob_number\": \"COB2023001234\",\n    \"reference_number\": \"REF2024001\",\n    \"reference_name\": \"Suresh Verma\",\n    \"fcm_token\": \"dK8xnQ7vR0i...:APA91bHy...\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/profile",
+							"host": ["{{base_url}}"],
+							"path": ["profile"]
+						},
+						"description": "Update driver profile with personal, vehicle, and document details"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile Fields (Partial)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fields\": {\n        \"is_online\": true,\n        \"city\": \"Pune\",\n        \"state\": \"Maharashtra\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/profile/fields",
+							"host": ["{{base_url}}"],
+							"path": ["profile", "fields"]
+						},
+						"description": "Update specific fields of driver profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Driver By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/profile/{{driver_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["profile", "{{driver_id}}"]
+						},
+						"description": "Get a driver's profile by their ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Location",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"latitude\": 26.9124,\n    \"longitude\": 75.7873,\n    \"rotation\": 180.5\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/update-location",
+							"host": ["{{base_url}}"],
+							"path": ["update-location"]
+						},
+						"description": "Update driver's current GPS location (Jaipur coordinates)"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Driver Exists",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/check-exists/{{driver_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["check-exists", "{{driver_id}}"]
+						},
+						"description": "Check if a driver exists by UID"
+					},
+					"response": []
+				},
+				{
+					"name": "Count Drivers By Year",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/count-by-year/2024",
+							"host": ["{{base_url}}"],
+							"path": ["count-by-year", "2024"]
+						},
+						"description": "Get driver registration count by year"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload File",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/path/to/aadhar_front.jpg",
+									"description": "File to upload (max 10MB)"
+								},
+								{
+									"key": "path",
+									"value": "drivers/documents",
+									"type": "text",
+									"description": "Storage path"
+								},
+								{
+									"key": "name",
+									"value": "aadhar_front_rajesh",
+									"type": "text",
+									"description": "Custom file name"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/upload-file",
+							"host": ["{{base_url}}"],
+							"path": ["upload-file"]
+						},
+						"description": "Upload a file (document photo, profile pic, etc.)"
+					},
+					"response": []
+				}
+			],
+			"description": "Driver profile management - view, update, location, file upload"
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Get Customer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/customer/{{customer_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["customer", "{{customer_id}}"]
+						},
+						"description": "Get customer details by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\": \"Priya Patel\",\n    \"phone_number\": \"9123456789\",\n    \"email\": \"priya.patel@gmail.com\",\n    \"city\": \"Ahmedabad\",\n    \"state\": \"Gujarat\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/customer/{{customer_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["customer", "{{customer_id}}"]
+						},
+						"description": "Update customer details"
+					},
+					"response": []
+				}
+			],
+			"description": "Customer management endpoints"
+		},
+		{
+			"name": "City Orders",
+			"item": [
+				{
+					"name": "Get Nearby Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders/nearby?latitude=26.9124&longitude=75.7873&radius=10&service_id=SVC_AUTO_001",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "nearby"],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "26.9124",
+									"description": "Jaipur - Hawa Mahal area"
+								},
+								{
+									"key": "longitude",
+									"value": "75.7873"
+								},
+								{
+									"key": "radius",
+									"value": "10",
+									"description": "Radius in km (default 10)"
+								},
+								{
+									"key": "service_id",
+									"value": "SVC_AUTO_001",
+									"description": "Filter by service type"
+								}
+							]
+						},
+						"description": "Get orders near driver's current location"
+					},
+					"response": []
+				},
+				{
+					"name": "Get First Order by User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders/first-order/{{customer_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "first-order", "{{customer_id}}"]
+						},
+						"description": "Get the first active order for a user"
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders?status=completed&payment_status=paid",
+							"host": ["{{base_url}}"],
+							"path": ["orders"],
+							"query": [
+								{
+									"key": "status",
+									"value": "completed",
+									"description": "Filter by order status"
+								},
+								{
+									"key": "payment_status",
+									"value": "paid",
+									"description": "Filter by payment status"
+								}
+							]
+						},
+						"description": "Get driver's orders with optional filters"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders/{{order_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "{{order_id}}"]
+						},
+						"description": "Get specific order details"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"in_progress\",\n    \"otp\": \"4567\",\n    \"payment_status\": \"pending\",\n    \"payment_method\": \"cash\",\n    \"amount\": \"150.00\",\n    \"distance\": \"5.2\",\n    \"duration\": \"18\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/{{order_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "{{order_id}}"]
+						},
+						"description": "Update order status, payment, etc."
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"driver_id\": \"{{driver_id}}\",\n    \"offer_amount\": \"120\",\n    \"suggested_time\": \"5 mins\",\n    \"suggested_date\": \"2024-01-15\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/{{order_id}}/accept",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "{{order_id}}", "accept"]
+						},
+						"description": "Accept a ride order with optional offer amount"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Accepted Driver Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders/{{order_id}}/accepted/{{driver_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "{{order_id}}", "accepted", "{{driver_id}}"]
+						},
+						"description": "Get accepted driver details for an order"
+					},
+					"response": []
+				}
+			],
+			"description": "City ride order management"
+		},
+		{
+			"name": "Intercity Orders",
+			"item": [
+				{
+					"name": "Get Nearby Intercity Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/intercity-orders/nearby?latitude=28.6139&longitude=77.2090&radius=15&service_id=SVC_SEDAN_001",
+							"host": ["{{base_url}}"],
+							"path": ["intercity-orders", "nearby"],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "28.6139",
+									"description": "Delhi - Connaught Place area"
+								},
+								{
+									"key": "longitude",
+									"value": "77.2090"
+								},
+								{
+									"key": "radius",
+									"value": "15",
+									"description": "Radius in km"
+								},
+								{
+									"key": "service_id",
+									"value": "SVC_SEDAN_001"
+								}
+							]
+						},
+						"description": "Get intercity orders near driver's location"
+					},
+					"response": []
+				},
+				{
+					"name": "Get First Intercity Order by User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/intercity-orders/first-order/{{customer_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["intercity-orders", "first-order", "{{customer_id}}"]
+						},
+						"description": "Get the first active intercity order for a user"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Intercity Order Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/intercity-orders/{{order_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["intercity-orders", "{{order_id}}"]
+						},
+						"description": "Get specific intercity order details"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Intercity Order",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"in_progress\",\n    \"payment_status\": \"pending\",\n    \"payment_method\": \"online\",\n    \"amount\": \"3500.00\",\n    \"distance\": \"268\",\n    \"duration\": \"300\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/intercity-orders/{{order_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["intercity-orders", "{{order_id}}"]
+						},
+						"description": "Update intercity order (e.g., Delhi to Jaipur ride)"
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Intercity Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"driver_id\": \"{{driver_id}}\",\n    \"offer_amount\": \"3200\",\n    \"suggested_time\": \"6:00 AM\",\n    \"suggested_date\": \"2024-01-20\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/intercity-orders/{{order_id}}/accept",
+							"host": ["{{base_url}}"],
+							"path": ["intercity-orders", "{{order_id}}", "accept"]
+						},
+						"description": "Accept an intercity ride order"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Accepted Intercity Driver Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/intercity-orders/{{order_id}}/accepted/{{driver_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["intercity-orders", "{{order_id}}", "accepted", "{{driver_id}}"]
+						},
+						"description": "Get accepted driver details for an intercity order"
+					},
+					"response": []
+				}
+			],
+			"description": "Intercity ride order management"
+		},
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "Get All Documents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/documents",
+							"host": ["{{base_url}}"],
+							"path": ["documents"]
+						},
+						"description": "Get list of all required document types"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/documents/DOC_AADHAR_001",
+							"host": ["{{base_url}}"],
+							"path": ["documents", "DOC_AADHAR_001"]
+						},
+						"description": "Get specific document type details"
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Driver Documents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/driver-documents",
+							"host": ["{{base_url}}"],
+							"path": ["driver-documents"]
+						},
+						"description": "Get all documents uploaded by the driver"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document Numbers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/driver-documents/numbers",
+							"host": ["{{base_url}}"],
+							"path": ["driver-documents", "numbers"]
+						},
+						"description": "Get document numbers (Aadhar, PAN, etc.)"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Document",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"document_id\": \"DOC_AADHAR_001\",\n    \"front_image\": \"https://comingbro.nextgeniusinfotech.com/storage/drivers/documents/aadhar_front_rajesh.jpg\",\n    \"back_image\": \"https://comingbro.nextgeniusinfotech.com/storage/drivers/documents/aadhar_back_rajesh.jpg\",\n    \"document_number\": \"2345 6789 1234\",\n    \"expiry_date\": \"2035-12-31\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/driver-documents/upload",
+							"host": ["{{base_url}}"],
+							"path": ["driver-documents", "upload"]
+						},
+						"description": "Upload a driver document (Aadhar, PAN, DL, RC, etc.)"
+					},
+					"response": []
+				}
+			],
+			"description": "Document management - upload and verify driver documents"
+		},
+		{
+			"name": "Services & Vehicle Data",
+			"item": [
+				{
+					"name": "Get Services",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/services",
+							"host": ["{{base_url}}"],
+							"path": ["services"]
+						},
+						"description": "Get all available services (Auto, Cab, Bike, etc.)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicle Types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/vehicle-types",
+							"host": ["{{base_url}}"],
+							"path": ["vehicle-types"]
+						},
+						"description": "Get all vehicle types"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Districts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/districts",
+							"host": ["{{base_url}}"],
+							"path": ["districts"]
+						},
+						"description": "Get all districts"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Insurance Companies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/insurance-companies",
+							"host": ["{{base_url}}"],
+							"path": ["insurance-companies"]
+						},
+						"description": "Get all insurance companies"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Driver Rules",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/driver-rules",
+							"host": ["{{base_url}}"],
+							"path": ["driver-rules"]
+						},
+						"description": "Get driver rules/guidelines"
+					},
+					"response": []
+				}
+			],
+			"description": "Service types, vehicle data, districts, insurance"
+		},
+		{
+			"name": "Location Data",
+			"item": [
+				{
+					"name": "Get States",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/states",
+							"host": ["{{base_url}}"],
+							"path": ["states"]
+						},
+						"description": "Get all Indian states"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cities",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/cities?state_id=STATE_RJ_01",
+							"host": ["{{base_url}}"],
+							"path": ["cities"],
+							"query": [
+								{
+									"key": "state_id",
+									"value": "STATE_RJ_01",
+									"description": "Filter cities by state"
+								}
+							]
+						},
+						"description": "Get cities, optionally filtered by state"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicle Companies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/vehicle-companies",
+							"host": ["{{base_url}}"],
+							"path": ["vehicle-companies"]
+						},
+						"description": "Get all vehicle companies (Maruti, Tata, Bajaj, etc.)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicle Models",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/vehicle-models?company_id=COMP_MARUTI_01",
+							"host": ["{{base_url}}"],
+							"path": ["vehicle-models"],
+							"query": [
+								{
+									"key": "company_id",
+									"value": "COMP_MARUTI_01",
+									"description": "Filter models by company"
+								}
+							]
+						},
+						"description": "Get vehicle models, optionally filtered by company"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Fuel Types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/fuel-types",
+							"host": ["{{base_url}}"],
+							"path": ["fuel-types"]
+						},
+						"description": "Get all fuel types (Petrol, Diesel, CNG, Electric)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Zones",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/zones",
+							"host": ["{{base_url}}"],
+							"path": ["zones"]
+						},
+						"description": "Get all service zones"
+					},
+					"response": []
+				}
+			],
+			"description": "Location master data - states, cities, zones, vehicle companies/models"
+		},
+		{
+			"name": "Wallet",
+			"item": [
+				{
+					"name": "Get Wallet Transactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/wallet/transactions",
+							"host": ["{{base_url}}"],
+							"path": ["wallet", "transactions"]
+						},
+						"description": "Get driver's wallet transaction history"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Wallet Transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 500.00,\n    \"transaction_type\": \"credit\",\n    \"note\": \"Ride earnings - Jaipur to Ajmer\",\n    \"order_id\": \"{{order_id}}\",\n    \"payment_method\": \"online\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/wallet/transactions",
+							"host": ["{{base_url}}"],
+							"path": ["wallet", "transactions"]
+						},
+						"description": "Create a wallet transaction (credit/debit)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Wallet Amount",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"wallet_amount\": 2450.50\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/wallet/update",
+							"host": ["{{base_url}}"],
+							"path": ["wallet", "update"]
+						},
+						"description": "Update driver's wallet balance"
+					},
+					"response": []
+				}
+			],
+			"description": "Wallet and transaction management"
+		},
+		{
+			"name": "Bank & Withdrawals",
+			"item": [
+				{
+					"name": "Get Bank Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/bank-details",
+							"host": ["{{base_url}}"],
+							"path": ["bank-details"]
+						},
+						"description": "Get driver's saved bank details"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Bank Details",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bank_name\": \"State Bank of India\",\n    \"branch_name\": \"MI Road, Jaipur\",\n    \"account_holder_name\": \"Rajesh Kumar Sharma\",\n    \"account_number\": \"10987654321\",\n    \"ifsc_code\": \"SBIN0001234\",\n    \"other_information\": \"Savings Account\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/bank-details",
+							"host": ["{{base_url}}"],
+							"path": ["bank-details"]
+						},
+						"description": "Update/save bank details for withdrawals"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Bank Details Exist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/bank-details/check",
+							"host": ["{{base_url}}"],
+							"path": ["bank-details", "check"]
+						},
+						"description": "Check if driver has saved bank details"
+					},
+					"response": []
+				},
+				{
+					"name": "Request Withdrawal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 2000.00,\n    \"note\": \"Weekly earnings withdrawal\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/withdraw",
+							"host": ["{{base_url}}"],
+							"path": ["withdraw"]
+						},
+						"description": "Request a wallet withdrawal to bank account"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Withdrawal History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/withdrawals",
+							"host": ["{{base_url}}"],
+							"path": ["withdrawals"]
+						},
+						"description": "Get all withdrawal requests and their status"
+					},
+					"response": []
+				}
+			],
+			"description": "Bank account and withdrawal management"
+		},
+		{
+			"name": "Referrals",
+			"item": [
+				{
+					"name": "Get Referral Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/referral",
+							"host": ["{{base_url}}"],
+							"path": ["referral"]
+						},
+						"description": "Get driver's referral details and code"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Referral",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"referral_code\": \"RAJESH2024\",\n    \"total_earnings\": \"1500.00\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/referral",
+							"host": ["{{base_url}}"],
+							"path": ["referral"]
+						},
+						"description": "Update referral details"
+					},
+					"response": []
+				},
+				{
+					"name": "Apply Referral Code",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"referral_code\": \"SURESH2024\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/referral",
+							"host": ["{{base_url}}"],
+							"path": ["referral"]
+						},
+						"description": "Apply a referral code from another driver"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Referral Logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/referral/logs",
+							"host": ["{{base_url}}"],
+							"path": ["referral", "logs"]
+						},
+						"description": "Get referral activity logs"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Referral Amount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"driver_id\": \"{{driver_id}}\",\n    \"amount\": 100.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/referral/update-amount",
+							"host": ["{{base_url}}"],
+							"path": ["referral", "update-amount"]
+						},
+						"description": "Update referral earning amount for city rides"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Intercity Referral Amount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"driver_id\": \"{{driver_id}}\",\n    \"amount\": 200.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/referral/update-intercity-amount",
+							"host": ["{{base_url}}"],
+							"path": ["referral", "update-intercity-amount"]
+						},
+						"description": "Update referral earning amount for intercity rides"
+					},
+					"response": []
+				}
+			],
+			"description": "Referral program management"
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Submit Review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order_id\": \"{{order_id}}\",\n    \"driver_id\": \"{{driver_id}}\",\n    \"customer_id\": \"{{customer_id}}\",\n    \"rating\": 5,\n    \"comment\": \"Bahut achha driver hai, samay pe aaya aur gaadi saaf thi\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/reviews",
+							"host": ["{{base_url}}"],
+							"path": ["reviews"]
+						},
+						"description": "Submit a review for a completed ride"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Review for Order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/reviews/{{order_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["reviews", "{{order_id}}"]
+						},
+						"description": "Get review for a specific order"
+					},
+					"response": []
+				}
+			],
+			"description": "Ride review and rating system"
+		},
+		{
+			"name": "Chat",
+			"item": [
+				{
+					"name": "Create/Get Chat Inbox",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order_id\": \"{{order_id}}\",\n    \"driver_id\": \"{{driver_id}}\",\n    \"customer_id\": \"{{customer_id}}\",\n    \"last_message\": \"Namaste, main 5 minute mein pahunch raha hoon\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/inbox",
+							"host": ["{{base_url}}"],
+							"path": ["chat", "inbox"]
+						},
+						"description": "Create or get existing chat inbox for an order"
+					},
+					"response": []
+				},
+				{
+					"name": "Send Chat Message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order_id\": \"{{order_id}}\",\n    \"sender_id\": \"{{driver_id}}\",\n    \"sender_type\": \"driver\",\n    \"message\": \"Main gate ke paas khada hoon, kripya bahar aayein\",\n    \"type\": \"text\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/message",
+							"host": ["{{base_url}}"],
+							"path": ["chat", "message"]
+						},
+						"description": "Send a chat message in an order conversation"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Chat Messages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/chat/{{order_id}}/messages?per_page=50",
+							"host": ["{{base_url}}"],
+							"path": ["chat", "{{order_id}}", "messages"],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "50",
+									"description": "Messages per page (default 50)"
+								}
+							]
+						},
+						"description": "Get paginated chat messages for an order"
+					},
+					"response": []
+				}
+			],
+			"description": "In-ride chat between driver and customer"
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "Get Subscription Plans",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/subscriptions",
+							"host": ["{{base_url}}"],
+							"path": ["subscriptions"]
+						},
+						"description": "Get all available subscription plans"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Subscription History",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"driver_id\": \"{{driver_id}}\",\n    \"subscription_id\": \"SUB_GOLD_30\",\n    \"subscription_data\": {\n        \"plan_name\": \"Gold Plan\",\n        \"duration_days\": 30,\n        \"rides_limit\": \"unlimited\",\n        \"commission_rate\": \"5%\"\n    },\n    \"amount\": 999.00,\n    \"payment_type\": \"online\",\n    \"transaction_id\": \"TXN_RPY_20240115_001\",\n    \"start_date\": \"2024-01-15\",\n    \"end_date\": \"2024-02-14\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/subscriptions/history",
+							"host": ["{{base_url}}"],
+							"path": ["subscriptions", "history"]
+						},
+						"description": "Record a subscription purchase"
+					},
+					"response": []
+				}
+			],
+			"description": "Driver subscription plan management"
+		}
+	]
+}

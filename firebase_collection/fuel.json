@@ -1,0 +1,56 @@
+[
+  {
+    "id": "AEfMC3omauZ8RtzAFRRo",
+    "name": "CNG",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1753772803,
+      "_nanoseconds": 403000000
+    }
+  },
+  {
+    "id": "KYUmefrt1EYfGWnFCo7L",
+    "name": "Diesel",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1753973083,
+      "_nanoseconds": 775000000
+    }
+  },
+  {
+    "id": "StMUHxyOmoRa8yBXQ09g",
+    "name": "Petrol + Cng",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1753973062,
+      "_nanoseconds": 882000000
+    }
+  },
+  {
+    "id": "V2Y3DG1R4U8JzMHUaJ6s",
+    "name": "Petrol",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1753708421,
+      "_nanoseconds": 447000000
+    }
+  },
+  {
+    "id": "o26s9SqrxwwXbztWEe34",
+    "name": "Lpg",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754029091,
+      "_nanoseconds": 664000000
+    }
+  },
+  {
+    "id": "qpbX1QA875b66DKsh9OY",
+    "name": "Electric",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754039117,
+      "_nanoseconds": 2000000
+    }
+  }
+]

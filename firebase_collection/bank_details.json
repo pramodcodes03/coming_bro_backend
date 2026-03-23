@@ -1,0 +1,695 @@
+[
+  {
+    "id": "2EVKl6nKdLgM16hm9JmGKE5qnfx1",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "2EVKl6nKdLgM16hm9JmGKE5qnfx1"
+  },
+  {
+    "id": "2cHE8ITlNcfWTuk41SuWIK9YuLG2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "2cHE8ITlNcfWTuk41SuWIK9YuLG2"
+  },
+  {
+    "id": "4puXZbnVs1S1WYLSzmULkgTUgje2",
+    "holderName": "test",
+    "branchName": "varachha",
+    "bankName": "Bank of baroda",
+    "accountNumber": "78818819",
+    "userId": "4puXZbnVs1S1WYLSzmULkgTUgje2",
+    "otherInformation": "test"
+  },
+  {
+    "id": "6jn09ZNJE8aTugAV7iTaB7UtJFA3",
+    "holderName": "Sai Mahindrakar ",
+    "branchName": "Kolhapur ",
+    "bankName": "SBI",
+    "accountNumber": "123456789012",
+    "userId": "6jn09ZNJE8aTugAV7iTaB7UtJFA3",
+    "otherInformation": "Testing purpose "
+  },
+  {
+    "id": "6zEAqnDiAIXiHvzJ9ePq9uHpgXE3",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "6zEAqnDiAIXiHvzJ9ePq9uHpgXE3"
+  },
+  {
+    "id": "7EH9u7pFEVSpY26dlpJcOypnSxH3",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "7EH9u7pFEVSpY26dlpJcOypnSxH3"
+  },
+  {
+    "id": "9ay3l9x0rMe2PExrbdSQTc6INY02",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "9ay3l9x0rMe2PExrbdSQTc6INY02"
+  },
+  {
+    "id": "9rcKxNaxr1Y6BgRkzmbu5kHgB7z2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "9rcKxNaxr1Y6BgRkzmbu5kHgB7z2"
+  },
+  {
+    "id": "FAOpBlQrCZg68jUTQpNi1LUZJVW2",
+    "holderName": "Somnath Adale ",
+    "branchName": "sonale village,dist Thane ",
+    "bankName": "HDFC Bank ",
+    "accountNumber": "50100342413458",
+    "userId": "FAOpBlQrCZg68jUTQpNi1LUZJVW2",
+    "otherInformation": ""
+  },
+  {
+    "id": "Fr6c1QCkZdTqq0mvcLTaha33Sp43",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "Fr6c1QCkZdTqq0mvcLTaha33Sp43"
+  },
+  {
+    "id": "HaPLGDLnMdXELy2IaZoV4AjmnXm1",
+    "holderName": "Ganesh Shankar Pawar",
+    "branchName": "Bank Of Baroda",
+    "bankName": "Bank Of Baroda",
+    "accountNumber": "76450100036968",
+    "userId": "HaPLGDLnMdXELy2IaZoV4AjmnXm1",
+    "otherInformation": "NA"
+  },
+  {
+    "id": "JBdITkn6PQasOZBWPLERdIfSfaJ3",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "JBdITkn6PQasOZBWPLERdIfSfaJ3"
+  },
+  {
+    "id": "JEM03ryD20SSPQRAB55rxbWcIRe2",
+    "holderName": "Chandrakant Dhatrak",
+    "branchName": "Kotak Mahindra ",
+    "bankName": "Kotak Mahindra ",
+    "accountNumber": "3013400607",
+    "userId": "JEM03ryD20SSPQRAB55rxbWcIRe2",
+    "otherInformation": ""
+  },
+  {
+    "id": "K4YdOc2Am2ZNujx79BMUxkyZey53",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "K4YdOc2Am2ZNujx79BMUxkyZey53"
+  },
+  {
+    "id": "OOcpcM7NgMRz0Pt1udgZ8OoLRus1",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "OOcpcM7NgMRz0Pt1udgZ8OoLRus1"
+  },
+  {
+    "id": "P0IqZI4sfeYJnCdUevP6pVGTa2t1",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "P0IqZI4sfeYJnCdUevP6pVGTa2t1"
+  },
+  {
+    "id": "P5TtgK3dSHZtsdAzfQipijuGtUJ2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "P5TtgK3dSHZtsdAzfQipijuGtUJ2"
+  },
+  {
+    "id": "PKUE59rN9WYtADWoaihnOdcSpmI3",
+    "bankName": "ax",
+    "branchName": "ba",
+    "holderName": "kanha",
+    "accountNumber": "1234",
+    "otherInformation": "1234",
+    "userId": "PKUE59rN9WYtADWoaihnOdcSpmI3"
+  },
+  {
+    "id": "PUDOxhsDx3ZmjLWvmbhF2twQHTh1",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "PUDOxhsDx3ZmjLWvmbhF2twQHTh1",
+    "bankName": "AXIS BANK"
+  },
+  {
+    "id": "RGWgbslmpsUscs9dP8KenkINGoE2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "RGWgbslmpsUscs9dP8KenkINGoE2"
+  },
+  {
+    "id": "RIv2QMRPD6RwyYz5y8THlK0FLOf2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "RIv2QMRPD6RwyYz5y8THlK0FLOf2"
+  },
+  {
+    "id": "SMcis57sqeMq9t0ceeQkANjLrvf1",
+    "holderName": "Rushikesh Sunil Shinde",
+    "branchName": "State Bank of India",
+    "bankName": "State Bank of India",
+    "accountNumber": "62431573991",
+    "userId": "SMcis57sqeMq9t0ceeQkANjLrvf1",
+    "otherInformation": ""
+  },
+  {
+    "id": "T49bJD7CCrRXZUNFxLyUkC0iGpl1",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "T49bJD7CCrRXZUNFxLyUkC0iGpl1"
+  },
+  {
+    "id": "TNOrmrbhUKX1gMGvmnlXtFH9YJq1",
+    "bankName": "AXIS BANK",
+    "branchName": "CHINCHWAD",
+    "holderName": "RAHUL PARDESHI",
+    "accountNumber": "919010028277",
+    "otherInformation": "SAVING A/C",
+    "userId": "TNOrmrbhUKX1gMGvmnlXtFH9YJq1"
+  },
+  {
+    "id": "TerSsMAFJfTJwmwq195nRPUL1Op1",
+    "accountNumber": "915010052899580",
+    "userId": "TerSsMAFJfTJwmwq195nRPUL1Op1",
+    "branchName": "axis bank",
+    "otherInformation": "915010052899580",
+    "bankName": "axis bank",
+    "holderName": "sanjay bajarang hankare "
+  },
+  {
+    "id": "Tmk4T4yJySapOJFcLo9dGdx0YoI2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "Tmk4T4yJySapOJFcLo9dGdx0YoI2"
+  },
+  {
+    "id": "UTdjfE11P3a7J1uTFnkmCMU3Vyr2",
+    "holderName": "xfgh",
+    "branchName": "asft",
+    "bankName": "adf",
+    "accountNumber": "12345",
+    "userId": "UTdjfE11P3a7J1uTFnkmCMU3Vyr2",
+    "otherInformation": "2345"
+  },
+  {
+    "id": "VImrIHtmSHUBtfspCVzvISWrI8K2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "VImrIHtmSHUBtfspCVzvISWrI8K2"
+  },
+  {
+    "id": "VuIZQenmYhfjI5aEAXTqF4B0y4c2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "VuIZQenmYhfjI5aEAXTqF4B0y4c2"
+  },
+  {
+    "id": "XG5BgnRfgba0vwovgNQzWVGd03r2",
+    "holderName": "BALAJI MULE",
+    "branchName": "PIMPLE SAUDAGAR",
+    "bankName": "KOTAK MAHINDRA BANK ",
+    "accountNumber": "8847681536",
+    "userId": "XG5BgnRfgba0vwovgNQzWVGd03r2",
+    "otherInformation": "KKBK0001790"
+  },
+  {
+    "id": "YhPfTgDTUxdbxZCzuw23wDHaBcp1",
+    "holderName": "Rahul",
+    "branchName": "Chinchwad ",
+    "bankName": "AXIS BANK",
+    "accountNumber": "919010028220817",
+    "userId": "YhPfTgDTUxdbxZCzuw23wDHaBcp1",
+    "otherInformation": ""
+  },
+  {
+    "id": "ZF55CBrUbEMkHe4qoBrOSAmHVdv1",
+    "holderName": "sanika",
+    "branchName": "1234",
+    "bankName": "1234",
+    "accountNumber": "123456889",
+    "userId": "ZF55CBrUbEMkHe4qoBrOSAmHVdv1",
+    "otherInformation": "no"
+  },
+  {
+    "id": "ZXBDGsD9eiUH2ajuwdcYxF5dRHy2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "ZXBDGsD9eiUH2ajuwdcYxF5dRHy2"
+  },
+  {
+    "id": "ZatcUDJcnUUFpiaGwFKdA3MhVeZ2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "ZatcUDJcnUUFpiaGwFKdA3MhVeZ2"
+  },
+  {
+    "id": "aEca5WOze4VaqWj65MNp2uDFXkX2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "aEca5WOze4VaqWj65MNp2uDFXkX2"
+  },
+  {
+    "id": "aTucXR85aEblycblMc7kFw9Glfw1",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "aTucXR85aEblycblMc7kFw9Glfw1"
+  },
+  {
+    "id": "aahtmHIWucVg53idLNS6J8p2avo2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "aahtmHIWucVg53idLNS6J8p2avo2"
+  },
+  {
+    "id": "bVgayY3LVfcMyWeDVWYj65l3Lpp2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "bVgayY3LVfcMyWeDVWYj65l3Lpp2"
+  },
+  {
+    "id": "bqaB7tkIvyc6jBXMfBe6dbp3RK42",
+    "holderName": "abcc",
+    "branchName": "pune",
+    "bankName": "abc",
+    "accountNumber": "123",
+    "userId": "bqaB7tkIvyc6jBXMfBe6dbp3RK42",
+    "otherInformation": "123"
+  },
+  {
+    "id": "cu54sqrkzLNbfj0FcRYOujwPVIb2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "cu54sqrkzLNbfj0FcRYOujwPVIb2"
+  },
+  {
+    "id": "dF1wvf9dtXS7lWTEEGSH9bEZDoo1",
+    "holderName": "akash dilip dolas",
+    "branchName": "Maharashtra garmin bank, beed",
+    "bankName": "Maharashtra garmin bank",
+    "accountNumber": "80088992698",
+    "userId": "dF1wvf9dtXS7lWTEEGSH9bEZDoo1",
+    "otherInformation": ""
+  },
+  {
+    "id": "dTz9miopC5UOyqeb6QnZxJvBf3O2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "dTz9miopC5UOyqeb6QnZxJvBf3O2"
+  },
+  {
+    "id": "eN1ZI6xrM4TkjMBxQTJALZuwtmK2",
+    "holderName": "surendra pal",
+    "branchName": "mali ",
+    "bankName": "punb",
+    "accountNumber": "2393000100070869",
+    "userId": "eN1ZI6xrM4TkjMBxQTJALZuwtmK2",
+    "otherInformation": "dist Aurangabad Bihar "
+  },
+  {
+    "id": "fxa77YrkEkbGahCApgXLO2krwo83",
+    "holderName": "Abhishek Patil ",
+    "branchName": "IDBI BANK",
+    "bankName": "IDBI BANK",
+    "accountNumber": "0560104000199070",
+    "userId": "fxa77YrkEkbGahCApgXLO2krwo83",
+    "otherInformation": "No other info "
+  },
+  {
+    "id": "gmvI84scGAR148SO0zdvdOC9R433",
+    "holderName": "manoj dattatray kurle",
+    "branchName": "Mhasa",
+    "bankName": "maharashtra gramin bank",
+    "accountNumber": "55619028596",
+    "userId": "gmvI84scGAR148SO0zdvdOC9R433",
+    "otherInformation": "MAHG0005619"
+  },
+  {
+    "id": "hHIdF2Egyrg78ZA1lRZLCh8ye9i1",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "hHIdF2Egyrg78ZA1lRZLCh8ye9i1"
+  },
+  {
+    "id": "hbjgyU3gMNdqDpb8xbxv2xgqZFF2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "hbjgyU3gMNdqDpb8xbxv2xgqZFF2"
+  },
+  {
+    "id": "iIKsS7N5ZffqU7aGR9Lmd8TQFum2",
+    "holderName": "Rathod Bandu Vinayak",
+    "branchName": "Byculla",
+    "bankName": "HDFC Bank",
+    "accountNumber": "50100719488754",
+    "userId": "iIKsS7N5ZffqU7aGR9Lmd8TQFum2",
+    "otherInformation": "HDFC0000686"
+  },
+  {
+    "id": "iXwF1AW0rUdXXpKS4fApPaLrdIL2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "iXwF1AW0rUdXXpKS4fApPaLrdIL2"
+  },
+  {
+    "id": "jDjTAEMGw4RhweNGXCW4EzESlHt2",
+    "holderName": "govind chavan ",
+    "branchName": "new sangavi ",
+    "bankName": "Bank of Maharashtra",
+    "accountNumber": "68021137163",
+    "userId": "jDjTAEMGw4RhweNGXCW4EzESlHt2",
+    "otherInformation": "no"
+  },
+  {
+    "id": "jl1TpGh4MvX3Z6H3Yt4ET65ek0t1",
+    "holderName": "12739",
+    "branchName": "1234",
+    "bankName": "1234",
+    "accountNumber": "1838838389",
+    "userId": "jl1TpGh4MvX3Z6H3Yt4ET65ek0t1",
+    "otherInformation": "123456789"
+  },
+  {
+    "id": "jyJD429gQPZgQtSArbaZWmMQiEP2",
+    "accountNumber": "Pankaj Harichandra Gadge",
+    "bankName": "State Bank Of India ",
+    "branchName": "State Bank Of India ",
+    "holderName": "Pankaj Harichandra Gadge",
+    "otherInformation": "Pankaj Harichandra Gadge",
+    "userId": "jyJD429gQPZgQtSArbaZWmMQiEP2"
+  },
+  {
+    "id": "kyI2iIgrnTfrSIO4BT04g1ujtlr2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "kyI2iIgrnTfrSIO4BT04g1ujtlr2"
+  },
+  {
+    "id": "lebvGEQPsAXouysAsEeLxmcptG13",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "lebvGEQPsAXouysAsEeLxmcptG13"
+  },
+  {
+    "id": "mDn4g5irPxbjzpEZY6GEcmU4rev1",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "mDn4g5irPxbjzpEZY6GEcmU4rev1"
+  },
+  {
+    "id": "mFmjDj3NU6ZT3oZ2oEnPvzB7uN23",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "mFmjDj3NU6ZT3oZ2oEnPvzB7uN23"
+  },
+  {
+    "id": "mG48nRJo8XRQwBQezq1Wc0nIEWn2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "mG48nRJo8XRQwBQezq1Wc0nIEWn2"
+  },
+  {
+    "id": "mL3Go6aQAjaJKoIWxacBsdYiizs1",
+    "holderName": "Namrata Patil",
+    "branchName": "Kolhapur ",
+    "bankName": "SBI",
+    "accountNumber": "1234567891011",
+    "userId": "mL3Go6aQAjaJKoIWxacBsdYiizs1",
+    "otherInformation": "Testing purpose "
+  },
+  {
+    "id": "oQUcvNCPlefsIKljIUydTstRASy2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "oQUcvNCPlefsIKljIUydTstRASy2"
+  },
+  {
+    "id": "od43xHx5ubZ5ZvWEOfNAnMaPoH23",
+    "otherInformation": "",
+    "userId": "od43xHx5ubZ5ZvWEOfNAnMaPoH23",
+    "holderName": "Yashraj ",
+    "branchName": "Kolhapur ",
+    "bankName": "Axis",
+    "accountNumber": "6676535"
+  },
+  {
+    "id": "pj2TNAH2uYRo3Lsu2N4M7SMOx4t2",
+    "holderName": "Krishna ",
+    "branchName": "varachha",
+    "bankName": "hdfc",
+    "accountNumber": "67718818",
+    "userId": "pj2TNAH2uYRo3Lsu2N4M7SMOx4t2",
+    "otherInformation": "test"
+  },
+  {
+    "id": "r1lWusmkPicV9HJ0419NzXpyJmK2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "r1lWusmkPicV9HJ0419NzXpyJmK2"
+  },
+  {
+    "id": "rCFB4mGrkubLBqYTHQBE8DFFUlN2",
+    "holderName": "Sanket Tanaji Yadav",
+    "branchName": "Umbraj ",
+    "bankName": "IDBI",
+    "accountNumber": "0474104000138413",
+    "userId": "rCFB4mGrkubLBqYTHQBE8DFFUlN2",
+    "otherInformation": ""
+  },
+  {
+    "id": "rlGypzocTiNxblMFjJQNeXkGDSu2",
+    "holderName": "neetesh kumar sen",
+    "branchName": "jaisinagar ",
+    "bankName": "Central Bank of India ",
+    "accountNumber": "3324009776",
+    "userId": "rlGypzocTiNxblMFjJQNeXkGDSu2",
+    "otherInformation": ""
+  },
+  {
+    "id": "sDKXzDJkAUN0X8r1x7KvvUbDIf22",
+    "accountNumber": "55555555555",
+    "bankName": "sbi",
+    "branchName": "sbi",
+    "holderName": "Mr d India",
+    "otherInformation": "",
+    "userId": "sDKXzDJkAUN0X8r1x7KvvUbDIf22"
+  },
+  {
+    "id": "shlglFp2fFPrGsGAJ83s70GncPd2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "shlglFp2fFPrGsGAJ83s70GncPd2"
+  },
+  {
+    "id": "srPmbQHTekMABgzMx3YhmMSmVjj1",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "srPmbQHTekMABgzMx3YhmMSmVjj1"
+  },
+  {
+    "id": "t1lqmIfbfrOFJXo4nucLdGcxMm52",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "t1lqmIfbfrOFJXo4nucLdGcxMm52"
+  },
+  {
+    "id": "tKLUTPTaXgfkGoT0Cku3SquiTQ63",
+    "holderName": "sagar",
+    "branchName": "kharghar ",
+    "bankName": "Indian bank ",
+    "accountNumber": "50390112514",
+    "userId": "tKLUTPTaXgfkGoT0Cku3SquiTQ63",
+    "otherInformation": "sagar"
+  },
+  {
+    "id": "uD94gLYItANCqctQFI0NyjERTd13",
+    "holderName": "Sanjay Bajrang  hankare",
+    "branchName": "Axis bank",
+    "bankName": "Axis bank",
+    "accountNumber": "915010052899580",
+    "userId": "uD94gLYItANCqctQFI0NyjERTd13",
+    "otherInformation": "UTIB0001437"
+  },
+  {
+    "id": "uyHUSsJXwOhTjoZeY7XaAntJccE3",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "uyHUSsJXwOhTjoZeY7XaAntJccE3"
+  },
+  {
+    "id": "v6F0hoO6RshRPaLGsCicmzGv4uq2",
+    "bankName": "ax",
+    "branchName": "as",
+    "holderName": "as",
+    "accountNumber": "1234",
+    "otherInformation": "1234",
+    "userId": "v6F0hoO6RshRPaLGsCicmzGv4uq2"
+  },
+  {
+    "id": "vCpTq9U1Zvg5BMPyQ9QT5C1S4xy2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "vCpTq9U1Zvg5BMPyQ9QT5C1S4xy2"
+  },
+  {
+    "id": "wR1Smqa3dUVNOt1lxL9kSnvurmt2",
+    "holderName": "Shreya Shinde",
+    "branchName": "Mahadwaar Road",
+    "bankName": "Maharashtra Bank",
+    "accountNumber": "255154126236",
+    "userId": "wR1Smqa3dUVNOt1lxL9kSnvurmt2",
+    "otherInformation": "Rikshaw"
+  },
+  {
+    "id": "xWi69pBnPtUorqwzBJd3JUVXZgt2",
+    "bankName": "",
+    "branchName": "",
+    "holderName": "",
+    "accountNumber": "",
+    "otherInformation": "",
+    "userId": "xWi69pBnPtUorqwzBJd3JUVXZgt2"
+  },
+  {
+    "id": "zMpiXQvrTrWRPLYzpPDjbFN7lNo1",
+    "holderName": "rr",
+    "branchName": "sd",
+    "bankName": "ddd",
+    "accountNumber": "dd",
+    "userId": "zMpiXQvrTrWRPLYzpPDjbFN7lNo1",
+    "otherInformation": "dd"
+  },
+  {
+    "id": "ztZMOYcFriQmE3NoMirwQQBaRvA3",
+    "holderName": "kk",
+    "branchName": "varachha",
+    "bankName": "axis",
+    "accountNumber": "8199191919",
+    "userId": "ztZMOYcFriQmE3NoMirwQQBaRvA3",
+    "otherInformation": ""
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "Ltdf0HVwFIa6BYBTM6BN",
+    "name": "30 Rs ",
+    "description": "Unlimited Days 10 Ride",
+    "tds": "0",
+    "enable": true,
+    "gst": "18",
+    "image": "",
+    "duration": "unlimited",
+    "ride": "10",
+    "createdAt": {
+      "_seconds": 1754757208,
+      "_nanoseconds": 562000000
+    },
+    "amount": "30"
+  }
+]

@@ -1,0 +1,178 @@
+[
+  {
+    "id": "0hxwdye7eXR5uAetuY7b",
+    "name": "Edelweiss General Insurance Company",
+    "createdAt": {
+      "_seconds": 1732890227,
+      "_nanoseconds": 495000000
+    }
+  },
+  {
+    "id": "0zGnrSD9bF5aQ3RVEtnx",
+    "createdAt": {
+      "_seconds": 1732889196,
+      "_nanoseconds": 78000000
+    },
+    "name": "Future Generali Car Insurance"
+  },
+  {
+    "id": "5j3ur7bjGJYvbxix42Bx",
+    "name": "Other",
+    "createdAt": {
+      "_seconds": 1732954711,
+      "_nanoseconds": 661000000
+    }
+  },
+  {
+    "id": "5o9QCsIWiBWuw48mtaTV",
+    "name": "Acko General Insurance",
+    "createdAt": {
+      "_seconds": 1732889785,
+      "_nanoseconds": 389000000
+    }
+  },
+  {
+    "id": "7vrSvHLppCLxz23oRfoi",
+    "name": "Icici Lombard General Insurance",
+    "createdAt": {
+      "_seconds": 1732889968,
+      "_nanoseconds": 734000000
+    }
+  },
+  {
+    "id": "9Mo7VUyjo1hZcIkSBIMM",
+    "name": "Magma Car Insurance",
+    "createdAt": {
+      "_seconds": 1742636364,
+      "_nanoseconds": 492000000
+    }
+  },
+  {
+    "id": "Cvg6vG4b6LUYbzBTzA9V",
+    "name": "Bajaj Allianz General Insurance ",
+    "createdAt": {
+      "_seconds": 1732183694,
+      "_nanoseconds": 457000000
+    }
+  },
+  {
+    "id": "FGSiD8aaLuxrvyQ2isaO",
+    "name": "United India Insurance",
+    "createdAt": {
+      "_seconds": 1732889614,
+      "_nanoseconds": 956000000
+    }
+  },
+  {
+    "id": "XS4Vz9cr8JVXsWEwIKVu",
+    "name": "National Car Insurance",
+    "createdAt": {
+      "_seconds": 1742636379,
+      "_nanoseconds": 155000000
+    }
+  },
+  {
+    "id": "YDP5j2z6SgMda1zN7AkZ",
+    "name": "Tata Aig General Insurance",
+    "createdAt": {
+      "_seconds": 1732889525,
+      "_nanoseconds": 165000000
+    }
+  },
+  {
+    "id": "bYZpyONALNH10p9odoYq",
+    "name": "Hdfc Ergo Insurance",
+    "createdAt": {
+      "_seconds": 1732889378,
+      "_nanoseconds": 243000000
+    }
+  },
+  {
+    "id": "euM9qp8vLLUp1eZpGMmt",
+    "name": "Oriental Insurance",
+    "createdAt": {
+      "_seconds": 1742636283,
+      "_nanoseconds": 368000000
+    }
+  },
+  {
+    "id": "gzKbfGVh4XseSWPEbixT",
+    "name": "Go Digit General Insurance",
+    "createdAt": {
+      "_seconds": 1732183752,
+      "_nanoseconds": 803000000
+    }
+  },
+  {
+    "id": "jgNtBrX4n7CXurciOCIO",
+    "name": "Kotak Mahindra Car Insurance",
+    "createdAt": {
+      "_seconds": 1742636492,
+      "_nanoseconds": 338000000
+    }
+  },
+  {
+    "id": "nhG6MKt8cqMh4DQz3B7U",
+    "name": "Liberty General Insurance",
+    "createdAt": {
+      "_seconds": 1742636327,
+      "_nanoseconds": 299000000
+    }
+  },
+  {
+    "id": "qBpClpXugEixGzhHcmLe",
+    "createdAt": {
+      "_seconds": 1732111184,
+      "_nanoseconds": 159000000
+    },
+    "name": "New India Assurance"
+  },
+  {
+    "id": "qKrSCtXk1vuO3FTcP1wV",
+    "name": "Royal Sundaram General Insurance",
+    "createdAt": {
+      "_seconds": 1732890000,
+      "_nanoseconds": 783000000
+    }
+  },
+  {
+    "id": "r7HyYEgUrF4pLBPMQRAo",
+    "name": "Zuno Car Insurance",
+    "createdAt": {
+      "_seconds": 1742636535,
+      "_nanoseconds": 587000000
+    }
+  },
+  {
+    "id": "slJS7pdIugYmdMArEXyl",
+    "name": "Chola MS General Insurance",
+    "createdAt": {
+      "_seconds": 1732890080,
+      "_nanoseconds": 254000000
+    }
+  },
+  {
+    "id": "tV9dZK9bAXJ8T7sWrZ1Z",
+    "name": "Sbi General Insurance",
+    "createdAt": {
+      "_seconds": 1732889555,
+      "_nanoseconds": 140000000
+    }
+  },
+  {
+    "id": "vbffy7uLYDuZ5ek214Vy",
+    "createdAt": {
+      "_seconds": 1732165496,
+      "_nanoseconds": 740000000
+    },
+    "name": "Shriram General Insurance"
+  },
+  {
+    "id": "vhGJjviAZuJunsnKswpd",
+    "name": "Iffco Tokio General Insarance",
+    "createdAt": {
+      "_seconds": 1732889442,
+      "_nanoseconds": 759000000
+    }
+  }
+]

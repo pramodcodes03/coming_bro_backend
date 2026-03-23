@@ -1,0 +1,46 @@
+[
+  {
+    "id": "OmAAERf1KqvfDH0rRAPV",
+    "code": "mr",
+    "image": "",
+    "isRtl": false,
+    "name": "Marathi",
+    "isDeleted": true,
+    "enable": true
+  },
+  {
+    "id": "PSosPfebXgmhPxTX4Oqn",
+    "code": "hi",
+    "image": "",
+    "isRtl": false,
+    "name": "Hindi",
+    "isDeleted": true,
+    "enable": true
+  },
+  {
+    "id": "oKs39NhwMe7YsGRKLcFD",
+    "image": "",
+    "code": "en",
+    "isDeleted": false,
+    "enable": true,
+    "name": "English",
+    "isRtl": false
+  },
+  {
+    "id": "rG9ufAeccpVYgoZfAoRq",
+    "image": "",
+    "code": "pt",
+    "name": "Português",
+    "isRtl": false,
+    "isDeleted": true,
+    "enable": false
+  },
+  {
+    "id": "wQgDuFdNOXrLxyjfZxR2",
+    "code": "ar",
+    "name": "Arabic",
+    "isRtl": true,
+    "isDeleted": true,
+    "enable": false
+  }
+]

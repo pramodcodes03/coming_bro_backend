@@ -1,0 +1,72 @@
+[
+  {
+    "id": "47ca3Ar8VYz1JMjGy9ZG",
+    "scannedAt": {
+      "_seconds": 1773917289,
+      "_nanoseconds": 98930000
+    },
+    "driverId": "m4UwIEjKJoafjNLOUjIuqiRuP3j2",
+    "referralCode": "109285",
+    "userId": "fekY30lYiQhkMS1M1p7MrutX3wJ3"
+  },
+  {
+    "id": "B7UQrSHVsUWcTKpVORlk",
+    "scannedAt": {
+      "_seconds": 1754641165,
+      "_nanoseconds": 257696000
+    },
+    "driverId": "ztZMOYcFriQmE3NoMirwQQBaRvA3",
+    "referralCode": "873676",
+    "userId": "iiIoTrZTodhs8XTYRFFkHdAaFRt1"
+  },
+  {
+    "id": "XJB1621inDpvZmuIj4R8",
+    "scannedAt": {
+      "_seconds": 1756305373,
+      "_nanoseconds": 995032000
+    },
+    "driverId": "YhPfTgDTUxdbxZCzuw23wDHaBcp1",
+    "referralCode": "390071",
+    "userId": "8DLHfpUPnfc1uiuBtypq7BBfNdR2"
+  },
+  {
+    "id": "XuhVe6s1q8DKUQuE1HLT",
+    "scannedAt": {
+      "_seconds": 1754539280,
+      "_nanoseconds": 699563000
+    },
+    "driverId": "hbjgyU3gMNdqDpb8xbxv2xgqZFF2",
+    "referralCode": "544600",
+    "userId": "x2n5WYBzLSSPkW4QYpIBsDRqrGG2"
+  },
+  {
+    "id": "fETYNBeRCDAbYGc9uSam",
+    "scannedAt": {
+      "_seconds": 1755776592,
+      "_nanoseconds": 399587000
+    },
+    "driverId": "4puXZbnVs1S1WYLSzmULkgTUgje2",
+    "referralCode": "125780",
+    "userId": "yE6n9EPH0HXSD27zUPFV1VAqJYu1"
+  },
+  {
+    "id": "fN3dkPrEGeZyh06xff53",
+    "scannedAt": {
+      "_seconds": 1754539341,
+      "_nanoseconds": 673244000
+    },
+    "driverId": "hbjgyU3gMNdqDpb8xbxv2xgqZFF2",
+    "referralCode": "544600",
+    "userId": "iiIoTrZTodhs8XTYRFFkHdAaFRt1"
+  },
+  {
+    "id": "oGL1eiHBbOZ01rQUHZiL",
+    "scannedAt": {
+      "_seconds": 1754993477,
+      "_nanoseconds": 749145000
+    },
+    "driverId": "7EY8l8Zi3WXKe8zsXmiFBL0h0Bv2",
+    "referralCode": "190657",
+    "userId": "iiIoTrZTodhs8XTYRFFkHdAaFRt1"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6479c7d3db496",
+    "country": "India",
+    "title": "IGST",
+    "type": "percentage",
+    "enable": false,
+    "tax": "9"
+  },
+  {
+    "id": "72w6OSocHrbOzxAxFlbL",
+    "country": "India",
+    "title": "CGST",
+    "type": "percentage",
+    "enable": false,
+    "tax": "9"
+  }
+]

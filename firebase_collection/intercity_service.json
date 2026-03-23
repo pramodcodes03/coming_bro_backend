@@ -1,0 +1,82 @@
+[
+  {
+    "id": "647f340e35553",
+    "rideTimeFarePerMinute": "0",
+    "kmCharge": "18",
+    "holdingChargeMinute": "0",
+    "name": "Tempo Traveler",
+    "holdingCharges": "0",
+    "basicFareCharges": "0",
+    "adminCommission": {
+      "isEnabled": false,
+      "amount": "0",
+      "type": "fix"
+    },
+    "basicFareKm": "0",
+    "image": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/intercityService%2FIMG-20250117-WA0015_1737458415184.jpg?alt=media&token=31263474-3cc0-4516-bcf4-447688f4f665",
+    "acCharges": "",
+    "isAC": false,
+    "enable": false,
+    "offerRate": false
+  },
+  {
+    "id": "647f350983ba2",
+    "rideTimeFarePerMinute": "0",
+    "holdingChargeMinute": "0",
+    "holdingCharges": "0",
+    "basicFareCharges": "0",
+    "adminCommission": {
+      "isEnabled": false,
+      "type": "fix",
+      "amount": "0"
+    },
+    "basicFareKm": "0",
+    "kmCharge": "60",
+    "name": "Parcel - Two Wheeler",
+    "image": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/intercityService%2FParcel_1737474923496.png?alt=media&token=f4a2bfca-0881-4506-9428-5da4bd12fb0b",
+    "acCharges": "",
+    "isAC": false,
+    "enable": false,
+    "offerRate": false
+  },
+  {
+    "id": "Kn2VEnPI3ikF58uK8YqY",
+    "rideTimeFarePerMinute": "0",
+    "holdingChargeMinute": "0",
+    "holdingCharges": "0",
+    "basicFareCharges": "0",
+    "adminCommission": {
+      "isEnabled": false,
+      "amount": "0",
+      "type": "fix"
+    },
+    "basicFareKm": "0",
+    "acCharges": "",
+    "kmCharge": "15",
+    "isAC": false,
+    "name": "Freight",
+    "image": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/intercityService%2FFrieght%20Vehicle_1737475635501.png?alt=media&token=73580082-1566-4326-a74e-b5dd76c3ad15",
+    "enable": false,
+    "offerRate": false
+  },
+  {
+    "id": "UmQ2bjWTnlwoKqdCIlTr",
+    "rideTimeFarePerMinute": "0",
+    "basicFareCharges": "0",
+    "adminCommission": {
+      "amount": "0",
+      "isEnabled": false,
+      "type": "fix"
+    },
+    "basicFareKm": "0",
+    "holdingChargeMinute": "0",
+    "holdingCharges": "0",
+    "kmCharge": "15",
+    "image": "https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/intercityService%2FErtiga_1742310859216.jpg?alt=media&token=41527efc-a0a7-4a7e-a188-542abe17f604",
+    "enable": false,
+    "acCharges": "18",
+    "name": "Intercity",
+    "isAC": true,
+    "offerRate": false
+  }
+]

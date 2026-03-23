@@ -1,0 +1,86 @@
+[
+  {
+    "id": "1S4XurIxxy8fRRXtVysp",
+    "amount": "10",
+    "code": "RIDE10",
+    "isDeleted": false,
+    "enable": false,
+    "isPublic": true,
+    "validity": {
+      "_seconds": 1726790400,
+      "_nanoseconds": 0
+    },
+    "title": "ride offer",
+    "type": "fix"
+  },
+  {
+    "id": "3PHIgGrmThI24ozZEDnX",
+    "amount": "25",
+    "code": "FIRST20",
+    "isDeleted": false,
+    "isPublic": true,
+    "validity": {
+      "_seconds": 1685514967,
+      "_nanoseconds": 861000000
+    },
+    "title": "UPTO 25 OFF",
+    "type": "fix",
+    "enable": false
+  },
+  {
+    "id": "648076c7714ae",
+    "amount": "9",
+    "code": "NEWOFF9",
+    "isDeleted": false,
+    "validity": {
+      "_seconds": 1688083200,
+      "_nanoseconds": 0
+    },
+    "title": "NewOffer",
+    "type": "percentage",
+    "enable": false,
+    "isPublic": false
+  },
+  {
+    "id": "7VpaXzjwGRUxYT1F52M6",
+    "amount": "24",
+    "code": "DQS",
+    "isDeleted": false,
+    "enable": false,
+    "isPublic": false,
+    "validity": {
+      "_seconds": 1701820800,
+      "_nanoseconds": 0
+    },
+    "title": "FIX",
+    "type": "fix"
+  },
+  {
+    "id": "HqX7zX0mexqwhYx5I56N",
+    "title": "Rickshaw ",
+    "type": "fix",
+    "isDeleted": false,
+    "isPublic": true,
+    "validity": {
+      "_seconds": 1767225600,
+      "_nanoseconds": 0
+    },
+    "enable": false,
+    "amount": "3",
+    "code": "RIDE"
+  },
+  {
+    "id": "iRFP4hzbQBtLFR54dbVz",
+    "amount": "10",
+    "code": "NEW10",
+    "isDeleted": false,
+    "isPublic": true,
+    "validity": {
+      "_seconds": 1691107200,
+      "_nanoseconds": 0
+    },
+    "title": "Upto 10% OFF",
+    "type": "percentage",
+    "enable": false
+  }
+]

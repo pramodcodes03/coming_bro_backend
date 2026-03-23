@@ -1,0 +1,38 @@
+[
+  {
+    "id": "N86fGl4znS1UOz7IYXpx",
+    "name": "Gujrat",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1753707470,
+      "_nanoseconds": 701000000
+    }
+  },
+  {
+    "id": "QeYIZgldsJqLgu1hHs0K",
+    "name": "Karnatak",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754042336,
+      "_nanoseconds": 247000000
+    }
+  },
+  {
+    "id": "euTqaIgQL4Nn8sR8iUFr",
+    "name": "Maharastra",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1753766378,
+      "_nanoseconds": 612000000
+    }
+  },
+  {
+    "id": "pIG9yNHm7Ri6c1JQ3VqI",
+    "name": "MP - Madhya Pradesh",
+    "enable": true,
+    "createdAt": {
+      "_seconds": 1754042317,
+      "_nanoseconds": 680000000
+    }
+  }
+]

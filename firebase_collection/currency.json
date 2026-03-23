@@ -1,0 +1,36 @@
+[
+  {
+    "id": "64807d6956651",
+    "createdAt": {
+      "_seconds": 1686142337,
+      "_nanoseconds": 427000000
+    },
+    "symbol": "$",
+    "code": "USD",
+    "symbolAtRight": false,
+    "name": "Us Dollar",
+    "decimalDigits": 2,
+    "updatedAt": {
+      "_seconds": 1698322638,
+      "_nanoseconds": 29000000
+    },
+    "enable": false
+  },
+  {
+    "id": "oGVoct1HpPi8UYqqbD9X",
+    "symbol": "INR",
+    "name": "India",
+    "symbolAtRight": true,
+    "decimalDigits": 0,
+    "code": "INR",
+    "createdAt": {
+      "_seconds": 1729494567,
+      "_nanoseconds": 214000000
+    },
+    "updatedAt": {
+      "_seconds": 1729494567,
+      "_nanoseconds": 214000000
+    },
+    "enable": true
+  }
+]

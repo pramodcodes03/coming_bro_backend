@@ -1,0 +1,254 @@
+[
+  {
+    "id": "0ftZusgSGsbavxNacdn1",
+    "date": {
+      "_seconds": 1717072670,
+      "_nanoseconds": 17000000
+    },
+    "airportLng": "75.80759929999999",
+    "airportName": "Indore Airport",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Indore",
+    "state": "Madhya Pradesh",
+    "airportLat": "22.7287381"
+  },
+  {
+    "id": "3X6uHPIP6EitENnOPEEK",
+    "date": {
+      "_seconds": 1698054927,
+      "_nanoseconds": 77000000
+    },
+    "airportLng": "72.8628087",
+    "airportName": "Chhatrapati Shivaji Maharaj International Airport",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Mumbai",
+    "state": "Maharashtra",
+    "airportLat": "19.0902179"
+  },
+  {
+    "id": "4TEMRpau6oeCSTbQRYiA",
+    "date": {
+      "_seconds": 1705376430,
+      "_nanoseconds": 341000000
+    },
+    "airportLng": "73.8349952",
+    "airportName": "Dabolim Airport (GOI), Dabolim, Goa, India",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Dabolim",
+    "state": "Goa",
+    "airportLat": "15.3803485"
+  },
+  {
+    "id": "7PDbmFErGJevrI4QECrP",
+    "cityLocation": "Nagpur",
+    "country": "India",
+    "state": "Maharashtra",
+    "airportName": "Dr. Babasaheb Ambedkar International Airport",
+    "airportLat": "21.0901569",
+    "airportLng": "79.0548086",
+    "enable": true,
+    "date": {
+      "_seconds": 1731999264,
+      "_nanoseconds": 862000000
+    }
+  },
+  {
+    "id": "8J9XsKeDBYyiDd8XV55i",
+    "date": {
+      "_seconds": 1716875807,
+      "_nanoseconds": 468000000
+    },
+    "airportLng": "72.8628087",
+    "airportName": "Chhatrapati Shivaji Maharaj International Airport, Mumbai",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Mumbai",
+    "state": "Maharashtra",
+    "airportLat": "19.0902179"
+  },
+  {
+    "id": "GLBsBroeilhGSFOKa7mb",
+    "date": {
+      "_seconds": 1697635198,
+      "_nanoseconds": 980000000
+    },
+    "airportLng": "71.0329185",
+    "airportName": "Rajkot International Airport",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Hirasar",
+    "state": "Gujarat",
+    "airportLat": "22.3799807"
+  },
+  {
+    "id": "Jv12PpdTYXGlCJKeSuR5",
+    "date": {
+      "_seconds": 1697717070,
+      "_nanoseconds": 232000000
+    },
+    "airportLng": "72.83106070000001",
+    "airportName": "Surat",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Surat",
+    "state": "Gujarat",
+    "airportLat": "21.1702401"
+  },
+  {
+    "id": "OvwFBNlmmndI2VL6eTkp",
+    "date": {
+      "_seconds": 1704275742,
+      "_nanoseconds": 180000000
+    },
+    "airportLng": "85.0920805",
+    "airportName": "Jayprakash Narayan International Airport, Patna",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Patna",
+    "state": "Bihar",
+    "airportLat": "25.5954395"
+  },
+  {
+    "id": "PjUYbhsBCzt7Y6DVOmVI",
+    "date": {
+      "_seconds": 1716875757,
+      "_nanoseconds": 82000000
+    },
+    "airportLng": "72.62403549999999",
+    "airportName": "Sardar Vallabhbhai Patel International Airport",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Ahmedabad",
+    "state": "Gujarat",
+    "airportLat": "23.0744987"
+  },
+  {
+    "id": "R2IUxkYpLVfM7PaavjU5",
+    "date": {
+      "_seconds": 1717936113,
+      "_nanoseconds": 551000000
+    },
+    "airportLng": "69.6781069",
+    "airportName": "Air Force Station Bhuj",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Bhuj",
+    "state": "Gujarat",
+    "airportLat": "23.2774959"
+  },
+  {
+    "id": "RE1BouV2Q9DrCGCf2QYS",
+    "date": {
+      "_seconds": 1705073029,
+      "_nanoseconds": 647000000
+    },
+    "airportLng": "73.9089168",
+    "airportName": "Pune International Airport",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Pune",
+    "state": "Maharashtra",
+    "airportLat": "18.579343"
+  },
+  {
+    "id": "ahucAbzdaS0t6DxLIObk",
+    "cityLocation": "Chhatrapati Sambhaji Nagar",
+    "country": "India",
+    "state": "Maharashtra",
+    "airportName": "Aurangabad Airport",
+    "airportLat": "19.8639942",
+    "airportLng": "75.39606730000001",
+    "enable": true,
+    "date": {
+      "_seconds": 1731999319,
+      "_nanoseconds": 394000000
+    }
+  },
+  {
+    "id": "e1QLtqDpBvH1twRqDBeq",
+    "cityLocation": "Ahmedabad",
+    "country": "India",
+    "state": "Gujarat",
+    "airportName": "Ahmedabad International Airport",
+    "airportLat": "23.0718055",
+    "airportLng": "72.6197238",
+    "enable": true,
+    "date": {
+      "_seconds": 1731998464,
+      "_nanoseconds": 27000000
+    }
+  },
+  {
+    "id": "lkQF38xh57Z2iMt0MGJo",
+    "date": {
+      "_seconds": 1698055082,
+      "_nanoseconds": 759000000
+    },
+    "airportLng": "72.8744502",
+    "airportName": "Mumbai Airport T2 International",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Mumbai",
+    "state": "Maharashtra",
+    "airportLat": "19.1010177"
+  },
+  {
+    "id": "n2QQJireYmdPWfEqqw44",
+    "date": {
+      "_seconds": 1705376370,
+      "_nanoseconds": 440000000
+    },
+    "airportLng": "73.86810799999999",
+    "airportName": "Manohar International Airport (GOA Airport)",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Mopa",
+    "state": "Goa",
+    "airportLat": "15.7318257"
+  },
+  {
+    "id": "ovRn2BqTdd0DXhRbrJcs",
+    "date": {
+      "_seconds": 1717520588,
+      "_nanoseconds": 162000000
+    },
+    "airportLng": "69.66394799999999",
+    "airportName": "Bhuj Airportf",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Bhuj",
+    "state": "Gujarat",
+    "airportLat": "23.2755333"
+  },
+  {
+    "id": "xfTYZPzwNdXdeu3jGCTF",
+    "date": {
+      "_seconds": 1716564280,
+      "_nanoseconds": 115000000
+    },
+    "airportLng": "77.118892",
+    "airportName": "Delhi airport",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "New Delhi",
+    "state": "Delhi",
+    "airportLat": "28.5625788"
+  },
+  {
+    "id": "zJbuoZCxk58myIbuEQFC",
+    "date": {
+      "_seconds": 1714999704,
+      "_nanoseconds": 634000000
+    },
+    "airportLng": "77.3356239",
+    "airportName": "Raja Bhoj International Airport, Bhopal",
+    "country": "India",
+    "enable": true,
+    "cityLocation": "Bhopal",
+    "state": "Madhya Pradesh",
+    "airportLat": "23.2909326"
+  }
+]

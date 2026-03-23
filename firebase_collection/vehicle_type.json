@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1RvtLcbAPyAyEr3d40LF",
+    "name": "Freight",
+    "back_image": "",
+    "front_image": "",
+    "enable": false
+  },
+  {
+    "id": "2yH3nXHjdumO1yfUfm0d",
+    "enable": true,
+    "back_image": "",
+    "front_image": "",
+    "service_id": "JCH5ciDxfOeuQDX2nbyZ",
+    "name": "Cab "
+  },
+  {
+    "id": "42ph0wkd4b6KoImrj0gj",
+    "name": "Innova",
+    "back_image": "",
+    "front_image": "",
+    "enable": false
+  },
+  {
+    "id": "NJZPuhfsPMm5dNOMXOnp",
+    "name": "Auto",
+    "enable": true,
+    "back_image": "",
+    "front_image": "",
+    "service_id": "GlW3GhOBkbu2gtJwr6jH"
+  },
+  {
+    "id": "bc8ItwNooNAtcME5CiTo",
+    "enable": true,
+    "back_image": "",
+    "front_image": "",
+    "service_id": "VXmBuNgKxOomZzc8iOgV",
+    "name": "Sedan "
+  },
+  {
+    "id": "nGi5FvL9dy1uQwQyR5QK",
+    "back_image": "",
+    "front_image": "",
+    "enable": true,
+    "service_id": "vGIpx48e4L5KgW55M5FW",
+    "name": "Suv"
+  },
+  {
+    "id": "ufEUv0EL28lINkou3Tq2",
+    "name": "test",
+    "back_image": "",
+    "front_image": "",
+    "service_id": "slb7TOd3StLENu9YQJnv",
+    "enable": false
+  }
+]
