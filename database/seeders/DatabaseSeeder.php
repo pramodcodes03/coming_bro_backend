@@ -43,6 +43,9 @@ class DatabaseSeeder extends Seeder
             InsuranceCompanySeeder::class,
             SubscriptionPlanSeeder::class,
 
+            // Settings
+            SettingsSeeder::class,
+
             // Content
             CmsPageSeeder::class,
             BannerSeeder::class,
