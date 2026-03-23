@@ -1,0 +1,301 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class VehicleModelSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $records = [
+            [
+                'id' => '19bRzufUkKTvuVvHlreo',
+                'name' => 'TVS King Duramax',
+                'company_id' => 'ttU3fbcellItU5CYsGu3',
+                'enable' => true,
+            ],
+            [
+                'id' => '1WdIhuK41fIhanEuy04B',
+                'name' => 'TVS King Duramax Plus',
+                'company_id' => 'ttU3fbcellItU5CYsGu3',
+                'enable' => true,
+            ],
+            [
+                'id' => '5HSBUy0gYz6JzS4AOLq2',
+                'name' => 'Bajaj RE E TEC 9.0',
+                'company_id' => 'CtVlx1XmvbXYxRurJTri',
+                'enable' => true,
+            ],
+            [
+                'id' => '6iYLOisLqq8PWHqA3XKQ',
+                'name' => 'Honda Amaze',
+                'company_id' => '4ez2wgeqyijTgBaIwYvt',
+                'enable' => true,
+            ],
+            [
+                'id' => '6oJ2R7bbFHy6jMQAqBzh',
+                'name' => 'Mahindra Alfa Plus',
+                'company_id' => 'PeT3bXyti7z20iKsSeR9',
+                'enable' => true,
+            ],
+            [
+                'id' => '6yMifTtlOqcsZIYfnMWi',
+                'name' => 'TVS King Deluxe',
+                'company_id' => 'ttU3fbcellItU5CYsGu3',
+                'enable' => true,
+            ],
+            [
+                'id' => '8QbOhPHILMmh1H6Nb2KR',
+                'name' => 'Ford Fiesta',
+                'company_id' => 'FyFOOjKUePq4JnpoiKQ6',
+                'enable' => true,
+            ],
+            [
+                'id' => 'AHJUTVkBdACCoTBz4BhA',
+                'name' => 'Atul Rik +',
+                'company_id' => 'DicSuP6axRZ4CK89R5dX',
+                'enable' => true,
+            ],
+            [
+                'id' => 'ATImDhtBf17MVY0RUy2z',
+                'name' => 'TVS King Ep 1',
+                'company_id' => 'ttU3fbcellItU5CYsGu3',
+                'enable' => true,
+            ],
+            [
+                'id' => 'AYeDHv3sGC1pdKnYwyz5',
+                'name' => 'Maruti Ertiga',
+                'company_id' => 'bctz9i661HD8p6g1u1oS',
+                'enable' => true,
+            ],
+            [
+                'id' => 'AuuXFx6yOGFnRf3K1qqz',
+                'name' => 'Bajaj GoGo P 70',
+                'company_id' => 'CtVlx1XmvbXYxRurJTri',
+                'enable' => true,
+            ],
+            [
+                'id' => 'BMKIHFT6pnSdcrJ6R8Ph',
+                'name' => 'Hyundai Xcent',
+                'company_id' => 'OckrIb09jENsQwyrfxLu',
+                'enable' => true,
+            ],
+            [
+                'id' => 'BqFtkJ6PeIe7yfENAIIS',
+                'name' => 'Ford Figo Aspire',
+                'company_id' => 'FyFOOjKUePq4JnpoiKQ6',
+                'enable' => true,
+            ],
+            [
+                'id' => 'CbjRxwQaiXJ0cIoekJRi',
+                'name' => 'Bajaj Maxima C',
+                'company_id' => 'CtVlx1XmvbXYxRurJTri',
+                'enable' => true,
+            ],
+            [
+                'id' => 'DBrPMHbsHCCb3tBmZyup',
+                'name' => 'JSA 3 WHEELER',
+                'company_id' => 'dMAJyGTUhbTCXtp2m29B',
+                'enable' => true,
+            ],
+            [
+                'id' => 'FKOtbnsOIKXoWWSeavi7',
+                'name' => 'Mahindra Alfa Champ',
+                'company_id' => 'PeT3bXyti7z20iKsSeR9',
+                'enable' => true,
+            ],
+            [
+                'id' => 'Ftl6QlgwHE83zVH5lYsJ',
+                'name' => 'Bajaj Maxima X Wide',
+                'company_id' => 'CtVlx1XmvbXYxRurJTri',
+                'enable' => true,
+            ],
+            [
+                'id' => 'GcgfZkn4CuAg4Ndw9nLS',
+                'name' => 'JSA NV',
+                'company_id' => 'dMAJyGTUhbTCXtp2m29B',
+                'enable' => true,
+            ],
+            [
+                'id' => 'J1tYiSXv5gBFwlYiF3LA',
+                'name' => 'Maruti Wagon R',
+                'company_id' => 'bctz9i661HD8p6g1u1oS',
+                'enable' => true,
+            ],
+            [
+                'id' => 'L3wWCA2lwDZUMx2CA5Yi',
+                'name' => 'Ford Figo',
+                'company_id' => 'FyFOOjKUePq4JnpoiKQ6',
+                'enable' => true,
+            ],
+            [
+                'id' => 'LaAIr550pVanvnFBnkYT',
+                'name' => 'Piaggio Ape Plus',
+                'company_id' => '4t8Zhmmv2WH5w9jScaEQ',
+                'enable' => true,
+            ],
+            [
+                'id' => 'Ma80VnKEh9NAriarJRwk',
+                'name' => 'Bajaj RE CNG ',
+                'company_id' => 'CtVlx1XmvbXYxRurJTri',
+                'enable' => true,
+            ],
+            [
+                'id' => 'MvYr9QJ0uGefgpREdenS',
+                'name' => 'Hyundai I 20',
+                'company_id' => 'OckrIb09jENsQwyrfxLu',
+                'enable' => true,
+            ],
+            [
+                'id' => 'Ogt4KaSVAPTzP0e3StGn',
+                'name' => 'TVS King EV Max',
+                'company_id' => 'ttU3fbcellItU5CYsGu3',
+                'enable' => true,
+            ],
+            [
+                'id' => 'PacewOzGVJnKaJjhqeV2',
+                'name' => 'Maruti Ciaz',
+                'company_id' => 'bctz9i661HD8p6g1u1oS',
+                'enable' => true,
+            ],
+            [
+                'id' => 'V08FqIFqoWoU5LtEVLPJ',
+                'name' => 'Piaggio Ape City',
+                'company_id' => '4t8Zhmmv2WH5w9jScaEQ',
+                'enable' => true,
+            ],
+            [
+                'id' => 'VMDLMSf4oqnYTYobY2IA',
+                'name' => 'Maruti Dzire',
+                'company_id' => 'bctz9i661HD8p6g1u1oS',
+                'enable' => true,
+            ],
+            [
+                'id' => 'WYbaEHsHeEh016HuxEp6',
+                'name' => 'Bajaj Maxima C',
+                'company_id' => 'CtVlx1XmvbXYxRurJTri',
+                'enable' => true,
+            ],
+            [
+                'id' => 'WuRVORcdWgZD0zpWPXbo',
+                'name' => 'Honda City',
+                'company_id' => '4ez2wgeqyijTgBaIwYvt',
+                'enable' => true,
+            ],
+            [
+                'id' => 'XswIRhBpjjdFrKnipaGL',
+                'name' => 'Hyundai Aura',
+                'company_id' => 'OckrIb09jENsQwyrfxLu',
+                'enable' => true,
+            ],
+            [
+                'id' => 'YUEoFIkl4GV9gtsBqBZE',
+                'name' => 'Piaggio Ape E Xtra Fx',
+                'company_id' => '4t8Zhmmv2WH5w9jScaEQ',
+                'enable' => true,
+            ],
+            [
+                'id' => 'ZArKc0LSatsBaWws9pwv',
+                'name' => 'Mahindra E Alfa Super',
+                'company_id' => 'PeT3bXyti7z20iKsSeR9',
+                'enable' => true,
+            ],
+            [
+                'id' => 'ZZNTTkTorQGkEF9v5PBI',
+                'name' => 'Mahindra Alfa Dx',
+                'company_id' => 'PeT3bXyti7z20iKsSeR9',
+                'enable' => true,
+            ],
+            [
+                'id' => 'awaKxqnRBGxS0VSNK4D7',
+                'name' => 'Toyota Rumion',
+                'company_id' => 'yS20pN79C51jjRjDwjnL',
+                'enable' => true,
+            ],
+            [
+                'id' => 'azXHSl6NcacvAw0arBeA',
+                'name' => 'JSA VICTORY PLUS',
+                'company_id' => 'dMAJyGTUhbTCXtp2m29B',
+                'enable' => true,
+            ],
+            [
+                'id' => 'brrEYfVgzqvK1bp9DaON',
+                'name' => 'Maruti Celario',
+                'company_id' => 'bctz9i661HD8p6g1u1oS',
+                'enable' => true,
+            ],
+            [
+                'id' => 'd79lAgapG6Lpr4DcKtIp',
+                'name' => 'Piaggio Ape Metro',
+                'company_id' => '4t8Zhmmv2WH5w9jScaEQ',
+                'enable' => true,
+            ],
+            [
+                'id' => 'dg4m8D4FA37sRGtwL0Tw',
+                'name' => 'Bajaj GoGo P 50',
+                'company_id' => 'CtVlx1XmvbXYxRurJTri',
+                'enable' => true,
+            ],
+            [
+                'id' => 'e2Et0bFs5vkSZ6vv66jc',
+                'name' => 'Toyota Innova',
+                'company_id' => 'yS20pN79C51jjRjDwjnL',
+                'enable' => true,
+            ],
+            [
+                'id' => 'ejJSbziNEXKLHfjxGq1M',
+                'name' => 'Toyota Etios',
+                'company_id' => 'yS20pN79C51jjRjDwjnL',
+                'enable' => true,
+            ],
+            [
+                'id' => 'jIBwugGdyxeFQKxlRVul',
+                'name' => 'Toyota Etios Liva',
+                'company_id' => 'yS20pN79C51jjRjDwjnL',
+                'enable' => true,
+            ],
+            [
+                'id' => 'jtcg6vOTisE2FOG8S9ug',
+                'name' => 'Atul Rik',
+                'company_id' => 'DicSuP6axRZ4CK89R5dX',
+                'enable' => true,
+            ],
+            [
+                'id' => 'kZrQt68owd7x0ir536GK',
+                'name' => 'Tata Nexon',
+                'company_id' => 'zDHZjTos0ceQnIehbXyp',
+                'enable' => true,
+            ],
+            [
+                'id' => 'soIG2fg2OQ0tbIzMOOoz',
+                'name' => 'Mahindra Treo Plus',
+                'company_id' => 'PeT3bXyti7z20iKsSeR9',
+                'enable' => true,
+            ],
+            [
+                'id' => 'vVcd1djwX08Aszc7vBxn',
+                'name' => 'Tata Zest',
+                'company_id' => 'zDHZjTos0ceQnIehbXyp',
+                'enable' => true,
+            ],
+            [
+                'id' => 'wWic4mX2cB4Nvjg2TZXi',
+                'name' => 'Piaggio Ape E City Fx',
+                'company_id' => '4t8Zhmmv2WH5w9jScaEQ',
+                'enable' => true,
+            ],
+            [
+                'id' => 'wxqc3n4kXnMu0HYQveIN',
+                'name' => 'Maruti XL6',
+                'company_id' => 'bctz9i661HD8p6g1u1oS',
+                'enable' => true,
+            ]
+        ];
+
+        foreach ($records as $record) {
+            DB::table('vehicle_models')->updateOrInsert(['id' => $record['id']], $record);
+        }
+    }
+}
