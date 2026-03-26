@@ -38,6 +38,15 @@ Route::prefix('driver')->group(function () {
     Route::get('/onboarding', [OnboardingController::class, 'index']);
     Route::get('/languages', [OnboardingController::class, 'languages']);
 
+    // Location data
+    Route::get('/states', [LocationController::class, 'states']);
+    Route::get('/cities', [LocationController::class, 'cities']);
+    Route::get('/vehicle-companies', [LocationController::class, 'vehicleCompanies']);
+    Route::get('/vehicle-models', [LocationController::class, 'vehicleModels']);
+    Route::get('/fuel-types', [LocationController::class, 'fuelTypes']);
+    Route::get('/zones', [LocationController::class, 'zones']);
+
+
     // ──────────────────────────────────────────────
     // Protected routes (auth:sanctum required)
     // ──────────────────────────────────────────────
@@ -125,13 +134,6 @@ Route::prefix('driver')->group(function () {
         Route::get('/subscriptions', [SubscriptionController::class, 'index']);
         Route::post('/subscriptions/history', [SubscriptionController::class, 'createHistory']);
 
-        // Location data
-        Route::get('/states', [LocationController::class, 'states']);
-        Route::get('/cities', [LocationController::class, 'cities']);
-        Route::get('/vehicle-companies', [LocationController::class, 'vehicleCompanies']);
-        Route::get('/vehicle-models', [LocationController::class, 'vehicleModels']);
-        Route::get('/fuel-types', [LocationController::class, 'fuelTypes']);
-        Route::get('/zones', [LocationController::class, 'zones']);
 
         // File upload
         Route::post('/upload-file', [DriverController::class, 'uploadFile']);
