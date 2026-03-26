@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bank_details', function (Blueprint $table) {
-            $table->string('user_id')->primary();
+            $table->id();
+            $table->foreignId('user_id')->constrained('driver_users')->cascadeOnDelete();
             $table->string('bank_name')->nullable();
             $table->string('holder_name')->nullable();
             $table->string('branch_name')->nullable();

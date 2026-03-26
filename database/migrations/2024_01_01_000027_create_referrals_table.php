@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('referrals', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('referral_code')->nullable();
-            $table->string('referral_by')->nullable();
+            $table->unsignedBigInteger('referral_by')->nullable();
             $table->timestamps();
         });
     }

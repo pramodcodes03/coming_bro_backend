@@ -7,7 +7,6 @@ use App\Models\ChatInbox;
 use App\Models\ChatMessage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class ChatController extends Controller
 {
@@ -54,7 +53,6 @@ class ChatController extends Controller
         ]);
 
         $message = ChatMessage::create([
-            'id' => Str::uuid()->toString(),
             'order_id' => $request->order_id,
             'sender_id' => $request->sender_id,
             'sender_type' => $request->sender_type,

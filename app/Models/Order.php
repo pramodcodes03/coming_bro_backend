@@ -13,16 +13,9 @@ class Order extends Model
 
     protected $table = 'orders';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     public $timestamps = false;
 
     protected $fillable = [
-        'id',
         'source_location_name',
         'destination_location_name',
         'payment_type',

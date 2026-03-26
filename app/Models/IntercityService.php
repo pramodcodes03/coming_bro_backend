@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class IntercityService extends Model
 {
     protected $table = 'intercity_services';
-    protected $primaryKey = 'id';
-    public $incrementing = false;
-    protected $keyType = 'string';
 
     protected $fillable = [
         'id', 'name', 'image', 'km_charge',

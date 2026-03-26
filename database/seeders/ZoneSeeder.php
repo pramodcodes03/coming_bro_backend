@@ -11,7 +11,6 @@ class ZoneSeeder extends Seeder
     {
         $records = [
             [
-                'id' => '8YIeHEEeJkPMqv2asHAy',
                 'name' => 'India',
                 'latitude' => 36.66018513715171,
                 'longitude' => 72.07767174265898,
@@ -21,7 +20,7 @@ class ZoneSeeder extends Seeder
         ];
 
         foreach ($records as $record) {
-            DB::table('zones')->updateOrInsert(['id' => $record['id']], $record);
+            DB::table('zones')->updateOrInsert(['name' => $record['name']], $record);
         }
     }
 }

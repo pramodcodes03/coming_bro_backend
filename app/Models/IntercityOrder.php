@@ -11,16 +11,9 @@ class IntercityOrder extends Model
 
     protected $table = 'orders_intercity';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     public $timestamps = false;
 
     protected $fillable = [
-        'id',
         'source_city',
         'source_location_name',
         'destination_city',

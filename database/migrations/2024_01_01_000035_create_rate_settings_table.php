@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rate_settings', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->json('data')->nullable();
             $table->timestamps();
         });

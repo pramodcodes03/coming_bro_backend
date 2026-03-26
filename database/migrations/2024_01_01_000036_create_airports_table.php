@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('airports', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('airport_name')->nullable();
             $table->string('airport_lat')->nullable();
             $table->string('airport_lng')->nullable();

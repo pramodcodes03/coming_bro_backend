@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('referral_logs', function (Blueprint $table) {
             $table->id();
-            $table->string('driver_id')->nullable();
-            $table->string('user_id')->nullable();
+            $table->foreignId('driver_id')->nullable()->constrained('driver_users')->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('customers')->nullOnDelete();
             $table->timestamp('scanned_at')->nullable();
             $table->timestamps();
         });

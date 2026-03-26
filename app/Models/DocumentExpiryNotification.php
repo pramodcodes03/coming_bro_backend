@@ -11,14 +11,7 @@ class DocumentExpiryNotification extends Model
 
     protected $table = 'document_expiry_notifications';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'driver_id',
         'document_id',
         'document_name',

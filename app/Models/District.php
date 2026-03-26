@@ -11,14 +11,7 @@ class District extends Model
 
     protected $table = 'districts';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'name',
         'publish',
     ];

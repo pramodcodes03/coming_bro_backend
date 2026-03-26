@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('title')->nullable();
             $table->boolean('back_side')->default(false);
             $table->boolean('enable')->default(true);

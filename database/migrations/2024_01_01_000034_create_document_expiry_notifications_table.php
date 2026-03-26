@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('document_expiry_notifications', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->string('driver_id')->nullable();
-            $table->string('document_id')->nullable();
+            $table->id();
+            $table->foreignId('driver_id')->nullable()->constrained('driver_users')->nullOnDelete();
+            $table->foreignId('document_id')->nullable()->constrained('documents')->nullOnDelete();
             $table->string('message')->nullable();
             $table->boolean('is_read')->default(false);
             $table->timestamps();

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class ReviewController extends Controller
 {
@@ -34,7 +33,6 @@ class ReviewController extends Controller
         }
 
         $review = Review::create([
-            'id' => Str::uuid()->toString(),
             'order_id' => $request->order_id,
             'driver_id' => $request->driver_id,
             'customer_id' => $request->customer_id,

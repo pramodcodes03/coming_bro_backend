@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('on_boardings', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->string('title')->nullable();

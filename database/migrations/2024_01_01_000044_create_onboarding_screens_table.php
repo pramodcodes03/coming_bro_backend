@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('onboarding_screens', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();

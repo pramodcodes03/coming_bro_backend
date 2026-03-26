@@ -11,14 +11,7 @@ class DriverRule extends Model
 
     protected $table = 'driver_rules';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'name',
         'enable',
     ];

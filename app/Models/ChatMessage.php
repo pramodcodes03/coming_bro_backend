@@ -11,14 +11,7 @@ class ChatMessage extends Model
 
     protected $table = 'chat_messages';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'order_id',
         'sender_id',
         'sender_type',

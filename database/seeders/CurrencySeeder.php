@@ -11,7 +11,6 @@ class CurrencySeeder extends Seeder
     {
         $records = [
             [
-                'id' => '64807d6956651',
                 'symbol' => '$',
                 'code' => 'USD',
                 'name' => 'Us Dollar',
@@ -20,7 +19,6 @@ class CurrencySeeder extends Seeder
                 'decimal_digits' => 2,
             ],
             [
-                'id' => 'oGVoct1HpPi8UYqqbD9X',
                 'symbol' => 'INR',
                 'code' => 'INR',
                 'name' => 'India',
@@ -31,7 +29,7 @@ class CurrencySeeder extends Seeder
         ];
 
         foreach ($records as $record) {
-            DB::table('currencies')->updateOrInsert(['id' => $record['id']], $record);
+            DB::table('currencies')->updateOrInsert(['code' => $record['code']], $record);
         }
     }
 }

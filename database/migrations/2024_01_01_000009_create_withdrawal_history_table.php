@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('withdrawal_history', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->string('user_id')->nullable();
+            $table->id();
+            $table->foreignId('user_id')->nullable()->constrained('driver_users')->nullOnDelete();
             $table->string('note')->nullable();
             $table->string('admin_note')->nullable();
             $table->string('payment_status')->nullable();

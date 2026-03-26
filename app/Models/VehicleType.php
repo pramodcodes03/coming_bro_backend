@@ -11,14 +11,7 @@ class VehicleType extends Model
 
     protected $table = 'vehicle_types';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'enable',
         'name',
         'front_image',

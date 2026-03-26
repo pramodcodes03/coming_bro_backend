@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\WalletTransaction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class WalletController extends Controller
 {
@@ -44,7 +43,6 @@ class WalletController extends Controller
         $driver = $request->user();
 
         $transaction = WalletTransaction::create([
-            'id' => Str::uuid()->toString(),
             'user_id' => $driver->id,
             'amount' => $request->amount,
             'transaction_type' => $request->transaction_type,

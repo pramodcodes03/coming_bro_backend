@@ -106,7 +106,6 @@ class AuthController extends Controller
         if (!$driver) {
             // Create new driver record
             $driver = DriverUser::create([
-                'id' => Str::uuid()->toString(),
                 'phone_number' => $request->phone_number,
                 'country_code' => $request->country_code,
                 'login_type' => 'phone',

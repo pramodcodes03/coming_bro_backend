@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vehicle_companies', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('name')->nullable();
             $table->boolean('enable')->default(true);
             $table->timestamp('created_at')->nullable();

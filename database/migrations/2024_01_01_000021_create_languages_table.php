@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('languages', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('image')->default('');
             $table->string('code')->nullable();
             $table->boolean('is_deleted')->default(false);

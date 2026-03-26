@@ -11,14 +11,7 @@ class RateSetting extends Model
 
     protected $table = 'rate_settings';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'name',
         'data',
     ];

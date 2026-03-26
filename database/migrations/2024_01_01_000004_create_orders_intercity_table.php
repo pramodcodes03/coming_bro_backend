@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders_intercity', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('source_city')->nullable();
             $table->string('source_location_name')->nullable();
             $table->string('destination_city')->nullable();
@@ -22,9 +22,9 @@ return new class extends Migration
             $table->double('source_longitude')->nullable();
             $table->double('destination_latitude')->nullable();
             $table->double('destination_longitude')->nullable();
-            $table->string('intercity_service_id')->nullable();
+            $table->foreignId('intercity_service_id')->nullable()->constrained('intercity_services')->nullOnDelete();
             $table->string('loading_unloading_charges')->nullable();
-            $table->string('user_id')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained('customers')->nullOnDelete();
             $table->string('offer_rate')->nullable();
             $table->string('final_rate')->nullable();
             $table->string('ride_hold_time')->nullable();
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->boolean('loading')->default(false);
             $table->boolean('unloading')->default(false);
-            $table->string('driver_id')->nullable();
+            $table->foreignId('driver_id')->nullable()->constrained('driver_users')->nullOnDelete();
             $table->string('parcel_dimension')->nullable();
             $table->string('parcel_weight')->nullable();
             $table->string('freight_weight')->nullable();
@@ -59,7 +59,7 @@ return new class extends Migration
             $table->json('some_one_else')->nullable();
             $table->json('admin_commission')->nullable();
             $table->json('zone')->nullable();
-            $table->string('zone_id')->nullable();
+            $table->foreignId('zone_id')->nullable()->constrained('zones')->nullOnDelete();
             $table->timestamp('created_date')->nullable();
             $table->timestamp('update_date')->nullable();
         });

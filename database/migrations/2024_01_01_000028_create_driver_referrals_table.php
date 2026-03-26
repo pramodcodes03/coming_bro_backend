@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('driver_referrals', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
+            $table->foreignId('driver_id')->constrained('driver_users')->cascadeOnDelete();
             $table->string('referral_code')->nullable();
             $table->integer('referral_users_count')->default(0);
             $table->integer('bonus_rides_remaining')->default(0);

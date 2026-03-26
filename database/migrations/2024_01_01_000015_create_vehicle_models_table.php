@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vehicle_models', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->string('company_id')->nullable();
+            $table->id();
+            $table->foreignId('company_id')->nullable()->constrained('vehicle_companies')->nullOnDelete();
             $table->string('name')->nullable();
             $table->boolean('enable')->default(true);
             $table->timestamps();

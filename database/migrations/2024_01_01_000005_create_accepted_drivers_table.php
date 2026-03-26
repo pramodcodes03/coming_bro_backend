@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('accepted_drivers', function (Blueprint $table) {
             $table->id();
-            $table->string('order_id');
+            $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
             $table->string('order_type')->default('city'); // 'city' or 'intercity'
-            $table->string('driver_id');
+            $table->foreignId('driver_id')->constrained('driver_users')->cascadeOnDelete();
             $table->string('offer_amount')->nullable();
             $table->timestamp('accepted_reject_time')->nullable();
             $table->string('suggested_time')->nullable();

@@ -11,14 +11,7 @@ class WalletTransaction extends Model
 
     protected $table = 'wallet_transactions';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'amount',
         'user_id',
         'transaction_id',

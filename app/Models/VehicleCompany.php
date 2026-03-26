@@ -11,14 +11,7 @@ class VehicleCompany extends Model
 
     protected $table = 'vehicle_companies';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'name',
         'enable',
     ];

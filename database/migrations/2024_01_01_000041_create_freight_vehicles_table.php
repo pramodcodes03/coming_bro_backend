@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('freight_vehicles', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('name')->nullable();
             $table->string('image')->nullable();
             $table->text('description')->nullable();

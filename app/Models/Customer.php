@@ -11,14 +11,7 @@ class Customer extends Model
 
     protected $table = 'customers';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'full_name',
         'email',
         'login_type',

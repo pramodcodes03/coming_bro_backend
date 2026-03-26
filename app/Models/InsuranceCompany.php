@@ -11,14 +11,7 @@ class InsuranceCompany extends Model
 
     protected $table = 'insurance_companies';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'name',
     ];
 }

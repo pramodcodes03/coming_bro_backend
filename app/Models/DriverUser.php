@@ -14,14 +14,7 @@ class DriverUser extends Authenticatable
 
     protected $table = 'driver_users';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'phone_number',
         'login_type',
         'country_code',

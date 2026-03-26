@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('taxes', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('title')->nullable();
             $table->string('type')->nullable(); // 'percentage'
             $table->string('tax')->nullable();

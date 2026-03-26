@@ -11,14 +11,7 @@ class Language extends Model
 
     protected $table = 'languages';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'name',
         'code',
         'enable',

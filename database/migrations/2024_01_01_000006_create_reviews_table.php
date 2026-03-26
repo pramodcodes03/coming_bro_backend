@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reviews', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('comment')->nullable();
             $table->string('rating')->nullable();
-            $table->string('customer_id')->nullable();
-            $table->string('driver_id')->nullable();
+            $table->foreignId('customer_id')->nullable()->constrained('customers')->nullOnDelete();
+            $table->foreignId('driver_id')->nullable()->constrained('driver_users')->nullOnDelete();
             $table->string('type')->nullable();
             $table->timestamp('date')->nullable();
             $table->timestamps();

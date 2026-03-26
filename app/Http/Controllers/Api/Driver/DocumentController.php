@@ -7,7 +7,6 @@ use App\Models\Document;
 use App\Models\DriverDocument;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class DocumentController extends Controller
 {
@@ -140,7 +139,6 @@ class DocumentController extends Controller
             $driverDocument->save();
         } else {
             $driverDocument = DriverDocument::create([
-                'id' => Str::uuid()->toString(),
                 'driver_id' => $driver->id,
                 'documents' => [$newDoc],
             ]);

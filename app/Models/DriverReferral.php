@@ -11,14 +11,7 @@ class DriverReferral extends Model
 
     protected $table = 'driver_referrals';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'driver_id',
         'referral_code',
     ];

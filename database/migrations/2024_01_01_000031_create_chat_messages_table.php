@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('chat_messages', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->string('sender_id')->default('');
-            $table->string('receiver_id')->default('');
-            $table->string('order_id')->default('');
+            $table->id();
+            $table->unsignedBigInteger('sender_id')->nullable();
+            $table->unsignedBigInteger('receiver_id')->nullable();
+            $table->foreignId('order_id')->nullable()->constrained('orders')->nullOnDelete();
             $table->text('message')->default('');
             $table->string('message_type')->default('');
             $table->string('video_thumbnail')->default('');

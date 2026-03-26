@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('subscription_plans', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('amount')->default('');
             $table->text('description')->default('');
             $table->string('duration')->default('');

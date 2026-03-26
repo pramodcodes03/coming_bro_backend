@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('driver_users', function (Blueprint $table) {
-            $table->string('id', 128)->primary(); // Firebase UID
+            $table->id();
             $table->string('phone_number', 20)->nullable();
             $table->string('login_type', 30)->nullable();
             $table->string('country_code', 10)->nullable();
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('document_verification')->default(false);
             $table->string('full_name', 100)->nullable();
             $table->boolean('is_online')->default(false);
-            $table->string('service_id', 50)->nullable();
+            $table->unsignedBigInteger('service_id')->nullable();
             $table->text('fcm_token')->nullable();
             $table->string('email', 100)->nullable();
             $table->string('city', 100)->nullable();
@@ -54,7 +54,7 @@ return new class extends Migration
             $table->json('zone_ids')->nullable();
             // Vehicle Information (embedded)
             $table->string('vehicle_type', 50)->nullable();
-            $table->string('vehicle_type_id', 50)->nullable();
+            $table->unsignedBigInteger('vehicle_type_id')->nullable();
             $table->timestamp('registration_date')->nullable();
             $table->string('vehicle_registration_date', 30)->nullable();
             $table->string('vehicle_color', 30)->nullable();
@@ -70,7 +70,7 @@ return new class extends Migration
             $table->string('rc_image', 500)->nullable();
             $table->string('chassis_number', 50)->nullable();
             $table->string('district', 100)->nullable();
-            $table->string('district_id', 50)->nullable();
+            $table->unsignedBigInteger('district_id')->nullable();
             $table->string('ac_perkm_rate', 20)->nullable();
             $table->string('non_ac_perkm_rate', 20)->nullable();
             $table->string('selfie_photo', 500)->nullable();
@@ -96,7 +96,7 @@ return new class extends Migration
             $table->string('payment_type', 30)->nullable();
             // Subscription Information (embedded)
             $table->string('subscription_gst_amount', 20)->nullable();
-            $table->string('subscription_id', 50)->nullable();
+            $table->unsignedBigInteger('subscription_id')->nullable();
             $table->timestamp('subscription_date')->nullable();
             $table->timestamp('subscription_end_date')->nullable();
             $table->timestamp('subscription_start_date')->nullable();

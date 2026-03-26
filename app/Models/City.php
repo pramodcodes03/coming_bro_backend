@@ -11,14 +11,7 @@ class City extends Model
 
     protected $table = 'cities';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'name',
         'state_id',
         'is_active',

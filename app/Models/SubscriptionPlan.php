@@ -11,14 +11,7 @@ class SubscriptionPlan extends Model
 
     protected $table = 'subscription_plans';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'name',
         'price',
         'duration',

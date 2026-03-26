@@ -11,7 +11,6 @@ class LanguageSeeder extends Seeder
     {
         $records = [
             [
-                'id' => 'OmAAERf1KqvfDH0rRAPV',
                 'name' => 'Marathi',
                 'code' => 'mr',
                 'image' => '',
@@ -20,7 +19,6 @@ class LanguageSeeder extends Seeder
                 'is_rtl' => false,
             ],
             [
-                'id' => 'PSosPfebXgmhPxTX4Oqn',
                 'name' => 'Hindi',
                 'code' => 'hi',
                 'image' => '',
@@ -29,7 +27,6 @@ class LanguageSeeder extends Seeder
                 'is_rtl' => false,
             ],
             [
-                'id' => 'oKs39NhwMe7YsGRKLcFD',
                 'name' => 'English',
                 'code' => 'en',
                 'image' => '',
@@ -38,7 +35,6 @@ class LanguageSeeder extends Seeder
                 'is_rtl' => false,
             ],
             [
-                'id' => 'rG9ufAeccpVYgoZfAoRq',
                 'name' => 'Português',
                 'code' => 'pt',
                 'image' => '',
@@ -47,7 +43,6 @@ class LanguageSeeder extends Seeder
                 'is_rtl' => false,
             ],
             [
-                'id' => 'wQgDuFdNOXrLxyjfZxR2',
                 'name' => 'Arabic',
                 'code' => 'ar',
                 'image' => '',
@@ -58,7 +53,7 @@ class LanguageSeeder extends Seeder
         ];
 
         foreach ($records as $record) {
-            DB::table('languages')->updateOrInsert(['id' => $record['id']], $record);
+            DB::table('languages')->updateOrInsert(['name' => $record['name']], $record);
         }
     }
 }

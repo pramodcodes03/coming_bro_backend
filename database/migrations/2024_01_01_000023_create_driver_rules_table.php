@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('driver_rules', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('image')->nullable();
             $table->boolean('is_deleted')->default(false);
             $table->boolean('enable')->default(true);

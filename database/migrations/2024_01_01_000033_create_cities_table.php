@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cities', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('name')->nullable();
-            $table->string('state_id')->nullable();
+            $table->foreignId('state_id')->nullable()->constrained('states')->nullOnDelete();
             $table->boolean('enable')->default(true);
             $table->timestamps();
         });

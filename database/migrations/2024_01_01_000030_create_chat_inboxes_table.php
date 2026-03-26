@@ -12,15 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('chat_inboxes', function (Blueprint $table) {
-            $table->string('order_id')->primary();
-            $table->string('customer_id')->default('');
+            $table->id();
+            $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
+            $table->foreignId('customer_id')->nullable()->constrained('customers')->nullOnDelete();
             $table->string('customer_name')->default('');
             $table->string('customer_profile_image')->default('');
             $table->text('last_message')->nullable();
-            $table->string('driver_id')->default('');
+            $table->foreignId('driver_id')->nullable()->constrained('driver_users')->nullOnDelete();
             $table->string('driver_name')->default('');
             $table->string('driver_profile_image')->default('');
-            $table->string('last_sender_id')->default('');
+            $table->unsignedBigInteger('last_sender_id')->nullable();
             $table->timestamps();
         });
     }

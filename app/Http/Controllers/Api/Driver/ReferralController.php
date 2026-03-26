@@ -7,7 +7,6 @@ use App\Models\DriverReferral;
 use App\Models\ReferralLog;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class ReferralController extends Controller
 {
@@ -87,7 +86,6 @@ class ReferralController extends Controller
         }
 
         $referral = DriverReferral::create([
-            'id' => Str::uuid()->toString(),
             'driver_id' => $driver->id,
             'referral_code' => $request->referral_code,
         ]);

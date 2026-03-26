@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('zones', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->json('area')->nullable(); // array of lat/lng points
             $table->boolean('publish')->default(true);
             $table->double('latitude')->nullable();

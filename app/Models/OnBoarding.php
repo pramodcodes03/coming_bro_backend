@@ -11,14 +11,7 @@ class OnBoarding extends Model
 
     protected $table = 'on_boardings';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'title',
         'description',
         'image',

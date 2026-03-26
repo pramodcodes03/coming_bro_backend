@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('source_location_name')->nullable();
             $table->string('destination_location_name')->nullable();
             $table->string('payment_type')->nullable();
@@ -20,8 +20,8 @@ return new class extends Migration
             $table->double('source_longitude')->nullable();
             $table->double('destination_latitude')->nullable();
             $table->double('destination_longitude')->nullable();
-            $table->string('service_id')->nullable();
-            $table->string('user_id')->nullable();
+            $table->foreignId('service_id')->nullable()->constrained('services')->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('customers')->nullOnDelete();
             $table->string('offer_rate')->nullable();
             $table->string('final_rate')->nullable();
             $table->string('distance')->nullable();
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('holding_charge_minute')->nullable();
             $table->string('total_holding_charges')->nullable();
             $table->string('holding_charges')->nullable();
-            $table->string('driver_id')->nullable();
+            $table->foreignId('driver_id')->nullable()->constrained('driver_users')->nullOnDelete();
             $table->string('ride_time_fare_per_minute')->nullable();
             $table->string('total_ride_time')->nullable();
             $table->string('ac_non_ac_charges')->nullable();
@@ -50,7 +50,7 @@ return new class extends Migration
             $table->json('service')->nullable();
             $table->json('admin_commission')->nullable();
             $table->json('zone')->nullable();
-            $table->string('zone_id')->nullable();
+            $table->foreignId('zone_id')->nullable()->constrained('zones')->nullOnDelete();
             $table->timestamp('created_date')->nullable();
             $table->timestamp('update_date')->nullable();
         });

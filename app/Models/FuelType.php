@@ -11,14 +11,7 @@ class FuelType extends Model
 
     protected $table = 'fuel_types';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'name',
         'enable',
     ];

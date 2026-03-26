@@ -11,14 +11,7 @@ class Zone extends Model
 
     protected $table = 'zones';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'name',
         'area',
         'enable',

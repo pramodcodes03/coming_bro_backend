@@ -11,7 +11,6 @@ class ServiceSeeder extends Seeder
     {
         $records = [
             [
-                'id' => 'GlW3GhOBkbu2gtJwr6jH',
                 'title' => 'Auto',
                 'image' => 'https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FAuto_1737448319724.jpg?alt=media&token=130f36b8-8036-4f7b-aea2-a7351a97119a',
                 'enable' => true,
@@ -31,7 +30,6 @@ class ServiceSeeder extends Seeder
                 'admin_commission' => '{"isEnabled": false, "type": "fix", "amount": "0"}',
             ],
             [
-                'id' => 'JCH5ciDxfOeuQDX2nbyZ',
                 'title' => 'Cab ',
                 'image' => 'https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FMini_1737448261921.jpg?alt=media&token=ef219c4a-788e-4355-a24d-a41086ea4f95',
                 'enable' => true,
@@ -51,7 +49,6 @@ class ServiceSeeder extends Seeder
                 'admin_commission' => '{"isEnabled": false, "type": "fix", "amount": "0"}',
             ],
             [
-                'id' => 'VXmBuNgKxOomZzc8iOgV',
                 'title' => ' Sedan',
                 'image' => 'https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FMini%20Sedan_1742539135739.jpg?alt=media&token=b461c8d7-9da9-47d5-9193-d964a4444412',
                 'enable' => true,
@@ -71,7 +68,6 @@ class ServiceSeeder extends Seeder
                 'admin_commission' => '{"isEnabled": false, "type": "fix", "amount": "0"}',
             ],
             [
-                'id' => 'as88LY9F81bNXOWi5qaR',
                 'title' => 'T T',
                 'image' => 'https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FTempo%20Traveller_1742308472602.jpg?alt=media&token=f37e5dc2-2ab9-4b4d-9e5d-87731586d75f',
                 'enable' => false,
@@ -91,7 +87,6 @@ class ServiceSeeder extends Seeder
                 'admin_commission' => '{"isEnabled": false, "type": "fix", "amount": "0"}',
             ],
             [
-                'id' => 'cWlkB4ZEOWwlplkMOkPj',
                 'title' => 'testing',
                 'image' => 'https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fdocument_1741865222974.png?alt=media&token=67780dbc-6b8d-4652-8815-b8734d25aae9',
                 'enable' => false,
@@ -111,7 +106,6 @@ class ServiceSeeder extends Seeder
                 'admin_commission' => '{"isEnabled": false, "type": "fix", "amount": "12"}',
             ],
             [
-                'id' => 'slb7TOd3StLENu9YQJnv',
                 'title' => 'test',
                 'image' => '',
                 'enable' => false,
@@ -131,7 +125,6 @@ class ServiceSeeder extends Seeder
                 'admin_commission' => '{"isEnabled": false, "type": "fix", "amount": "10"}',
             ],
             [
-                'id' => 'vGIpx48e4L5KgW55M5FW',
                 'title' => 'Suv',
                 'image' => 'https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2FErtiga_1742309304548.jpg?alt=media&token=57345c24-3650-4783-bfe7-3c8762055150',
                 'enable' => true,
@@ -153,7 +146,7 @@ class ServiceSeeder extends Seeder
         ];
 
         foreach ($records as $record) {
-            DB::table('services')->updateOrInsert(['id' => $record['id']], $record);
+            DB::table('services')->updateOrInsert(['title' => $record['title']], $record);
         }
     }
 }

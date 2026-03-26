@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('subscription_history', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('gst_amount')->nullable();
             $table->timestamp('date')->nullable();
             $table->timestamp('end_date')->nullable();

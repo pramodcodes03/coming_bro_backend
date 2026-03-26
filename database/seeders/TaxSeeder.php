@@ -11,7 +11,6 @@ class TaxSeeder extends Seeder
     {
         $records = [
             [
-                'id' => '6479c7d3db496',
                 'title' => 'IGST',
                 'type' => 'percentage',
                 'tax' => '9',
@@ -19,7 +18,6 @@ class TaxSeeder extends Seeder
                 'enable' => false,
             ],
             [
-                'id' => '72w6OSocHrbOzxAxFlbL',
                 'title' => 'CGST',
                 'type' => 'percentage',
                 'tax' => '9',
@@ -29,7 +27,7 @@ class TaxSeeder extends Seeder
         ];
 
         foreach ($records as $record) {
-            DB::table('taxes')->updateOrInsert(['id' => $record['id']], $record);
+            DB::table('taxes')->updateOrInsert(['title' => $record['title']], $record);
         }
     }
 }

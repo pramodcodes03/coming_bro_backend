@@ -11,14 +11,7 @@ class Referral extends Model
 
     protected $table = 'referrals';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'referral_code',
         'referral_amount',
         'enable',

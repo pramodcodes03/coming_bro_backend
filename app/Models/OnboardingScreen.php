@@ -8,14 +8,7 @@ class OnboardingScreen extends Model
 {
     protected $table = 'onboarding_screens';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'title',
         'description',
         'image',

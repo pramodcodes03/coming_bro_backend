@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vehicle_types', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->boolean('enable')->default(true);
             $table->string('name')->nullable();
             $table->string('front_image')->nullable();
             $table->string('back_image')->nullable();
-            $table->string('service_id')->nullable();
+            $table->foreignId('service_id')->nullable()->constrained('services')->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -7,7 +7,6 @@ use App\Models\BankDetail;
 use App\Models\WithdrawalHistory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class BankController extends Controller
 {
@@ -118,7 +117,6 @@ class BankController extends Controller
         }
 
         $withdrawal = WithdrawalHistory::create([
-            'id' => Str::uuid()->toString(),
             'driver_id' => $driver->id,
             'amount' => $request->amount,
             'note' => $request->note,

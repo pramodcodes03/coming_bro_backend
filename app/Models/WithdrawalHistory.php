@@ -11,14 +11,7 @@ class WithdrawalHistory extends Model
 
     protected $table = 'withdrawal_history';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'user_id',
         'note',
         'admin_note',

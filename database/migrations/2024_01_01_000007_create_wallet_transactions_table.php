@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('wallet_transactions', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('amount')->nullable();
-            $table->string('user_id')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained('driver_users')->nullOnDelete();
             $table->string('transaction_id')->nullable();
             $table->string('payment_type')->nullable();
             $table->string('note')->nullable();

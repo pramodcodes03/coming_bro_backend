@@ -11,14 +11,7 @@ class Currency extends Model
 
     protected $table = 'currencies';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'symbol',
         'code',
         'enable',

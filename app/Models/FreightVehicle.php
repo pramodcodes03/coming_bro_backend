@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class FreightVehicle extends Model
 {
     protected $table = 'freight_vehicles';
-    protected $primaryKey = 'id';
-    public $incrementing = false;
-    protected $keyType = 'string';
 
     protected $fillable = [
         'id', 'name', 'image', 'description',

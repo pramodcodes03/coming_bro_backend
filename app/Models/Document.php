@@ -11,14 +11,7 @@ class Document extends Model
 
     protected $table = 'documents';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'title',
         'back_side',
         'enable',

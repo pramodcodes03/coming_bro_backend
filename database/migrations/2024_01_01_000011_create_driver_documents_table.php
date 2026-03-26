@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('driver_documents', function (Blueprint $table) {
-            $table->string('id')->primary(); // driver user id
-            $table->json('documents')->nullable(); // array of document objects
+            $table->id();
+            $table->foreignId('driver_id')->constrained('driver_users')->cascadeOnDelete();
+            $table->json('documents')->nullable();
             $table->timestamps();
         });
     }

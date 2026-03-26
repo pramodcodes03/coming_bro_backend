@@ -7,7 +7,6 @@ use App\Models\SubscriptionHistory;
 use App\Models\SubscriptionPlan;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class SubscriptionController extends Controller
 {
@@ -42,7 +41,6 @@ class SubscriptionController extends Controller
         ]);
 
         $history = SubscriptionHistory::create([
-            'id' => Str::uuid()->toString(),
             'driver_id' => $request->driver_id,
             'subscription_id' => $request->subscription_id,
             'subscription_data' => $request->subscription_data,

@@ -11,12 +11,6 @@ class ChatInbox extends Model
 
     protected $table = 'chat_inboxes';
 
-    protected $primaryKey = 'order_id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
         'order_id',
         'driver_id',

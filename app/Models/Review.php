@@ -11,14 +11,7 @@ class Review extends Model
 
     protected $table = 'reviews';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'comment',
         'rating',
         'customer_id',

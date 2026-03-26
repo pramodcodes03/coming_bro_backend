@@ -11,14 +11,7 @@ class VehicleModelEntry extends Model
 
     protected $table = 'vehicle_models';
 
-    protected $primaryKey = 'id';
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id',
         'company_id',
         'name',
         'enable',

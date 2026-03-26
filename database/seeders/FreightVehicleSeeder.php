@@ -11,7 +11,6 @@ class FreightVehicleSeeder extends Seeder
     {
         $records = [
             [
-                'id' => '6AtL2hz7Rj9YFJkYBVx2',
                 'name' => 'Dost - Ashok Leyland',
                 'image' => '',
                 'description' => 'Goods Transport upto 1250 kg { 1.25 Ton }',
@@ -28,7 +27,6 @@ class FreightVehicleSeeder extends Seeder
                 'enable' => true,
             ],
             [
-                'id' => 'HoFTfy3dbh4ZgOE0KfhP',
                 'name' => 'Pick up - 8 Ft',
                 'image' => 'https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2FvanCar_1701435644138.png?alt=media&token=f461f980-d6fd-48ae-a35f-2eeef2fac116',
                 'description' => 'up to 1.3t - transports appliance,like a fridge, furniture or building material',
@@ -45,7 +43,6 @@ class FreightVehicleSeeder extends Seeder
                 'enable' => true,
             ],
             [
-                'id' => 'VSPfpRhcJ18eDRZFFPS7',
                 'name' => 'Three Wheeler Tempo',
                 'image' => 'https://firebasestorage.googleapis.com/v0/b/goride-1a752.appspot.com/o/images%2Fcar_model_2_1722498680934.png?alt=media&token=d4cca61b-e6b5-4b27-85d2-7fb852dfaa76',
                 'description' => 'Best for Sending\n1. FMCG Food Products\n2. Chemicals\n3. Fruits & Vegetable\n',
@@ -62,7 +59,6 @@ class FreightVehicleSeeder extends Seeder
                 'enable' => true,
             ],
             [
-                'id' => 'YavYy5V0CXLP1cx05PO0',
                 'name' => 'Tata Ace - 1 Ton',
                 'image' => '',
                 'description' => 'Goods Transport up to 1000 Kg { 1 Ton }',
@@ -79,7 +75,6 @@ class FreightVehicleSeeder extends Seeder
                 'enable' => true,
             ],
             [
-                'id' => 'qlNsou88TCbFDfNnTrlQ',
                 'name' => 'Tata Ace - Chota Hatti',
                 'image' => '',
                 'description' => 'loading any Goods',
@@ -96,7 +91,6 @@ class FreightVehicleSeeder extends Seeder
                 'enable' => true,
             ],
             [
-                'id' => 'rrZthrWITei0vnAvj91p',
                 'name' => 'Two - Wheelar',
                 'image' => 'https://firebasestorage.googleapis.com/v0/b/coming-bro.appspot.com/o/images%2Fth_1732280040105.jpg?alt=media&token=979d3b69-0e7e-48e2-964d-bb6678386bef',
                 'description' => 'Base fare is inclusive of 1.0 km distance & 20 minutes of order time. Pricing may vary basis locality. Please note, road tax, parking fee, etc, will be applicable over and above ride fare.\nBe it a pen or product samples, send any consignment up to 20 kg anywhere within the city',
@@ -115,7 +109,7 @@ class FreightVehicleSeeder extends Seeder
         ];
 
         foreach ($records as $record) {
-            DB::table('freight_vehicles')->updateOrInsert(['id' => $record['id']], $record);
+            DB::table('freight_vehicles')->updateOrInsert(['name' => $record['name']], $record);
         }
     }
 }
