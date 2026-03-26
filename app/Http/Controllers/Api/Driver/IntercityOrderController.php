@@ -157,7 +157,7 @@ class IntercityOrderController extends Controller
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'radius' => 'nullable|numeric',
-            'service_id' => 'nullable|string',
+            'service_id' => 'nullable|integer',
             'zone_ids' => 'nullable|array',
         ]);
 
@@ -173,7 +173,7 @@ class IntercityOrderController extends Controller
             ->where('status', 'ride_placed');
 
         if ($request->has('service_id') && $request->service_id) {
-            $query->where('service_id', $request->service_id);
+            $query->where('intercity_service_id', $request->service_id);
         }
 
         if ($request->has('zone_ids') && !empty($request->zone_ids)) {

@@ -183,7 +183,7 @@ class OrderController extends Controller
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'radius' => 'nullable|numeric',
-            'service_id' => 'nullable|string',
+            'service_id' => 'nullable|integer',
             'zone_ids' => 'nullable|array',
         ]);
 
