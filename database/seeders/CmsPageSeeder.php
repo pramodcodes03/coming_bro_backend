@@ -14,9 +14,8 @@ class CmsPageSeeder extends Seeder
 
         foreach ($records as $record) {
             DB::table('cms_pages')->updateOrInsert(
-                ['id' => $record['id']],
+                ['name' => $record['name'] ?? ''],
                 [
-                    'id' => $record['id'],
                     'name' => $record['name'] ?? null,
                     'slug' => $record['slug'] ?? null,
                     'description' => $record['description'] ?? null,

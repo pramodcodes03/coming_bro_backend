@@ -24,7 +24,7 @@ class SubscriptionPlanSeeder extends Seeder
         ];
 
         foreach ($records as $record) {
-            DB::table('subscription_plans')->updateOrInsert(['title' => $record['title']], $record);
+            DB::table('subscription_plans')->updateOrInsert(['name' => $record['name']], $record);
         }
     }
 }

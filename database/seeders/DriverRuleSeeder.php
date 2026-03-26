@@ -67,7 +67,7 @@ class DriverRuleSeeder extends Seeder
         ];
 
         foreach ($records as $record) {
-            DB::table('driver_rules')->updateOrInsert(['title' => $record['title']], $record);
+            DB::table('driver_rules')->updateOrInsert(['name' => $record['name']], $record);
         }
     }
 }
