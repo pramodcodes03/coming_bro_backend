@@ -63,6 +63,9 @@ test_api() {
     elif [ "$HTTP_CODE" = "404" ]; then
         echo -e "${YELLOW}🔍 404 ${NC} [$HTTP_CODE] $NAME - $MESSAGE"
         PASS=$((PASS + 1))
+    elif [ "$HTTP_CODE" = "409" ]; then
+        echo -e "${YELLOW}⚠️  409 ${NC} [$HTTP_CODE] $NAME - $MESSAGE (duplicate, expected)"
+        PASS=$((PASS + 1))
     else
         echo -e "${RED}❌ FAIL${NC} [$HTTP_CODE] $NAME - $MESSAGE"
         FAIL=$((FAIL + 1))

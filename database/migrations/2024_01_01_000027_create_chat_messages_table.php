@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('chat_messages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sender_id')->nullable();
+            $table->string('sender_type')->default('driver'); // 'driver' or 'customer'
             $table->unsignedBigInteger('receiver_id')->nullable();
             $table->foreignId('order_id')->nullable()->constrained('orders')->nullOnDelete();
             $table->text('message')->default('');
-            $table->string('message_type')->default('');
+            $table->string('message_type')->default('text');
+            $table->string('type')->default('text'); // message type alias
             $table->string('video_thumbnail')->default('');
             $table->string('url_mime')->default('');
             $table->string('url_url')->default('');

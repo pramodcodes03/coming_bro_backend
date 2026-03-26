@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('driver_name')->default('');
             $table->string('driver_profile_image')->default('');
             $table->unsignedBigInteger('last_sender_id')->nullable();
+            $table->timestamp('last_message_at')->nullable();
             $table->timestamps();
         });
     }
