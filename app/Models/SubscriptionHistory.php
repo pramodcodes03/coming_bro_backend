@@ -9,20 +9,23 @@ class SubscriptionHistory extends Model
     protected $table = 'subscription_history';
 
     protected $fillable = [
-        'driver_id',
-        'subscription_id',
-        'subscription_data',
-        'amount',
-        'payment_type',
-        'transaction_id',
-        'start_date',
+        'gst_amount',
+        'date',
         'end_date',
+        'start_date',
+        'subscription_amount',
+        'subscription_role',
+        'remaining_days',
+        'subscription_plan',
+        'user',
     ];
 
     protected function casts(): array
     {
         return [
-            'subscription_data' => 'array',
+            'subscription_plan' => 'array',
+            'user' => 'array',
+            'date' => 'datetime',
             'start_date' => 'datetime',
             'end_date' => 'datetime',
         ];

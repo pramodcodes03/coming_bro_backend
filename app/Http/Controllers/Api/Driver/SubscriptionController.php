@@ -30,8 +30,7 @@ class SubscriptionController extends Controller
     public function history(Request $request): JsonResponse
     {
         $driver = $request->user();
-        $history = SubscriptionHistory::where('user', 'like', '%"id":' . $driver->id . '%')
-            ->orWhere('user', 'like', '%"id":"' . $driver->id . '"%')
+        $history = SubscriptionHistory::whereJsonContains('user->id', $driver->id)
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -48,25 +47,27 @@ class SubscriptionController extends Controller
     public function createHistory(Request $request): JsonResponse
     {
         $request->validate([
-            'driver_id' => 'required|string',
-            'subscription_id' => 'required|string',
-            'subscription_data' => 'nullable|array',
-            'amount' => 'required|numeric',
-            'payment_type' => 'required|string',
-            'transaction_id' => 'nullable|string',
+            'subscription_plan' => 'nullable|array',
+            'subscription_amount' => 'required|string',
+            'gst_amount' => 'nullable|string',
+            'subscription_role' => 'nullable|string',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
+            'remaining_days' => 'nullable|string',
         ]);
 
+        $driver = $request->user();
+
         $history = SubscriptionHistory::create([
-            'driver_id' => $request->driver_id,
-            'subscription_id' => $request->subscription_id,
-            'subscription_data' => $request->subscription_data,
-            'amount' => $request->amount,
-            'payment_type' => $request->payment_type,
-            'transaction_id' => $request->transaction_id,
+            'subscription_plan' => $request->subscription_plan,
+            'subscription_amount' => $request->subscription_amount,
+            'gst_amount' => $request->gst_amount,
+            'subscription_role' => $request->subscription_role,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
+            'date' => now(),
+            'remaining_days' => $request->remaining_days,
+            'user' => $driver->only(['id', 'full_name', 'email', 'phone_number']),
         ]);
 
         return response()->json([
