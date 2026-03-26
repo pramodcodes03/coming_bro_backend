@@ -25,10 +25,62 @@ class DriverController extends Controller
     }
 
     /**
+     * Validation rules for driver profile fields.
+     */
+    private function profileValidationRules(): array
+    {
+        return [
+            // Integer FK fields
+            'service_id' => 'nullable|integer',
+            'vehicle_type_id' => 'nullable|integer',
+            'district_id' => 'nullable|integer',
+            'subscription_id' => 'nullable|integer',
+            'complimentary_rides' => 'nullable|integer',
+
+            // Boolean fields
+            'document_verification' => 'nullable|boolean',
+            'is_online' => 'nullable|boolean',
+            'is_subscription_enable' => 'nullable|boolean',
+            'carrier' => 'nullable|boolean',
+
+            // Numeric fields
+            'location_latitude' => 'nullable|numeric',
+            'location_longitude' => 'nullable|numeric',
+            'rotation' => 'nullable|numeric',
+            'position_latitude' => 'nullable|numeric',
+            'position_longitude' => 'nullable|numeric',
+
+            // String fields
+            'email' => 'nullable|string|email|max:100',
+            'phone_number' => 'nullable|string|max:20',
+            'full_name' => 'nullable|string|max:100',
+            'gender' => 'nullable|string|max:20',
+            'city' => 'nullable|string|max:100',
+            'state' => 'nullable|string|max:100',
+            'pin_code' => 'nullable|string|max:10',
+            'vehicle_number' => 'nullable|string|max:30',
+            'vehicle_type' => 'nullable|string|max:50',
+
+            // JSON fields
+            'zone_ids' => 'nullable|array',
+            'driver_rules' => 'nullable|array',
+
+            // Date fields
+            'registration_date' => 'nullable|date',
+            'subscription_expired_at' => 'nullable|date',
+            'subscription_date' => 'nullable|date',
+            'subscription_end_date' => 'nullable|date',
+            'subscription_start_date' => 'nullable|date',
+        ];
+    }
+
+    /**
      * Update driver profile (full update with merge).
      */
     public function updateProfile(Request $request): JsonResponse
     {
+        $request->validate($this->profileValidationRules());
+
         $driver = $request->user();
 
         $fillableFields = (new DriverUser())->getFillable();
@@ -57,6 +109,18 @@ class DriverController extends Controller
         $request->validate([
             'fields' => 'required|array',
         ]);
+
+        // Validate the fields values against profile rules
+        $profileRules = $this->profileValidationRules();
+        $fieldsToValidate = [];
+        foreach ($request->fields as $key => $value) {
+            if (isset($profileRules[$key])) {
+                $fieldsToValidate["fields.$key"] = $profileRules[$key];
+            }
+        }
+        if (!empty($fieldsToValidate)) {
+            $request->validate($fieldsToValidate);
+        }
 
         $fillableFields = (new DriverUser())->getFillable();
         $fields = $request->fields;
