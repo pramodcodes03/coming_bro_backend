@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Driver;
 
 use App\Http\Controllers\Controller;
+use App\Models\DocumentExpiryNotification;
 use App\Models\Document;
 use App\Models\DriverDocument;
 use Illuminate\Http\JsonResponse;
@@ -148,6 +149,24 @@ class DocumentController extends Controller
             'success' => true,
             'message' => 'Document uploaded successfully.',
             'data' => $driverDocument->fresh(),
+        ]);
+    }
+
+    /**
+     * Get notifications for the current driver.
+     */
+    public function notifications(Request $request): JsonResponse
+    {
+        $driver = $request->user();
+
+        $notifications = DocumentExpiryNotification::where('driver_id', $driver->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Notifications retrieved successfully.',
+            'data' => $notifications,
         ]);
     }
 }

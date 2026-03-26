@@ -122,8 +122,9 @@ Route::prefix('driver')->group(function () {
         Route::post('/referral/update-intercity-amount', [ReferralController::class, 'updateIntercityAmount']);
 
         // Reviews
+        Route::get('/reviews', [ReviewController::class, 'index']);
         Route::post('/reviews', [ReviewController::class, 'store']);
-        Route::get('/reviews/{orderId}', [ReviewController::class, 'show']);
+        Route::get('/reviews/{id}', [ReviewController::class, 'show']);
 
         // Chat
         Route::post('/chat/inbox', [ChatController::class, 'inbox']);
@@ -132,7 +133,11 @@ Route::prefix('driver')->group(function () {
 
         // Subscriptions
         Route::get('/subscriptions', [SubscriptionController::class, 'index']);
+        Route::get('/subscriptions/history', [SubscriptionController::class, 'history']);
         Route::post('/subscriptions/history', [SubscriptionController::class, 'createHistory']);
+
+        // Notifications
+        Route::get('/notifications', [DocumentController::class, 'notifications']);
 
 
         // File upload

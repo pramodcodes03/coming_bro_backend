@@ -31,7 +31,7 @@ class ServiceController extends Controller
      */
     public function vehicleTypes(): JsonResponse
     {
-        $vehicleTypes = VehicleType::where('is_active', true)->get();
+        $vehicleTypes = VehicleType::where('enable', true)->get();
 
         return response()->json([
             'success' => true,
@@ -45,7 +45,7 @@ class ServiceController extends Controller
      */
     public function districts(): JsonResponse
     {
-        $districts = District::where('is_active', true)->get();
+        $districts = District::where('publish', true)->get();
 
         return response()->json([
             'success' => true,

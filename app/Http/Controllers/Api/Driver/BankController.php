@@ -117,11 +117,10 @@ class BankController extends Controller
         }
 
         $withdrawal = WithdrawalHistory::create([
-            'driver_id' => $driver->id,
+            'user_id' => $driver->id,
             'amount' => $request->amount,
             'note' => $request->note,
-            'payment_status' => false,
-            'status' => 'pending',
+            'payment_status' => 'pending',
         ]);
 
         // Deduct from wallet
@@ -142,8 +141,8 @@ class BankController extends Controller
     {
         $driver = $request->user();
 
-        $withdrawals = WithdrawalHistory::where('driver_id', $driver->id)
-            ->orderBy('created_at', 'desc')
+        $withdrawals = WithdrawalHistory::where('user_id', $driver->id)
+            ->orderBy('created_date', 'desc')
             ->get();
 
         return response()->json([

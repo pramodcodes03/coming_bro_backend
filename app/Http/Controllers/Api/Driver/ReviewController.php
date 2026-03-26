@@ -10,34 +10,42 @@ use Illuminate\Http\Request;
 class ReviewController extends Controller
 {
     /**
+     * List reviews for the current driver.
+     */
+    public function index(Request $request): JsonResponse
+    {
+        $driver = $request->user();
+        $reviews = Review::where('driver_id', $driver->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Reviews retrieved successfully.',
+            'data' => $reviews,
+        ]);
+    }
+
+    /**
      * Create review.
      */
     public function store(Request $request): JsonResponse
     {
         $request->validate([
-            'order_id' => 'required|string',
-            'driver_id' => 'required|string',
-            'customer_id' => 'required|string',
+            'driver_id' => 'required|integer',
+            'customer_id' => 'required|integer',
             'rating' => 'required|numeric|min:1|max:5',
             'comment' => 'nullable|string',
+            'type' => 'nullable|string',
         ]);
 
-        // Check if review already exists for this order
-        $existing = Review::where('order_id', $request->order_id)->first();
-        if ($existing) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Review already exists for this order.',
-                'data' => $existing,
-            ], 409);
-        }
-
         $review = Review::create([
-            'order_id' => $request->order_id,
             'driver_id' => $request->driver_id,
             'customer_id' => $request->customer_id,
             'rating' => $request->rating,
             'comment' => $request->comment,
+            'type' => $request->type ?? 'city',
+            'date' => now(),
         ]);
 
         return response()->json([
@@ -50,14 +58,14 @@ class ReviewController extends Controller
     /**
      * Get review by order ID.
      */
-    public function show(string $orderId): JsonResponse
+    public function show(string $id): JsonResponse
     {
-        $review = Review::where('order_id', $orderId)->first();
+        $review = Review::find($id);
 
         if (!$review) {
             return response()->json([
                 'success' => false,
-                'message' => 'Review not found for this order.',
+                'message' => 'Review not found.',
                 'data' => null,
             ], 404);
         }

@@ -25,6 +25,24 @@ class SubscriptionController extends Controller
     }
 
     /**
+     * Get subscription history for the current driver.
+     */
+    public function history(Request $request): JsonResponse
+    {
+        $driver = $request->user();
+        $history = SubscriptionHistory::where('user', 'like', '%"id":' . $driver->id . '%')
+            ->orWhere('user', 'like', '%"id":"' . $driver->id . '"%')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Subscription history retrieved successfully.',
+            'data' => $history,
+        ]);
+    }
+
+    /**
      * Create subscription history record.
      */
     public function createHistory(Request $request): JsonResponse

@@ -27,7 +27,7 @@ class OrderController extends Controller
             $query->where('payment_status', $request->payment_status);
         }
 
-        $orders = $query->orderBy('created_at', 'desc')->get();
+        $orders = $query->orderBy('created_date', 'desc')->get();
 
         return response()->json([
             'success' => true,

@@ -16,9 +16,9 @@ class ChatController extends Controller
     public function inbox(Request $request): JsonResponse
     {
         $request->validate([
-            'order_id' => 'required|string',
-            'driver_id' => 'required|string',
-            'customer_id' => 'required|string',
+            'order_id' => 'required|integer',
+            'driver_id' => 'required|integer',
+            'customer_id' => 'required|integer',
             'last_message' => 'nullable|string',
         ]);
 
@@ -45,8 +45,8 @@ class ChatController extends Controller
     public function sendMessage(Request $request): JsonResponse
     {
         $request->validate([
-            'order_id' => 'required|string',
-            'sender_id' => 'required|string',
+            'order_id' => 'required|integer',
+            'sender_id' => 'required|integer',
             'sender_type' => 'required|string|in:driver,customer',
             'message' => 'required|string',
             'type' => 'nullable|string',
