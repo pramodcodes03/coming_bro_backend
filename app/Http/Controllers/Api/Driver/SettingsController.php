@@ -42,24 +42,19 @@ class SettingsController extends Controller
      */
     public function paymentSettings(): JsonResponse
     {
-        $paymentKeys = [
-            'payment',
-            'payment_settings',
-            'razorpay',
-            'stripe',
-            'paypal',
-            'paytm',
-            'paystack',
-            'flutterwave',
-            'mercadopago',
-        ];
+        $setting = Setting::where('key', 'payment')->first();
 
-        $settings = Setting::whereIn('key', $paymentKeys)->get();
-
-        $data = [];
-        foreach ($settings as $setting) {
-            $data[$setting->key] = $setting->value;
+        if (!$setting) {
+            return response()->json([
+                'success' => true,
+                'message' => 'No payment settings found.',
+                'data' => null,
+            ]);
         }
+
+        // The value is stored as a JSON string — decode it so Flutter
+        // receives a proper object with razorpay, strip, cash, etc.
+        $data = json_decode($setting->value, true) ?? [];
 
         return response()->json([
             'success' => true,
