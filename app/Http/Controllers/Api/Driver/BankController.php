@@ -20,10 +20,10 @@ class BankController extends Controller
 
         if (!$bankDetail) {
             return response()->json([
-                'success' => false,
-                'message' => 'Bank details not found.',
+                'success' => true,
+                'message' => 'No bank details added yet.',
                 'data' => null,
-            ], 404);
+            ]);
         }
 
         return response()->json([
