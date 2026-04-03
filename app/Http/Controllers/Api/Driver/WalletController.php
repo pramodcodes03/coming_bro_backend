@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\WalletTransaction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use App\Models\Setting;
 
 class WalletController extends Controller
 {
@@ -17,7 +20,7 @@ class WalletController extends Controller
         $driver = $request->user();
 
         $transactions = WalletTransaction::where('user_id', $driver->id)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('created_date', 'desc')
             ->get();
 
         return response()->json([
@@ -33,11 +36,12 @@ class WalletController extends Controller
     public function createTransaction(Request $request): JsonResponse
     {
         $request->validate([
-            'amount' => 'required|numeric',
-            'transaction_type' => 'required|string',
+            'amount' => 'required',
+            'payment_type' => 'nullable|string',
             'note' => 'nullable|string',
-            'order_id' => 'nullable|string',
-            'payment_method' => 'nullable|string',
+            'transaction_id' => 'nullable|string',
+            'order_type' => 'nullable|string',
+            'user_type' => 'nullable|string',
         ]);
 
         $driver = $request->user();
@@ -45,10 +49,12 @@ class WalletController extends Controller
         $transaction = WalletTransaction::create([
             'user_id' => $driver->id,
             'amount' => $request->amount,
-            'transaction_type' => $request->transaction_type,
+            'payment_type' => $request->payment_type,
             'note' => $request->note,
-            'order_id' => $request->order_id,
-            'payment_method' => $request->payment_method,
+            'transaction_id' => $request->transaction_id,
+            'order_type' => $request->order_type,
+            'user_type' => $request->user_type ?? 'driver',
+            'created_date' => now(),
         ]);
 
         return response()->json([
@@ -59,16 +65,16 @@ class WalletController extends Controller
     }
 
     /**
-     * Update driver wallet amount.
+     * Update driver wallet amount (increment by given amount).
      */
     public function updateWallet(Request $request): JsonResponse
     {
         $request->validate([
-            'wallet_amount' => 'required|numeric',
+            'amount' => 'required|numeric',
         ]);
 
         $driver = $request->user();
-        $driver->wallet_amount = $request->wallet_amount;
+        $driver->wallet_amount = (double) $driver->wallet_amount + (double) $request->amount;
         $driver->save();
 
         return response()->json([
@@ -78,5 +84,66 @@ class WalletController extends Controller
                 'wallet_amount' => $driver->wallet_amount,
             ],
         ]);
+    }
+
+    /**
+     * Create a Razorpay order for wallet topup.
+     */
+    public function createRazorpayOrder(Request $request): JsonResponse
+    {
+        $request->validate([
+            'amount' => 'required|numeric|min:1',
+        ]);
+
+        // Get Razorpay credentials from settings
+        $setting = Setting::where('key', 'payment')->first();
+        if (!$setting) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Payment settings not configured.',
+            ], 500);
+        }
+
+        $paymentConfig = json_decode($setting->value, true);
+        $razorpay = $paymentConfig['razorpay'] ?? null;
+
+        if (!$razorpay || empty($razorpay['razorpayKey']) || empty($razorpay['razorpaySecret'])) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Razorpay not configured.',
+            ], 500);
+        }
+
+        $amountInPaise = (int) ($request->amount * 100);
+        $receiptId = 'wallet_' . time();
+
+        try {
+            $response = Http::withBasicAuth($razorpay['razorpayKey'], $razorpay['razorpaySecret'])
+                ->post('https://api.razorpay.com/v1/orders', [
+                    'amount' => $amountInPaise,
+                    'currency' => 'INR',
+                    'receipt' => $receiptId,
+                ]);
+
+            if ($response->successful()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Razorpay order created successfully.',
+                    'data' => $response->json(),
+                ]);
+            }
+
+            Log::error('Razorpay order creation failed', ['response' => $response->body()]);
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to create Razorpay order.',
+            ], 500);
+        } catch (\Exception $e) {
+            Log::error('Razorpay order creation exception', ['error' => $e->getMessage()]);
+            return response()->json([
+                'success' => false,
+                'message' => 'Payment service unavailable.',
+            ], 500);
+        }
     }
 }

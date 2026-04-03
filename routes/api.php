@@ -105,6 +105,7 @@ Route::prefix('driver')->group(function () {
         Route::get('/wallet/transactions', [WalletController::class, 'transactions']);
         Route::post('/wallet/transactions', [WalletController::class, 'createTransaction']);
         Route::put('/wallet/update', [WalletController::class, 'updateWallet']);
+        Route::post('/wallet/razorpay/create-order', [WalletController::class, 'createRazorpayOrder']);
 
         // Bank & Withdrawals
         Route::get('/bank-details', [BankController::class, 'show']);
