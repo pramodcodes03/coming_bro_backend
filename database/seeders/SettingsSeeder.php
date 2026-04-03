@@ -32,7 +32,7 @@ class SettingsSeeder extends Seeder
                 'key' => 'globalKey',
                 'value' => json_encode([
                     'serverKey' => '',
-                    'googleMapKey' => 'googleMapKey',
+                    'googleMapKey' => 'AIzaSyCNuKTh5QflCv7kPbeMWYTYaasmr84nwuI',
                 ]),
             ],
             [

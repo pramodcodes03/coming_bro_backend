@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('phone_number', 20)->nullable();
             $table->string('login_type', 30)->nullable();
             $table->string('country_code', 10)->nullable();
-            $table->string('profile_pic', 500)->default('');
+            $table->string('profile_pic', 500)->nullable();
             $table->boolean('document_verification')->default(false);
             $table->string('full_name', 100)->nullable();
             $table->boolean('is_online')->default(false);
