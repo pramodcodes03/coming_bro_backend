@@ -104,7 +104,7 @@ class WalletController extends Controller
             ], 500);
         }
 
-        $paymentConfig = json_decode($setting->value, true);
+        $paymentConfig = $setting->value;
         $razorpay = $paymentConfig['razorpay'] ?? null;
 
         if (!$razorpay || empty($razorpay['razorpayKey']) || empty($razorpay['razorpaySecret'])) {

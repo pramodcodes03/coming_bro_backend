@@ -52,9 +52,8 @@ class SettingsController extends Controller
             ]);
         }
 
-        // The value is stored as a JSON string — decode it so Flutter
-        // receives a proper object with razorpay, strip, cash, etc.
-        $data = json_decode($setting->value, true) ?? [];
+        // The Setting model casts 'value' to array automatically
+        $data = $setting->value ?? [];
 
         return response()->json([
             'success' => true,
