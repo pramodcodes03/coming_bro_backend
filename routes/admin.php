@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\OnboardingController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PayoutRequestController;
+use App\Http\Controllers\Admin\RechargePlanController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SosController;
@@ -139,6 +140,10 @@ Route::middleware('auth:admin')->group(function () {
     // Subscription Plans
     Route::resource('subscription-plans', SubscriptionPlanController::class)->names('admin.subscription-plans');
     Route::patch('subscription-plans/{subscription_plan}/toggle-status', [SubscriptionPlanController::class, 'toggleStatus'])->name('admin.subscription-plans.toggle-status');
+
+    // Recharge Plans
+    Route::resource('recharge-plans', RechargePlanController::class)->names('admin.recharge-plans');
+    Route::patch('recharge-plans/{recharge_plan}/toggle-status', [RechargePlanController::class, 'toggleStatus'])->name('admin.recharge-plans.toggle-status');
 
     // Banners
     Route::resource('banners', BannerController::class)->names('admin.banners');

@@ -293,6 +293,21 @@
                     </a>
                 </li>
 
+                {{-- Recharge Plans --}}
+                <li class="menu nav-item">
+                    <a href="{{ route('admin.recharge-plans.index') }}" class="nav-link group {{ request()->routeIs('admin.recharge-plans.*') ? 'active' : '' }}">
+                        <div class="flex items-center">
+                            <svg class="group-hover:!text-primary shrink-0" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 6V18M12 6L7 11M12 6L17 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path opacity="0.5" d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12Z" stroke="currentColor" stroke-width="1.5" />
+                            </svg>
+                            <span
+                                class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Recharge Plans</span>
+                        </div>
+                    </a>
+                </li>
+
                 {{-- ===== CONTENT (Collapsible) ===== --}}
                 <h2 class="-mx-4 mb-1 flex items-center bg-white-light/30 py-3 px-7 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
                     <span>Content</span>
