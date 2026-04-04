@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\Driver\IntercityOrderController;
 use App\Http\Controllers\Api\Driver\LocationController;
 use App\Http\Controllers\Api\Driver\OnboardingController;
 use App\Http\Controllers\Api\Driver\OrderController;
+use App\Http\Controllers\Api\Driver\RechargePlanController;
 use App\Http\Controllers\Api\Driver\ReferralController;
 use App\Http\Controllers\Api\Driver\ReviewController;
 use App\Http\Controllers\Api\Driver\ServiceController;
@@ -45,6 +46,10 @@ Route::prefix('driver')->group(function () {
     Route::get('/vehicle-models', [LocationController::class, 'vehicleModels']);
     Route::get('/fuel-types', [LocationController::class, 'fuelTypes']);
     Route::get('/zones', [LocationController::class, 'zones']);
+
+    // Recharge Plans
+    Route::get('/recharge-plans', [RechargePlanController::class, 'index']);
+    Route::get('/recharge-plans/{id}', [RechargePlanController::class, 'show']);
 
 
     // ──────────────────────────────────────────────

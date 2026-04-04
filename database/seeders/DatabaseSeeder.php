@@ -53,6 +53,7 @@ class DatabaseSeeder extends Seeder
             OnBoardingSeeder::class,
             FaqSeeder::class,
             CouponSeeder::class,
+            RechargePlanSeeder::class,
         ]);
     }
 }
