@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Driver\AuthController;
 use App\Http\Controllers\Api\Driver\BankController;
 use App\Http\Controllers\Api\Driver\ChatController;
 use App\Http\Controllers\Api\Driver\CustomerController;
+use App\Http\Controllers\Api\Driver\DashboardController;
 use App\Http\Controllers\Api\Driver\DocumentController;
 use App\Http\Controllers\Api\Driver\DriverController;
 use App\Http\Controllers\Api\Driver\IntercityOrderController;
@@ -61,6 +62,9 @@ Route::prefix('driver')->group(function () {
         // Auth (protected)
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::delete('/delete-account', [AuthController::class, 'deleteAccount']);
+
+        // Dashboard
+        Route::get('/dashboard', [DashboardController::class, 'index']);
 
         // Driver profile
         Route::get('/profile', [DriverController::class, 'profile']);
