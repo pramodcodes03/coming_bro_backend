@@ -86,7 +86,128 @@
                             @csrf
                             @method('PUT')
 
-                            @if (is_array($setting->value))
+                            @if ($setting->key === 'payment' && is_array($setting->value))
+                                {{-- Payment Gateways - Rendered as individual cards --}}
+                                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                                    @foreach ($setting->value as $gatewayKey => $gateway)
+                                        @if (is_array($gateway))
+                                            <div class="relative border rounded-lg border-gray-200 dark:border-[#191e3a] overflow-hidden"
+                                                 x-data="{ expanded: {{ !empty($gateway['enable']) && ($gateway['enable'] === true || $gateway['enable'] === 'true' || $gateway['enable'] === '1' || $gateway['enable'] == 1) ? 'true' : 'false' }} }">
+                                                {{-- Gateway Header --}}
+                                                <div class="flex items-center justify-between p-4 cursor-pointer bg-gray-50 dark:bg-[#121e32]"
+                                                     @click="expanded = !expanded">
+                                                    <div class="flex items-center gap-3">
+                                                        @if (!empty($gateway['image']))
+                                                            <img src="{{ $gateway['image'] }}" alt="{{ $gateway['name'] ?? $gatewayKey }}" class="object-contain w-8 h-8 rounded">
+                                                        @else
+                                                            <div class="flex items-center justify-center w-8 h-8 rounded bg-primary/10">
+                                                                <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+                                                            </div>
+                                                        @endif
+                                                        <div>
+                                                            <h4 class="font-semibold text-gray-900 dark:text-white">{{ $gateway['name'] ?? ucwords($gatewayKey) }}</h4>
+                                                            <span class="text-xs {{ !empty($gateway['enable']) && ($gateway['enable'] === true || $gateway['enable'] === 'true' || $gateway['enable'] === '1' || $gateway['enable'] == 1) ? 'text-success' : 'text-gray-400' }}">
+                                                                {{ !empty($gateway['enable']) && ($gateway['enable'] === true || $gateway['enable'] === 'true' || $gateway['enable'] === '1' || $gateway['enable'] == 1) ? 'Active' : 'Inactive' }}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center gap-3">
+                                                        {{-- Enable Toggle (always visible) --}}
+                                                        @if (array_key_exists('enable', $gateway))
+                                                            <div class="flex items-center" @click.stop>
+                                                                <label class="relative inline-flex items-center cursor-pointer w-11 h-6">
+                                                                    <input type="hidden" name="value[{{ $gatewayKey }}][enable]" value="0">
+                                                                    <input type="checkbox" name="value[{{ $gatewayKey }}][enable]" value="1"
+                                                                        {{ ($gateway['enable'] === true || $gateway['enable'] === 'true' || $gateway['enable'] === '1' || $gateway['enable'] == 1) ? 'checked' : '' }}
+                                                                        class="sr-only peer">
+                                                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-success"></div>
+                                                                </label>
+                                                            </div>
+                                                        @endif
+                                                        {{-- Expand/Collapse Arrow --}}
+                                                        <svg class="w-5 h-5 text-gray-400 transition-transform duration-200" :class="expanded ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Gateway Fields (collapsible) --}}
+                                                <div x-show="expanded" x-collapse>
+                                                    <div class="p-4 space-y-4">
+                                                        @foreach ($gateway as $fieldKey => $fieldVal)
+                                                            @if ($fieldKey === 'enable')
+                                                                @continue
+                                                            @endif
+
+                                                            @php
+                                                                $fieldLabel = ucwords(preg_replace('/([a-z])([A-Z])/', '$1 $2', str_replace(['_', '-'], ' ', $fieldKey)));
+                                                                $isBool = is_bool($fieldVal) || $fieldVal === '0' || $fieldVal === '1' || $fieldVal === 'true' || $fieldVal === 'false';
+                                                                $isSecret = str_contains(strtolower($fieldKey), 'secret') || str_contains(strtolower($fieldKey), 'private');
+                                                            @endphp
+
+                                                            <div class="space-y-1">
+                                                                <label for="setting_payment_{{ $gatewayKey }}_{{ $fieldKey }}" class="text-xs font-medium text-gray-500 dark:text-gray-400">
+                                                                    {{ $fieldLabel }}
+                                                                </label>
+
+                                                                @if ($isBool)
+                                                                    {{-- Boolean Toggle --}}
+                                                                    <div class="flex items-center">
+                                                                        <label class="relative inline-flex items-center cursor-pointer w-11 h-6">
+                                                                            <input type="hidden" name="value[{{ $gatewayKey }}][{{ $fieldKey }}]" value="0">
+                                                                            <input type="checkbox" name="value[{{ $gatewayKey }}][{{ $fieldKey }}]" value="1"
+                                                                                {{ ($fieldVal == true || $fieldVal === 'true' || $fieldVal === '1') ? 'checked' : '' }}
+                                                                                class="sr-only peer">
+                                                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+                                                                        </label>
+                                                                        <span class="ml-3 text-sm text-gray-600 dark:text-gray-400">
+                                                                            {{ ($fieldVal == true || $fieldVal === 'true' || $fieldVal === '1') ? 'Yes' : 'No' }}
+                                                                        </span>
+                                                                    </div>
+                                                                @elseif ($fieldKey === 'image')
+                                                                    {{-- Image URL with preview --}}
+                                                                    <div class="flex items-center gap-3">
+                                                                        @if (!empty($fieldVal))
+                                                                            <img src="{{ $fieldVal }}" alt="{{ $gateway['name'] ?? $gatewayKey }}" class="object-contain w-10 h-10 border rounded border-gray-200 dark:border-gray-600">
+                                                                        @endif
+                                                                        <input type="text" name="value[{{ $gatewayKey }}][{{ $fieldKey }}]"
+                                                                            id="setting_payment_{{ $gatewayKey }}_{{ $fieldKey }}"
+                                                                            value="{{ $fieldVal }}"
+                                                                            class="form-input text-xs" placeholder="Image URL" />
+                                                                    </div>
+                                                                @elseif ($isSecret)
+                                                                    {{-- Secret/Password fields --}}
+                                                                    <div x-data="{ showSecret: false }" class="relative">
+                                                                        <input :type="showSecret ? 'text' : 'password'" name="value[{{ $gatewayKey }}][{{ $fieldKey }}]"
+                                                                            id="setting_payment_{{ $gatewayKey }}_{{ $fieldKey }}"
+                                                                            value="{{ $fieldVal }}"
+                                                                            class="form-input pr-10 text-sm" placeholder="Enter {{ $fieldLabel }}" />
+                                                                        <button type="button" @click="showSecret = !showSecret" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600">
+                                                                            <svg x-show="!showSecret" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                                                            <svg x-show="showSecret" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                                                                        </button>
+                                                                    </div>
+                                                                @elseif ($fieldKey === 'name')
+                                                                    {{-- Name field (read-only display, still submitted) --}}
+                                                                    <input type="text" name="value[{{ $gatewayKey }}][{{ $fieldKey }}]"
+                                                                        id="setting_payment_{{ $gatewayKey }}_{{ $fieldKey }}"
+                                                                        value="{{ $fieldVal }}"
+                                                                        class="form-input text-sm bg-gray-50 dark:bg-[#121e32]" readonly />
+                                                                @else
+                                                                    {{-- Regular text input --}}
+                                                                    <input type="text" name="value[{{ $gatewayKey }}][{{ $fieldKey }}]"
+                                                                        id="setting_payment_{{ $gatewayKey }}_{{ $fieldKey }}"
+                                                                        value="{{ $fieldVal }}"
+                                                                        class="form-input text-sm" placeholder="Enter {{ $fieldLabel }}" />
+                                                                @endif
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+
+                            @elseif (is_array($setting->value))
                                 @php
                                     $hasRichText = false;
                                     $regularFields = [];
