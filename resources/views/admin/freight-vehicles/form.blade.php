@@ -34,7 +34,7 @@
                     <label for="image" class="mb-1 block font-semibold">Image</label>
                     <input id="image" type="file" name="image" class="form-input" accept="image/*" />
                     @if(isset($freightVehicle) && $freightVehicle->image)
-                        <img src="{{ $freightVehicle->image }}" alt="Vehicle Image" class="mt-2 h-16 w-16 rounded object-cover" />
+                        <img src="{{ storage_url($freightVehicle->image) }}" alt="Vehicle Image" class="mt-2 h-16 w-16 rounded object-cover" />
                     @endif
                 </div>
 

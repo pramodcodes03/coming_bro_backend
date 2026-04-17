@@ -36,7 +36,7 @@
                             <td>{{ $loop->iteration + ($banners->currentPage() - 1) * $banners->perPage() }}</td>
                             <td>
                                 @if($banner->image)
-                                    <img src="{{ asset('storage/' . $banner->image) }}" alt="Banner"
+                                    <img src="{{ storage_url($banner->image) }}" alt="Banner"
                                          class="w-24 h-14 object-cover rounded-lg border" />
                                 @else
                                     <span class="text-gray-400">No image</span>

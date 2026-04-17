@@ -31,7 +31,7 @@ class FreightVehicleController extends Controller
     {
         $validated = $request->validate([
             'name'                    => 'required|string|max:255',
-            'image'                   => 'nullable|string|max:500',
+            'image'                   => 'nullable|image|max:2048',
             'description'             => 'nullable|string',
             'length'                  => 'nullable|numeric|min:0',
             'width'                   => 'nullable|numeric|min:0',
@@ -45,6 +45,10 @@ class FreightVehicleController extends Controller
             'loading_unloading_charges' => 'nullable|numeric|min:0',
             'enable'                  => 'nullable|boolean',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('freight-vehicles', 'public');
+        }
 
         $validated['enable'] = $request->boolean('enable');
 
@@ -67,7 +71,7 @@ class FreightVehicleController extends Controller
 
         $validated = $request->validate([
             'name'                    => 'required|string|max:255',
-            'image'                   => 'nullable|string|max:500',
+            'image'                   => 'nullable|image|max:2048',
             'description'             => 'nullable|string',
             'length'                  => 'nullable|numeric|min:0',
             'width'                   => 'nullable|numeric|min:0',
@@ -81,6 +85,12 @@ class FreightVehicleController extends Controller
             'loading_unloading_charges' => 'nullable|numeric|min:0',
             'enable'                  => 'nullable|boolean',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('freight-vehicles', 'public');
+        } else {
+            unset($validated['image']);
+        }
 
         $validated['enable'] = $request->boolean('enable');
 

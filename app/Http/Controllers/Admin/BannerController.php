@@ -30,10 +30,17 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'image'    => 'required|string|max:500',
-            'position' => 'required|string|max:255',
-            'enable'   => 'nullable|boolean',
+            'image'       => 'required|image|max:2048',
+            'title'       => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'redirect_url'=> 'nullable|string|max:500',
+            'position'    => 'required|string|max:255',
+            'enable'      => 'nullable|boolean',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('banners', 'public');
+        }
 
         $validated['enable'] = $request->boolean('enable');
         $validated['is_deleted'] = false;
@@ -56,10 +63,19 @@ class BannerController extends Controller
         $banner = Banner::where('is_deleted', false)->findOrFail($id);
 
         $validated = $request->validate([
-            'image'    => 'required|string|max:500',
-            'position' => 'required|string|max:255',
-            'enable'   => 'nullable|boolean',
+            'image'       => 'nullable|image|max:2048',
+            'title'       => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'redirect_url'=> 'nullable|string|max:500',
+            'position'    => 'required|string|max:255',
+            'enable'      => 'nullable|boolean',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('banners', 'public');
+        } else {
+            unset($validated['image']);
+        }
 
         $validated['enable'] = $request->boolean('enable');
 

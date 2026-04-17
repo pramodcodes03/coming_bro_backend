@@ -73,7 +73,7 @@
                     <label for="image" class="block mb-2 font-semibold">Image</label>
                     @if(isset($plan) && $plan->image)
                         <div class="mb-3">
-                            <img src="{{ asset('storage/' . $plan->image) }}" alt="Plan Image" class="w-32 h-32 object-cover rounded-lg border" />
+                            <img src="{{ storage_url($plan->image) }}" alt="Plan Image" class="w-32 h-32 object-cover rounded-lg border" />
                         </div>
                     @endif
                     <input id="image" type="file" name="image" accept="image/*"

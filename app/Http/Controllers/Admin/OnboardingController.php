@@ -32,11 +32,15 @@ class OnboardingController extends Controller
         $validated = $request->validate([
             'title'       => 'required|string|max:255',
             'description' => 'required|string',
-            'image'       => 'nullable|string|max:500',
+            'image'       => 'nullable|image|max:2048',
             'type'        => 'required|string|max:100',
             'order'       => 'required|integer|min:0',
             'is_active'   => 'nullable|boolean',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('onboarding', 'public');
+        }
 
         $validated['is_active'] = $request->boolean('is_active');
 
@@ -60,11 +64,17 @@ class OnboardingController extends Controller
         $validated = $request->validate([
             'title'       => 'required|string|max:255',
             'description' => 'required|string',
-            'image'       => 'nullable|string|max:500',
+            'image'       => 'nullable|image|max:2048',
             'type'        => 'required|string|max:100',
             'order'       => 'required|integer|min:0',
             'is_active'   => 'nullable|boolean',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('onboarding', 'public');
+        } else {
+            unset($validated['image']);
+        }
 
         $validated['is_active'] = $request->boolean('is_active');
 

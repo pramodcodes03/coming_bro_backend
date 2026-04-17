@@ -3,12 +3,8 @@
         class="sidebar fixed min-h-screen h-full top-0 bottom-0 w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] z-50 transition-all duration-300">
         <div class="bg-white dark:bg-[#0e1726] h-full">
             <div class="flex items-center justify-between px-4 py-3">
-                <a href="{{ route('admin.dashboard') }}" class="flex items-center main-logo shrink-0">
-                    <img x-show="$store.app.theme !== 'dark'" x-transition.opacity
-                        class="flex-none object-contain w-auto h-16" src="/assets/images/logo.png" alt="Light Logo" />
-                    <img x-show="$store.app.theme === 'dark'" x-transition.opacity
-                        class="flex-none object-contain w-auto h-16" src="/assets/images/logo-dark.png"
-                        alt="Dark Logo" />
+                <a href="{{ route('admin.dashboard') }}" class="flex items-center main-logo shrink-0 rounded-xl bg-primary px-4 py-2" style="min-width: 140px;">
+                    <img class="flex-none w-full h-10 object-contain drop-shadow-sm" src="/assets/images/logo.png" alt="ComingBro" />
                 </a>
 
                 <a href="javascript:;"

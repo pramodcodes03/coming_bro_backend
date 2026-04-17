@@ -38,8 +38,12 @@ class SubscriptionPlanController extends Controller
             'gst'         => 'nullable|numeric|min:0',
             'tds'         => 'nullable|numeric|min:0',
             'ride'        => 'nullable|integer|min:0',
-            'image'       => 'nullable|string|max:500',
+            'image'       => 'nullable|image|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('subscription-plans', 'public');
+        }
 
         $validated['enable'] = $request->boolean('enable');
 
@@ -69,8 +73,14 @@ class SubscriptionPlanController extends Controller
             'gst'         => 'nullable|numeric|min:0',
             'tds'         => 'nullable|numeric|min:0',
             'ride'        => 'nullable|integer|min:0',
-            'image'       => 'nullable|string|max:500',
+            'image'       => 'nullable|image|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('subscription-plans', 'public');
+        } else {
+            unset($validated['image']);
+        }
 
         $validated['enable'] = $request->boolean('enable');
 

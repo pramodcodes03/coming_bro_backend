@@ -31,7 +31,7 @@
                     <label for="image" class="block mb-2 font-semibold">Image <span class="text-danger">*</span></label>
                     @if(isset($banner) && $banner->image)
                         <div class="mb-3">
-                            <img src="{{ asset('storage/' . $banner->image) }}" alt="Banner" id="imagePreview"
+                            <img src="{{ storage_url($banner->image) }}" alt="Banner" id="imagePreview"
                                  class="w-64 h-36 object-cover rounded-lg border" />
                         </div>
                     @else

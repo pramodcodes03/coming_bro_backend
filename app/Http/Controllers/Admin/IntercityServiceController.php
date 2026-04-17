@@ -30,7 +30,7 @@ class IntercityServiceController extends Controller
     {
         $validated = $request->validate([
             'name'                     => 'required|string|max:255',
-            'image'                    => 'nullable|string|max:500',
+            'image'                    => 'nullable|image|max:2048',
             'km_charge'                => 'nullable|numeric|min:0',
             'basic_fare_km'            => 'nullable|numeric|min:0',
             'basic_fare_charges'       => 'nullable|numeric|min:0',
@@ -43,6 +43,10 @@ class IntercityServiceController extends Controller
             'offer_rate'               => 'nullable|boolean',
             'admin_commission'         => 'nullable|array',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('intercity-services', 'public');
+        }
 
         $validated['is_ac'] = $request->boolean('is_ac');
         $validated['enable'] = $request->boolean('enable');
@@ -67,7 +71,7 @@ class IntercityServiceController extends Controller
 
         $validated = $request->validate([
             'name'                     => 'required|string|max:255',
-            'image'                    => 'nullable|string|max:500',
+            'image'                    => 'nullable|image|max:2048',
             'km_charge'                => 'nullable|numeric|min:0',
             'basic_fare_km'            => 'nullable|numeric|min:0',
             'basic_fare_charges'       => 'nullable|numeric|min:0',
@@ -80,6 +84,12 @@ class IntercityServiceController extends Controller
             'offer_rate'               => 'nullable|boolean',
             'admin_commission'         => 'nullable|array',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('intercity-services', 'public');
+        } else {
+            unset($validated['image']);
+        }
 
         $validated['is_ac'] = $request->boolean('is_ac');
         $validated['enable'] = $request->boolean('enable');

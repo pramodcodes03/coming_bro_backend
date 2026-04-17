@@ -34,7 +34,7 @@
                     <label for="image" class="mb-1 block font-semibold">Image</label>
                     <input id="image" type="file" name="image" class="form-input" accept="image/*" />
                     @if(isset($intercityService) && $intercityService->image)
-                        <img src="{{ $intercityService->image }}" alt="Service Image" class="mt-2 h-16 w-16 rounded object-cover" />
+                        <img src="{{ storage_url($intercityService->image) }}" alt="Service Image" class="mt-2 h-16 w-16 rounded object-cover" />
                     @endif
                 </div>
 

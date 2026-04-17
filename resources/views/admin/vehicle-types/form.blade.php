@@ -47,7 +47,7 @@
                     <label for="front_image" class="mb-1 block font-semibold">Front Image</label>
                     <input id="front_image" type="file" name="front_image" class="form-input" accept="image/*" />
                     @if(isset($vehicleType) && $vehicleType->front_image)
-                        <img src="{{ $vehicleType->front_image }}" alt="Front Image" class="mt-2 h-16 w-16 rounded object-cover" />
+                        <img src="{{ storage_url($vehicleType->front_image) }}" alt="Front Image" class="mt-2 h-16 w-16 rounded object-cover" />
                     @endif
                 </div>
 
@@ -56,7 +56,7 @@
                     <label for="back_image" class="mb-1 block font-semibold">Back Image</label>
                     <input id="back_image" type="file" name="back_image" class="form-input" accept="image/*" />
                     @if(isset($vehicleType) && $vehicleType->back_image)
-                        <img src="{{ $vehicleType->back_image }}" alt="Back Image" class="mt-2 h-16 w-16 rounded object-cover" />
+                        <img src="{{ storage_url($vehicleType->back_image) }}" alt="Back Image" class="mt-2 h-16 w-16 rounded object-cover" />
                     @endif
                 </div>
             </div>

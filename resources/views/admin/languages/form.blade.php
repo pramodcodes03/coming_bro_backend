@@ -43,7 +43,7 @@
                     <label for="image" class="block mb-2 font-semibold">Image (Flag)</label>
                     @if(isset($language) && $language->image)
                         <div class="mb-3">
-                            <img src="{{ asset('storage/' . $language->image) }}" alt="{{ $language->name }}" class="w-10 h-10 object-cover rounded border" />
+                            <img src="{{ storage_url($language->image) }}" alt="{{ $language->name }}" class="w-10 h-10 object-cover rounded border" />
                         </div>
                     @endif
                     <input id="image" type="file" name="image" accept="image/*"

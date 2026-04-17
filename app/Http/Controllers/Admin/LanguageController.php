@@ -35,10 +35,14 @@ class LanguageController extends Controller
         $validated = $request->validate([
             'name'   => 'required|string|max:255',
             'code'   => 'required|string|max:10|unique:languages,code',
-            'image'  => 'nullable|string|max:500',
+            'image'  => 'nullable|image|max:2048',
             'enable' => 'nullable|boolean',
             'is_rtl' => 'nullable|boolean',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('languages', 'public');
+        }
 
         $validated['enable'] = $request->boolean('enable');
         $validated['is_rtl'] = $request->boolean('is_rtl');
@@ -64,10 +68,16 @@ class LanguageController extends Controller
         $validated = $request->validate([
             'name'   => 'required|string|max:255',
             'code'   => 'required|string|max:10|unique:languages,code,' . $id,
-            'image'  => 'nullable|string|max:500',
+            'image'  => 'nullable|image|max:2048',
             'enable' => 'nullable|boolean',
             'is_rtl' => 'nullable|boolean',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('languages', 'public');
+        } else {
+            unset($validated['image']);
+        }
 
         $validated['enable'] = $request->boolean('enable');
         $validated['is_rtl'] = $request->boolean('is_rtl');

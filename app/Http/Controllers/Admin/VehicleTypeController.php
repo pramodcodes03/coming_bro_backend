@@ -38,10 +38,17 @@ class VehicleTypeController extends Controller
         $validated = $request->validate([
             'name'        => 'required|string|max:255',
             'enable'      => 'nullable|boolean',
-            'front_image' => 'nullable|string|max:500',
-            'back_image'  => 'nullable|string|max:500',
+            'front_image' => 'nullable|image|max:2048',
+            'back_image'  => 'nullable|image|max:2048',
             'service_id'  => 'nullable|integer|exists:services,id',
         ]);
+
+        if ($request->hasFile('front_image')) {
+            $validated['front_image'] = $request->file('front_image')->store('vehicle-types', 'public');
+        }
+        if ($request->hasFile('back_image')) {
+            $validated['back_image'] = $request->file('back_image')->store('vehicle-types', 'public');
+        }
 
         $validated['enable'] = $request->boolean('enable');
 
@@ -66,10 +73,21 @@ class VehicleTypeController extends Controller
         $validated = $request->validate([
             'name'        => 'required|string|max:255',
             'enable'      => 'nullable|boolean',
-            'front_image' => 'nullable|string|max:500',
-            'back_image'  => 'nullable|string|max:500',
+            'front_image' => 'nullable|image|max:2048',
+            'back_image'  => 'nullable|image|max:2048',
             'service_id'  => 'nullable|integer|exists:services,id',
         ]);
+
+        if ($request->hasFile('front_image')) {
+            $validated['front_image'] = $request->file('front_image')->store('vehicle-types', 'public');
+        } else {
+            unset($validated['front_image']);
+        }
+        if ($request->hasFile('back_image')) {
+            $validated['back_image'] = $request->file('back_image')->store('vehicle-types', 'public');
+        } else {
+            unset($validated['back_image']);
+        }
 
         $validated['enable'] = $request->boolean('enable');
 

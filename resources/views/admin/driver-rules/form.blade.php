@@ -37,7 +37,7 @@
                     <label for="image" class="block mb-2 font-semibold">Image</label>
                     @if(isset($rule) && $rule->image)
                         <div class="mb-3">
-                            <img src="{{ asset('storage/' . $rule->image) }}" alt="{{ $rule->name }}" class="w-16 h-16 object-cover rounded-lg border" />
+                            <img src="{{ storage_url($rule->image) }}" alt="{{ $rule->name }}" class="w-16 h-16 object-cover rounded-lg border" />
                         </div>
                     @endif
                     <input id="image" type="file" name="image" accept="image/*"

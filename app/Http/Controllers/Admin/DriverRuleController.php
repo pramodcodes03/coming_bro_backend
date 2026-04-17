@@ -31,9 +31,13 @@ class DriverRuleController extends Controller
     {
         $validated = $request->validate([
             'name'   => 'required|string|max:255',
-            'image'  => 'nullable|string|max:500',
+            'image'  => 'nullable|image|max:2048',
             'enable' => 'nullable|boolean',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('driver-rules', 'public');
+        }
 
         $validated['enable'] = $request->boolean('enable');
         $validated['is_deleted'] = false;
@@ -57,9 +61,15 @@ class DriverRuleController extends Controller
 
         $validated = $request->validate([
             'name'   => 'required|string|max:255',
-            'image'  => 'nullable|string|max:500',
+            'image'  => 'nullable|image|max:2048',
             'enable' => 'nullable|boolean',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('driver-rules', 'public');
+        } else {
+            unset($validated['image']);
+        }
 
         $validated['enable'] = $request->boolean('enable');
 

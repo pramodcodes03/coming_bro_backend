@@ -30,7 +30,7 @@ class ServiceController extends Controller
     {
         $validated = $request->validate([
             'title'                    => 'required|string|max:255',
-            'image'                    => 'nullable|string|max:500',
+            'image'                    => 'nullable|image|max:2048',
             'enable'                   => 'nullable|boolean',
             'offer_rate'               => 'nullable|boolean',
             'intercity_type'           => 'nullable|boolean',
@@ -42,6 +42,10 @@ class ServiceController extends Controller
             'holding_charges'          => 'nullable|numeric|min:0',
             'admin_commission'         => 'nullable|array',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('services', 'public');
+        }
 
         $validated['enable'] = $request->boolean('enable');
         $validated['offer_rate'] = $request->boolean('offer_rate');
@@ -66,7 +70,7 @@ class ServiceController extends Controller
 
         $validated = $request->validate([
             'title'                    => 'required|string|max:255',
-            'image'                    => 'nullable|string|max:500',
+            'image'                    => 'nullable|image|max:2048',
             'enable'                   => 'nullable|boolean',
             'offer_rate'               => 'nullable|boolean',
             'intercity_type'           => 'nullable|boolean',
@@ -78,6 +82,12 @@ class ServiceController extends Controller
             'holding_charges'          => 'nullable|numeric|min:0',
             'admin_commission'         => 'nullable|array',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('services', 'public');
+        } else {
+            unset($validated['image']);
+        }
 
         $validated['enable'] = $request->boolean('enable');
         $validated['offer_rate'] = $request->boolean('offer_rate');

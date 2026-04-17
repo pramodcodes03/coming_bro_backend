@@ -37,7 +37,7 @@
                             <td class="font-semibold">{{ $rule->name }}</td>
                             <td>
                                 @if($rule->image)
-                                    <img src="{{ asset('storage/' . $rule->image) }}" alt="{{ $rule->name }}"
+                                    <img src="{{ storage_url($rule->image) }}" alt="{{ $rule->name }}"
                                          class="w-10 h-10 object-cover rounded-lg border" />
                                 @else
                                     <span class="text-gray-400">-</span>
