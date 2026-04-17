@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcceptedDriver;
+use App\Models\DriverUser;
 use App\Models\Order;
 use App\Models\Referral;
+use App\Models\WalletTransaction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -70,21 +72,83 @@ class OrderController extends Controller
     public function update(Request $request, string $id): JsonResponse
     {
         $order = Order::findOrFail($id);
+
+        $wasPaymentPending = !$order->payment_status;
+        $isCompletingPayment = $request->has('payment_status')
+            && filter_var($request->payment_status, FILTER_VALIDATE_BOOLEAN)
+            && $wasPaymentPending;
+
         $order->update($request->only([
             'status', 'driver_id', 'payment_status', 'payment_type',
             'final_rate', 'otp', 'accepted_driver_id', 'rejected_driver_id',
             'ride_hold_time', 'holding_charges', 'total_holding_charges',
             'position_latitude', 'position_longitude', 'position_geohash',
-            'total_ride_time', 'ac_non_ac_charges',
+            'total_ride_time', 'ac_non_ac_charges', 'coupon',
         ]));
         $order->update_date = now();
         $order->save();
+
+        if ($isCompletingPayment && $order->driver_id) {
+            $this->processPaymentComplete($order->fresh());
+        }
 
         return response()->json([
             'success' => true,
             'message' => 'Order updated successfully.',
             'data' => $order->fresh(),
         ]);
+    }
+
+    private function processPaymentComplete(Order $order): void
+    {
+        $finalRate = (float) ($order->final_rate ?? 0);
+        $couponAmount = 0.0;
+
+        if ($order->coupon) {
+            $coupon = is_array($order->coupon) ? $order->coupon : json_decode($order->coupon, true);
+            if ($coupon && isset($coupon['discount'])) {
+                $couponAmount = (float) $coupon['discount'];
+            }
+        }
+
+        $holdingCharges = (float) ($order->total_holding_charges ?? 0);
+        $netAmount = $finalRate - $couponAmount + $holdingCharges;
+
+        $commissionAmount = 0.0;
+        if ($order->admin_commission) {
+            $commission = is_array($order->admin_commission) ? $order->admin_commission : json_decode($order->admin_commission, true);
+            if ($commission && isset($commission['type'])) {
+                if ($commission['type'] === 'fix') {
+                    $commissionAmount = (float) ($commission['amount'] ?? 0);
+                } else {
+                    $commissionAmount = ($netAmount * (float) ($commission['amount'] ?? 0)) / 100;
+                }
+            }
+        }
+
+        WalletTransaction::create([
+            'amount' => $netAmount,
+            'payment_type' => $order->payment_type ?? 'cash',
+            'transaction_id' => $order->id,
+            'user_id' => $order->driver_id,
+            'user_type' => 'driver',
+            'order_type' => 'city',
+            'note' => 'Ride amount credited',
+        ]);
+        DriverUser::where('id', $order->driver_id)->increment('wallet_amount', $netAmount);
+
+        if ($commissionAmount > 0) {
+            WalletTransaction::create([
+                'amount' => -$commissionAmount,
+                'payment_type' => $order->payment_type ?? 'cash',
+                'transaction_id' => $order->id,
+                'user_id' => $order->driver_id,
+                'user_type' => 'driver',
+                'order_type' => 'city',
+                'note' => 'Admin commission debited',
+            ]);
+            DriverUser::where('id', $order->driver_id)->decrement('wallet_amount', $commissionAmount);
+        }
     }
 
     public function acceptedDrivers(string $orderId): JsonResponse

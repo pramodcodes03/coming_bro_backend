@@ -18,7 +18,7 @@ class AuthController extends Controller
             'country_code' => 'required|string',
         ]);
 
-        $otp = (string) rand(1000, 9999);
+        $otp = (string) rand(100000, 999999);
         $verificationId = Str::uuid()->toString();
 
         Otp::where('phone_number', $request->phone_number)
@@ -53,7 +53,7 @@ class AuthController extends Controller
 
         $isValid = false;
 
-        if ($request->otp === '2526') {
+        if ($request->otp === '252600') {
             $isValid = true;
         } else {
             $otpRecord = Otp::where('verification_id', $request->verification_id)
