@@ -1,0 +1,420 @@
+{
+  "info": {
+    "name": "Coming Bro Customer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key": "baseUrl", "value": "https://comingbro.in/api/customer"},
+    {"key": "token", "value": ""},
+    {"key": "orderId", "value": "1"},
+    {"key": "driverId", "value": "1"},
+    {"key": "userId", "value": "1"}
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Send OTP",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}],
+            "url": {"raw": "{{baseUrl}}/send-otp", "host": ["{{baseUrl}}"], "path": ["send-otp"]},
+            "body": {"mode": "raw", "raw": "{\n  \"phone_number\": \"+919999999999\",\n  \"country_code\": \"+91\"\n}"}
+          }
+        },
+        {
+          "name": "Verify OTP",
+          "event": [{"listen": "test", "script": {"exec": ["var r = pm.response.json(); if(r.success && r.data && r.data.token){ pm.collectionVariables.set('token', r.data.token); }"]}}],
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}],
+            "url": {"raw": "{{baseUrl}}/verify-otp", "host": ["{{baseUrl}}"], "path": ["verify-otp"]},
+            "body": {"mode": "raw", "raw": "{\n  \"phone_number\": \"+919999999999\",\n  \"country_code\": \"+91\",\n  \"otp\": \"252600\",\n  \"verification_id\": \"{{verificationId}}\"\n}"}
+          }
+        },
+        {
+          "name": "Social Login (Google/Apple)",
+          "event": [{"listen": "test", "script": {"exec": ["var r = pm.response.json(); if(r.success && r.data && r.data.token){ pm.collectionVariables.set('token', r.data.token); }"]}}],
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}],
+            "url": {"raw": "{{baseUrl}}/social-login", "host": ["{{baseUrl}}"], "path": ["social-login"]},
+            "body": {"mode": "raw", "raw": "{\n  \"login_type\": \"google\",\n  \"email\": \"user@example.com\",\n  \"full_name\": \"Test User\",\n  \"profile_pic\": \"\",\n  \"uid\": \"google_uid_here\"\n}"}
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/logout", "host": ["{{baseUrl}}"], "path": ["logout"]}
+          }
+        },
+        {
+          "name": "Delete Account",
+          "request": {
+            "method": "DELETE",
+            "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/delete-account", "host": ["{{baseUrl}}"], "path": ["delete-account"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Profile",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/profile", "host": ["{{baseUrl}}"], "path": ["profile"]}
+          }
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/profile", "host": ["{{baseUrl}}"], "path": ["profile"]},
+            "body": {"mode": "raw", "raw": "{\n  \"full_name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"profile_pic\": \"\",\n  \"referral_code\": \"\"\n}"}
+          }
+        },
+        {
+          "name": "Get Profile By ID",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Accept", "value": "application/json"}],
+            "url": {"raw": "{{baseUrl}}/profile/{{userId}}", "host": ["{{baseUrl}}"], "path": ["profile", "{{userId}}"]}
+          }
+        },
+        {
+          "name": "Update FCM Token",
+          "request": {
+            "method": "PATCH",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/profile/fcm-token", "host": ["{{baseUrl}}"], "path": ["profile", "fcm-token"]},
+            "body": {"mode": "raw", "raw": "{\n  \"fcm_token\": \"device_fcm_token_here\"\n}"}
+          }
+        },
+        {
+          "name": "Check Profile Exists",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Accept", "value": "application/json"}],
+            "url": {"raw": "{{baseUrl}}/profile/check-exists?phone_number=%2B919999999999", "host": ["{{baseUrl}}"], "path": ["profile", "check-exists"]}
+          }
+        },
+        {
+          "name": "Upload Profile File",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/profile/upload-file", "host": ["{{baseUrl}}"], "path": ["profile", "upload-file"]},
+            "body": {"mode": "formdata", "formdata": [{"key": "file", "type": "file", "src": ""}]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "item": [
+        {
+          "name": "Get App Settings",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/settings", "host": ["{{baseUrl}}"], "path": ["settings"]}}
+        },
+        {
+          "name": "Get Payment Settings",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/payment-settings", "host": ["{{baseUrl}}"], "path": ["payment-settings"]}}
+        },
+        {
+          "name": "Get Currency",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/currency", "host": ["{{baseUrl}}"], "path": ["currency"]}}
+        },
+        {
+          "name": "Get Services",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/services", "host": ["{{baseUrl}}"], "path": ["services"]}}
+        },
+        {
+          "name": "Get Banners",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/banners", "host": ["{{baseUrl}}"], "path": ["banners"]}}
+        },
+        {
+          "name": "Get Taxes",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/taxes", "host": ["{{baseUrl}}"], "path": ["taxes"]}}
+        },
+        {
+          "name": "Get Airports",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/airports", "host": ["{{baseUrl}}"], "path": ["airports"]}}
+        },
+        {
+          "name": "Get Zones",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/zones", "host": ["{{baseUrl}}"], "path": ["zones"]}}
+        },
+        {
+          "name": "Get Languages",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/languages", "host": ["{{baseUrl}}"], "path": ["languages"]}}
+        },
+        {
+          "name": "Get FAQs",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/faqs", "host": ["{{baseUrl}}"], "path": ["faqs"]}}
+        },
+        {
+          "name": "Get Coupon",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/coupon/SAVE10", "host": ["{{baseUrl}}"], "path": ["coupon", "SAVE10"]}}
+        },
+        {
+          "name": "Get Onboarding",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/onboarding", "host": ["{{baseUrl}}"], "path": ["onboarding"]}}
+        },
+        {
+          "name": "Get Freight Vehicles",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/freight-vehicles", "host": ["{{baseUrl}}"], "path": ["freight-vehicles"]}}
+        },
+        {
+          "name": "Get Intercity Services",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/intercity-services", "host": ["{{baseUrl}}"], "path": ["intercity-services"]}}
+        }
+      ]
+    },
+    {
+      "name": "Driver",
+      "item": [
+        {
+          "name": "Get Driver",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/driver/{{driverId}}", "host": ["{{baseUrl}}"], "path": ["driver", "{{driverId}}"]}}
+        },
+        {
+          "name": "Get Driver Location",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}], "url": {"raw": "{{baseUrl}}/driver/{{driverId}}/location", "host": ["{{baseUrl}}"], "path": ["driver", "{{driverId}}", "location"]}}
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "List Orders",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/orders", "host": ["{{baseUrl}}"], "path": ["orders"]}}
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/orders", "host": ["{{baseUrl}}"], "path": ["orders"]},
+            "body": {"mode": "raw", "raw": "{\n  \"service_id\": 1,\n  \"source_address\": \"Pickup Address\",\n  \"source_latitude\": 28.6139,\n  \"source_longitude\": 77.2090,\n  \"destination_address\": \"Drop Address\",\n  \"destination_latitude\": 28.7041,\n  \"destination_longitude\": 77.1025,\n  \"amount\": \"150.00\",\n  \"payment_type\": \"cash\",\n  \"note\": \"\"\n}"}
+          }
+        },
+        {
+          "name": "Get Order",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/orders/{{orderId}}", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}"]}}
+        },
+        {
+          "name": "Update Order (Full)",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/orders/{{orderId}}", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}"]},
+            "body": {"mode": "raw", "raw": "{\n  \"status\": \"Ride Canceled\",\n  \"reason\": \"Customer cancelled\"\n}"}
+          }
+        },
+        {
+          "name": "Patch Order (Payment Complete)",
+          "request": {
+            "method": "PATCH",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/orders/{{orderId}}", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}"]},
+            "body": {"mode": "raw", "raw": "{\n  \"payment_status\": true,\n  \"payment_type\": \"wallet\",\n  \"status\": \"Ride Completed\"\n}"}
+          }
+        },
+        {
+          "name": "Get Accepted Drivers",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/orders/{{orderId}}/accepted-drivers", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}", "accepted-drivers"]}}
+        },
+        {
+          "name": "Get Order Payment Status",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/orders/{{orderId}}/payment-status", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}", "payment-status"]}}
+        },
+        {
+          "name": "Get First Order",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/orders/first-order/{{userId}}", "host": ["{{baseUrl}}"], "path": ["orders", "first-order", "{{userId}}"]}}
+        }
+      ]
+    },
+    {
+      "name": "Intercity Orders",
+      "item": [
+        {
+          "name": "List Intercity Orders",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/intercity-orders", "host": ["{{baseUrl}}"], "path": ["intercity-orders"]}}
+        },
+        {
+          "name": "Create Intercity Order",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/intercity-orders", "host": ["{{baseUrl}}"], "path": ["intercity-orders"]},
+            "body": {"mode": "raw", "raw": "{\n  \"service_id\": 1,\n  \"source_address\": \"City A\",\n  \"source_latitude\": 28.6139,\n  \"source_longitude\": 77.2090,\n  \"destination_address\": \"City B\",\n  \"destination_latitude\": 26.9124,\n  \"destination_longitude\": 75.7873,\n  \"amount\": \"1500.00\",\n  \"payment_type\": \"cash\",\n  \"loading_charge\": \"0\"\n}"}
+          }
+        },
+        {
+          "name": "Get Intercity Order",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/intercity-orders/{{orderId}}", "host": ["{{baseUrl}}"], "path": ["intercity-orders", "{{orderId}}"]}}
+        },
+        {
+          "name": "Patch Intercity Order (Payment)",
+          "request": {
+            "method": "PATCH",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/intercity-orders/{{orderId}}", "host": ["{{baseUrl}}"], "path": ["intercity-orders", "{{orderId}}"]},
+            "body": {"mode": "raw", "raw": "{\n  \"payment_status\": true,\n  \"payment_type\": \"wallet\",\n  \"status\": \"Ride Completed\"\n}"}
+          }
+        },
+        {
+          "name": "Get Intercity Accepted Drivers",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/intercity-orders/{{orderId}}/accepted-drivers", "host": ["{{baseUrl}}"], "path": ["intercity-orders", "{{orderId}}", "accepted-drivers"]}}
+        },
+        {
+          "name": "Get Intercity First Order",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/intercity-orders/first-order/{{userId}}", "host": ["{{baseUrl}}"], "path": ["intercity-orders", "first-order", "{{userId}}"]}}
+        }
+      ]
+    },
+    {
+      "name": "Wallet",
+      "item": [
+        {
+          "name": "Get Wallet Transactions",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/wallet/transactions", "host": ["{{baseUrl}}"], "path": ["wallet", "transactions"]}}
+        },
+        {
+          "name": "Create Wallet Transaction",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/wallet/transaction", "host": ["{{baseUrl}}"], "path": ["wallet", "transaction"]},
+            "body": {"mode": "raw", "raw": "{\n  \"amount\": \"500.00\",\n  \"transaction_id\": \"pay_abc123\",\n  \"payment_type\": \"razorpay\",\n  \"note\": \"Wallet top-up\",\n  \"order_type\": \"wallet\",\n  \"user_type\": \"customer\"\n}"}
+          }
+        },
+        {
+          "name": "Update Wallet Balance",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/wallet/update", "host": ["{{baseUrl}}"], "path": ["wallet", "update"]},
+            "body": {"mode": "raw", "raw": "{\n  \"amount\": \"500.00\",\n  \"type\": \"credit\"\n}"}
+          }
+        },
+        {
+          "name": "Create Razorpay Order",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/wallet/razorpay-order", "host": ["{{baseUrl}}"], "path": ["wallet", "razorpay-order"]},
+            "body": {"mode": "raw", "raw": "{\n  \"amount\": 50000\n}"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Chat",
+      "item": [
+        {
+          "name": "Get Inbox List",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/chat/inboxes", "host": ["{{baseUrl}}"], "path": ["chat", "inboxes"]}}
+        },
+        {
+          "name": "Get Chat Messages",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/chat/messages/{{orderId}}", "host": ["{{baseUrl}}"], "path": ["chat", "messages", "{{orderId}}"]}}
+        },
+        {
+          "name": "Send Message",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/chat/send", "host": ["{{baseUrl}}"], "path": ["chat", "send"]},
+            "body": {"mode": "raw", "raw": "{\n  \"order_id\": \"{{orderId}}\",\n  \"sender_id\": \"{{userId}}\",\n  \"receiver_id\": \"{{driverId}}\",\n  \"message\": \"Hello driver!\",\n  \"message_type\": \"text\",\n  \"video_thumbnail\": \"\"\n}"}
+          }
+        },
+        {
+          "name": "Upload Chat File",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/chat/upload-file", "host": ["{{baseUrl}}"], "path": ["chat", "upload-file"]},
+            "body": {"mode": "formdata", "formdata": [{"key": "file", "type": "file", "src": ""}]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "item": [
+        {
+          "name": "List Reviews",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/reviews", "host": ["{{baseUrl}}"], "path": ["reviews"]}}
+        },
+        {
+          "name": "Submit Review",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/reviews", "host": ["{{baseUrl}}"], "path": ["reviews"]},
+            "body": {"mode": "raw", "raw": "{\n  \"driver_id\": \"{{driverId}}\",\n  \"order_id\": \"{{orderId}}\",\n  \"rating\": 5,\n  \"note\": \"Great ride!\"\n}"}
+          }
+        },
+        {
+          "name": "Get Driver Reviews",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/reviews/driver/{{driverId}}", "host": ["{{baseUrl}}"], "path": ["reviews", "driver", "{{driverId}}"]}}
+        }
+      ]
+    },
+    {
+      "name": "Referral",
+      "item": [
+        {
+          "name": "Get Referral Info",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/referral/{{userId}}", "host": ["{{baseUrl}}"], "path": ["referral", "{{userId}}"]}}
+        },
+        {
+          "name": "Store Referral",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/referral", "host": ["{{baseUrl}}"], "path": ["referral"]},
+            "body": {"mode": "raw", "raw": "{\n  \"referral_code\": \"ABC123\"\n}"}
+          }
+        },
+        {
+          "name": "Check Driver Referral Code",
+          "request": {"method": "GET", "header": [{"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}], "url": {"raw": "{{baseUrl}}/referral/check-driver-code?code=ABC123", "host": ["{{baseUrl}}"], "path": ["referral", "check-driver-code"]}}
+        },
+        {
+          "name": "Add Referral Log",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/referral/add-log", "host": ["{{baseUrl}}"], "path": ["referral", "add-log"]},
+            "body": {"mode": "raw", "raw": "{\n  \"referral_code\": \"ABC123\"\n}"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "SOS",
+      "item": [
+        {
+          "name": "Trigger SOS",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Accept", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/sos", "host": ["{{baseUrl}}"], "path": ["sos"]},
+            "body": {"mode": "raw", "raw": "{\n  \"order_id\": \"{{orderId}}\",\n  \"latitude\": 28.6139,\n  \"longitude\": 77.2090\n}"}
+          }
+        }
+      ]
+    }
+  ]
+}
