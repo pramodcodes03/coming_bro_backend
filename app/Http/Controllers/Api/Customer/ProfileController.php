@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
+    use StoresBase64Image;
+
     public function profile(Request $request): JsonResponse
     {
         return response()->json([
@@ -22,10 +24,16 @@ class ProfileController extends Controller
     public function update(Request $request): JsonResponse
     {
         $customer = $request->user();
-        $customer->update($request->only([
+        $data = $request->only([
             'full_name', 'email', 'profile_pic', 'fcm_token',
             'country_code', 'phone_number', 'is_active',
-        ]));
+        ]);
+
+        if ($request->has('profile_pic')) {
+            $data['profile_pic'] = $this->storeBase64Image($request->input('profile_pic'));
+        }
+
+        $customer->update($data);
 
         return response()->json([
             'success' => true,

@@ -1,0 +1,1113 @@
+{
+  "info": {
+    "name": "ComingBro Customer API",
+    "description": "Complete customer API collection for ComingBro ride-hailing platform. Covers authentication, profile, orders, intercity orders, wallet, chat, reviews, referrals, and SOS.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "comingbro-customer-api-v1"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://comingbro.nextgeniusinfotech.com",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string",
+      "description": "Bearer token from OTP verify or social login"
+    },
+    {
+      "key": "customer_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "order_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "intercity_order_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "driver_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "verification_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "1. Authentication",
+      "item": [
+        {
+          "name": "Send OTP",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var res = pm.response.json();",
+                  "if (res.success && res.data && res.data.verification_id) {",
+                  "    pm.collectionVariables.set('verification_id', res.data.verification_id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_number\": \"9876543210\",\n  \"country_code\": \"+91\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/send-otp",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "send-otp"]
+            },
+            "description": "Send OTP to customer phone number. Saves verification_id to collection variable."
+          }
+        },
+        {
+          "name": "Verify OTP",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var res = pm.response.json();",
+                  "if (res.success && res.data && res.data.token) {",
+                  "    pm.collectionVariables.set('token', res.data.token);",
+                  "}",
+                  "if (res.success && res.data && res.data.customer) {",
+                  "    pm.collectionVariables.set('customer_id', res.data.customer.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verification_id\": \"{{verification_id}}\",\n  \"otp\": \"123456\",\n  \"phone_number\": \"9876543210\",\n  \"country_code\": \"+91\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/verify-otp",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "verify-otp"]
+            },
+            "description": "Verify OTP. Saves token and customer_id to collection variables."
+          }
+        },
+        {
+          "name": "Social Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var res = pm.response.json();",
+                  "if (res.success && res.data && res.data.token) {",
+                  "    pm.collectionVariables.set('token', res.data.token);",
+                  "}",
+                  "if (res.success && res.data && res.data.customer) {",
+                  "    pm.collectionVariables.set('customer_id', res.data.customer.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login_type\": \"google\",\n  \"email\": \"user@example.com\",\n  \"full_name\": \"John Doe\",\n  \"profile_pic\": \"https://example.com/pic.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/social-login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "social-login"]
+            },
+            "description": "Login with Google or Apple. login_type: 'google' | 'apple'"
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/customer/logout",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "logout"]
+            },
+            "description": "Revokes current bearer token."
+          }
+        },
+        {
+          "name": "Delete Account",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/customer/delete-account",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "delete-account"]
+            },
+            "description": "Permanently deletes authenticated customer account and all tokens."
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Home & Settings",
+      "item": [
+        {
+          "name": "Get Settings",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/settings",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "settings"]
+            },
+            "description": "Global app settings: keys, values, contact info, notification settings."
+          }
+        },
+        {
+          "name": "Get Payment Settings",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/payment-settings",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "payment-settings"]
+            }
+          }
+        },
+        {
+          "name": "Get Currency",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/currency",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "currency"]
+            }
+          }
+        },
+        {
+          "name": "Get Services",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/services",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "services"]
+            },
+            "description": "List of active ride services available."
+          }
+        },
+        {
+          "name": "Get Banners",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/banners",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "banners"]
+            }
+          }
+        },
+        {
+          "name": "Get Taxes",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/taxes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "taxes"]
+            }
+          }
+        },
+        {
+          "name": "Get Airports",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/airports",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "airports"]
+            }
+          }
+        },
+        {
+          "name": "Get Zones",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/zones",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "zones"]
+            }
+          }
+        },
+        {
+          "name": "Get Freight Vehicles",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/freight-vehicles",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "freight-vehicles"]
+            }
+          }
+        },
+        {
+          "name": "Get Intercity Services",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/intercity-services",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "intercity-services"]
+            }
+          }
+        },
+        {
+          "name": "Get Onboarding",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/onboarding",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "onboarding"]
+            }
+          }
+        },
+        {
+          "name": "Get Languages",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/languages",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "languages"]
+            }
+          }
+        },
+        {
+          "name": "Get FAQs",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/faqs",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "faqs"]
+            }
+          }
+        },
+        {
+          "name": "Get Coupon by Code",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/coupon/SAVE20",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "coupon", "SAVE20"]
+            },
+            "description": "Check if a coupon code is valid. Returns 404 if not found or inactive."
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Profile",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/profile",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "profile"]
+            }
+          }
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"full_name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"profile_pic\": \"https://example.com/pic.jpg\",\n  \"fcm_token\": \"fcm-token-here\",\n  \"country_code\": \"+91\",\n  \"phone_number\": \"9876543210\",\n  \"is_active\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/profile",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "profile"]
+            },
+            "description": "All fields are optional. Only send fields you want to update."
+          }
+        },
+        {
+          "name": "Update FCM Token",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fcm_token\": \"your-fcm-device-token-here\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/profile/fcm-token",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "profile", "fcm-token"]
+            }
+          }
+        },
+        {
+          "name": "Get Customer Profile by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/profile/{{customer_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "profile", "{{customer_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Check Customer Exists",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_number\": \"9876543210\",\n  \"country_code\": \"+91\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/check-exists",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "check-exists"]
+            },
+            "description": "Returns data.exists: true/false"
+          }
+        },
+        {
+          "name": "Upload File",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "",
+                  "description": "Max 20MB"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/upload-file",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "upload-file"]
+            },
+            "description": "Upload any file. Returns data.url with public URL."
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Driver",
+      "item": [
+        {
+          "name": "Get Driver Details",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/driver/{{driver_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "driver", "{{driver_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Driver Location",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/driver/{{driver_id}}/location",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "driver", "{{driver_id}}", "location"]
+            },
+            "description": "Returns: id, latitude, longitude, is_online"
+          }
+        },
+        {
+          "name": "Get Driver Reviews",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/driver/{{driver_id}}/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "driver", "{{driver_id}}", "reviews"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. City Orders",
+      "item": [
+        {
+          "name": "Create City Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var res = pm.response.json();",
+                  "if (res.success && res.data && res.data.id) {",
+                  "    pm.collectionVariables.set('order_id', res.data.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source_location_name\": \"Connaught Place, New Delhi\",\n  \"destination_location_name\": \"India Gate, New Delhi\",\n  \"payment_type\": \"cash\",\n  \"source_latitude\": 28.6315,\n  \"source_longitude\": 77.2167,\n  \"destination_latitude\": 28.6129,\n  \"destination_longitude\": 77.2295,\n  \"service_id\": 1,\n  \"offer_rate\": 120.00,\n  \"final_rate\": 120.00,\n  \"distance\": 3.5,\n  \"duration\": 15,\n  \"distance_type\": \"km\",\n  \"status\": \"searching\",\n  \"otp\": \"4521\",\n  \"is_ac_selected\": false,\n  \"tax_list\": [],\n  \"some_one_else\": null,\n  \"coupon\": null,\n  \"service\": {},\n  \"admin_commission\": {},\n  \"zone\": {},\n  \"zone_id\": 1,\n  \"position_latitude\": 28.6315,\n  \"position_longitude\": 77.2167,\n  \"position_geohash\": \"tt3g\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/orders",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "orders"]
+            },
+            "description": "Creates a new city ride order. Saves order_id to collection variable."
+          }
+        },
+        {
+          "name": "Get City Order Details",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/orders/{{order_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "orders", "{{order_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update City Order",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"accepted\",\n  \"driver_id\": 1,\n  \"payment_status\": false,\n  \"payment_type\": \"cash\",\n  \"final_rate\": 120.00,\n  \"otp\": \"4521\",\n  \"accepted_driver_id\": 1,\n  \"rejected_driver_id\": null,\n  \"ride_hold_time\": 0,\n  \"holding_charges\": 0,\n  \"total_holding_charges\": 0,\n  \"position_latitude\": 28.6315,\n  \"position_longitude\": 77.2167,\n  \"position_geohash\": \"tt3g\",\n  \"total_ride_time\": 0,\n  \"ac_non_ac_charges\": 0,\n  \"coupon\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/orders/{{order_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "orders", "{{order_id}}"]
+            },
+            "description": "Update order status, driver assignment, payment. Setting payment_status to true triggers wallet transactions."
+          }
+        },
+        {
+          "name": "Get Accepted Drivers for Order",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/orders/{{order_id}}/accepted-drivers",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "orders", "{{order_id}}", "accepted-drivers"]
+            }
+          }
+        },
+        {
+          "name": "Get Order Payment Status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/orders/{{order_id}}/payment-status",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "orders", "{{order_id}}", "payment-status"]
+            },
+            "description": "Returns: id, payment_status, status"
+          }
+        },
+        {
+          "name": "Check If First Order",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/orders/first-order/{{customer_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "orders", "first-order", "{{customer_id}}"]
+            },
+            "description": "Returns data.is_first_order: true if customer has no paid orders yet."
+          }
+        },
+        {
+          "name": "Update Referral Amount for Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"amount\": 50.00\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/orders/referral/update-amount",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "orders", "referral", "update-amount"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Intercity Orders",
+      "item": [
+        {
+          "name": "Create Intercity Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var res = pm.response.json();",
+                  "if (res.success && res.data && res.data.id) {",
+                  "    pm.collectionVariables.set('intercity_order_id', res.data.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source_city\": \"New Delhi\",\n  \"source_location_name\": \"Delhi Airport, New Delhi\",\n  \"destination_city\": \"Agra\",\n  \"destination_location_name\": \"Taj Mahal, Agra\",\n  \"payment_type\": \"cash\",\n  \"source_latitude\": 28.5562,\n  \"source_longitude\": 77.1000,\n  \"destination_latitude\": 27.1751,\n  \"destination_longitude\": 78.0421,\n  \"intercity_service_id\": 1,\n  \"loading_unloading_charges\": 0,\n  \"offer_rate\": 2500.00,\n  \"final_rate\": 2500.00,\n  \"distance\": 210,\n  \"distance_type\": \"km\",\n  \"status\": \"searching\",\n  \"loading\": false,\n  \"unloading\": false,\n  \"parcel_dimension\": null,\n  \"parcel_weight\": null,\n  \"freight_weight\": null,\n  \"parcel_image\": [],\n  \"otp\": \"7823\",\n  \"tax_list\": [],\n  \"coupon\": null,\n  \"freight_vehicle\": null,\n  \"intercity_service\": {},\n  \"when_dates\": \"2026-04-20\",\n  \"when_time\": \"09:00\",\n  \"number_of_passenger\": \"2\",\n  \"comments\": \"Please be on time\",\n  \"some_one_else\": null,\n  \"admin_commission\": {},\n  \"zone\": {},\n  \"zone_id\": 1,\n  \"position_latitude\": 28.5562,\n  \"position_longitude\": 77.1000,\n  \"position_geohash\": \"tt1s\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/intercity-orders",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "intercity-orders"]
+            },
+            "description": "Creates a new intercity ride order. Saves intercity_order_id to collection variable."
+          }
+        },
+        {
+          "name": "Get Intercity Order Details",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/intercity-orders/{{intercity_order_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "intercity-orders", "{{intercity_order_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Intercity Order",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"accepted\",\n  \"driver_id\": 1,\n  \"payment_status\": false,\n  \"payment_type\": \"cash\",\n  \"final_rate\": 2500.00,\n  \"otp\": \"7823\",\n  \"accepted_driver_id\": 1,\n  \"rejected_driver_id\": null,\n  \"ride_hold_time\": 0,\n  \"holding_charges\": 0,\n  \"total_holding_charges\": 0,\n  \"position_latitude\": 28.5562,\n  \"position_longitude\": 77.1000,\n  \"position_geohash\": \"tt1s\",\n  \"coupon\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/intercity-orders/{{intercity_order_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "intercity-orders", "{{intercity_order_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Accepted Drivers for Intercity Order",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/intercity-orders/{{intercity_order_id}}/accepted-drivers",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "intercity-orders", "{{intercity_order_id}}", "accepted-drivers"]
+            }
+          }
+        },
+        {
+          "name": "Get Intercity Order Payment Status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/intercity-orders/{{intercity_order_id}}/payment-status",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "intercity-orders", "{{intercity_order_id}}", "payment-status"]
+            }
+          }
+        },
+        {
+          "name": "Check If First Intercity Order",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/intercity-orders/first-order/{{customer_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "intercity-orders", "first-order", "{{customer_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Referral Amount for Intercity Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"amount\": 50.00\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/intercity-orders/referral/update-amount",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "intercity-orders", "referral", "update-amount"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Wallet",
+      "item": [
+        {
+          "name": "Get Wallet Transactions",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/wallet/transactions",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "wallet", "transactions"]
+            },
+            "description": "Returns all wallet transactions for authenticated customer, ordered by date descending."
+          }
+        },
+        {
+          "name": "Create Wallet Transaction",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 500.00,\n  \"payment_type\": \"razorpay\",\n  \"note\": \"Wallet top-up\",\n  \"transaction_id\": \"pay_XXXXXXXXXX\",\n  \"order_type\": \"wallet_recharge\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/wallet/transactions",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "wallet", "transactions"]
+            }
+          }
+        },
+        {
+          "name": "Update Wallet Amount",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 500.00\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/wallet/update",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "wallet", "update"]
+            },
+            "description": "Adds amount to wallet balance. Returns updated wallet_amount."
+          }
+        },
+        {
+          "name": "Create Razorpay Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 500\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/wallet/razorpay/create-order",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "wallet", "razorpay", "create-order"]
+            },
+            "description": "Creates a Razorpay order for wallet top-up. Requires Razorpay credentials configured in Settings. Minimum amount: 1."
+          }
+        }
+      ]
+    },
+    {
+      "name": "8. Chat",
+      "item": [
+        {
+          "name": "Get Chat Inboxes",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/chat/inboxes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "chat", "inboxes"]
+            },
+            "description": "Returns all chat inboxes for authenticated customer, ordered by last message date."
+          }
+        },
+        {
+          "name": "Create or Update Chat Inbox",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_id\": 1,\n  \"driver_id\": 1,\n  \"customer_id\": 1,\n  \"last_message\": \"Hello, I'm on my way\",\n  \"driver_name\": \"Rajan Kumar\",\n  \"driver_profile_image\": \"https://example.com/driver.jpg\",\n  \"customer_name\": \"John Doe\",\n  \"customer_profile_image\": \"https://example.com/customer.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/chat/inbox",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "chat", "inbox"]
+            },
+            "description": "Creates inbox for order if it doesn't exist, or updates existing one."
+          }
+        },
+        {
+          "name": "Send Chat Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_id\": 1,\n  \"message\": \"I am 5 minutes away\",\n  \"type\": \"text\",\n  \"url_url\": null,\n  \"url_mime\": null,\n  \"url_video_thumbnail\": null,\n  \"video_thumbnail\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/chat/message",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "chat", "message"]
+            }
+          }
+        },
+        {
+          "name": "Get Chat Messages for Order",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/chat/{{order_id}}/messages?per_page=50",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "chat", "{{order_id}}", "messages"],
+              "query": [
+                {
+                  "key": "per_page",
+                  "value": "50",
+                  "description": "Number of messages per page (default: 50)"
+                }
+              ]
+            },
+            "description": "Returns paginated messages. Response includes meta: current_page, last_page, per_page, total."
+          }
+        },
+        {
+          "name": "Upload Chat File",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "",
+                  "description": "Max 50MB. Returns url and mime type."
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/chat/upload-file",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "chat", "upload-file"]
+            },
+            "description": "Upload image/video for chat. Returns data.url and data.mime."
+          }
+        }
+      ]
+    },
+    {
+      "name": "9. Reviews",
+      "item": [
+        {
+          "name": "Submit Review for Driver",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"driver_id\": 1,\n  \"rating\": 4.5,\n  \"comment\": \"Great driver, very punctual!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "reviews"]
+            },
+            "description": "Submit a rating and review for a driver. Also updates driver's aggregate review stats."
+          }
+        }
+      ]
+    },
+    {
+      "name": "10. Referral",
+      "item": [
+        {
+          "name": "Get Referral",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/referral",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "referral"]
+            },
+            "description": "Returns authenticated customer's referral object, or null if not exists."
+          }
+        },
+        {
+          "name": "Save/Update Referral Code",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"referral_code\": \"JOHN2024\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/referral",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "referral"]
+            },
+            "description": "Creates or updates customer's referral code."
+          }
+        },
+        {
+          "name": "Check Driver Referral Code",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/referral/check-driver-code/DRIVER123",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "referral", "check-driver-code", "DRIVER123"]
+            },
+            "description": "Validates a driver's referral code. Returns data.valid (boolean) and data.driver_referral object."
+          }
+        },
+        {
+          "name": "Add Referral Log",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"driver_id\": 1,\n  \"referral_code\": \"DRIVER123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/referral/log",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "referral", "log"]
+            },
+            "description": "Logs that customer used a driver's referral code. Returns 409 if already used. Also updates driver's bonus_rides_remaining and referral_users_count."
+          }
+        }
+      ]
+    },
+    {
+      "name": "11. SOS (Emergency)",
+      "item": [
+        {
+          "name": "Get SOS List",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/customer/sos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "sos"]
+            },
+            "description": "Returns all SOS alerts created by authenticated customer."
+          }
+        },
+        {
+          "name": "Create SOS Alert",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"driver_id\": 1,\n  \"order_id\": 1,\n  \"latitude\": 28.6315,\n  \"longitude\": 77.2167\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/sos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "sos"]
+            },
+            "description": "Create an emergency SOS alert. All fields are optional."
+          }
+        }
+      ]
+    }
+  ]
+}

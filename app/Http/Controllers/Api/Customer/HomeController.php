@@ -45,7 +45,7 @@ class HomeController extends Controller
 
     public function services(): JsonResponse
     {
-        $services = Service::where('is_active', true)->get();
+        $services = Service::where('enable', true)->get();
 
         return response()->json(['success' => true, 'message' => 'Services retrieved.', 'data' => $services]);
     }
@@ -59,7 +59,7 @@ class HomeController extends Controller
 
     public function taxes(): JsonResponse
     {
-        $taxes = Tax::where('is_active', true)->get();
+        $taxes = Tax::where('enable', true)->get();
 
         return response()->json(['success' => true, 'message' => 'Taxes retrieved.', 'data' => $taxes]);
     }
@@ -80,14 +80,14 @@ class HomeController extends Controller
 
     public function freightVehicles(): JsonResponse
     {
-        $vehicles = FreightVehicle::where('is_active', true)->get();
+        $vehicles = FreightVehicle::where('enable', true)->get();
 
         return response()->json(['success' => true, 'message' => 'Freight vehicles retrieved.', 'data' => $vehicles]);
     }
 
     public function intercityServices(): JsonResponse
     {
-        $services = IntercityService::where('is_active', true)->get();
+        $services = IntercityService::where('enable', true)->get();
 
         return response()->json(['success' => true, 'message' => 'Intercity services retrieved.', 'data' => $services]);
     }
@@ -115,7 +115,7 @@ class HomeController extends Controller
 
     public function coupon(string $code): JsonResponse
     {
-        $coupon = Coupon::where('coupon_code', $code)->where('is_active', true)->first();
+        $coupon = Coupon::where('coupon_code', $code)->where('enable', true)->first();
 
         if (!$coupon) {
             return response()->json(['success' => false, 'message' => 'Coupon not found or inactive.', 'data' => null], 404);

@@ -167,7 +167,7 @@ Route::prefix('customer')->group(function () {
     Route::get('/coupon/{code}', [CustomerHomeController::class, 'coupon']);
 
     // ── Protected ───────────────────────────────
-    Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware('auth:customer')->group(function () {
 
         // Auth
         Route::post('/logout', [CustomerAuthController::class, 'logout']);

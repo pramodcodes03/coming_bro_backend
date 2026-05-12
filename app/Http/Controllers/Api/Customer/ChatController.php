@@ -27,9 +27,9 @@ class ChatController extends Controller
     public function inbox(Request $request): JsonResponse
     {
         $request->validate([
-            'order_id' => 'required|integer',
-            'driver_id' => 'required|integer',
-            'customer_id' => 'required|integer',
+            'order_id' => 'required|integer|exists:orders,id',
+            'driver_id' => 'required|integer|exists:driver_users,id',
+            'customer_id' => 'required|integer|exists:customers,id',
             'last_message' => 'nullable|string',
             'driver_name' => 'nullable|string',
             'driver_profile_image' => 'nullable|string',

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Admin;
+use App\Models\Customer;
 use App\Models\DriverUser;
 use App\Models\User;
 
@@ -24,6 +25,14 @@ return [
             'driver' => 'sanctum',
             'provider' => 'drivers',
         ],
+        'driver' => [
+            'driver' => 'sanctum',
+            'provider' => 'drivers',
+        ],
+        'customer' => [
+            'driver' => 'sanctum',
+            'provider' => 'customers',
+        ],
     ],
 
     'providers' => [
@@ -38,6 +47,10 @@ return [
         'drivers' => [
             'driver' => 'eloquent',
             'model' => DriverUser::class,
+        ],
+        'customers' => [
+            'driver' => 'eloquent',
+            'model' => Customer::class,
         ],
     ],
 

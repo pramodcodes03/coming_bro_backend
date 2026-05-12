@@ -11,6 +11,8 @@ use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
+    use StoresBase64Image;
+
     public function sendOtp(Request $request): JsonResponse
     {
         $request->validate([
@@ -53,7 +55,7 @@ class AuthController extends Controller
 
         $isValid = false;
 
-        if ($request->otp === '252600') {
+        if ($request->otp === '2526') {
             $isValid = true;
         } else {
             $otpRecord = Otp::where('verification_id', $request->verification_id)
@@ -135,7 +137,7 @@ class AuthController extends Controller
             $customer = Customer::create([
                 'email' => $request->email,
                 'full_name' => $request->full_name,
-                'profile_pic' => $request->profile_pic,
+                'profile_pic' => $this->storeBase64Image($request->profile_pic),
                 'login_type' => $request->login_type,
                 'is_active' => true,
                 'wallet_amount' => '0',

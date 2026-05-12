@@ -1,0 +1,113 @@
+============================================
+  ComingBro Driver API - Full Test Suite
+  Base: https://comingbro.nextgeniusinfotech.com/api/driver
+============================================
+
+--- Public Endpoints ---
+[0;32m✅ PASS[0m [200] Get Settings - Settings retrieved successfully.
+[0;32m✅ PASS[0m [200] Get Payment Settings - Payment settings retrieved successfully.
+[0;32m✅ PASS[0m [200] Get Currency - Currency retrieved successfully.
+[0;32m✅ PASS[0m [200] Get Onboarding Screens - Onboarding screens retrieved successfully.
+[0;32m✅ PASS[0m [200] Get Languages - Languages retrieved successfully.
+
+--- Authentication ---
+[0;32m✅ PASS[0m [200] Send OTP - verification_id=c1e7c68b-bad0-4c93-a3c4-bfdc70947a5d
+[0;32m✅ PASS[0m [200] Verify OTP - token=17|S5Hyhy61oiVcTy0BI... driver_id=1
+
+--- Driver Profile ---
+[0;32m✅ PASS[0m [200] Get Profile - Profile retrieved successfully.
+[0;32m✅ PASS[0m [200] Get Profile By ID - Driver retrieved successfully.
+[0;32m✅ PASS[0m [200] Update Profile - Profile updated successfully.
+[0;32m✅ PASS[0m [200] Update Profile Fields - Fields updated successfully.
+[0;32m✅ PASS[0m [200] Update Location - Location updated successfully.
+[0;32m✅ PASS[0m [200] Check Driver Exists - Driver exists.
+[0;32m✅ PASS[0m [200] Count By Year - Driver count retrieved successfully.
+
+--- Customer ---
+[1;33m🔍 404 [0m [404] Get Customer - Customer not found.
+
+--- Orders (City) ---
+[0;32m✅ PASS[0m [200] Nearby Orders - Nearby orders retrieved successfully.
+[0;32m✅ PASS[0m [200] List Orders - Orders retrieved successfully.
+[1;33m🔍 404 [0m [404] Get Order By ID - Order not found.
+[1;33m🔍 404 [0m [404] Update Order - Order not found.
+[1;33m⚠️  422 [0m [422] Accept Order - The driver id field is required.
+[1;33m🔍 404 [0m [404] Get Accepted Driver - Accepted driver record not found.
+[0;32m✅ PASS[0m [200] First Order - First order check completed.
+
+--- Orders (Intercity) ---
+[0;32m✅ PASS[0m [200] Nearby Intercity Orders - Nearby intercity orders retrieved successfully.
+[1;33m🔍 404 [0m [404] Get Intercity Order - Intercity order not found.
+[1;33m🔍 404 [0m [404] Update Intercity Order - Intercity order not found.
+[1;33m⚠️  422 [0m [422] Accept Intercity Order - The driver id field is required.
+[1;33m🔍 404 [0m [404] Get Intercity Accepted Driver - Accepted driver record not found.
+[0;32m✅ PASS[0m [200] Intercity First Order - First intercity order check completed.
+
+--- Documents ---
+[0;32m✅ PASS[0m [200] List Documents - Documents retrieved successfully.
+[0;32m✅ PASS[0m [200] Get Document By ID - Document retrieved successfully.
+[0;32m✅ PASS[0m [200] Get Driver Documents - Driver documents retrieved successfully.
+[0;32m✅ PASS[0m [200] Get Driver Document Numbers - Document numbers retrieved successfully.
+
+--- Services & Config ---
+[0;32m✅ PASS[0m [200] List Services - Services retrieved successfully.
+[0;32m✅ PASS[0m [200] List Vehicle Types - Vehicle types retrieved successfully.
+[0;32m✅ PASS[0m [200] List Districts - Districts retrieved successfully.
+[0;32m✅ PASS[0m [200] List Insurance Companies - Insurance companies retrieved successfully.
+[0;32m✅ PASS[0m [200] List Driver Rules - Driver rules retrieved successfully.
+
+--- Wallet ---
+[0;32m✅ PASS[0m [200] Wallet Transactions - Wallet transactions retrieved successfully.
+[1;33m⚠️  422 [0m [422] Wallet Update - The wallet amount field is required.
+
+--- Bank & Withdrawal ---
+[0;32m✅ PASS[0m [200] Get Bank Details - Bank details retrieved successfully.
+[0;32m✅ PASS[0m [200] Check Bank Details - Bank details exist.
+[1;33m⚠️  422 [0m [422] Create/Update Bank Details - The account holder name field is required. (and 1 more error)
+[0;32m✅ PASS[0m [200] List Withdrawals - Withdrawal history retrieved successfully.
+[0;32m✅ PASS[0m [200] Request Withdrawal - Withdrawal request created successfully.
+
+--- Referral ---
+[0;32m✅ PASS[0m [200] Get Referral - Referral data retrieved successfully.
+[1;33m⚠️  409 [0m [409] Create Referral - Referral record already exists for this driver. (duplicate, expected)
+[0;32m✅ PASS[0m [200] Referral Logs - Referral logs retrieved successfully.
+
+--- Reviews ---
+[0;32m✅ PASS[0m [200] List Reviews - Reviews retrieved successfully.
+[1;33m🔍 404 [0m [404] Get Review By ID - Review not found.
+
+--- Chat ---
+[0;31m❌ FAIL[0m [500] Chat Inbox - SQLSTATE[42S22]: Column not found: 1054 Unknown column 'last_message_at' in 'INS
+     Response: {
+    "message": "SQLSTATE[42S22]: Column not found: 1054 Unknown column 'last_message_at' in 'INSERT INTO' (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: coming_bro, SQL: insert into `cha
+[0;31m❌ FAIL[0m [500] Send Chat Message - SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sender_type' in 'INSERT 
+     Response: {
+    "message": "SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sender_type' in 'INSERT INTO' (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: coming_bro, SQL: insert into `chat_me
+[0;32m✅ PASS[0m [200] Get Chat Messages - Messages retrieved successfully.
+
+--- Subscriptions ---
+[0;32m✅ PASS[0m [200] List Subscription Plans - Subscription plans retrieved successfully.
+[0;32m✅ PASS[0m [200] Subscription History (GET) - Subscription history retrieved successfully.
+
+--- Location Data ---
+[0;32m✅ PASS[0m [200] List States - States retrieved successfully.
+[0;32m✅ PASS[0m [200] List Cities - Cities retrieved successfully.
+[0;32m✅ PASS[0m [200] List Vehicle Companies - Vehicle companies retrieved successfully.
+[0;32m✅ PASS[0m [200] List Vehicle Models - Vehicle models retrieved successfully.
+[0;32m✅ PASS[0m [200] List Fuel Types - Fuel types retrieved successfully.
+[0;32m✅ PASS[0m [200] List Zones - Zones retrieved successfully.
+
+--- Notifications ---
+[0;32m✅ PASS[0m [200] List Notifications - Notifications retrieved successfully.
+
+============================================
+  Results: [0;32m59 passed[0m, [0;31m2 failed[0m
+============================================
+
+[0;31mFailed endpoints:[0m
+
+  ❌ [500] Chat Inbox: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'last_message_at' in 'INS
+  ❌ [500] Send Chat Message: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sender_type' in 'INSERT 
+
+Auth Token: 17|S5Hyhy61oiVcTy0BICIE0zd5Qef...
+Driver ID: 1
