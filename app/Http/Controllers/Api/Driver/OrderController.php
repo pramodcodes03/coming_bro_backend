@@ -7,6 +7,7 @@ use App\Models\AcceptedDriver;
 use App\Models\Order;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -99,9 +100,20 @@ class OrderController extends Controller
             'suggested_date' => 'nullable|string',
         ]);
 
+        Log::channel('stack')->info('[RIDE_FLOW] Driver attempting to ACCEPT ride', [
+            'order_id' => $orderId,
+            'driver_id' => $request->driver_id,
+            'offer_amount' => $request->offer_amount,
+        ]);
+
         $order = Order::find($orderId);
 
         if (!$order) {
+            Log::channel('stack')->warning('[RIDE_FLOW] Accept FAILED — order not found', [
+                'order_id' => $orderId,
+                'driver_id' => $request->driver_id,
+            ]);
+
             return response()->json([
                 'success' => false,
                 'message' => 'Order not found.',
@@ -140,6 +152,13 @@ class OrderController extends Controller
             $order->accepted_driver_id = $acceptedIds;
             $order->save();
         }
+
+        Log::channel('stack')->info('[RIDE_FLOW] Driver ACCEPTED ride successfully', [
+            'order_id' => $orderId,
+            'driver_id' => $request->driver_id,
+            'accepted_driver_record_id' => $acceptedDriver->id,
+            'total_drivers_accepted' => count($acceptedIds),
+        ]);
 
         return response()->json([
             'success' => true,
@@ -191,6 +210,17 @@ class OrderController extends Controller
         $lng = $request->longitude;
         $radius = $request->radius ?? 10; // km
 
+        $driver = $request->user();
+
+        Log::channel('stack')->info('[RIDE_FLOW] Driver polling for nearby rides', [
+            'driver_id' => $driver?->id,
+            'driver_lat' => $lat,
+            'driver_lng' => $lng,
+            'radius_km' => $radius,
+            'service_id' => $request->service_id,
+            'zone_ids' => $request->zone_ids,
+        ]);
+
         $query = Order::selectRaw(
             "*, (6371 * acos(cos(radians(?)) * cos(radians(source_latitude)) * cos(radians(source_longitude) - radians(?)) + sin(radians(?)) * sin(radians(source_latitude)))) AS distance",
             [$lat, $lng, $lat]
@@ -212,6 +242,33 @@ class OrderController extends Controller
         }
 
         $orders = $query->orderBy('distance')->get();
+
+        if ($orders->isEmpty()) {
+            // Help debug WHY no ride was received: are there any ride_placed orders at all?
+            $placedTotal = Order::where('status', 'ride_placed')->count();
+            Log::channel('stack')->warning('[RIDE_FLOW] Driver received NO nearby rides', [
+                'driver_id' => $driver?->id,
+                'driver_lat' => $lat,
+                'driver_lng' => $lng,
+                'radius_km' => $radius,
+                'service_id' => $request->service_id,
+                'total_ride_placed_orders_in_db' => $placedTotal,
+                'hint' => $placedTotal > 0
+                    ? 'There ARE ride_placed orders, but none matched (out of radius, different service_id, or zone mismatch).'
+                    : 'There are NO ride_placed orders at all — check that the customer order was created with status=ride_placed.',
+            ]);
+        } else {
+            Log::channel('stack')->info('[RIDE_FLOW] Driver RECEIVED nearby rides', [
+                'driver_id' => $driver?->id,
+                'count' => $orders->count(),
+                'orders' => $orders->map(fn ($o) => [
+                    'order_id' => $o->id,
+                    'distance_km' => round((float) $o->distance, 3),
+                    'service_id' => $o->service_id,
+                    'status' => $o->status,
+                ])->all(),
+            ]);
+        }
 
         return response()->json([
             'success' => true,

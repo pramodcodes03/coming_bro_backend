@@ -10,6 +10,7 @@ use App\Models\Referral;
 use App\Models\WalletTransaction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -50,6 +51,33 @@ class OrderController extends Controller
         $data['update_date'] = now();
 
         $order = Order::create($data);
+
+        Log::channel('stack')->info('[RIDE_FLOW] Customer created ride request', [
+            'order_id' => $order->id,
+            'user_id' => $order->user_id,
+            'status' => $order->status,
+            'service_id' => $order->service_id,
+            'zone_id' => $order->zone_id,
+            'source' => [
+                'name' => $order->source_location_name,
+                'lat' => $order->source_latitude,
+                'lng' => $order->source_longitude,
+            ],
+            'destination' => [
+                'name' => $order->destination_location_name,
+                'lat' => $order->destination_latitude,
+                'lng' => $order->destination_longitude,
+            ],
+            'offer_rate' => $order->offer_rate,
+            'created_at' => now()->toDateTimeString(),
+        ]);
+
+        if ($order->status !== 'ride_placed') {
+            Log::channel('stack')->warning('[RIDE_FLOW] Order status is NOT "ride_placed" — drivers will NOT see this ride in nearby search', [
+                'order_id' => $order->id,
+                'status' => $order->status,
+            ]);
+        }
 
         return response()->json([
             'success' => true,
