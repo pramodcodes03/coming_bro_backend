@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Driver;
 use App\Http\Controllers\Controller;
 use App\Models\AcceptedDriver;
 use App\Models\IntercityOrder;
+use App\Events\IntercityOrderUpdated;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -53,6 +54,8 @@ class IntercityOrderController extends Controller
 
         $order->fill($updateData);
         $order->save();
+
+        event(new IntercityOrderUpdated($order));
 
         return response()->json([
             'success' => true,
@@ -114,6 +117,8 @@ class IntercityOrderController extends Controller
             $order->accepted_driver_id = $acceptedIds;
             $order->save();
         }
+
+        event(new IntercityOrderUpdated($order->fresh()));
 
         return response()->json([
             'success' => true,

@@ -8,6 +8,7 @@ use App\Models\DriverUser;
 use App\Models\IntercityOrder;
 use App\Models\Referral;
 use App\Models\WalletTransaction;
+use App\Events\IntercityOrderUpdated;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -63,6 +64,8 @@ class IntercityOrderController extends Controller
 
         $order = IntercityOrder::create($data);
 
+        event(new IntercityOrderUpdated($order));
+
         return response()->json([
             'success' => true,
             'message' => 'Intercity order created successfully.',
@@ -99,6 +102,8 @@ class IntercityOrderController extends Controller
         ]));
         $order->update_date = now();
         $order->save();
+
+        event(new IntercityOrderUpdated($order));
 
         if ($isCompletingPayment && $order->driver_id) {
             $this->processPaymentComplete($order->fresh());

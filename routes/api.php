@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\Driver\ServiceController;
 use App\Http\Controllers\Api\Driver\SettingsController;
 use App\Http\Controllers\Api\Driver\SubscriptionController;
 use App\Http\Controllers\Api\Driver\WalletController;
+use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
 
 // ═══════════════════════════════════════════════
@@ -231,3 +232,5 @@ Route::prefix('customer')->group(function () {
         Route::post('/sos', [CustomerSosController::class, 'store']);
     });
 });
+
+Broadcast::routes(['middleware' => ['auth:sanctum']]);

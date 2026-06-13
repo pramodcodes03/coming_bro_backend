@@ -10,6 +10,7 @@ use App\Models\Referral;
 use App\Models\WalletTransaction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Events\OrderUpdated;
 use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
@@ -51,6 +52,8 @@ class OrderController extends Controller
         $data['update_date'] = now();
 
         $order = Order::create($data);
+
+        event(new OrderUpdated($order));
 
         Log::channel('stack')->info('[RIDE_FLOW] Customer created ride request', [
             'order_id' => $order->id,
@@ -115,6 +118,8 @@ class OrderController extends Controller
         ]));
         $order->update_date = now();
         $order->save();
+
+        event(new OrderUpdated($order));
 
         if ($isCompletingPayment && $order->driver_id) {
             $this->processPaymentComplete($order->fresh());

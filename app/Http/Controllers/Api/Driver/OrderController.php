@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Driver;
 use App\Http\Controllers\Controller;
 use App\Models\AcceptedDriver;
 use App\Models\Order;
+use App\Events\OrderUpdated;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -81,6 +82,8 @@ class OrderController extends Controller
         $order->fill($updateData);
         $order->save();
 
+        event(new OrderUpdated($order));
+
         return response()->json([
             'success' => true,
             'message' => 'Order updated successfully.',
@@ -152,6 +155,8 @@ class OrderController extends Controller
             $order->accepted_driver_id = $acceptedIds;
             $order->save();
         }
+
+        event(new OrderUpdated($order->fresh()));
 
         Log::channel('stack')->info('[RIDE_FLOW] Driver ACCEPTED ride successfully', [
             'order_id' => $orderId,
