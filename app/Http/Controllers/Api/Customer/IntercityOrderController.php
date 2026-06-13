@@ -9,6 +9,7 @@ use App\Models\IntercityOrder;
 use App\Models\Referral;
 use App\Models\WalletTransaction;
 use App\Events\IntercityOrderUpdated;
+use App\Events\NewIntercityOrderPlaced;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -65,6 +66,11 @@ class IntercityOrderController extends Controller
         $order = IntercityOrder::create($data);
 
         event(new IntercityOrderUpdated($order));
+
+        // Notify all online drivers in real time that a new intercity ride is available.
+        if ($order->status === 'ride_placed') {
+            event(new NewIntercityOrderPlaced($order));
+        }
 
         return response()->json([
             'success' => true,

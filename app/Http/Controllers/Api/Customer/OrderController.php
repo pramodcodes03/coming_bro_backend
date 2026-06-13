@@ -11,6 +11,7 @@ use App\Models\WalletTransaction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Events\OrderUpdated;
+use App\Events\NewOrderPlaced;
 use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
@@ -54,6 +55,11 @@ class OrderController extends Controller
         $order = Order::create($data);
 
         event(new OrderUpdated($order));
+
+        // Notify all online drivers in real time that a new ride is available.
+        if ($order->status === 'ride_placed') {
+            event(new NewOrderPlaced($order));
+        }
 
         Log::channel('stack')->info('[RIDE_FLOW] Customer created ride request', [
             'order_id' => $order->id,
