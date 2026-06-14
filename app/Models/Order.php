@@ -15,7 +15,12 @@ class Order extends Model
 
     public $timestamps = false;
 
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
     protected $fillable = [
+        'id',
         'source_location_name',
         'destination_location_name',
         'payment_type',
