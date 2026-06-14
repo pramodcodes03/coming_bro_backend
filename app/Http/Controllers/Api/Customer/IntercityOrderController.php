@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AcceptedDriver;
 use App\Models\DriverUser;
 use App\Models\IntercityOrder;
+use App\Models\Order;
 use App\Models\Referral;
 use App\Models\WalletTransaction;
 use App\Events\IntercityOrderUpdated;
@@ -68,7 +69,7 @@ class IntercityOrderController extends Controller
         event(new IntercityOrderUpdated($order));
 
         // Notify all online drivers in real time that a new intercity ride is available.
-        if ($order->status === 'ride_placed') {
+        if ($order->status === Order::STATUS_RIDE_PLACED) {
             event(new NewIntercityOrderPlaced($order));
         }
 

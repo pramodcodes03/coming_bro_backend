@@ -231,7 +231,7 @@ class OrderController extends Controller
             [$lat, $lng, $lat]
         )
             ->having('distance', '<=', $radius)
-            ->where('status', 'ride_placed');
+            ->where('status', Order::STATUS_RIDE_PLACED);
 
         if ($request->has('service_id') && $request->service_id) {
             $query->where('service_id', $request->service_id);
@@ -249,8 +249,8 @@ class OrderController extends Controller
         $orders = $query->orderBy('distance')->get();
 
         if ($orders->isEmpty()) {
-            // Help debug WHY no ride was received: are there any ride_placed orders at all?
-            $placedTotal = Order::where('status', 'ride_placed')->count();
+            // Help debug WHY no ride was received: are there any placed orders at all?
+            $placedTotal = Order::where('status', Order::STATUS_RIDE_PLACED)->count();
             Log::channel('stack')->warning('[RIDE_FLOW] Driver received NO nearby rides', [
                 'driver_id' => $driver?->id,
                 'driver_lat' => $lat,

@@ -13,6 +13,13 @@ class Order extends Model
 
     protected $table = 'orders';
 
+    /**
+     * Canonical status string for a freshly placed ride. This is the single
+     * source of truth shared by the customer app, driver app and backend
+     * queries — do not hardcode the literal string anywhere else.
+     */
+    public const STATUS_RIDE_PLACED = 'Ride Placed';
+
     public $timestamps = false;
 
     public $incrementing = false;

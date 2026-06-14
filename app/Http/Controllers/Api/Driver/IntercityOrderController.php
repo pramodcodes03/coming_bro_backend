@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Driver;
 use App\Http\Controllers\Controller;
 use App\Models\AcceptedDriver;
 use App\Models\IntercityOrder;
+use App\Models\Order;
 use App\Events\IntercityOrderUpdated;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -175,7 +176,7 @@ class IntercityOrderController extends Controller
             [$lat, $lng, $lat]
         )
             ->having('distance', '<=', $radius)
-            ->where('status', 'ride_placed');
+            ->where('status', Order::STATUS_RIDE_PLACED);
 
         if ($request->has('service_id') && $request->service_id) {
             $query->where('intercity_service_id', $request->service_id);

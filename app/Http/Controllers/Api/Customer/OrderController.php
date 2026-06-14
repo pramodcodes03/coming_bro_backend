@@ -63,7 +63,7 @@ class OrderController extends Controller
         event(new OrderUpdated($order));
 
         // Notify all online drivers in real time that a new ride is available.
-        if ($order->status === 'ride_placed') {
+        if ($order->status === Order::STATUS_RIDE_PLACED) {
             event(new NewOrderPlaced($order));
         }
 
@@ -87,8 +87,8 @@ class OrderController extends Controller
             'created_at' => now()->toDateTimeString(),
         ]);
 
-        if ($order->status !== 'ride_placed') {
-            Log::channel('stack')->warning('[RIDE_FLOW] Order status is NOT "ride_placed" — drivers will NOT see this ride in nearby search', [
+        if ($order->status !== Order::STATUS_RIDE_PLACED) {
+            Log::channel('stack')->warning('[RIDE_FLOW] Order status is NOT "Ride Placed" — drivers will NOT see this ride in nearby search', [
                 'order_id' => $order->id,
                 'status' => $order->status,
             ]);
@@ -165,12 +165,6 @@ class OrderController extends Controller
         $data['position_geohash']   = $data['position_geohash']   ?? $request->input('position.geohash');
         $data['position_latitude']  = $data['position_latitude']  ?? $request->input('position.geopoint.latitude');
         $data['position_longitude'] = $data['position_longitude'] ?? $request->input('position.geopoint.longitude');
-
-        // Normalise status: app sends "Ride Placed" but the driver nearby query
-        // matches "ride_placed". Convert to snake_case so drivers can see it.
-        if (!empty($data['status'])) {
-            $data['status'] = strtolower(str_replace(' ', '_', trim($data['status'])));
-        }
 
         // Drop any nulls so DB defaults / nullable columns stay clean.
         return array_filter($data, fn ($value) => $value !== null);
