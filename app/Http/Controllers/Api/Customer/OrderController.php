@@ -16,36 +16,38 @@ use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
+    public function index(Request $request): JsonResponse
+    {
+        $query = Order::with(['driver'])
+            ->where('user_id', $request->user()->id);
+
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->has('payment_status')) {
+            $query->where('payment_status', filter_var($request->payment_status, FILTER_VALIDATE_BOOLEAN));
+        }
+
+        $orders = $query->orderBy('created_date', 'desc')->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Orders retrieved successfully.',
+            'data' => $orders,
+        ]);
+    }
+
     public function store(Request $request): JsonResponse
     {
-        $data = $request->validate([
-            'source_location_name' => 'nullable|string',
-            'destination_location_name' => 'nullable|string',
-            'payment_type' => 'nullable|string',
-            'source_latitude' => 'nullable|numeric',
-            'source_longitude' => 'nullable|numeric',
-            'destination_latitude' => 'nullable|numeric',
-            'destination_longitude' => 'nullable|numeric',
-            'service_id' => 'nullable|integer',
-            'offer_rate' => 'nullable',
-            'final_rate' => 'nullable',
-            'distance' => 'nullable',
-            'duration' => 'nullable',
-            'distance_type' => 'nullable|string',
-            'status' => 'nullable|string',
-            'otp' => 'nullable|string',
-            'is_ac_selected' => 'nullable|boolean',
-            'tax_list' => 'nullable|array',
-            'some_one_else' => 'nullable|array',
-            'coupon' => 'nullable|array',
-            'service' => 'nullable|array',
-            'admin_commission' => 'nullable|array',
-            'zone' => 'nullable|array',
-            'zone_id' => 'nullable|integer',
-            'position_latitude' => 'nullable|numeric',
-            'position_longitude' => 'nullable|numeric',
-            'position_geohash' => 'nullable|string',
-        ]);
+        Log::debug($request->all());
+
+        // The Flutter app sends Firebase-style camelCase keys (and some nested
+        // objects). Map every incoming key to the matching DB column so no data
+        // is silently dropped. For each column we accept the snake_case key first,
+        // then fall back to the camelCase key the app actually sends.
+        $data = $this->mapOrderPayload($request);
 
         $data['user_id'] = $request->user()->id;
         $data['payment_status'] = false;
@@ -95,6 +97,81 @@ class OrderController extends Controller
         ], 201);
     }
 
+    /**
+     * Normalise the incoming ride payload (camelCase / nested / snake_case)
+     * into the snake_case DB columns of the orders table.
+     */
+    private function mapOrderPayload(Request $request): array
+    {
+        // column => list of candidate request keys (checked in order)
+        $map = [
+            'source_location_name'      => ['source_location_name', 'sourceLocationName'],
+            'destination_location_name' => ['destination_location_name', 'destinationLocationName'],
+            'payment_type'              => ['payment_type', 'paymentType'],
+            'source_latitude'           => ['source_latitude', 'sourceLatitude'],
+            'source_longitude'          => ['source_longitude', 'sourceLongitude'],
+            'destination_latitude'      => ['destination_latitude', 'destinationLatitude'],
+            'destination_longitude'     => ['destination_longitude', 'destinationLongitude'],
+            'service_id'                => ['service_id', 'serviceId'],
+            'offer_rate'                => ['offer_rate', 'offerRate'],
+            'final_rate'                => ['final_rate', 'finalRate'],
+            'distance'                  => ['distance'],
+            'duration'                  => ['duration'],
+            'distance_type'             => ['distance_type', 'distanceType'],
+            'ride_hold_time'            => ['ride_hold_time', 'rideHoldTime'],
+            'holding_charge_minute'     => ['holding_charge_minute', 'holdingChargeMinute'],
+            'total_holding_charges'     => ['total_holding_charges', 'totalHoldingCharges'],
+            'holding_charges'           => ['holding_charges', 'holdingCharges'],
+            'status'                    => ['status'],
+            'driver_id'                 => ['driver_id', 'driverId'],
+            'ride_time_fare_per_minute' => ['ride_time_fare_per_minute', 'rideTimeFarePerMinute'],
+            'total_ride_time'           => ['total_ride_time', 'totalRideTime'],
+            'ac_non_ac_charges'         => ['ac_non_ac_charges', 'acNonAcCharges'],
+            'otp'                       => ['otp'],
+            'accepted_driver_id'        => ['accepted_driver_id', 'acceptedDriverId'],
+            'rejected_driver_id'        => ['rejected_driver_id', 'rejectedDriverId'],
+            'position_geohash'          => ['position_geohash', 'geohash'],
+            'position_latitude'         => ['position_latitude', 'positionLatitude'],
+            'position_longitude'        => ['position_longitude', 'positionLongitude'],
+            'is_ac_selected'            => ['is_ac_selected', 'isAcSelected'],
+            'tax_list'                  => ['tax_list', 'taxList'],
+            'some_one_else'             => ['some_one_else', 'someOneElse'],
+            'coupon'                    => ['coupon'],
+            'service'                   => ['service'],
+            'admin_commission'          => ['admin_commission', 'adminCommission'],
+            'zone'                      => ['zone'],
+            'zone_id'                   => ['zone_id', 'zoneId'],
+        ];
+
+        $data = [];
+        foreach ($map as $column => $candidates) {
+            foreach ($candidates as $key) {
+                if ($request->has($key) && $request->input($key) !== null) {
+                    $data[$column] = $request->input($key);
+                    break;
+                }
+            }
+        }
+
+        // Nested coordinate objects sent by the app (Firestore GeoPoint style).
+        $data['source_latitude']  = $data['source_latitude']  ?? $request->input('sourceLocationLAtLng.latitude');
+        $data['source_longitude'] = $data['source_longitude'] ?? $request->input('sourceLocationLAtLng.longitude');
+        $data['destination_latitude']  = $data['destination_latitude']  ?? $request->input('destinationLocationLAtLng.latitude');
+        $data['destination_longitude'] = $data['destination_longitude'] ?? $request->input('destinationLocationLAtLng.longitude');
+        $data['position_geohash']   = $data['position_geohash']   ?? $request->input('position.geohash');
+        $data['position_latitude']  = $data['position_latitude']  ?? $request->input('position.geopoint.latitude');
+        $data['position_longitude'] = $data['position_longitude'] ?? $request->input('position.geopoint.longitude');
+
+        // Normalise status: app sends "Ride Placed" but the driver nearby query
+        // matches "ride_placed". Convert to snake_case so drivers can see it.
+        if (!empty($data['status'])) {
+            $data['status'] = strtolower(str_replace(' ', '_', trim($data['status'])));
+        }
+
+        // Drop any nulls so DB defaults / nullable columns stay clean.
+        return array_filter($data, fn ($value) => $value !== null);
+    }
+
     public function show(string $id): JsonResponse
     {
         $order = Order::with(['driver'])->findOrFail($id);
@@ -116,11 +193,23 @@ class OrderController extends Controller
             && $wasPaymentPending;
 
         $order->update($request->only([
-            'status', 'driver_id', 'payment_status', 'payment_type',
-            'final_rate', 'otp', 'accepted_driver_id', 'rejected_driver_id',
-            'ride_hold_time', 'holding_charges', 'total_holding_charges',
-            'position_latitude', 'position_longitude', 'position_geohash',
-            'total_ride_time', 'ac_non_ac_charges', 'coupon',
+            'status',
+            'driver_id',
+            'payment_status',
+            'payment_type',
+            'final_rate',
+            'otp',
+            'accepted_driver_id',
+            'rejected_driver_id',
+            'ride_hold_time',
+            'holding_charges',
+            'total_holding_charges',
+            'position_latitude',
+            'position_longitude',
+            'position_geohash',
+            'total_ride_time',
+            'ac_non_ac_charges',
+            'coupon',
         ]));
         $order->update_date = now();
         $order->save();

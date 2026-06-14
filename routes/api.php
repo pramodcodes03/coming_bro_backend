@@ -188,6 +188,7 @@ Route::prefix('customer')->group(function () {
         Route::get('/driver/{id}/reviews', [CustomerReviewController::class, 'driverReviews']);
 
         // City Orders
+        Route::get('/orders', [CustomerOrderController::class, 'index']);
         Route::post('/orders', [CustomerOrderController::class, 'store']);
         Route::get('/orders/first-order/{userId}', [CustomerOrderController::class, 'firstOrder']);
         Route::get('/orders/{id}', [CustomerOrderController::class, 'show']);
