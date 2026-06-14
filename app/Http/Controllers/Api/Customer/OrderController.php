@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 use App\Events\OrderUpdated;
 use App\Events\NewOrderPlaced;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
@@ -50,9 +49,6 @@ class OrderController extends Controller
         // then fall back to the camelCase key the app actually sends.
         $data = $this->mapOrderPayload($request);
 
-        // Use the client-generated UUID as the primary key; generate one if the
-        // app did not send it.
-        $data['id'] = $request->input('id') ?: (string) Str::uuid();
         $data['user_id'] = $request->user()->id;
         $data['payment_status'] = false;
         $data['created_date'] = now();
