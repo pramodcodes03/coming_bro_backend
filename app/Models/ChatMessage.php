@@ -15,7 +15,13 @@ class ChatMessage extends Model
         'order_id',
         'sender_id',
         'sender_type',
+        'receiver_id',
         'message',
         'type',
+        'message_type',
+        'url_url',
+        'url_mime',
+        'url_video_thumbnail',
+        'video_thumbnail',
     ];
 }
