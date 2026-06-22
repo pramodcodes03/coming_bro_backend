@@ -73,7 +73,7 @@
                             @if(isset($services))
                                 @foreach($services as $service)
                                     <option value="{{ $service->id }}" {{ old('service_id', $driver->service_id) == $service->id ? 'selected' : '' }}>
-                                        {{ $service->name }}
+                                        {{ $service->title ?? $service->name }}
                                     </option>
                                 @endforeach
                             @endif

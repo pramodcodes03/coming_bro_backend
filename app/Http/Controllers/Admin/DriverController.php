@@ -16,8 +16,8 @@ class DriverController extends Controller
         if ($search = $request->input('search')) {
             $query->where(function ($q) use ($search) {
                 $q->where('full_name', 'like', "%{$search}%")
-                  ->orWhere('phone_number', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%");
+                    ->orWhere('phone_number', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%");
             });
         }
 
@@ -47,27 +47,33 @@ class DriverController extends Controller
         $driver = DriverUser::findOrFail($id);
 
         $validated = $request->validate([
-            'full_name'              => 'required|string|max:255',
-            'email'                  => 'nullable|email|max:255',
-            'phone_number'           => 'nullable|string|max:20',
-            'country_code'           => 'nullable|string|max:10',
-            'document_verification'  => 'nullable|boolean',
-            'is_online'              => 'nullable|boolean',
-            'service_id'             => 'nullable|integer|exists:services,id',
-            'city'                   => 'nullable|string|max:255',
-            'state'                  => 'nullable|string|max:255',
-            'gender'                 => 'nullable|string|max:20',
-            'address'                => 'nullable|string|max:500',
-            'vehicle_number'         => 'nullable|string|max:50',
-            'vehicle_color'          => 'nullable|string|max:50',
-            'vehicle_model'          => 'nullable|string|max:100',
-            'company_name'           => 'nullable|string|max:100',
+            'full_name' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'phone_number' => 'nullable|string|max:20',
+            'country_code' => 'nullable|string|max:10',
+            'document_verification' => 'nullable|boolean',
+            'is_online' => 'nullable|boolean',
+            'service_id' => 'nullable|integer|exists:services,id',
+            'city' => 'nullable|string|max:255',
+            'state' => 'nullable|string|max:255',
+            'gender' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:500',
+            'vehicle_number' => 'nullable|string|max:50',
+            'vehicle_color' => 'nullable|string|max:50',
+            'vehicle_model' => 'nullable|string|max:100',
+            'company_name' => 'nullable|string|max:100',
         ]);
 
         $validated['document_verification'] = $request->boolean('document_verification');
-        $validated['is_online'] = $request->boolean('is_online');
 
-        $driver->update($validated);
+        // Stamp last_online_at on the offline -> online transition, consistent
+        // with toggleStatus() and the driver API. Handled here rather than via
+        // the mass update so the timestamp isn't lost when editing via the form.
+        $driver->applyOnlineState($request->boolean('is_online'));
+        unset($validated['is_online']);
+
+        $driver->fill($validated);
+        $driver->save();
 
         return redirect()->route('admin.drivers.index')
             ->with('success', 'Driver updated successfully.');
@@ -85,7 +91,7 @@ class DriverController extends Controller
     public function toggleStatus($id)
     {
         $driver = DriverUser::findOrFail($id);
-        $driver->is_online = !$driver->is_online;
+        $driver->applyOnlineState(! $driver->is_online);
         $driver->save();
 
         return redirect()->back()

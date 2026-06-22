@@ -46,6 +46,22 @@
                     </a>
                 </li>
 
+                {{-- God's Eye View --}}
+                <li class="menu nav-item">
+                    <a href="{{ route('admin.gods-eye.index') }}" class="nav-link group {{ request()->routeIs('admin.gods-eye.*') ? 'active' : '' }}">
+                        <div class="flex items-center">
+                            <svg class="group-hover:!text-primary shrink-0" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.5" d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z" fill="currentColor" />
+                                <path d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z" fill="currentColor" />
+                            </svg>
+                            <span
+                                class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">God's Eye View</span>
+                        </div>
+                        <span class="rounded-full bg-danger/15 px-2 py-0.5 text-[10px] font-bold uppercase text-danger ltr:ml-auto rtl:mr-auto">Live</span>
+                    </a>
+                </li>
+
                 {{-- ===== USER MANAGEMENT ===== --}}
                 <h2 class="-mx-4 mb-1 flex items-center bg-white-light/30 py-3 px-7 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
                     <span>User Management</span>

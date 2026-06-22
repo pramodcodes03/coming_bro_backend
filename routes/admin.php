@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\DriverRuleController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\FreightVehicleController;
 use App\Http\Controllers\Admin\FuelTypeController;
+use App\Http\Controllers\Admin\GodsEyeController;
 use App\Http\Controllers\Admin\InsuranceCompanyController;
 use App\Http\Controllers\Admin\IntercityOrderController;
 use App\Http\Controllers\Admin\IntercityServiceController;
@@ -47,6 +48,14 @@ Route::middleware('guest:admin')->group(function () {
 Route::middleware('auth:admin')->group(function () {
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
+    // God's Eye View — live fleet master control + troubleshooting console.
+    // The feed carries driver/passenger PII, so it's throttled (the UI polls
+    // every 3s ≈ 20/min) to cap bulk scraping even by an authenticated admin.
+    Route::get('gods-eye', [GodsEyeController::class, 'index'])->name('admin.gods-eye.index');
+    Route::get('gods-eye/feed', [GodsEyeController::class, 'feed'])
+        ->middleware('throttle:40,1')
+        ->name('admin.gods-eye.feed');
 
     // Customers
     Route::resource('customers', CustomerController::class)->names('admin.customers');

@@ -83,11 +83,18 @@ class DriverController extends Controller
 
         $driver = $request->user();
 
-        $fillableFields = (new DriverUser())->getFillable();
+        $fillableFields = (new DriverUser)->getFillable();
         $updateData = $request->only($fillableFields);
 
         // Remove 'id' from update data to prevent changing primary key
         unset($updateData['id']);
+
+        // Stamp `last_online_at` only on the offline -> online transition so the
+        // admin God's Eye View shows a truthful "online since" time.
+        if (array_key_exists('is_online', $updateData)) {
+            $driver->applyOnlineState((bool) $updateData['is_online']);
+            unset($updateData['is_online']);
+        }
 
         $driver->fill($updateData);
         $driver->save();
@@ -118,11 +125,11 @@ class DriverController extends Controller
                 $fieldsToValidate["fields.$key"] = $profileRules[$key];
             }
         }
-        if (!empty($fieldsToValidate)) {
+        if (! empty($fieldsToValidate)) {
             $request->validate($fieldsToValidate);
         }
 
-        $fillableFields = (new DriverUser())->getFillable();
+        $fillableFields = (new DriverUser)->getFillable();
         $fields = $request->fields;
 
         $updateData = [];
@@ -132,7 +139,14 @@ class DriverController extends Controller
             }
         }
 
-        if (!empty($updateData)) {
+        // Stamp `last_online_at` only on the offline -> online transition so the
+        // admin God's Eye View shows a truthful "online since" time.
+        if (array_key_exists('is_online', $updateData)) {
+            $driver->applyOnlineState((bool) $updateData['is_online']);
+            unset($updateData['is_online']);
+        }
+
+        if (! empty($updateData) || $driver->isDirty()) {
             $driver->fill($updateData);
             $driver->save();
         }
@@ -151,7 +165,7 @@ class DriverController extends Controller
     {
         $driver = DriverUser::find($id);
 
-        if (!$driver) {
+        if (! $driver) {
             return response()->json([
                 'success' => false,
                 'message' => 'Driver not found.',
@@ -242,7 +256,7 @@ class DriverController extends Controller
         $name = $request->input('name', $file->getClientOriginalName());
 
         $storedPath = $file->storeAs($path, $name, 'public');
-        $url = asset('storage/' . $storedPath);
+        $url = asset('storage/'.$storedPath);
 
         return response()->json([
             'success' => true,

@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class DriverUser extends Authenticatable
 {
-    use HasFactory, HasApiTokens;
+    use HasApiTokens, HasFactory;
 
     protected $table = 'driver_users';
 
@@ -22,6 +22,7 @@ class DriverUser extends Authenticatable
         'document_verification',
         'full_name',
         'is_online',
+        'last_online_at',
         'service_id',
         'fcm_token',
         'email',
@@ -119,12 +120,30 @@ class DriverUser extends Authenticatable
             'is_online' => 'boolean',
             'is_subscription_enable' => 'boolean',
             'carrier' => 'boolean',
+            'last_online_at' => 'datetime',
             'subscription_expired_at' => 'datetime',
             'registration_date' => 'datetime',
             'subscription_date' => 'datetime',
             'subscription_end_date' => 'datetime',
             'subscription_start_date' => 'datetime',
         ];
+    }
+
+    /**
+     * Apply an online/offline state to the driver, stamping `last_online_at`
+     * only on the offline -> online transition so it remains a truthful
+     * "online since" timestamp. Shared by the admin panel and the driver API
+     * to keep the behaviour in one place. Does not persist on its own.
+     */
+    public function applyOnlineState(bool $online): void
+    {
+        $wasOnline = (bool) $this->is_online;
+
+        $this->is_online = $online;
+
+        if ($online && ! $wasOnline) {
+            $this->last_online_at = now();
+        }
     }
 
     public function bankDetail(): HasOne
