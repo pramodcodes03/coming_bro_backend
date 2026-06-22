@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\Driver\LocationController;
 use App\Http\Controllers\Api\Driver\OnboardingController;
 use App\Http\Controllers\Api\Driver\OrderController;
 use App\Http\Controllers\Api\Driver\RechargePlanController;
+use App\Http\Controllers\Api\Driver\ReturnRideController;
 use App\Http\Controllers\Api\Driver\ReferralController;
 use App\Http\Controllers\Api\Driver\ReviewController;
 use App\Http\Controllers\Api\Driver\ServiceController;
@@ -81,6 +82,14 @@ Route::prefix('driver')->group(function () {
         Route::post('/intercity-orders/{orderId}/accept', [IntercityOrderController::class, 'accept']);
         Route::get('/intercity-orders/{orderId}/accepted/{driverId}', [IntercityOrderController::class, 'getAcceptedDriver']);
 
+        // Return Rides (driver publishes & manages)
+        Route::get('/return-rides', [ReturnRideController::class, 'index']);
+        Route::post('/return-rides', [ReturnRideController::class, 'store']);
+        Route::get('/return-rides/{id}', [ReturnRideController::class, 'show']);
+        Route::put('/return-rides/{id}', [ReturnRideController::class, 'update']);
+        Route::get('/return-rides/{id}/bookings', [ReturnRideController::class, 'bookings']);
+        Route::put('/return-ride-bookings/{bookingId}', [ReturnRideController::class, 'updateBooking']);
+
         Route::get('/documents', [DocumentController::class, 'index']);
         Route::get('/documents/{id}', [DocumentController::class, 'show']);
         Route::get('/driver-documents', [DocumentController::class, 'driverDocuments']);
@@ -138,6 +147,7 @@ use App\Http\Controllers\Api\Customer\ProfileController as CustomerProfileContro
 use App\Http\Controllers\Api\Customer\HomeController as CustomerHomeController;
 use App\Http\Controllers\Api\Customer\OrderController as CustomerOrderController;
 use App\Http\Controllers\Api\Customer\IntercityOrderController as CustomerIntercityOrderController;
+use App\Http\Controllers\Api\Customer\ReturnRideController as CustomerReturnRideController;
 use App\Http\Controllers\Api\Customer\WalletController as CustomerWalletController;
 use App\Http\Controllers\Api\Customer\ChatController as CustomerChatController;
 use App\Http\Controllers\Api\Customer\ReviewController as CustomerReviewController;
@@ -205,6 +215,13 @@ Route::prefix('customer')->group(function () {
         Route::get('/intercity-orders/{id}/accepted-drivers', [CustomerIntercityOrderController::class, 'acceptedDrivers']);
         Route::get('/intercity-orders/{id}/payment-status', [CustomerIntercityOrderController::class, 'paymentStatus']);
         Route::post('/intercity-orders/referral/update-amount', [CustomerIntercityOrderController::class, 'updateReferralAmount']);
+
+        // Return Rides (passenger discovery & booking)
+        Route::get('/return-rides/available', [CustomerReturnRideController::class, 'available']);
+        Route::get('/return-rides/bookings', [CustomerReturnRideController::class, 'myBookings']);
+        Route::get('/return-rides/{id}', [CustomerReturnRideController::class, 'show']);
+        Route::post('/return-rides/{id}/book', [CustomerReturnRideController::class, 'book']);
+        Route::put('/return-ride-bookings/{bookingId}/cancel', [CustomerReturnRideController::class, 'cancelBooking']);
 
         // Wallet
         Route::get('/wallet/transactions', [CustomerWalletController::class, 'transactions']);
