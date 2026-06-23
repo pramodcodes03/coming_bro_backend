@@ -1,0 +1,882 @@
+{
+  "info": {
+    "name": "ComingBro Return Ride API",
+    "description": "Return Ride feature API collection. A driver publishes their return journey; passengers discover it along the corridor within a pickup time window and book a seat.\n\nOrder of use:\n1. Run '0. Auth' to populate {{driver_token}} and {{customer_token}}.\n2. Driver: 'Publish Return Ride' (sets {{return_ride_id}}).\n3. Customer: 'Discover' then 'Book Return Ride' (sets {{return_ride_booking_id}}).\n\nAll sample data uses Indian names, phone numbers (+91) and the Pune Airport -> Thane corridor.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "comingbro-return-ride-api-v1"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://comingbro.nextgeniusinfotech.com",
+      "type": "string"
+    },
+    {
+      "key": "driver_token",
+      "value": "",
+      "type": "string",
+      "description": "Bearer token for the driver (auth:sanctum)"
+    },
+    {
+      "key": "customer_token",
+      "value": "",
+      "type": "string",
+      "description": "Bearer token for the customer (auth:customer)"
+    },
+    {
+      "key": "driver_verification_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "customer_verification_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "return_ride_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "return_ride_booking_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "0. Auth (get tokens)",
+      "description": "Run these first to populate {{driver_token}} and {{customer_token}}. Uses Indian phone numbers (+91).",
+      "item": [
+        {
+          "name": "Driver - Send OTP",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/driver/send-otp",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "send-otp"
+              ]
+            },
+            "description": "Driver Rohan Deshmukh requests an OTP.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_number\": \"9822012345\",\n  \"country_code\": \"+91\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var res = pm.response.json();",
+                  "try {",
+                  "    var v = res; v = v && v[\"data\"];v = v && v[\"verification_id\"];",
+                  "    if (v !== undefined && v !== null) pm.collectionVariables.set('driver_verification_id', String(v));",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Driver - Verify OTP",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/driver/verify-otp",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "verify-otp"
+              ]
+            },
+            "description": "Verify OTP and capture the driver bearer token.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_number\": \"9822012345\",\n  \"country_code\": \"+91\",\n  \"otp\": \"123456\",\n  \"verification_id\": \"{{driver_verification_id}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var res = pm.response.json();",
+                  "try {",
+                  "    var v = res; v = v && v[\"data\"];v = v && v[\"token\"];",
+                  "    if (v !== undefined && v !== null) pm.collectionVariables.set('driver_token', String(v));",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Customer - Send OTP",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/customer/send-otp",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "send-otp"
+              ]
+            },
+            "description": "Passenger Priya Iyer requests an OTP.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_number\": \"9890098765\",\n  \"country_code\": \"+91\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var res = pm.response.json();",
+                  "try {",
+                  "    var v = res; v = v && v[\"data\"];v = v && v[\"verification_id\"];",
+                  "    if (v !== undefined && v !== null) pm.collectionVariables.set('customer_verification_id', String(v));",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Customer - Verify OTP",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/customer/verify-otp",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "verify-otp"
+              ]
+            },
+            "description": "Verify OTP and capture the customer bearer token.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_number\": \"9890098765\",\n  \"country_code\": \"+91\",\n  \"otp\": \"123456\",\n  \"verification_id\": \"{{customer_verification_id}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var res = pm.response.json();",
+                  "try {",
+                  "    var v = res; v = v && v[\"data\"];v = v && v[\"token\"];",
+                  "    if (v !== undefined && v !== null) pm.collectionVariables.set('customer_token', String(v));",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1. Driver - Return Rides",
+      "description": "Driver publishes and manages return rides. Requires {{driver_token}} (auth:sanctum).",
+      "item": [
+        {
+          "name": "Publish Return Ride",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{driver_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/driver/return-rides",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "return-rides"
+              ]
+            },
+            "description": "Publish a return journey (Pune Airport -> Thane). Captures {{return_ride_id}}.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service_id\": 1,\n  \"source_location_name\": \"Pune Airport, Lohegaon, Pune, Maharashtra\",\n  \"source_latitude\": 18.5793,\n  \"source_longitude\": 73.9089,\n  \"destination_location_name\": \"Thane West, Thane, Maharashtra\",\n  \"destination_latitude\": 19.2183,\n  \"destination_longitude\": 72.9781,\n  \"distance\": \"118.4\",\n  \"distance_type\": \"Km\",\n  \"duration\": \"2h 35m\",\n  \"route_coordinates\": [\n    {\n      \"lat\": 18.5793,\n      \"lng\": 73.9089\n    },\n    {\n      \"lat\": 18.75,\n      \"lng\": 73.4\n    },\n    {\n      \"lat\": 19.0,\n      \"lng\": 73.11\n    },\n    {\n      \"lat\": 19.2183,\n      \"lng\": 72.9781\n    }\n  ],\n  \"departure_time\": \"2026-06-23T17:30:00+05:30\",\n  \"pickup_window_hours\": 2,\n  \"seats_total\": 4,\n  \"fare_per_seat\": \"350\",\n  \"comments\": \"Driver Rohan Deshmukh returning from Pune Airport towards Thane. AC sedan, can pick up passengers along the Mumbai-Pune Expressway corridor.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var res = pm.response.json();",
+                  "try {",
+                  "    var v = res; v = v && v[\"data\"];v = v && v[\"id\"];",
+                  "    if (v !== undefined && v !== null) pm.collectionVariables.set('return_ride_id', String(v));",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "List My Return Rides",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{driver_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/driver/return-rides?status=Active",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "return-rides"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "Active"
+                }
+              ]
+            },
+            "description": "List the driver's published return rides (optional ?status= filter)."
+          }
+        },
+        {
+          "name": "Get Return Ride",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{driver_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/driver/return-rides/{{return_ride_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "return-rides",
+                "{{return_ride_id}}"
+              ]
+            },
+            "description": "Fetch one published ride with its bookings."
+          }
+        },
+        {
+          "name": "Update Return Ride",
+          "request": {
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{driver_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/driver/return-rides/{{return_ride_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "return-rides",
+                "{{return_ride_id}}"
+              ]
+            },
+            "description": "Edit the schedule / seats / fare of a published ride.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pickup_window_hours\": 1,\n  \"seats_total\": 3,\n  \"fare_per_seat\": \"400\",\n  \"departure_time\": \"2026-06-23T18:00:00+05:30\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Cancel Return Ride",
+          "request": {
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{driver_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/driver/return-rides/{{return_ride_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "return-rides",
+                "{{return_ride_id}}"
+              ]
+            },
+            "description": "Cancel the ride (also cancels its confirmed bookings).",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Cancelled\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Ride Bookings",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{driver_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/driver/return-rides/{{return_ride_id}}/bookings",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "return-rides",
+                "{{return_ride_id}}",
+                "bookings"
+              ]
+            },
+            "description": "List passenger bookings on the driver's ride."
+          }
+        },
+        {
+          "name": "Update Booking (complete)",
+          "request": {
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{driver_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/driver/return-ride-bookings/{{return_ride_booking_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "return-ride-bookings",
+                "{{return_ride_booking_id}}"
+              ]
+            },
+            "description": "Driver marks a booking Completed / paid after drop-off.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Completed\",\n  \"payment_status\": true,\n  \"payment_type\": \"cash\",\n  \"final_rate\": \"700\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Customer - Return Rides",
+      "description": "Passenger discovers and books return rides. Requires {{customer_token}} (auth:customer).",
+      "item": [
+        {
+          "name": "Discover Available Return Rides",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{customer_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/customer/return-rides/available?pickup_latitude=18.5980&pickup_longitude=73.7600&drop_latitude=19.2000&drop_longitude=72.9800&when=2026-06-23T18:30:00+05:30&radius=15&corridor_radius=35",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "return-rides",
+                "available"
+              ],
+              "query": [
+                {
+                  "key": "pickup_latitude",
+                  "value": "18.5980"
+                },
+                {
+                  "key": "pickup_longitude",
+                  "value": "73.7600"
+                },
+                {
+                  "key": "drop_latitude",
+                  "value": "19.2000"
+                },
+                {
+                  "key": "drop_longitude",
+                  "value": "72.9800"
+                },
+                {
+                  "key": "when",
+                  "value": "2026-06-23T18:30:00+05:30"
+                },
+                {
+                  "key": "radius",
+                  "value": "15"
+                },
+                {
+                  "key": "corridor_radius",
+                  "value": "35"
+                }
+              ]
+            },
+            "description": "Corridor + time-window filtered discovery. Captures first {{return_ride_id}}."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var res = pm.response.json();",
+                  "try {",
+                  "    var v = res; v = v && v[\"data\"];v = v && v[\"0\"];v = v && v[\"id\"];",
+                  "    if (v !== undefined && v !== null) pm.collectionVariables.set('return_ride_id', String(v));",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get Return Ride",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{customer_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/customer/return-rides/{{return_ride_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "return-rides",
+                "{{return_ride_id}}"
+              ]
+            },
+            "description": "Fetch one return ride with driver details."
+          }
+        },
+        {
+          "name": "Book Return Ride",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{customer_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/customer/return-rides/{{return_ride_id}}/book",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "return-rides",
+                "{{return_ride_id}}",
+                "book"
+              ]
+            },
+            "description": "Book a seat (Wakad -> Thane). Captures {{return_ride_booking_id}}.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pickup_location_name\": \"Wakad, Pune, Maharashtra\",\n  \"pickup_latitude\": 18.598,\n  \"pickup_longitude\": 73.76,\n  \"drop_location_name\": \"Thane West, Thane, Maharashtra\",\n  \"drop_latitude\": 19.2,\n  \"drop_longitude\": 72.98,\n  \"number_of_passenger\": \"2\",\n  \"fare\": \"350\",\n  \"payment_type\": \"cash\",\n  \"comments\": \"Passenger Priya Iyer travelling with family. Please pick up near Hinjewadi IT Park signal.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var res = pm.response.json();",
+                  "try {",
+                  "    var v = res; v = v && v[\"data\"];v = v && v[\"id\"];",
+                  "    if (v !== undefined && v !== null) pm.collectionVariables.set('return_ride_booking_id', String(v));",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "My Return Ride Bookings",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{customer_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/customer/return-rides/bookings",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "return-rides",
+                "bookings"
+              ]
+            },
+            "description": "List the passenger's return ride bookings."
+          }
+        },
+        {
+          "name": "Cancel My Booking",
+          "request": {
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{customer_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/customer/return-ride-bookings/{{return_ride_booking_id}}/cancel",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "return-ride-bookings",
+                "{{return_ride_booking_id}}",
+                "cancel"
+              ]
+            },
+            "description": "Cancel a booking and free the seat."
+          }
+        }
+      ]
+    }
+  ]
+}
