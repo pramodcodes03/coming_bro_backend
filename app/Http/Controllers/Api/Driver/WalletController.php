@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Driver;
 
 use App\Http\Controllers\Controller;
+use App\Models\RechargePlan;
 use App\Models\WalletTransaction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -42,13 +43,40 @@ class WalletController extends Controller
             'transaction_id' => 'nullable|string',
             'order_type' => 'nullable|string',
             'user_type' => 'nullable|string',
+            'recharge_plan_id' => 'nullable|integer|exists:recharge_plans,id',
+            'gst_percent' => 'nullable|numeric|min:0|max:100',
         ]);
 
         $driver = $request->user();
 
+        // Resolve which recharge plan this payment is for. Prefer the explicit
+        // id; otherwise, for a recharge, match an active plan by its price so
+        // GST is still captured for the existing fixed-plan flow.
+        $rechargePlanId = $request->recharge_plan_id;
+        if (! $rechargePlanId && $request->order_type === 'wallet_recharge') {
+            $rechargePlanId = RechargePlan::where('is_active', true)
+                ->where('price', (float) $request->amount)
+                ->orderBy('sort_order')
+                ->value('id');
+        }
+
+        // Resolve the GST breakdown for this payment. The amount paid is treated
+        // as GST-inclusive (the driver pays the displayed price); we record how
+        // much of it is base value vs GST so collected GST can be reported.
+        $gst = $this->resolveGstBreakdown(
+            (float) $request->amount,
+            $rechargePlanId,
+            $request->filled('gst_percent') ? (float) $request->gst_percent : null
+        );
+
         $transaction = WalletTransaction::create([
             'user_id' => $driver->id,
             'amount' => $request->amount,
+            'recharge_plan_id' => $rechargePlanId,
+            'base_amount' => $gst['base_amount'],
+            'gst_percent' => $gst['gst_percent'],
+            'gst_amount' => $gst['gst_amount'],
+            'total_amount' => $gst['total_amount'],
             'payment_type' => $request->payment_type,
             'note' => $request->note,
             'transaction_id' => $request->transaction_id,
@@ -62,6 +90,38 @@ class WalletController extends Controller
             'message' => 'Transaction created successfully.',
             'data' => $transaction,
         ]);
+    }
+
+    /**
+     * Resolve a GST-inclusive breakdown for a paid amount.
+     *
+     * The GST rate is taken from the explicit request value, otherwise from the
+     * recharge plan being purchased, otherwise 0. Returns base/gst/total all
+     * rounded to 2 decimals with total == the amount paid.
+     */
+    private function resolveGstBreakdown(float $total, $rechargePlanId = null, ?float $gstPercent = null): array
+    {
+        if ($gstPercent === null && $rechargePlanId) {
+            $plan = RechargePlan::find($rechargePlanId);
+            $gstPercent = $plan ? (float) $plan->gst_percent : null;
+        }
+
+        $gstPercent = $gstPercent ?? 0.0;
+
+        if ($gstPercent > 0) {
+            $base = round($total / (1 + $gstPercent / 100), 2);
+            $gstAmount = round($total - $base, 2);
+        } else {
+            $base = round($total, 2);
+            $gstAmount = 0.0;
+        }
+
+        return [
+            'base_amount' => $base,
+            'gst_percent' => $gstPercent,
+            'gst_amount' => $gstAmount,
+            'total_amount' => round($total, 2),
+        ];
     }
 
     /**

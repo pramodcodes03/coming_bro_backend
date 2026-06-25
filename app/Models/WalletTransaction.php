@@ -14,6 +14,11 @@ class WalletTransaction extends Model
     protected $fillable = [
         'amount',
         'user_id',
+        'recharge_plan_id',
+        'base_amount',
+        'gst_percent',
+        'gst_amount',
+        'total_amount',
         'transaction_id',
         'payment_type',
         'note',
@@ -25,7 +30,16 @@ class WalletTransaction extends Model
     protected function casts(): array
     {
         return [
+            'base_amount' => 'decimal:2',
+            'gst_percent' => 'decimal:2',
+            'gst_amount' => 'decimal:2',
+            'total_amount' => 'decimal:2',
             'created_date' => 'datetime',
         ];
+    }
+
+    public function rechargePlan()
+    {
+        return $this->belongsTo(RechargePlan::class, 'recharge_plan_id');
     }
 }

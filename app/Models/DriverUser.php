@@ -16,6 +16,8 @@ class DriverUser extends Authenticatable
 
     protected $fillable = [
         'phone_number',
+        'register_ip',
+        'last_login_ip',
         'login_type',
         'country_code',
         'profile_pic',

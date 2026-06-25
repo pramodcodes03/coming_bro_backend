@@ -6,6 +6,11 @@
                 <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Drivers</h1>
                 <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Manage all registered driver partners</p>
             </div>
+            <a href="{{ route('admin.drivers.export', request()->query()) }}"
+               class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg hover:bg-emerald-100 transition dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Export Excel
+            </a>
         </div>
 
         <!-- Success Message -->
@@ -17,19 +22,65 @@
         @endif
 
         <!-- Search & Filters -->
+        @php $hasFilters = collect(['search','name','email','mobile','ip','online','verified','date_from','date_to'])->contains(fn($f) => request()->filled($f)); @endphp
         <div class="panel">
-            <form method="GET" action="{{ route('admin.drivers.index') }}" class="flex flex-col gap-4 sm:flex-row sm:items-center">
-                <div class="relative flex-1">
+            <form method="GET" action="{{ route('admin.drivers.index') }}" class="space-y-4">
+                <div class="relative">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </span>
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search by name or phone..."
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Quick search by name, phone, email, or IP..."
                            class="w-full pl-10 form-input">
                 </div>
-                <button type="submit" class="btn btn-primary">Search</button>
-                @if(request('search'))
-                    <a href="{{ route('admin.drivers.index') }}" class="btn btn-outline-primary">Clear</a>
-                @endif
+
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    <div>
+                        <label class="block mb-1 text-xs font-semibold tracking-wide text-gray-500 uppercase">Name</label>
+                        <input type="text" name="name" value="{{ request('name') }}" placeholder="Full name" class="form-input">
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-xs font-semibold tracking-wide text-gray-500 uppercase">Mobile</label>
+                        <input type="text" name="mobile" value="{{ request('mobile') }}" placeholder="Phone number" class="form-input">
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-xs font-semibold tracking-wide text-gray-500 uppercase">Email</label>
+                        <input type="text" name="email" value="{{ request('email') }}" placeholder="Email" class="form-input">
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-xs font-semibold tracking-wide text-gray-500 uppercase">IP Address</label>
+                        <input type="text" name="ip" value="{{ request('ip') }}" placeholder="Register / last login IP" class="form-input">
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-xs font-semibold tracking-wide text-gray-500 uppercase">Online</label>
+                        <select name="online" class="form-select">
+                            <option value="">All</option>
+                            <option value="online" @selected(request('online') === 'online')>Online</option>
+                            <option value="offline" @selected(request('online') === 'offline')>Offline</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-xs font-semibold tracking-wide text-gray-500 uppercase">Verification</label>
+                        <select name="verified" class="form-select">
+                            <option value="">All</option>
+                            <option value="verified" @selected(request('verified') === 'verified')>Verified</option>
+                            <option value="pending" @selected(request('verified') === 'pending')>Pending</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-xs font-semibold tracking-wide text-gray-500 uppercase">Registered From</label>
+                        <input type="date" name="date_from" value="{{ request('date_from') }}" class="form-input">
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-xs font-semibold tracking-wide text-gray-500 uppercase">Registered To</label>
+                        <input type="date" name="date_to" value="{{ request('date_to') }}" class="form-input">
+                    </div>
+                    <div class="flex items-end gap-2">
+                        <button type="submit" class="btn btn-primary">Apply Filters</button>
+                        @if($hasFilters)
+                            <a href="{{ route('admin.drivers.index') }}" class="btn btn-outline-primary">Clear</a>
+                        @endif
+                    </div>
+                </div>
             </form>
         </div>
 
@@ -43,6 +94,7 @@
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Email</th>
+                            <th>IP Address</th>
                             <th>Service</th>
                             <th class="text-center">Online</th>
                             <th class="text-center">Verified</th>
@@ -67,6 +119,14 @@
                                 </td>
                                 <td class="whitespace-nowrap">{{ $driver->country_code }}{{ $driver->phone_number }}</td>
                                 <td>{{ $driver->email ?? '-' }}</td>
+                                <td class="whitespace-nowrap text-xs">
+                                    @if($driver->last_login_ip || $driver->register_ip)
+                                        <div><span class="text-gray-400">Last:</span> {{ $driver->last_login_ip ?? '-' }}</div>
+                                        <div><span class="text-gray-400">Reg:</span> {{ $driver->register_ip ?? '-' }}</div>
+                                    @else
+                                        <span class="text-gray-400">-</span>
+                                    @endif
+                                </td>
                                 <td>{{ $driver->service_type ?? '-' }}</td>
                                 <td class="text-center">
                                     <span class="badge {{ $driver->is_online ? 'bg-success' : 'bg-danger' }}">
@@ -95,7 +155,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="8" class="py-8 text-center text-gray-500 dark:text-gray-400">
+                                <td colspan="9" class="py-8 text-center text-gray-500 dark:text-gray-400">
                                     <div class="flex flex-col items-center gap-2">
                                         <svg class="w-12 h-12 text-gray-300 dark:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                                         <span>No drivers found.</span>

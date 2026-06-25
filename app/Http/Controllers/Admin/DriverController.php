@@ -2,28 +2,95 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\DriverExport;
 use App\Http\Controllers\Controller;
 use App\Models\DriverUser;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DriverController extends Controller
 {
     public function index(Request $request)
     {
-        $query = DriverUser::with('bankDetail');
+        $drivers = $this->filteredQuery($request)
+            ->with('bankDetail')
+            ->orderBy('id', 'desc')
+            ->paginate(15)
+            ->withQueryString();
 
-        if ($search = $request->input('search')) {
+        return view('admin.drivers.index', compact('drivers'));
+    }
+
+    /**
+     * Download the currently-filtered driver list as an Excel (.xlsx) file.
+     */
+    public function export(Request $request)
+    {
+        $filename = 'drivers_' . now()->format('Y-m-d_His') . '.xlsx';
+
+        return Excel::download(
+            new DriverExport($this->filteredQuery($request)->orderBy('id', 'desc')),
+            $filename
+        );
+    }
+
+    /**
+     * Apply the list filters (shared by the table view and the Excel export so
+     * the export always matches exactly what the admin is looking at).
+     */
+    private function filteredQuery(Request $request)
+    {
+        $query = DriverUser::query();
+
+        // Broad search box (name / phone / email / IP).
+        if ($search = trim((string) $request->input('search'))) {
             $query->where(function ($q) use ($search) {
                 $q->where('full_name', 'like', "%{$search}%")
                     ->orWhere('phone_number', 'like', "%{$search}%")
-                    ->orWhere('email', 'like', "%{$search}%");
+                    ->orWhere('email', 'like', "%{$search}%")
+                    ->orWhere('register_ip', 'like', "%{$search}%")
+                    ->orWhere('last_login_ip', 'like', "%{$search}%");
             });
         }
 
-        $drivers = $query->orderBy('id', 'desc')->paginate(15)->withQueryString();
+        // Dedicated field filters.
+        if ($name = trim((string) $request->input('name'))) {
+            $query->where('full_name', 'like', "%{$name}%");
+        }
 
-        return view('admin.drivers.index', compact('drivers'));
+        if ($email = trim((string) $request->input('email'))) {
+            $query->where('email', 'like', "%{$email}%");
+        }
+
+        if ($mobile = trim((string) $request->input('mobile'))) {
+            $query->where('phone_number', 'like', "%{$mobile}%");
+        }
+
+        if ($ip = trim((string) $request->input('ip'))) {
+            $query->where(function ($q) use ($ip) {
+                $q->where('register_ip', 'like', "%{$ip}%")
+                  ->orWhere('last_login_ip', 'like', "%{$ip}%");
+            });
+        }
+
+        if (($online = $request->input('online')) !== null && $online !== '') {
+            $query->where('is_online', $online === 'online' ? 1 : 0);
+        }
+
+        if (($verified = $request->input('verified')) !== null && $verified !== '') {
+            $query->where('document_verification', $verified === 'verified' ? 1 : 0);
+        }
+
+        if ($from = $request->input('date_from')) {
+            $query->whereDate('created_at', '>=', $from);
+        }
+
+        if ($to = $request->input('date_to')) {
+            $query->whereDate('created_at', '<=', $to);
+        }
+
+        return $query;
     }
 
     public function view($id)
@@ -49,7 +116,7 @@ class DriverController extends Controller
         $validated = $request->validate([
             'full_name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255',
-            'phone_number' => 'nullable|string|max:20',
+            'phone_number' => 'nullable|string|max:20|unique:driver_users,phone_number,' . $id,
             'country_code' => 'nullable|string|max:10',
             'document_verification' => 'nullable|boolean',
             'is_online' => 'nullable|boolean',

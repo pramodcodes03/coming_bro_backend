@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\OnboardingController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PayoutRequestController;
+use App\Http\Controllers\Admin\RechargeController;
 use App\Http\Controllers\Admin\RechargePlanController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -58,11 +59,15 @@ Route::middleware('auth:admin')->group(function () {
         ->name('admin.gods-eye.feed');
 
     // Customers
+    // Export must be declared before the resource so it isn't captured by customers/{customer}.
+    Route::get('customers/export', [CustomerController::class, 'export'])->name('admin.customers.export');
     Route::resource('customers', CustomerController::class)->names('admin.customers');
     Route::patch('customers/{customer}/toggle-status', [CustomerController::class, 'toggleStatus'])->name('admin.customers.toggle-status');
 
     // Drivers
     Route::get('drivers', [DriverController::class, 'index'])->name('admin.drivers.index');
+    // Export must be declared before drivers/{driver} so it isn't captured as an id.
+    Route::get('drivers/export', [DriverController::class, 'export'])->name('admin.drivers.export');
     Route::get('drivers/{driver}', [DriverController::class, 'view'])->name('admin.drivers.view');
     Route::get('drivers/{driver}/edit', [DriverController::class, 'edit'])->name('admin.drivers.edit');
     Route::put('drivers/{driver}', [DriverController::class, 'update'])->name('admin.drivers.update');
@@ -182,9 +187,15 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('payout-requests', [PayoutRequestController::class, 'index'])->name('admin.payout-requests.index');
     Route::patch('payout-requests/{id}/status', [PayoutRequestController::class, 'updateStatus'])->name('admin.payout-requests.update-status');
 
+    // Recharges (GST register)
+    Route::get('recharges', [RechargeController::class, 'index'])->name('admin.recharges.index');
+    Route::get('recharges/export', [RechargeController::class, 'export'])->name('admin.recharges.export');
+
     // Wallet Transactions
     Route::get('wallet/driver', [WalletTransactionController::class, 'driverTransactions'])->name('admin.wallet.driver');
+    Route::get('wallet/driver/export', [WalletTransactionController::class, 'exportDriver'])->name('admin.wallet.driver.export');
     Route::get('wallet/user', [WalletTransactionController::class, 'userTransactions'])->name('admin.wallet.user');
+    Route::get('wallet/user/export', [WalletTransactionController::class, 'exportUser'])->name('admin.wallet.user.export');
 
     // SOS
     Route::get('sos', [SosController::class, 'index'])->name('admin.sos.index');

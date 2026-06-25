@@ -34,6 +34,7 @@ class RechargePlanController extends Controller
             'price'          => 'required|numeric|min:0',
             'original_price' => 'required|numeric|min:0',
             'discount_pct'   => 'nullable|integer|min:0|max:100',
+            'gst_percent'    => 'nullable|numeric|min:0|max:100',
             'is_best_value'  => 'nullable|boolean',
             'is_active'      => 'nullable|boolean',
             'sort_order'     => 'nullable|integer|min:0',
@@ -50,6 +51,7 @@ class RechargePlanController extends Controller
         $validated['is_best_value'] = $request->boolean('is_best_value');
         $validated['is_active'] = $request->boolean('is_active');
         $validated['discount_pct'] = $validated['discount_pct'] ?? 0;
+        $validated['gst_percent'] = $validated['gst_percent'] ?? 0;
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
 
         // Filter out empty benefits and terms
@@ -82,6 +84,7 @@ class RechargePlanController extends Controller
             'price'          => 'required|numeric|min:0',
             'original_price' => 'required|numeric|min:0',
             'discount_pct'   => 'nullable|integer|min:0|max:100',
+            'gst_percent'    => 'nullable|numeric|min:0|max:100',
             'is_best_value'  => 'nullable|boolean',
             'is_active'      => 'nullable|boolean',
             'sort_order'     => 'nullable|integer|min:0',
@@ -98,6 +101,7 @@ class RechargePlanController extends Controller
         $validated['is_best_value'] = $request->boolean('is_best_value');
         $validated['is_active'] = $request->boolean('is_active');
         $validated['discount_pct'] = $validated['discount_pct'] ?? 0;
+        $validated['gst_percent'] = $validated['gst_percent'] ?? 0;
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
 
         if (isset($validated['benefits'])) {

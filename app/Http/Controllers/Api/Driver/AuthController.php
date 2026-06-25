@@ -96,27 +96,31 @@ class AuthController extends Controller
             ->where('country_code', $request->country_code)
             ->delete();
 
-        // Check if driver exists
-        $driver = DriverUser::where('phone_number', $request->phone_number)
-            ->where('country_code', $request->country_code)
-            ->first();
-
-        $isNewUser = false;
-
-        if (!$driver) {
-            // Create new driver record
-            $driver = DriverUser::create([
-                'phone_number' => $request->phone_number,
+        // Look up by phone number alone — it is the account identity. Matching
+        // on country_code too previously created duplicates whenever it was null
+        // (in SQL `country_code = NULL` never matches, so the existence check
+        // always failed and a new row was inserted on every login). firstOrCreate
+        // is also atomic against the unique phone_number index, so concurrent OTP
+        // verifications can't create duplicate accounts.
+        $driver = DriverUser::firstOrCreate(
+            ['phone_number' => $request->phone_number],
+            [
                 'country_code' => $request->country_code,
                 'login_type' => 'phone',
+                'register_ip' => $request->ip(),
                 'is_online' => false,
                 'document_verification' => false,
                 'wallet_amount' => 0,
                 'reviews_count' => 0,
                 'reviews_sum' => 0,
-            ]);
-            $isNewUser = true;
-        }
+            ]
+        );
+
+        $isNewUser = $driver->wasRecentlyCreated;
+
+        // Record the IP this login came from for admin auditing/filtering.
+        $driver->last_login_ip = $request->ip();
+        $driver->save();
 
         // Create Sanctum token
         $token = $driver->createToken('driver-auth-token')->plainTextToken;
@@ -145,24 +149,28 @@ class AuthController extends Controller
             'id' => 'required|string',
         ]);
 
-        $driver = DriverUser::where('email', $request->email)->first();
-        $isNewUser = false;
-
-        if (!$driver) {
-            $driver = DriverUser::create([
+        // Social accounts are keyed on email; firstOrCreate avoids duplicate
+        // accounts if the same social login is verified twice concurrently.
+        $driver = DriverUser::firstOrCreate(
+            ['email' => $request->email],
+            [
                 'id' => $request->id,
-                'email' => $request->email,
                 'full_name' => $request->full_name,
                 'profile_pic' => $request->profile_pic,
                 'login_type' => $request->login_type,
+                'register_ip' => $request->ip(),
                 'is_online' => false,
                 'document_verification' => false,
                 'wallet_amount' => 0,
                 'reviews_count' => 0,
                 'reviews_sum' => 0,
-            ]);
-            $isNewUser = true;
-        }
+            ]
+        );
+        $isNewUser = $driver->wasRecentlyCreated;
+
+        // Record the IP this login came from for admin auditing/filtering.
+        $driver->last_login_ip = $request->ip();
+        $driver->save();
 
         $token = $driver->createToken('driver-auth-token')->plainTextToken;
 

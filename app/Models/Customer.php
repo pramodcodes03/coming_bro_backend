@@ -20,6 +20,8 @@ class Customer extends Authenticatable
         'fcm_token',
         'country_code',
         'phone_number',
+        'register_ip',
+        'last_login_ip',
         'reviews_count',
         'reviews_sum',
         'wallet_amount',

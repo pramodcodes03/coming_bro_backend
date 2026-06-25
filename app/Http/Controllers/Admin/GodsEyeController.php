@@ -37,15 +37,14 @@ class GodsEyeController extends Controller
      */
     public function index()
     {
-        $snapshot = $this->snapshot();
-
+        // Google Maps JS key, stored in settings → globalKey → googleMapKey.
         $mapKey = data_get(
             optional(Setting::find('globalKey'))->value,
             'googleMapKey'
         );
 
         return view('admin.gods-eye.index', [
-            'snapshot' => $snapshot,
+            'snapshot' => $this->snapshot(),
             'mapKey' => $mapKey,
         ]);
     }

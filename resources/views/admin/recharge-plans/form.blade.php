@@ -53,6 +53,13 @@
                 </div>
 
                 <div>
+                    <label for="gst_percent" class="block mb-2 font-semibold">GST %</label>
+                    <input id="gst_percent" type="number" step="0.01" name="gst_percent" value="{{ old('gst_percent', $plan->gst_percent ?? 0) }}"
+                           class="form-input" placeholder="18" min="0" max="100" />
+                    <p class="mt-1 text-xs text-gray-500">Price is GST-inclusive. This % is recorded per recharge for GST reporting.</p>
+                </div>
+
+                <div>
                     <label for="sort_order" class="block mb-2 font-semibold">Sort Order</label>
                     <input id="sort_order" type="number" name="sort_order" value="{{ old('sort_order', $plan->sort_order ?? 0) }}"
                            class="form-input" placeholder="1" min="0" />

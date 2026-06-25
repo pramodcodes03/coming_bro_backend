@@ -378,6 +378,7 @@
                     </button>
                     <ul x-cloak x-show="activeDropdown === 'finance'" x-collapse class="sub-menu text-gray-500">
                         <li><a href="{{ route('admin.payout-requests.index') }}" class="{{ request()->routeIs('admin.payout-requests.*') ? 'active' : '' }}">Payout Requests</a></li>
+                        <li><a href="{{ route('admin.recharges.index') }}" class="{{ request()->routeIs('admin.recharges.*') ? 'active' : '' }}">Recharges &amp; GST</a></li>
                         <li><a href="{{ route('admin.wallet.driver') }}" class="{{ request()->routeIs('admin.wallet.driver') ? 'active' : '' }}">Driver Wallet</a></li>
                         <li><a href="{{ route('admin.wallet.user') }}" class="{{ request()->routeIs('admin.wallet.user') ? 'active' : '' }}">User Wallet</a></li>
                     </ul>

@@ -21,6 +21,18 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withBroadcasting(base_path('routes/channels.php'))
     ->withMiddleware(function (Middleware $middleware): void {
+        // The app sits behind a local nginx reverse proxy that forwards the
+        // real client IP in X-Forwarded-For. Trust only loopback/private
+        // proxies so $request->ip() returns the genuine client IP (used for
+        // the customer/driver IP audit) without allowing external spoofing.
+        $middleware->trustProxies(at: [
+            '127.0.0.1',
+            '::1',
+            '10.0.0.0/8',
+            '172.16.0.0/12',
+            '192.168.0.0/16',
+        ]);
+
         $middleware->redirectGuestsTo(function ($request) {
             if ($request->is('admin/*') || $request->is('admin')) {
                 return route('admin.login');

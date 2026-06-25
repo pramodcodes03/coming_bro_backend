@@ -81,24 +81,25 @@ class AuthController extends Controller
             ->where('country_code', $request->country_code)
             ->delete();
 
-        $customer = Customer::where('phone_number', $request->phone_number)
-            ->where('country_code', $request->country_code)
-            ->first();
-
-        $isNewUser = false;
-
-        if (!$customer) {
-            $customer = Customer::create([
-                'phone_number' => $request->phone_number,
+        // Look up by phone number alone — it is the account identity. Matching
+        // on country_code too previously created duplicates whenever it was null
+        // (in SQL `country_code = NULL` never matches). firstOrCreate is atomic
+        // against the unique phone_number index, so concurrent OTP verifications
+        // can't create duplicate accounts either.
+        $customer = Customer::firstOrCreate(
+            ['phone_number' => $request->phone_number],
+            [
                 'country_code' => $request->country_code,
                 'login_type' => 'phone',
+                'register_ip' => $request->ip(),
                 'is_active' => true,
                 'wallet_amount' => '0',
                 'reviews_count' => '0.0',
                 'reviews_sum' => '0.0',
-            ]);
-            $isNewUser = true;
-        }
+            ]
+        );
+
+        $isNewUser = $customer->wasRecentlyCreated;
 
         if (!$customer->is_active) {
             return response()->json([
@@ -107,6 +108,10 @@ class AuthController extends Controller
                 'data' => null,
             ], 403);
         }
+
+        // Record the IP this login came from for admin auditing/filtering.
+        $customer->last_login_ip = $request->ip();
+        $customer->save();
 
         $token = $customer->createToken('customer-auth-token')->plainTextToken;
 
@@ -130,22 +135,22 @@ class AuthController extends Controller
             'profile_pic' => 'nullable|string',
         ]);
 
-        $customer = Customer::where('email', $request->email)->first();
-        $isNewUser = false;
-
-        if (!$customer) {
-            $customer = Customer::create([
-                'email' => $request->email,
+        // Social accounts are keyed on email; firstOrCreate avoids duplicate
+        // accounts if the same social login is verified twice concurrently.
+        $customer = Customer::firstOrCreate(
+            ['email' => $request->email],
+            [
                 'full_name' => $request->full_name,
                 'profile_pic' => $this->storeBase64Image($request->profile_pic),
                 'login_type' => $request->login_type,
+                'register_ip' => $request->ip(),
                 'is_active' => true,
                 'wallet_amount' => '0',
                 'reviews_count' => '0.0',
                 'reviews_sum' => '0.0',
-            ]);
-            $isNewUser = true;
-        }
+            ]
+        );
+        $isNewUser = $customer->wasRecentlyCreated;
 
         if (!$customer->is_active) {
             return response()->json([
@@ -154,6 +159,10 @@ class AuthController extends Controller
                 'data' => null,
             ], 403);
         }
+
+        // Record the IP this login came from for admin auditing/filtering.
+        $customer->last_login_ip = $request->ip();
+        $customer->save();
 
         $token = $customer->createToken('customer-auth-token')->plainTextToken;
 
