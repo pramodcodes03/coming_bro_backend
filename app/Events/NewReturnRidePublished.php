@@ -10,10 +10,9 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Broadcast when a driver publishes a NEW return ride. Sent on a shared
- * customer channel so every online passenger gets an instant "new return ride
- * available" signal and can refresh their discovery list (still filtered
- * server-side by corridor proximity / time window).
+ * Broadcast when a customer posts a NEW scheduled return ride. Sent on a shared
+ * driver channel so every online (recharged) driver gets an instant "new
+ * scheduled ride available" signal and can refresh their list.
  */
 class NewReturnRidePublished implements ShouldBroadcastNow
 {
@@ -23,7 +22,7 @@ class NewReturnRidePublished implements ShouldBroadcastNow
 
     public function broadcastOn(): array
     {
-        return [new PrivateChannel('customers.new-return-rides')];
+        return [new PrivateChannel('drivers.new-return-rides')];
     }
 
     public function broadcastWith(): array

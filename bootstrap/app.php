@@ -21,6 +21,12 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withBroadcasting(base_path('routes/channels.php'))
     ->withMiddleware(function (Middleware $middleware): void {
+        // Route alias gating the driver-side Return Ride endpoints behind an
+        // active Return Ride recharge.
+        $middleware->alias([
+            'driver.return_ride' => \App\Http\Middleware\EnsureReturnRideRecharge::class,
+        ]);
+
         // The app sits behind a local nginx reverse proxy that forwards the
         // real client IP in X-Forwarded-For. Trust only loopback/private
         // proxies so $request->ip() returns the genuine client IP (used for

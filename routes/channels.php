@@ -35,19 +35,19 @@ Broadcast::channel('drivers.new-intercity-orders', function ($user) {
     return $user !== null;
 });
 
-// ── Return Rides ────────────────────────────────────────────────────────────
-// Driver listens for new bookings on their published rides; customer listens
-// for confirmations / updates on rides they booked.
-Broadcast::channel('driver.{driverId}.return-rides', function ($user, $driverId) {
-    return (string) $user->id === (string) $driverId;
-});
-
+// ── Return Rides (scheduled-ride bidding) ───────────────────────────────────
+// Customer listens for incoming driver offers / status updates on rides they
+// posted; the assigned driver listens for accept/reject + ride updates.
 Broadcast::channel('customer.{userId}.return-rides', function ($user, $userId) {
     return (string) $user->id === (string) $userId;
 });
 
-// Shared channel for newly-published return rides delivered to all online
-// passengers (server-side corridor / time-window filtering still applies).
-Broadcast::channel('customers.new-return-rides', function ($user) {
+Broadcast::channel('driver.{driverId}.return-rides', function ($user, $driverId) {
+    return (string) $user->id === (string) $driverId;
+});
+
+// Shared channel for newly-posted scheduled return rides delivered to all
+// online drivers (recharge gating + filtering still applies server-side).
+Broadcast::channel('drivers.new-return-rides', function ($user) {
     return $user !== null;
 });

@@ -4,14 +4,16 @@ namespace Tests\Feature;
 
 use App\Models\Customer;
 use App\Models\DriverUser;
+use App\Models\Order;
 use App\Models\ReturnRide;
-use App\Models\ReturnRideBooking;
+use App\Models\ReturnRideOffer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 /**
- * Feature tests for the Return Ride feature (driver publishes a return
- * journey; passengers discover it along the corridor / time window and book).
+ * Feature tests for the Return Ride feature (scheduled-ride bidding): a customer
+ * posts a scheduled ride; recharged drivers submit fare offers; the customer
+ * accepts one (others auto-rejected) which spawns a normal Order.
  *
  * Like the rest of the suite, these run against the real MySQL connection in a
  * rolled-back transaction because the project's migrations contain MySQL-only
@@ -39,7 +41,7 @@ class ReturnRideTest extends TestCase
         \DB::purge('mysql');
     }
 
-    private function driver(): DriverUser
+    private function driver(bool $withRecharge = true): DriverUser
     {
         return DriverUser::create([
             'full_name' => 'Return Driver '.uniqid(),
@@ -47,6 +49,7 @@ class ReturnRideTest extends TestCase
             'is_online' => true,
             'location_latitude' => 18.5204,
             'location_longitude' => 73.8567,
+            'return_ride_recharge_expires_at' => $withRecharge ? now()->addMonths(3) : null,
         ]);
     }
 
@@ -58,161 +61,194 @@ class ReturnRideTest extends TestCase
         ]);
     }
 
-    /** Pune Airport → Thane return ride departing in 2 hours, 2-hour window. */
-    private function publishPayload(): array
+    /** Pickup near Pune Airport, drop in Thane, scheduled in 2 hours. */
+    private function schedulePayload(): array
     {
         return [
-            'source_location_name' => 'Pune Airport',
-            'source_latitude' => 18.5793,
-            'source_longitude' => 73.9089,
-            'destination_location_name' => 'Thane',
-            'destination_latitude' => 19.2183,
-            'destination_longitude' => 72.9781,
+            'pickup_location_name' => 'Pune Airport',
+            'pickup_latitude' => 18.5793,
+            'pickup_longitude' => 73.9089,
+            'drop_location_name' => 'Thane',
+            'drop_latitude' => 19.2183,
+            'drop_longitude' => 72.9781,
+            'passengers' => 2,
+            'scheduled_at' => now()->addHours(2)->toIso8601String(),
+            'payment_type' => 'cash',
             'distance' => '120',
             'duration' => '2h 30m',
-            'departure_time' => now()->addHours(2)->toIso8601String(),
-            'pickup_window_hours' => 2,
-            'seats_total' => 4,
-            'fare_per_seat' => '350',
         ];
     }
 
-    public function test_driver_can_publish_a_return_ride(): void
+    private function scheduleRide(Customer $customer): string
     {
-        $driver = $this->driver();
+        return $this->actingAs($customer, 'customer')
+            ->postJson('/api/customer/return-rides', $this->schedulePayload())
+            ->json('data.id');
+    }
 
-        $res = $this->actingAs($driver, 'sanctum')
-            ->postJson('/api/driver/return-rides', $this->publishPayload());
+    public function test_customer_can_schedule_a_return_ride(): void
+    {
+        $customer = $this->customer();
+
+        $res = $this->actingAs($customer, 'customer')
+            ->postJson('/api/customer/return-rides', $this->schedulePayload());
 
         $res->assertStatus(201)
             ->assertJsonPath('success', true)
-            ->assertJsonPath('data.status', ReturnRide::STATUS_ACTIVE)
-            ->assertJsonPath('data.seats_available', 4);
+            ->assertJsonPath('data.status', ReturnRide::STATUS_SCHEDULED)
+            ->assertJsonPath('data.passengers', 2);
 
         $ride = ReturnRide::find($res->json('data.id'));
         $this->assertNotNull($ride);
-        $this->assertEquals($driver->id, $ride->driver_id);
-        // Pickup window end = departure + window hours.
-        $this->assertEquals(
-            $ride->departure_time->copy()->addHours(2)->timestamp,
-            $ride->pickup_window_end->timestamp
-        );
+        $this->assertEquals($customer->id, $ride->user_id);
     }
 
-    public function test_passenger_discovers_ride_within_corridor_and_window(): void
+    public function test_driver_without_recharge_is_blocked(): void
     {
-        $driver = $this->driver();
+        $customer = $this->customer();
+        $rideId = $this->scheduleRide($customer);
+
+        $driver = $this->driver(withRecharge: false);
+
         $this->actingAs($driver, 'sanctum')
-            ->postJson('/api/driver/return-rides', $this->publishPayload())
-            ->assertStatus(201);
+            ->getJson('/api/driver/return-rides/available')
+            ->assertStatus(403)
+            ->assertJsonPath('error_code', 'RETURN_RIDE_RECHARGE_REQUIRED');
 
-        $passenger = $this->customer();
-
-        // Pickup ~3km from Pune Airport, drop near Thane, time inside the window.
-        $found = $this->actingAs($passenger, 'customer')->getJson(
-            '/api/customer/return-rides/available?'.http_build_query([
-                'pickup_latitude' => 18.5800,
-                'pickup_longitude' => 73.8800,
-                'drop_latitude' => 19.2000,
-                'drop_longitude' => 72.9800,
-                'when' => now()->addHours(3)->toIso8601String(),
-            ])
-        );
-        $found->assertStatus(200)->assertJsonPath('success', true);
-        $this->assertGreaterThanOrEqual(1, count($found->json('data')));
-
-        // A pickup far away (Delhi) must NOT match.
-        $none = $this->actingAs($passenger, 'customer')->getJson(
-            '/api/customer/return-rides/available?'.http_build_query([
-                'pickup_latitude' => 28.6139,
-                'pickup_longitude' => 77.2090,
-            ])
-        );
-        $none->assertStatus(200);
-        $this->assertCount(0, $none->json('data'));
+        $this->actingAs($driver, 'sanctum')
+            ->postJson("/api/driver/return-rides/{$rideId}/offers", ['offered_fare' => 300])
+            ->assertStatus(403);
     }
 
-    public function test_passenger_can_book_and_seat_is_decremented(): void
+    public function test_driver_with_recharge_can_browse_and_submit_offer(): void
     {
+        $customer = $this->customer();
+        $rideId = $this->scheduleRide($customer);
+
         $driver = $this->driver();
-        $rideId = $this->actingAs($driver, 'sanctum')
-            ->postJson('/api/driver/return-rides', $this->publishPayload())
+
+        $list = $this->actingAs($driver, 'sanctum')
+            ->getJson('/api/driver/return-rides/available');
+        $list->assertStatus(200)->assertJsonPath('success', true);
+        $this->assertGreaterThanOrEqual(1, count($list->json('data')));
+
+        $offer = $this->actingAs($driver, 'sanctum')
+            ->postJson("/api/driver/return-rides/{$rideId}/offers", [
+                'offered_fare' => 350,
+                'description' => 'AC sedan, 5 min away.',
+            ]);
+
+        $offer->assertStatus(201)
+            ->assertJsonPath('success', true)
+            ->assertJsonPath('data.status', ReturnRideOffer::STATUS_PENDING)
+            ->assertJsonPath('data.offered_fare', '350');
+    }
+
+    public function test_accepting_an_offer_creates_order_and_rejects_others(): void
+    {
+        $customer = $this->customer();
+        $rideId = $this->scheduleRide($customer);
+
+        $driverA = $this->driver();
+        $driverB = $this->driver();
+
+        $offerA = $this->actingAs($driverA, 'sanctum')
+            ->postJson("/api/driver/return-rides/{$rideId}/offers", ['offered_fare' => 350])
+            ->json('data.id');
+        $offerB = $this->actingAs($driverB, 'sanctum')
+            ->postJson("/api/driver/return-rides/{$rideId}/offers", ['offered_fare' => 400])
             ->json('data.id');
 
-        $passenger = $this->customer();
-        $book = $this->actingAs($passenger, 'customer')->postJson(
-            "/api/customer/return-rides/{$rideId}/book",
-            [
-                'pickup_location_name' => 'Wakad',
-                'pickup_latitude' => 18.5980,
-                'pickup_longitude' => 73.7600,
-                'drop_location_name' => 'Thane',
-                'drop_latitude' => 19.2000,
-                'drop_longitude' => 72.9800,
-                'number_of_passenger' => '2',
-            ]
-        );
+        // Customer sees both offers.
+        $offers = $this->actingAs($customer, 'customer')
+            ->getJson("/api/customer/return-rides/{$rideId}/offers");
+        $offers->assertStatus(200);
+        $this->assertCount(2, $offers->json('data'));
 
-        $book->assertStatus(201)
-            ->assertJsonPath('success', true)
-            ->assertJsonPath('data.status', ReturnRideBooking::STATUS_CONFIRMED);
-        $this->assertNotNull($book->json('data.otp'));
+        // Accept driver A's offer.
+        $accept = $this->actingAs($customer, 'customer')
+            ->postJson("/api/customer/return-rides/{$rideId}/offers/{$offerA}/accept");
+        $accept->assertStatus(200)->assertJsonPath('success', true);
 
         $ride = ReturnRide::find($rideId);
-        $this->assertEquals(2, $ride->seats_available); // 4 - 2
+        $this->assertEquals(ReturnRide::STATUS_ACCEPTED, $ride->status);
+        $this->assertEquals($driverA->id, $ride->assigned_driver_id);
+        $this->assertNotNull($ride->order_id);
 
-        // Double booking the same ride is rejected.
-        $this->actingAs($passenger, 'customer')
-            ->postJson("/api/customer/return-rides/{$rideId}/book", [
-                'pickup_latitude' => 18.5980,
-                'pickup_longitude' => 73.7600,
-            ])
+        // An Order was spawned, assigned to driver A, with an OTP.
+        $order = Order::find($ride->order_id);
+        $this->assertNotNull($order);
+        $this->assertEquals($driverA->id, $order->driver_id);
+        $this->assertNotNull($order->otp);
+        $this->assertEquals('350', $order->final_rate);
+
+        // Offer A accepted, offer B auto-rejected.
+        $this->assertEquals(ReturnRideOffer::STATUS_ACCEPTED, ReturnRideOffer::find($offerA)->status);
+        $this->assertEquals(ReturnRideOffer::STATUS_REJECTED, ReturnRideOffer::find($offerB)->status);
+
+        // No more offers can be submitted once accepted.
+        $this->actingAs($this->driver(), 'sanctum')
+            ->postJson("/api/driver/return-rides/{$rideId}/offers", ['offered_fare' => 320])
             ->assertStatus(409);
     }
 
-    public function test_cancelling_a_booking_restores_the_seat(): void
+    public function test_customer_can_reject_a_single_offer(): void
     {
+        $customer = $this->customer();
+        $rideId = $this->scheduleRide($customer);
         $driver = $this->driver();
-        $rideId = $this->actingAs($driver, 'sanctum')
-            ->postJson('/api/driver/return-rides', $this->publishPayload())
+
+        $offerId = $this->actingAs($driver, 'sanctum')
+            ->postJson("/api/driver/return-rides/{$rideId}/offers", ['offered_fare' => 350])
             ->json('data.id');
 
-        $passenger = $this->customer();
-        $bookingId = $this->actingAs($passenger, 'customer')
-            ->postJson("/api/customer/return-rides/{$rideId}/book", [
-                'pickup_latitude' => 18.5980,
-                'pickup_longitude' => 73.7600,
-                'number_of_passenger' => '1',
-            ])->json('data.id');
-
-        $this->assertEquals(3, ReturnRide::find($rideId)->seats_available);
-
-        $this->actingAs($passenger, 'customer')
-            ->putJson("/api/customer/return-ride-bookings/{$bookingId}/cancel")
+        $this->actingAs($customer, 'customer')
+            ->postJson("/api/customer/return-rides/{$rideId}/offers/{$offerId}/reject")
             ->assertStatus(200)
-            ->assertJsonPath('data.status', ReturnRideBooking::STATUS_CANCELLED);
-
-        $this->assertEquals(4, ReturnRide::find($rideId)->seats_available);
+            ->assertJsonPath('data.status', ReturnRideOffer::STATUS_REJECTED);
     }
 
-    public function test_driver_sees_passenger_bookings_on_their_ride(): void
+    public function test_driver_can_withdraw_a_pending_offer(): void
     {
+        $customer = $this->customer();
+        $rideId = $this->scheduleRide($customer);
         $driver = $this->driver();
-        $rideId = $this->actingAs($driver, 'sanctum')
-            ->postJson('/api/driver/return-rides', $this->publishPayload())
+
+        $offerId = $this->actingAs($driver, 'sanctum')
+            ->postJson("/api/driver/return-rides/{$rideId}/offers", ['offered_fare' => 350])
             ->json('data.id');
 
-        $passenger = $this->customer();
-        $this->actingAs($passenger, 'customer')
-            ->postJson("/api/customer/return-rides/{$rideId}/book", [
-                'pickup_latitude' => 18.5980,
-                'pickup_longitude' => 73.7600,
-            ])->assertStatus(201);
+        $this->actingAs($driver, 'sanctum')
+            ->putJson("/api/driver/return-ride-offers/{$offerId}")
+            ->assertStatus(200)
+            ->assertJsonPath('data.status', ReturnRideOffer::STATUS_WITHDRAWN);
+    }
 
-        $bookings = $this->actingAs($driver, 'sanctum')
-            ->getJson("/api/driver/return-rides/{$rideId}/bookings");
+    public function test_customer_can_cancel_a_scheduled_ride(): void
+    {
+        $customer = $this->customer();
+        $rideId = $this->scheduleRide($customer);
 
-        $bookings->assertStatus(200)->assertJsonPath('success', true);
-        $this->assertGreaterThanOrEqual(1, count($bookings->json('data')));
+        $this->actingAs($customer, 'customer')
+            ->putJson("/api/customer/return-rides/{$rideId}/cancel")
+            ->assertStatus(200)
+            ->assertJsonPath('data.status', ReturnRide::STATUS_CANCELLED);
+    }
+
+    public function test_purchasing_recharge_activates_the_feature(): void
+    {
+        $driver = $this->driver(withRecharge: false);
+
+        $this->actingAs($driver, 'sanctum')
+            ->getJson('/api/driver/return-rides/recharge-status')
+            ->assertStatus(200)
+            ->assertJsonPath('data.active', false);
+
+        $this->actingAs($driver, 'sanctum')
+            ->postJson('/api/driver/return-rides/recharge', ['payment_type' => 'online'])
+            ->assertStatus(200)
+            ->assertJsonPath('data.active', true);
+
+        $this->assertTrue($driver->fresh()->hasActiveReturnRideRecharge());
     }
 }

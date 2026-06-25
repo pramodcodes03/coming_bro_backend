@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    // Firebase Cloud Messaging — used for best-effort OS-level push alerts
+    // (e.g. Return Ride driver offers). Optional: when unset, pushes no-op and
+    // real-time delivery still happens over WebSockets.
+    'fcm' => [
+        'server_key' => env('FCM_SERVER_KEY'),
+    ],
+
 ];

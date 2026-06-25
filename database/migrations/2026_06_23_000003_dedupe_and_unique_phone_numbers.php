@@ -114,8 +114,8 @@ return new class extends Migration
             ['document_expiry_notifications', 'driver_id', null],
             ['referral_logs', 'driver_id', null],
             ['sos', 'driver_id', null],
-            ['return_rides', 'driver_id', null],
-            ['return_ride_bookings', 'driver_id', null],
+            ['return_rides', 'assigned_driver_id', null],
+            ['return_ride_offers', 'driver_id', null],
             ['wallet_transactions', 'user_id', ['user_type', 'driver']],
         ];
     }
@@ -130,7 +130,7 @@ return new class extends Migration
             ['reviews', 'customer_id', null],
             ['referral_logs', 'user_id', null],
             ['sos', 'user_id', null],
-            ['return_ride_bookings', 'user_id', null],
+            ['return_rides', 'user_id', null],
             ['wallet_transactions', 'user_id', ['user_type', 'customer']],
         ];
     }

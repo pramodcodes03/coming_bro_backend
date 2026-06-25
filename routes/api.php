@@ -82,13 +82,18 @@ Route::prefix('driver')->group(function () {
         Route::post('/intercity-orders/{orderId}/accept', [IntercityOrderController::class, 'accept']);
         Route::get('/intercity-orders/{orderId}/accepted/{driverId}', [IntercityOrderController::class, 'getAcceptedDriver']);
 
-        // Return Rides (driver publishes & manages)
-        Route::get('/return-rides', [ReturnRideController::class, 'index']);
-        Route::post('/return-rides', [ReturnRideController::class, 'store']);
-        Route::get('/return-rides/{id}', [ReturnRideController::class, 'show']);
-        Route::put('/return-rides/{id}', [ReturnRideController::class, 'update']);
-        Route::get('/return-rides/{id}/bookings', [ReturnRideController::class, 'bookings']);
-        Route::put('/return-ride-bookings/{bookingId}', [ReturnRideController::class, 'updateBooking']);
+        // Return Rides (scheduled-ride bidding — driver browses & offers).
+        // Recharge management + own offers are always reachable; browsing
+        // scheduled rides and submitting offers require an active recharge.
+        Route::get('/return-rides/recharge-status', [ReturnRideController::class, 'rechargeStatus']);
+        Route::post('/return-rides/recharge', [ReturnRideController::class, 'purchaseRecharge']);
+        Route::get('/return-ride-offers', [ReturnRideController::class, 'myOffers']);
+        Route::put('/return-ride-offers/{offerId}', [ReturnRideController::class, 'withdrawOffer']);
+        Route::middleware('driver.return_ride')->group(function () {
+            Route::get('/return-rides/available', [ReturnRideController::class, 'available']);
+            Route::get('/return-rides/{id}', [ReturnRideController::class, 'show']);
+            Route::post('/return-rides/{id}/offers', [ReturnRideController::class, 'submitOffer']);
+        });
 
         Route::get('/documents', [DocumentController::class, 'index']);
         Route::get('/documents/{id}', [DocumentController::class, 'show']);
@@ -216,12 +221,14 @@ Route::prefix('customer')->group(function () {
         Route::get('/intercity-orders/{id}/payment-status', [CustomerIntercityOrderController::class, 'paymentStatus']);
         Route::post('/intercity-orders/referral/update-amount', [CustomerIntercityOrderController::class, 'updateReferralAmount']);
 
-        // Return Rides (passenger discovery & booking)
-        Route::get('/return-rides/available', [CustomerReturnRideController::class, 'available']);
-        Route::get('/return-rides/bookings', [CustomerReturnRideController::class, 'myBookings']);
+        // Return Rides (scheduled-ride bidding — customer posts & reviews offers)
+        Route::get('/return-rides', [CustomerReturnRideController::class, 'index']);
+        Route::post('/return-rides', [CustomerReturnRideController::class, 'store']);
         Route::get('/return-rides/{id}', [CustomerReturnRideController::class, 'show']);
-        Route::post('/return-rides/{id}/book', [CustomerReturnRideController::class, 'book']);
-        Route::put('/return-ride-bookings/{bookingId}/cancel', [CustomerReturnRideController::class, 'cancelBooking']);
+        Route::get('/return-rides/{id}/offers', [CustomerReturnRideController::class, 'offers']);
+        Route::post('/return-rides/{id}/offers/{offerId}/accept', [CustomerReturnRideController::class, 'acceptOffer']);
+        Route::post('/return-rides/{id}/offers/{offerId}/reject', [CustomerReturnRideController::class, 'rejectOffer']);
+        Route::put('/return-rides/{id}/cancel', [CustomerReturnRideController::class, 'cancel']);
 
         // Wallet
         Route::get('/wallet/transactions', [CustomerWalletController::class, 'transactions']);

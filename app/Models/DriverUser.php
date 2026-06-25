@@ -55,6 +55,7 @@ class DriverUser extends Authenticatable
         'position_latitude',
         'position_longitude',
         'subscription_expired_at',
+        'return_ride_recharge_expires_at',
         'zone_ids',
         'vehicle_type',
         'vehicle_type_id',
@@ -124,6 +125,7 @@ class DriverUser extends Authenticatable
             'carrier' => 'boolean',
             'last_online_at' => 'datetime',
             'subscription_expired_at' => 'datetime',
+            'return_ride_recharge_expires_at' => 'datetime',
             'registration_date' => 'datetime',
             'subscription_date' => 'datetime',
             'subscription_end_date' => 'datetime',
@@ -146,6 +148,16 @@ class DriverUser extends Authenticatable
         if ($online && ! $wasOnline) {
             $this->last_online_at = now();
         }
+    }
+
+    /**
+     * Whether the driver currently holds an active Return Ride recharge, which
+     * is required to browse customer scheduled rides and submit offers.
+     */
+    public function hasActiveReturnRideRecharge(): bool
+    {
+        return $this->return_ride_recharge_expires_at !== null
+            && $this->return_ride_recharge_expires_at->isFuture();
     }
 
     public function bankDetail(): HasOne
