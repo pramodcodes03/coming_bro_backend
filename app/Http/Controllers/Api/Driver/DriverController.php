@@ -89,9 +89,12 @@ class DriverController extends Controller
         // Remove 'id' from update data to prevent changing primary key
         unset($updateData['id']);
 
-        // Stamp `last_online_at` only on the offline -> online transition so the
-        // admin God's Eye View shows a truthful "online since" time.
+        // A driver with no ride quota cannot go online (and therefore cannot
+        // receive City Ride or Return Ride requests) until they recharge.
         if (array_key_exists('is_online', $updateData)) {
+            if ((bool) $updateData['is_online'] && ! $driver->hasRideBalance()) {
+                return $this->rideRechargeRequired();
+            }
             $driver->applyOnlineState((bool) $updateData['is_online']);
             unset($updateData['is_online']);
         }
@@ -139,9 +142,12 @@ class DriverController extends Controller
             }
         }
 
-        // Stamp `last_online_at` only on the offline -> online transition so the
-        // admin God's Eye View shows a truthful "online since" time.
+        // A driver with no ride quota cannot go online (and therefore cannot
+        // receive City Ride or Return Ride requests) until they recharge.
         if (array_key_exists('is_online', $updateData)) {
+            if ((bool) $updateData['is_online'] && ! $driver->hasRideBalance()) {
+                return $this->rideRechargeRequired();
+            }
             $driver->applyOnlineState((bool) $updateData['is_online']);
             unset($updateData['is_online']);
         }
@@ -156,6 +162,21 @@ class DriverController extends Controller
             'message' => 'Fields updated successfully.',
             'data' => $driver->fresh(),
         ]);
+    }
+
+    /**
+     * Standard 403 used when a quota-gated action (go online, accept a ride) is
+     * attempted with zero ride balance. The app detects `error_code` and shows
+     * the Recharge Required popup → Recharge / Wallet screen.
+     */
+    private function rideRechargeRequired(): JsonResponse
+    {
+        return response()->json([
+            'success' => false,
+            'message' => 'You have no rides left. Recharge to start receiving ride requests.',
+            'error_code' => 'RIDE_RECHARGE_REQUIRED',
+            'data' => null,
+        ], 403);
     }
 
     /**

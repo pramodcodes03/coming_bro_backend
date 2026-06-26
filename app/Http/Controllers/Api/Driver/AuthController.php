@@ -113,6 +113,10 @@ class AuthController extends Controller
                 'wallet_amount' => 0,
                 'reviews_count' => 0,
                 'reviews_sum' => 0,
+                // New drivers start with no ride quota — they must recharge
+                // before they can go online and receive ride requests.
+                'remaining_rides' => 0,
+                'total_rides' => 0,
             ]
         );
 
@@ -164,6 +168,10 @@ class AuthController extends Controller
                 'wallet_amount' => 0,
                 'reviews_count' => 0,
                 'reviews_sum' => 0,
+                // New drivers start with no ride quota — they must recharge
+                // before they can go online and receive ride requests.
+                'remaining_rides' => 0,
+                'total_rides' => 0,
             ]
         );
         $isNewUser = $driver->wasRecentlyCreated;

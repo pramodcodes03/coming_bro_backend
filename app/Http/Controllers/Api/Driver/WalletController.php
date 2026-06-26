@@ -198,8 +198,11 @@ class WalletController extends Controller
         if ($rechargePlanId) {
             $rides = (int) RechargePlan::whereKey($rechargePlanId)->value('rides');
             if ($rides > 0) {
-                $driver->increment('remaining_rides', $rides);
-                $driver->increment('total_rides', $rides);
+                // NULL-safe credit: a brand-new driver's quota columns may be NULL,
+                // and `NULL + n` is NULL in SQL — so coalesce to 0 before adding.
+                $driver->remaining_rides = (int) $driver->remaining_rides + $rides;
+                $driver->total_rides = (int) $driver->total_rides + $rides;
+                $driver->save();
 
                 Log::info('[RECHARGE] ride quota credited', [
                     'driver_id' => $driver->id,

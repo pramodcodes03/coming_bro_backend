@@ -158,8 +158,10 @@ class ReturnRideController extends Controller
         // Credit the shared ride wallet.
         $rides = (int) ($plan?->rides ?? 0);
         if ($rides > 0) {
-            $driver->increment('remaining_rides', $rides);
-            $driver->increment('total_rides', $rides);
+            // NULL-safe credit (a new driver's quota columns may be NULL).
+            $driver->remaining_rides = (int) $driver->remaining_rides + $rides;
+            $driver->total_rides = (int) $driver->total_rides + $rides;
+            $driver->save();
             Log::info('[RECHARGE] ride quota credited (return-ride screen)', [
                 'driver_id' => $driver->id,
                 'plan_id' => $plan?->id,

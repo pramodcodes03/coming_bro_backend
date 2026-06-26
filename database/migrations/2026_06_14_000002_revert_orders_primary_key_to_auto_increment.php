@@ -15,6 +15,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Raw MySQL DDL — sqlite skips it (the prior UUID migration was also
+        // skipped, so orders already has the BIGINT auto-increment PK here).
+        if (DB::connection()->getDriverName() === 'sqlite') {
+            return;
+        }
+
         Schema::disableForeignKeyConstraints();
 
         // Drop the foreign keys that reference orders.id.

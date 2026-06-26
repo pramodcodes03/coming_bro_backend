@@ -15,6 +15,7 @@ class RechargePlanSeeder extends Seeder
                 'price' => 49,
                 'original_price' => 99,
                 'discount_pct' => 50,
+                'rides' => 10,   // one shared ride wallet — used for city + return rides
                 'is_best_value' => false,
                 'is_active' => true,
                 'sort_order' => 1,

@@ -124,6 +124,14 @@ class OrderController extends Controller
         DriverUser::whereKey($order->driver_id)
             ->where('remaining_rides', '>', 0)
             ->decrement('remaining_rides');
+
+        // When the quota hits zero, take the driver offline so the matching
+        // engine stops sending them requests until they recharge.
+        $driver = DriverUser::find($order->driver_id);
+        if ($driver && (int) $driver->remaining_rides <= 0 && $driver->is_online) {
+            $driver->is_online = false;
+            $driver->save();
+        }
     }
 
     /**
@@ -137,6 +145,18 @@ class OrderController extends Controller
             'suggested_time' => 'nullable|string',
             'suggested_date' => 'nullable|string',
         ]);
+
+        // Cannot accept a ride with zero ride quota — enforced server-side so it
+        // cannot be bypassed from the app.
+        $authDriver = $request->user();
+        if ($authDriver && ! $authDriver->hasRideBalance()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'You have no rides left. Recharge to accept rides.',
+                'error_code' => 'RIDE_RECHARGE_REQUIRED',
+                'data' => null,
+            ], 403);
+        }
 
         Log::channel('stack')->info('[RIDE_FLOW] Driver attempting to ACCEPT ride', [
             'order_id' => $orderId,
@@ -252,11 +272,27 @@ class OrderController extends Controller
 
         $driver = $request->user();
 
-        $query = Order::selectRaw(
-            "*, (6371 * acos(cos(radians(?)) * cos(radians(source_latitude)) * cos(radians(source_longitude) - radians(?)) + sin(radians(?)) * sin(radians(source_latitude)))) AS distance",
-            [$lat, $lng, $lat]
-        )
-            ->having('distance', '<=', $radius)
+        // A driver with zero ride quota is hidden from ride matching and must
+        // not receive any City Ride requests until they recharge.
+        if ($driver && ! $driver->hasRideBalance()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'No ride quota — recharge to receive ride requests.',
+                'data' => [],
+            ]);
+        }
+
+        // Haversine distance, clamped to acos's [-1,1] domain. Filtered in WHERE
+        // (not HAVING) so it's valid on every DB driver (sqlite rejects a HAVING
+        // clause on a non-aggregate query; MySQL allows it).
+        $haversine = '(6371 * acos(least(1, greatest(-1, '
+            .'cos(radians(?)) * cos(radians(source_latitude)) '
+            .'* cos(radians(source_longitude) - radians(?)) '
+            .'+ sin(radians(?)) * sin(radians(source_latitude))))))';
+        $point = [$lat, $lng, $lat];
+
+        $query = Order::selectRaw("*, {$haversine} AS distance", $point)
+            ->whereRaw("{$haversine} <= ?", array_merge($point, [$radius]))
             ->where('status', Order::STATUS_RIDE_PLACED);
 
         if ($request->has('service_id') && $request->service_id) {

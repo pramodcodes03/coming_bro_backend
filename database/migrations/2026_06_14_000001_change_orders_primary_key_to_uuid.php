@@ -13,6 +13,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Raw MySQL DDL (DROP FOREIGN KEY / MODIFY) — sqlite can't parse it and
+        // doesn't need it (this migration is reverted by the next one anyway, so
+        // the net schema is the original BIGINT auto-increment PK either way).
+        if (DB::connection()->getDriverName() === 'sqlite') {
+            return;
+        }
+
         Schema::disableForeignKeyConstraints();
 
         // 1. Drop the foreign keys that reference orders.id.
@@ -45,6 +52,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        if (DB::connection()->getDriverName() === 'sqlite') {
+            return;
+        }
+
         Schema::disableForeignKeyConstraints();
 
         DB::statement('ALTER TABLE accepted_drivers DROP FOREIGN KEY accepted_drivers_order_id_foreign');

@@ -16,6 +16,20 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // sqlite (test harness) starts from a fresh schema with no duplicates and
+        // can't run the MySQL-only `SHOW INDEX` introspection used by hasIndex();
+        // just add the unique phone indexes directly.
+        if (DB::connection()->getDriverName() === 'sqlite') {
+            Schema::table('driver_users', function (Blueprint $table) {
+                $table->unique('phone_number', 'driver_users_phone_number_unique');
+            });
+            Schema::table('customers', function (Blueprint $table) {
+                $table->unique('phone_number', 'customers_phone_number_unique');
+            });
+
+            return;
+        }
+
         $this->mergeDuplicates('driver_users', $this->driverChildren());
         $this->mergeDuplicates('customers', $this->customerChildren());
 
@@ -34,6 +48,17 @@ return new class extends Migration
 
     public function down(): void
     {
+        if (DB::connection()->getDriverName() === 'sqlite') {
+            Schema::table('driver_users', function (Blueprint $table) {
+                $table->dropUnique('driver_users_phone_number_unique');
+            });
+            Schema::table('customers', function (Blueprint $table) {
+                $table->dropUnique('customers_phone_number_unique');
+            });
+
+            return;
+        }
+
         if ($this->hasIndex('driver_users', 'driver_users_phone_number_unique')) {
             Schema::table('driver_users', function (Blueprint $table) {
                 $table->dropUnique('driver_users_phone_number_unique');
