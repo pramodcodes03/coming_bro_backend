@@ -60,7 +60,12 @@
                     <tbody>
                         @forelse($orders as $order)
                             <tr>
-                                <td class="font-semibold">#{{ $order->id }}</td>
+                                <td class="font-semibold">
+                                    #{{ $order->id }}
+                                    @if($order->is_return_ride)
+                                        <span class="badge bg-info/20 text-info ltr:ml-1 rtl:mr-1 whitespace-nowrap" title="Order created from an accepted Return Ride bid">Return Ride</span>
+                                    @endif
+                                </td>
                                 <td class="whitespace-nowrap">{{ $order->customer->full_name ?? '-' }}</td>
                                 <td class="whitespace-nowrap">{{ $order->driver->full_name ?? 'Unassigned' }}</td>
                                 <td class="text-center">

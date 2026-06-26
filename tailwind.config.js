@@ -58,13 +58,58 @@ module.exports = {
         },
         fontFamily: {
           nunito: ["Nunito", "sans-serif"],
+          // Marketing/site fonts
+          display: ["Sora", "sans-serif"],
+          sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         },
         spacing: {
           4.5: "18px",
         },
+        // Brand palette for the public marketing site
+        backgroundImage: {
+          "brand-grad": "linear-gradient(115deg, #2b6fff, #6d4bff)",
+          "brand-grad-text": "linear-gradient(110deg, #2b6fff 0%, #6d4bff 55%, #00c2a8 110%)",
+        },
         boxShadow: {
           "3xl":
             "0 2px 2px rgb(224 230 237 / 46%), 1px 6px 7px rgb(224 230 237 / 46%)",
+          // Soft, layered "luxury" shadows for marketing UI
+          soft: "0 2px 6px -1px rgba(13,28,58,.06), 0 1px 2px rgba(13,28,58,.04)",
+          card: "0 10px 30px -12px rgba(20,40,90,.16), 0 2px 8px -4px rgba(20,40,90,.08)",
+          lift: "0 30px 70px -30px rgba(24,46,96,.28), 0 8px 24px -12px rgba(24,46,96,.14)",
+          glow: "0 14px 34px -12px rgba(43,111,255,.5)",
+        },
+        keyframes: {
+          floaty: {
+            "0%,100%": { transform: "translateY(0)" },
+            "50%": { transform: "translateY(-14px)" },
+          },
+          devfloat: {
+            "0%,100%": { transform: "translateY(0)" },
+            "50%": { transform: "translateY(-12px)" },
+          },
+          carfloat: {
+            "0%,100%": { transform: "translate(-50%,-50%)" },
+            "50%": { transform: "translate(-46%,-58%)" },
+          },
+          marquee: {
+            "0%": { transform: "translateX(0)" },
+            "100%": { transform: "translateX(-50%)" },
+          },
+          spinslow: { to: { transform: "rotate(360deg)" } },
+          gradshift: {
+            "0%": { backgroundPosition: "0% 50%" },
+            "100%": { backgroundPosition: "100% 50%" },
+          },
+        },
+        animation: {
+          floaty: "floaty 5s cubic-bezier(.22,1,.36,1) infinite",
+          "floaty-rev": "floaty 6s cubic-bezier(.22,1,.36,1) infinite reverse",
+          devfloat: "devfloat 6s cubic-bezier(.22,1,.36,1) infinite",
+          carfloat: "carfloat 3.5s cubic-bezier(.22,1,.36,1) infinite",
+          marquee: "marquee 28s linear infinite",
+          spinslow: "spinslow 26s linear infinite",
+          gradshift: "gradshift 9s ease infinite alternate",
         },
         typography: {
           DEFAULT: {

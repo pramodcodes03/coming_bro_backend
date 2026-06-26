@@ -46,9 +46,15 @@ class DashboardController extends Controller
             ->whereDate('created_date', $today)
             ->count();
 
-        // ── Remaining rides from subscription ────────────────────────────
+        // ── Remaining rides from recharge ────────────────────────────────
+        // remaining_rides is credited per recharge (plan.rides) and consumed on
+        // each completed ride; total_rides is the lifetime granted denominator.
+        // complimentary_rides are free rides on top, included in both so the
+        // displayed remaining/total stays consistent.
         $remainingRides = (int) ($driver->remaining_rides ?? 0);
         $complimentaryRides = (int) ($driver->complimentary_rides ?? 0);
+        $totalRides = (int) ($driver->total_rides ?? 0) + $complimentaryRides;
+        $usedRides = max(0, $totalRides - ($remainingRides + $complimentaryRides));
 
         // ── Rating ───────────────────────────────────────────────────────
         $reviewsCount = (int) ($driver->reviews_count ?? 0);
@@ -82,6 +88,8 @@ class DashboardController extends Controller
                 'today_rides' => $todayRides + $todayIntercityRides,
                 'total_rides' => $totalRides + $totalIntercityRides,
                 'remaining_rides' => $remainingRides + $complimentaryRides,
+                'total_rides' => $totalRides,
+                'used_rides' => $usedRides,
 
                 // Rating
                 'avg_rating' => $avgRating,

@@ -32,6 +32,7 @@ class RechargePlanController extends Controller
         $validated = $request->validate([
             'label'          => 'required|string|max:255',
             'price'          => 'required|numeric|min:0',
+            'rides'          => 'nullable|integer|min:0',
             'original_price' => 'required|numeric|min:0',
             'discount_pct'   => 'nullable|integer|min:0|max:100',
             'gst_percent'    => 'nullable|numeric|min:0|max:100',
@@ -53,6 +54,7 @@ class RechargePlanController extends Controller
         $validated['discount_pct'] = $validated['discount_pct'] ?? 0;
         $validated['gst_percent'] = $validated['gst_percent'] ?? 0;
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
+        $validated['rides'] = $validated['rides'] ?? 0;
 
         // Filter out empty benefits and terms
         if (isset($validated['benefits'])) {
@@ -82,6 +84,7 @@ class RechargePlanController extends Controller
         $validated = $request->validate([
             'label'          => 'required|string|max:255',
             'price'          => 'required|numeric|min:0',
+            'rides'          => 'nullable|integer|min:0',
             'original_price' => 'required|numeric|min:0',
             'discount_pct'   => 'nullable|integer|min:0|max:100',
             'gst_percent'    => 'nullable|numeric|min:0|max:100',
@@ -103,6 +106,7 @@ class RechargePlanController extends Controller
         $validated['discount_pct'] = $validated['discount_pct'] ?? 0;
         $validated['gst_percent'] = $validated['gst_percent'] ?? 0;
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
+        $validated['rides'] = $validated['rides'] ?? 0;
 
         if (isset($validated['benefits'])) {
             $validated['benefits'] = array_values(array_filter($validated['benefits'], fn($b) => !empty($b['title'])));

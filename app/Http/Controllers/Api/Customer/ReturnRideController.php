@@ -336,6 +336,7 @@ class ReturnRideController extends Controller
         return Order::create([
             'user_id'                   => $ride->user_id,
             'service_id'                => $ride->service_id,
+            'return_ride_id'            => $ride->id,
             'source_location_name'      => $ride->pickup_location_name,
             'source_latitude'           => $ride->pickup_latitude,
             'source_longitude'          => $ride->pickup_longitude,

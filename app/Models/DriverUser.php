@@ -39,6 +39,7 @@ class DriverUser extends Authenticatable
         'address',
         'cob_number',
         'remaining_rides',
+        'total_rides',
         'service_type',
         'aadhar_card_number',
         'aadhar_card_photo',
@@ -119,6 +120,9 @@ class DriverUser extends Authenticatable
             'zone_ids' => 'array',
             'driver_rules' => 'array',
             'subscription_plan_data' => 'array',
+            'remaining_rides' => 'integer',
+            'total_rides' => 'integer',
+            'complimentary_rides' => 'integer',
             'document_verification' => 'boolean',
             'is_online' => 'boolean',
             'is_subscription_enable' => 'boolean',
@@ -151,13 +155,24 @@ class DriverUser extends Authenticatable
     }
 
     /**
-     * Whether the driver currently holds an active Return Ride recharge, which
-     * is required to browse customer scheduled rides and submit offers.
+     * Whether the driver has ride balance in the single shared ride wallet.
+     * One recharge (ride pack) funds BOTH city rides and return rides; every
+     * completed ride of either type consumes one ride from `remaining_rides`.
+     * Having balance is what unlocks browsing/bidding on return rides.
+     */
+    public function hasRideBalance(): bool
+    {
+        return (int) $this->remaining_rides > 0;
+    }
+
+    /**
+     * @deprecated One-wallet model: return-ride access now depends on the shared
+     * ride balance, not a separate time-based subscription. Kept as an alias so
+     * existing callers keep working.
      */
     public function hasActiveReturnRideRecharge(): bool
     {
-        return $this->return_ride_recharge_expires_at !== null
-            && $this->return_ride_recharge_expires_at->isFuture();
+        return $this->hasRideBalance();
     }
 
     public function bankDetail(): HasOne

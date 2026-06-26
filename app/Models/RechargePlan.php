@@ -9,6 +9,7 @@ class RechargePlan extends Model
     protected $fillable = [
         'label',
         'price',
+        'rides',
         'original_price',
         'discount_pct',
         'gst_percent',
@@ -25,6 +26,7 @@ class RechargePlan extends Model
     {
         return [
             'price' => 'decimal:2',
+            'rides' => 'integer',
             'original_price' => 'decimal:2',
             'discount_pct' => 'integer',
             'gst_percent' => 'decimal:2',

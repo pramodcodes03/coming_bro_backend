@@ -19,8 +19,14 @@ use App\Http\Controllers\Api\Driver\ServiceController;
 use App\Http\Controllers\Api\Driver\SettingsController;
 use App\Http\Controllers\Api\Driver\SubscriptionController;
 use App\Http\Controllers\Api\Driver\WalletController;
+use App\Http\Controllers\Api\RazorpayWebhookController;
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
+
+// ═══════════════════════════════════════════════
+// PUBLIC — Razorpay server-to-server webhook (no auth; verified by signature)
+// ═══════════════════════════════════════════════
+Route::post('/razorpay/webhook', [RazorpayWebhookController::class, 'handle']);
 
 // ═══════════════════════════════════════════════
 // DRIVER ROUTES

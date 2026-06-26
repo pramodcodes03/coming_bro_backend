@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Driver;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcceptedDriver;
+use App\Models\DriverUser;
 use App\Models\Order;
 use App\Events\OrderUpdated;
 use Illuminate\Http\JsonResponse;
@@ -79,8 +80,16 @@ class OrderController extends Controller
         $updateData = $request->only($fillableFields);
         unset($updateData['id']);
 
+        $wasCompleted = $this->isCompletedStatus($order->status);
+
         $order->fill($updateData);
         $order->save();
+
+        // When a ride first transitions into a completed state, consume one of
+        // the driver's recharge rides (floored at 0 — never goes negative).
+        if (! $wasCompleted && $this->isCompletedStatus($order->status)) {
+            $this->consumeDriverRide($order);
+        }
 
         event(new OrderUpdated($order));
 
@@ -89,6 +98,32 @@ class OrderController extends Controller
             'message' => 'Order updated successfully.',
             'data' => $order->fresh(),
         ]);
+    }
+
+    /**
+     * Completed-ride status strings (case-insensitive). Mirrors the buckets the
+     * admin God's Eye view treats as completed.
+     */
+    private const COMPLETED_STATUSES = ['completed', 'ride completed', 'ride end', 'end ride', 'finished'];
+
+    private function isCompletedStatus(?string $status): bool
+    {
+        return in_array(strtolower(trim((string) $status)), self::COMPLETED_STATUSES, true);
+    }
+
+    /**
+     * Consume one recharge ride from the order's assigned driver, never letting
+     * remaining_rides drop below zero.
+     */
+    private function consumeDriverRide(Order $order): void
+    {
+        if ($order->driver_id === null) {
+            return;
+        }
+
+        DriverUser::whereKey($order->driver_id)
+            ->where('remaining_rides', '>', 0)
+            ->decrement('remaining_rides');
     }
 
     /**
@@ -217,15 +252,6 @@ class OrderController extends Controller
 
         $driver = $request->user();
 
-        Log::channel('stack')->info('[RIDE_FLOW] Driver polling for nearby rides', [
-            'driver_id' => $driver?->id,
-            'driver_lat' => $lat,
-            'driver_lng' => $lng,
-            'radius_km' => $radius,
-            'service_id' => $request->service_id,
-            'zone_ids' => $request->zone_ids,
-        ]);
-
         $query = Order::selectRaw(
             "*, (6371 * acos(cos(radians(?)) * cos(radians(source_latitude)) * cos(radians(source_longitude) - radians(?)) + sin(radians(?)) * sin(radians(source_latitude)))) AS distance",
             [$lat, $lng, $lat]
@@ -247,33 +273,6 @@ class OrderController extends Controller
         }
 
         $orders = $query->orderBy('distance')->get();
-
-        if ($orders->isEmpty()) {
-            // Help debug WHY no ride was received: are there any placed orders at all?
-            $placedTotal = Order::where('status', Order::STATUS_RIDE_PLACED)->count();
-            Log::channel('stack')->warning('[RIDE_FLOW] Driver received NO nearby rides', [
-                'driver_id' => $driver?->id,
-                'driver_lat' => $lat,
-                'driver_lng' => $lng,
-                'radius_km' => $radius,
-                'service_id' => $request->service_id,
-                'total_ride_placed_orders_in_db' => $placedTotal,
-                'hint' => $placedTotal > 0
-                    ? 'There ARE ride_placed orders, but none matched (out of radius, different service_id, or zone mismatch).'
-                    : 'There are NO ride_placed orders at all — check that the customer order was created with status=ride_placed.',
-            ]);
-        } else {
-            Log::channel('stack')->info('[RIDE_FLOW] Driver RECEIVED nearby rides', [
-                'driver_id' => $driver?->id,
-                'count' => $orders->count(),
-                'orders' => $orders->map(fn ($o) => [
-                    'order_id' => $o->id,
-                    'distance_km' => round((float) $o->distance, 3),
-                    'service_id' => $o->service_id,
-                    'status' => $o->status,
-                ])->all(),
-            ]);
-        }
 
         return response()->json([
             'success' => true,

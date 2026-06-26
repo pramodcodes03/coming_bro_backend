@@ -10,8 +10,10 @@ use App\Models\ReturnRide;
 use App\Models\ReturnRideOffer;
 use App\Models\WalletTransaction;
 use App\Services\PushNotificationService;
+use App\Services\RazorpayService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Driver side of the Return Ride feature (scheduled-ride bidding):
@@ -23,62 +25,161 @@ use Illuminate\Http\Request;
  */
 class ReturnRideController extends Controller
 {
-    public function __construct(private readonly PushNotificationService $push) {}
+    public function __construct(
+        private readonly PushNotificationService $push,
+        private readonly RazorpayService $razorpay,
+    ) {}
 
-    /** Returns whether the driver currently holds an active Return Ride recharge. */
+    /**
+     * Ride balance status. One shared wallet funds both city and return rides,
+     * so "active" simply means the driver has rides left.
+     */
     public function rechargeStatus(Request $request): JsonResponse
     {
         $driver = $request->user();
 
         return response()->json([
             'success' => true,
-            'message' => 'Return ride recharge status retrieved.',
+            'message' => 'Ride recharge status retrieved.',
             'data'    => [
-                'active'     => $driver->hasActiveReturnRideRecharge(),
-                'expires_at' => $driver->return_ride_recharge_expires_at,
+                'active'          => $driver->hasRideBalance(),
+                'remaining_rides' => (int) $driver->remaining_rides,
+                'total_rides'     => (int) $driver->total_rides,
             ],
         ]);
     }
 
     /**
-     * Record a Return Ride recharge purchase and unlock the feature for the
-     * driver. Wires the previously-stubbed purchase to the wallet ledger and
-     * the dedicated expiry column.
+     * Buy a ride pack (one shared wallet — these rides are used for BOTH city
+     * rides and return rides). Verifies the Razorpay payment, then credits the
+     * plan's ride count to `remaining_rides`. Kept for the existing app screen;
+     * functionally identical to POST /driver/wallet/transactions.
      */
     public function purchaseRecharge(Request $request): JsonResponse
     {
-        $driver = $request->user();
-
-        $plan = RechargePlan::where('label', 'like', 'Return Ride%')->first();
-
-        $months = 3; // Promotional 3-month validity (see RechargePlanSeeder).
-        $expiresAt = ($driver->hasActiveReturnRideRecharge()
-            ? $driver->return_ride_recharge_expires_at
-            : now())->copy()->addMonths($months);
-
-        WalletTransaction::create([
-            'amount'           => $plan?->price ?? 99,
-            'user_id'          => $driver->id,
-            'user_type'        => 'driver',
-            'recharge_plan_id' => $plan?->id,
-            'base_amount'      => $plan?->price ?? 99,
-            'gst_percent'      => $plan?->gst_percent ?? 0,
-            'total_amount'     => $plan?->price ?? 99,
-            'payment_type'     => $request->input('payment_type', 'online'),
-            'order_type'       => 'return_ride_recharge',
-            'note'             => 'Return Ride recharge',
-            'created_date'     => now(),
+        $validated = $request->validate([
+            'razorpay_order_id'   => 'required|string',
+            'razorpay_payment_id' => 'required|string',
+            'razorpay_signature'  => 'required|string',
+            'recharge_plan_id'    => 'nullable|integer|exists:recharge_plans,id',
         ]);
 
-        $driver->return_ride_recharge_expires_at = $expiresAt;
-        $driver->save();
+        $driver = $request->user();
+
+        Log::info('[RECHARGE] return-ride recharge called', [
+            'driver_id' => $driver->id,
+            'razorpay_order_id' => $validated['razorpay_order_id'],
+            'razorpay_payment_id' => $validated['razorpay_payment_id'],
+            'recharge_plan_id' => $validated['recharge_plan_id'] ?? null,
+        ]);
+
+        // Idempotency: a captured payment must never credit rides twice.
+        if (WalletTransaction::where('razorpay_payment_id', $validated['razorpay_payment_id'])->exists()) {
+            Log::warning('[RECHARGE] return-ride duplicate payment — already credited', [
+                'driver_id' => $driver->id,
+                'razorpay_payment_id' => $validated['razorpay_payment_id'],
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'This payment was already credited.',
+                'data'    => [
+                    'active'          => $driver->hasRideBalance(),
+                    'remaining_rides' => (int) $driver->remaining_rides,
+                ],
+            ]);
+        }
+
+        // Verify with Razorpay: signature + order ownership + captured status.
+        $result = $this->razorpay->verifyPayment(
+            $validated['razorpay_order_id'],
+            $validated['razorpay_payment_id'],
+            $validated['razorpay_signature'],
+        );
+
+        if (! $result['ok']) {
+            Log::warning('[RECHARGE] return-ride verification FAILED', [
+                'driver_id' => $driver->id,
+                'razorpay_payment_id' => $validated['razorpay_payment_id'],
+                'error' => $result['error'] ?? 'unknown',
+            ]);
+
+            return response()->json([
+                'success' => false,
+                'message' => $result['error'] ?? 'Payment verification failed.',
+            ], 422);
+        }
+
+        $paidPaise = (int) ($result['payment']['amount'] ?? 0);
+
+        // Resolve the plan: explicit id, else match an active plan by paid price.
+        $plan = $validated['recharge_plan_id']
+            ? RechargePlan::find($validated['recharge_plan_id'])
+            : (RechargePlan::where('is_active', true)->where('price', $paidPaise / 100)->orderBy('sort_order')->first()
+                ?? RechargePlan::where('label', 'like', 'Return Ride%')->first());
+        $price = (float) ($plan?->price ?? ($paidPaise / 100));
+
+        if ($paidPaise < (int) round($price * 100)) {
+            Log::warning('[RECHARGE] return-ride paid amount less than price — rejected', [
+                'driver_id' => $driver->id,
+                'captured_amount_paise' => $paidPaise,
+                'expected_paise' => (int) round($price * 100),
+            ]);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Paid amount is less than the recharge price.',
+            ], 422);
+        }
+
+        Log::info('[RECHARGE] return-ride payment verified', [
+            'driver_id' => $driver->id,
+            'captured_amount_paise' => $paidPaise,
+            'plan_id' => $plan?->id,
+        ]);
+
+        WalletTransaction::create([
+            'amount'              => $price,
+            'user_id'             => $driver->id,
+            'user_type'           => 'driver',
+            'recharge_plan_id'    => $plan?->id,
+            'base_amount'         => $price,
+            'gst_percent'         => $plan?->gst_percent ?? 0,
+            'total_amount'        => $price,
+            'payment_type'        => 'razorpay',
+            'transaction_id'      => $validated['razorpay_payment_id'],
+            'razorpay_order_id'   => $validated['razorpay_order_id'],
+            'razorpay_payment_id' => $validated['razorpay_payment_id'],
+            'order_type'          => 'wallet_recharge',
+            'note'                => 'Ride recharge (return-ride screen)',
+            'created_date'        => now(),
+        ]);
+
+        // Credit the shared ride wallet.
+        $rides = (int) ($plan?->rides ?? 0);
+        if ($rides > 0) {
+            $driver->increment('remaining_rides', $rides);
+            $driver->increment('total_rides', $rides);
+            Log::info('[RECHARGE] ride quota credited (return-ride screen)', [
+                'driver_id' => $driver->id,
+                'plan_id' => $plan?->id,
+                'rides_added' => $rides,
+                'remaining_rides' => (int) $driver->remaining_rides,
+            ]);
+        } else {
+            Log::warning('[RECHARGE] plan has 0 rides — payment recorded but NO rides credited; set a ride count on this plan', [
+                'driver_id' => $driver->id,
+                'plan_id' => $plan?->id,
+            ]);
+        }
 
         return response()->json([
             'success' => true,
-            'message' => 'Return Ride recharge activated successfully.',
+            'message' => 'Recharge successful.',
             'data'    => [
-                'active'     => true,
-                'expires_at' => $driver->return_ride_recharge_expires_at,
+                'active'          => $driver->hasRideBalance(),
+                'remaining_rides' => (int) $driver->remaining_rides,
+                'total_rides'     => (int) $driver->total_rides,
             ],
         ]);
     }

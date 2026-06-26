@@ -41,6 +41,13 @@
                 </div>
 
                 <div>
+                    <label for="rides" class="block mb-2 font-semibold">Rides granted</label>
+                    <input id="rides" type="number" name="rides" value="{{ old('rides', $plan->rides ?? 0) }}"
+                           class="form-input" placeholder="10" min="0" />
+                    <p class="mt-1 text-xs text-gray-500">How many rides this recharge adds to the driver's quota. Use 0 for unlimited / validity-only plans.</p>
+                </div>
+
+                <div>
                     <label for="original_price" class="block mb-2 font-semibold">Original Price (&#8377;) <span class="text-danger">*</span></label>
                     <input id="original_price" type="number" step="0.01" name="original_price" value="{{ old('original_price', $plan->original_price ?? '') }}"
                            class="form-input" placeholder="99.00" required />

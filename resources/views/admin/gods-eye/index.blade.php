@@ -88,8 +88,18 @@
                             refreshed every 3s</p>
                     </div>
                     <div class="flex items-center gap-3 text-xs">
+                        <button type="button" @click="fitToDrivers()" x-show="mapStatus === 'ready'"
+                            class="flex items-center gap-1.5 rounded-lg bg-primary/10 px-2.5 py-1.5 font-semibold text-primary transition hover:bg-primary/20"
+                            title="Frame all drivers on the map">
+                            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                            Show all
+                        </button>
                         <span class="flex items-center gap-1.5"><span
-                                class="h-2.5 w-2.5 rounded-full bg-success"></span>Driver</span>
+                                class="h-2.5 w-2.5 rounded-full bg-success"></span>Online</span>
                         <span class="flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-info"></span>On
                             trip</span>
                         <span class="flex items-center gap-1.5"><span
@@ -357,6 +367,11 @@
                                     x-text="detail.data.has_location ? (detail.data.lat.toFixed(5) + ', ' + detail.data.lng.toFixed(5)) : 'No GPS fix'">
                                 </dd>
                             </div>
+                            <div class="col-span-2 rounded-lg bg-gray-50 p-3 dark:bg-white/[0.03]">
+                                <dt class="text-[11px] text-gray-400">IP address</dt>
+                                <dd class="font-mono text-xs font-semibold text-gray-800 dark:text-gray-200"
+                                    x-text="detail.data.ip || '—'"></dd>
+                            </div>
                         </dl>
                         <template x-if="detail.data.current_trip">
                             <div class="rounded-xl border border-info/30 bg-info/5 p-3">
@@ -376,7 +391,11 @@
                 <template x-if="detail && detail.kind === 'trip'">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
-                            <span class="font-bold text-primary" x-text="'#' + detail.data.id"></span>
+                            <span class="flex items-center gap-2">
+                                <span class="font-bold text-primary" x-text="'#' + detail.data.id"></span>
+                                <span x-show="detail.data.is_return_ride"
+                                    class="rounded-full bg-info/10 px-2 py-0.5 text-[10px] font-bold uppercase text-info">Return Ride</span>
+                            </span>
                             <span
                                 class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold"
                                 :class="statusClass(detail.data.status_bucket)">
@@ -553,8 +572,12 @@
                 map: null,
                 mapReady: false,
                 mapStatus: 'loading', // 'loading' | 'ready' | 'error'
-                markers: {}, // driver markers keyed by id
+                markers: {}, // car markers keyed by driver id
+                rings: {}, // status-halo markers (green=online / blue=on-trip) keyed by driver id
                 tripMarkers: [], // transient pickup/drop/live markers + route line
+                infoWindow: null, // map popup for a clicked driver/car
+                popupDriverId: null, // which driver the popup is currently showing
+                fittedOnce: false, // true once the map has framed the whole fleet
 
                 init() {
                     if (this.hasMapKey) {
@@ -788,6 +811,8 @@
                         mapTypeControl: false, fullscreenControl: true,
                         styles: document.documentElement.classList.contains('dark') ? this.darkMapStyle() : [],
                     });
+                    this.infoWindow = new google.maps.InfoWindow({ maxWidth: 320 });
+                    this.infoWindow.addListener('closeclick', () => { this.popupDriverId = null; });
                     this.mapReady = true;
                     this.mapStatus = 'ready';
                     this.syncDriverMarkers();
@@ -813,30 +838,157 @@
                     this.data.drivers.filter(d => d.is_online && d.has_location).forEach(d => {
                         live[d.id] = true;
                         const pos = { lat: d.lat, lng: d.lng };
-                        if (this.markers[d.id]) {
-                            this.markers[d.id].setPosition(pos);
-                            this.markers[d.id].setIcon(this.driverIcon(d.on_trip));
+
+                        // Status halo behind the car — colour tracks online vs on-trip.
+                        let ring = this.rings[d.id];
+                        if (ring) {
+                            ring.setPosition(pos);
+                            ring.setIcon(this.ringIcon(d.on_trip));
                         } else {
-                            const m = new google.maps.Marker({
-                                position: pos, map: this.map, title: d.name,
-                                icon: this.driverIcon(d.on_trip),
+                            ring = new google.maps.Marker({
+                                position: pos, map: this.map, clickable: false,
+                                zIndex: 1, icon: this.ringIcon(d.on_trip),
                             });
-                            m.addListener('click', () => this.focusDriver(d));
+                            this.rings[d.id] = ring;
+                        }
+
+                        let m = this.markers[d.id];
+                        if (m) {
+                            m.setPosition(pos);
+                            m.setTitle(d.name); // hover tooltip = driver name
+                        } else {
+                            m = new google.maps.Marker({
+                                position: pos, map: this.map, title: d.name,
+                                zIndex: 2, icon: this.driverIcon(),
+                            });
+                            // Read the latest data off the marker so the popup stays fresh across polls.
+                            m.addListener('click', () => this.openDriverPopup(m.__driver, m));
                             this.markers[d.id] = m;
                         }
+                        m.__driver = d;
+                        // Keep an open popup in sync with live data.
+                        if (this.popupDriverId === d.id && this.infoWindow) {
+                            this.infoWindow.setContent(this.driverPopupHtml(d));
+                        }
                     });
-                    // Remove markers for drivers that went offline / lost GPS.
+                    // Remove cars + halos for drivers that went offline / lost GPS.
                     Object.keys(this.markers).forEach(id => {
                         if (!live[id]) { this.markers[id].setMap(null); delete this.markers[id]; }
                     });
+                    Object.keys(this.rings).forEach(id => {
+                        if (!live[id]) { this.rings[id].setMap(null); delete this.rings[id]; }
+                    });
+
+                    // On the first paint, frame the whole fleet so every car is
+                    // visible at once (drivers can be hundreds of km apart).
+                    if (!this.fittedOnce) this.fitToDrivers();
                 },
-                driverIcon(onTrip) {
+                /* Zoom/pan so every online, located driver fits in the viewport. */
+                fitToDrivers() {
+                    const located = this.data.drivers.filter(d => d.is_online && d.has_location);
+                    if (!this.mapReady || !located.length) return;
+                    this.fittedOnce = true;
+
+                    if (located.length === 1) {
+                        this.map.setCenter({ lat: located[0].lat, lng: located[0].lng });
+                        this.map.setZoom(14);
+                        return;
+                    }
+                    const bounds = new google.maps.LatLngBounds();
+                    located.forEach(d => bounds.extend({ lat: d.lat, lng: d.lng }));
+                    this.map.fitBounds(bounds, 60); // 60px padding around the fleet
+                    // Don't zoom in too far when drivers happen to be clustered.
+                    google.maps.event.addListenerOnce(this.map, 'idle', () => {
+                        if (this.map.getZoom() > 15) this.map.setZoom(15);
+                    });
+                },
+                driverIcon() {
+                    // Shared car illustration from public/. Root-relative so it
+                    // resolves against the current host (APP_URL is unreliable here).
+                    return {
+                        url: '/car-black-svgrepo-com.svg',
+                        scaledSize: new google.maps.Size(40, 40),
+                        anchor: new google.maps.Point(20, 20),
+                        labelOrigin: new google.maps.Point(20, 20),
+                    };
+                },
+                /* Colored status halo drawn behind the car: green = online, blue = on-trip. */
+                ringIcon(onTrip) {
                     const color = onTrip ? '#2196f3' : '#00ab55';
                     return {
-                        path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z',
-                        fillColor: color, fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 2,
-                        scale: 1.6, anchor: new google.maps.Point(12, 22),
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 25, // radius in px → 50px disc behind the 40px car
+                        fillColor: color, fillOpacity: 0.28,
+                        strokeColor: color, strokeOpacity: 0.95, strokeWeight: 2.5,
                     };
+                },
+                /* Open the trip/driver detail popup anchored on the clicked car. */
+                openDriverPopup(d, marker) {
+                    if (!this.infoWindow || !d) return;
+                    this.popupDriverId = d.id;
+                    this.infoWindow.setContent(this.driverPopupHtml(d));
+                    this.infoWindow.open({ map: this.map, anchor: marker });
+                    this.focusDriver(d); // keep the side inspector in sync
+                },
+                driverPopupHtml(d) {
+                    const esc = (s) => (s === null || s === undefined ? '' : String(s))
+                        .replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+                    const row = (label, val) => (val === null || val === undefined || val === '') ? '' :
+                        `<div style="display:flex;justify-content:space-between;gap:14px;padding:3px 0;font-size:12px;line-height:1.35;">
+                            <span style="color:#6b7280;white-space:nowrap;">${label}</span>
+                            <span style="font-weight:600;color:#111827;text-align:right;">${esc(val)}</span>
+                        </div>`;
+                    const ct = d.current_trip;
+                    const accent = d.on_trip ? '#2196f3' : '#00ab55';
+
+                    const header = `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+                        <span style="display:inline-flex;width:30px;height:30px;border-radius:50%;background:${accent};color:#fff;align-items:center;justify-content:center;flex:none;">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+                        </span>
+                        <div style="min-width:0;">
+                            <div style="font-weight:700;font-size:14px;color:#111827;">${esc(d.name)}</div>
+                            <div style="font-size:11px;font-weight:600;color:${accent};">${d.on_trip ? 'On trip' : 'Online'}</div>
+                        </div></div>`;
+
+                    const driverBlock = `<div style="border-top:1px solid #eef0f2;padding-top:5px;">
+                        ${row('Driver Contact', d.phone)}
+                        ${row('Vehicle Number', d.vehicle_number)}
+                        ${row('Driver IP', d.ip)}
+                        ${row('City', d.city)}
+                    </div>`;
+
+                    let tripBlock;
+                    if (ct) {
+                        const payment = ct.payment_type
+                            ? (ct.payment_type + (ct.payment_status ? ' · Paid' : ' · Unpaid'))
+                            : (ct.payment_status ? 'Paid' : null);
+                        const p = ct.passenger || {};
+                        const returnTag = ct.is_return_ride
+                            ? ` <span style="display:inline-block;background:#2196f31a;color:#2196f3;font-size:9px;font-weight:700;text-transform:uppercase;padding:1px 5px;border-radius:8px;vertical-align:middle;">Return Ride</span>`
+                            : '';
+                        tripBlock = `<div style="border-top:1px solid #eef0f2;margin-top:5px;padding-top:5px;">
+                            <div style="font-weight:700;font-size:12px;color:#018DBD;margin-bottom:3px;">Trip #${esc(ct.id)} · ${esc(ct.status_label)}${returnTag}</div>
+                            ${row('Pickup', ct.pickup)}
+                            ${row('Drop-off', ct.drop)}
+                            ${row('Trip Price', ct.fare !== null ? ('₹' + this.formatNum(ct.fare)) : null)}
+                            ${row('Distance', ct.distance)}
+                            ${row('Duration', ct.duration)}
+                            ${row('Payment', payment)}
+                            ${row('Start Time', ct.start_label)}
+                            ${row('End / Updated', ct.end_label)}
+                            <div style="border-top:1px dashed #eef0f2;margin-top:4px;padding-top:4px;">
+                                ${row('User Name', p.name)}
+                                ${row('User Contact', p.phone)}
+                                ${row('User IP', p.ip)}
+                                ${p.booked_for_someone_else ? row('Booked For', p.booked_for_name) : ''}
+                            </div>
+                        </div>`;
+                    } else {
+                        tripBlock = `<div style="border-top:1px solid #eef0f2;margin-top:5px;padding-top:5px;font-size:12px;color:#9ca3af;">
+                            No active trip${d.online_since_label ? ' · online since ' + esc(d.online_since_label) : ''}</div>`;
+                    }
+
+                    return `<div style="min-width:240px;max-width:300px;font-family:inherit;">${header}${driverBlock}${tripBlock}</div>`;
                 },
                 drawTrip(t) {
                     if (!this.mapReady) return;

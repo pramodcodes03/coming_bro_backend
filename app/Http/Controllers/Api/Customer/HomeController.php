@@ -16,6 +16,7 @@ use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Tax;
 use App\Models\Zone;
+use App\Services\RazorpayService;
 use Illuminate\Http\JsonResponse;
 
 class HomeController extends Controller
@@ -31,9 +32,12 @@ class HomeController extends Controller
 
     public function paymentSettings(): JsonResponse
     {
-        $setting = Setting::where('key', 'payment')->first();
-
-        return response()->json(['success' => true, 'message' => 'Payment settings retrieved.', 'data' => $setting?->value]);
+        // Secrets stripped — the app only needs public keys + display fields.
+        return response()->json([
+            'success' => true,
+            'message' => 'Payment settings retrieved.',
+            'data' => RazorpayService::publicPaymentConfig(),
+        ]);
     }
 
     public function currency(): JsonResponse

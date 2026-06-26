@@ -20,6 +20,8 @@ class WalletTransaction extends Model
         'gst_amount',
         'total_amount',
         'transaction_id',
+        'razorpay_order_id',
+        'razorpay_payment_id',
         'payment_type',
         'note',
         'order_type',

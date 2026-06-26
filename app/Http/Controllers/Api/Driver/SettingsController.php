@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Driver;
 use App\Http\Controllers\Controller;
 use App\Models\Currency;
 use App\Models\Setting;
+use App\Services\RazorpayService;
 use Illuminate\Http\JsonResponse;
 
 class SettingsController extends Controller
@@ -42,23 +43,12 @@ class SettingsController extends Controller
      */
     public function paymentSettings(): JsonResponse
     {
-        $setting = Setting::where('key', 'payment')->first();
-
-        if (!$setting) {
-            return response()->json([
-                'success' => true,
-                'message' => 'No payment settings found.',
-                'data' => null,
-            ]);
-        }
-
-        // The Setting model casts 'value' to array automatically
-        $data = $setting->value ?? [];
-
+        // Secrets (razorpaySecret, stripeSecret, braintree private keys, webhook
+        // secret) are stripped — the app only needs public keys + display fields.
         return response()->json([
             'success' => true,
             'message' => 'Payment settings retrieved successfully.',
-            'data' => $data,
+            'data' => RazorpayService::publicPaymentConfig(),
         ]);
     }
 

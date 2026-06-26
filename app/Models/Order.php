@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,15 @@ class Order extends Model
 
     public $timestamps = false;
 
+    /**
+     * Expose return-ride flags in every JSON response (apps + admin) without
+     * each endpoint having to compute them.
+     */
+    protected $appends = [
+        'is_return_ride',
+        'ride_type',
+    ];
+
     protected $fillable = [
         'source_location_name',
         'destination_location_name',
@@ -31,6 +41,7 @@ class Order extends Model
         'destination_latitude',
         'destination_longitude',
         'service_id',
+        'return_ride_id',
         'user_id',
         'offer_rate',
         'final_rate',
@@ -83,9 +94,36 @@ class Order extends Model
         ];
     }
 
+    /**
+     * True when this order was spawned from an accepted Return Ride bid.
+     * Convenience flag for the apps' "My Rides" list.
+     */
+    protected function isReturnRide(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->return_ride_id !== null,
+        );
+    }
+
+    /**
+     * Machine-readable ride origin: 'return_ride' for return-ride orders,
+     * 'city' for ordinary rides. Handy for badges / filtering in the apps.
+     */
+    protected function rideType(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->return_ride_id !== null ? 'return_ride' : 'city',
+        );
+    }
+
     public function driver(): BelongsTo
     {
         return $this->belongsTo(DriverUser::class, 'driver_id', 'id');
+    }
+
+    public function returnRide(): BelongsTo
+    {
+        return $this->belongsTo(ReturnRide::class, 'return_ride_id', 'id');
     }
 
     public function customer(): BelongsTo

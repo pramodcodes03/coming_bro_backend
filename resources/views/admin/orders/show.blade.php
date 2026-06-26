@@ -8,7 +8,7 @@
                 </a>
                 <div>
                     <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Order #{{ $order->id }}</h1>
-                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">City ride order details</p>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ $order->is_return_ride ? 'Return ride order details' : 'City ride order details' }}</p>
                 </div>
             </div>
             <div>
@@ -26,6 +26,10 @@
                     ];
                     $badgeClass = $statusClasses[$order->status] ?? 'bg-warning';
                 @endphp
+                @if($order->is_return_ride)
+                    <span class="badge bg-info/20 text-info text-sm px-4 py-1.5 ltr:mr-2 rtl:ml-2"
+                        title="Order created from an accepted Return Ride bid">Return Ride</span>
+                @endif
                 <span class="badge {{ $badgeClass }} text-sm px-4 py-1.5">
                     {{ ucfirst(str_replace('_', ' ', $order->status)) }}
                 </span>
