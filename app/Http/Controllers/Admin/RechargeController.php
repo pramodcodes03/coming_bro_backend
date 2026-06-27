@@ -19,12 +19,17 @@ class RechargeController extends Controller
         $query = $this->buildQuery($request);
 
         // Summary totals over the whole filtered set (not just the page).
+        // Replace the base select() with aggregates only — appending them to the
+        // `wallet_transactions.*` columns would mix aggregate/non-aggregate
+        // columns without a GROUP BY (MySQL error 1140).
         $summary = (clone $query)
             ->reorder()
-            ->selectRaw('COUNT(*) as cnt')
-            ->selectRaw('COALESCE(SUM(COALESCE(total_amount, amount)), 0) as total_collected')
-            ->selectRaw('COALESCE(SUM(gst_amount), 0) as total_gst')
-            ->selectRaw('COALESCE(SUM(COALESCE(base_amount, amount)), 0) as total_base')
+            ->select([
+                DB::raw('COUNT(*) as cnt'),
+                DB::raw('COALESCE(SUM(COALESCE(total_amount, amount)), 0) as total_collected'),
+                DB::raw('COALESCE(SUM(gst_amount), 0) as total_gst'),
+                DB::raw('COALESCE(SUM(COALESCE(base_amount, amount)), 0) as total_base'),
+            ])
             ->first();
 
         $recharges = $query->paginate(15)->withQueryString();

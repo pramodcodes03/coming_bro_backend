@@ -349,7 +349,7 @@ class ReturnRideController extends Controller
             'payment_type'              => $ride->payment_type ?? 'cash',
             'offer_rate'                => $offer->offered_fare,
             'final_rate'                => $offer->offered_fare,
-            'otp'                       => (string) random_int(1000, 9999),
+            'otp'                       => (string) random_int(100000, 999999),
             'driver_id'                 => $offer->driver_id,
             'accepted_driver_id'        => [(string) $offer->driver_id],
             // Assigned, pre-start state — both apps treat "Ride Active" as an

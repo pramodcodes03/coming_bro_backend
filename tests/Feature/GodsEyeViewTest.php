@@ -7,46 +7,17 @@ use App\Models\Customer;
 use App\Models\DriverUser;
 use App\Models\Order;
 use App\Models\Setting;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
- * Feature tests for the God's Eye View.
- *
- * The project's migrations contain MySQL-only raw DDL (ALTER TABLE ... DROP
- * FOREIGN KEY) that SQLite cannot parse, so the suite cannot use the in-memory
- * SQLite DB + RefreshDatabase. These tests instead run against the real MySQL
- * connection inside a transaction that is rolled back, so they exercise the
- * live schema without leaving any data behind.
+ * Feature tests for the God's Eye View. Runs on the isolated sqlite :memory:
+ * test DB (per phpunit.xml) with RefreshDatabase, so it creates its own data
+ * and never reads from or writes to the live database.
  */
 class GodsEyeViewTest extends TestCase
 {
-    use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        // Force the real (MySQL) connection even when phpunit.xml points the
-        // default at sqlite / :memory:, so the live schema (incl.
-        // last_online_at) is used. phpunit.xml also sets DB_DATABASE=:memory:,
-        // which leaks onto the mysql connection config, so restore the real DB
-        // name from .env and purge the cached PDO so it reconnects cleanly.
-        // phpunit.xml sets DB_DATABASE=:memory:, so env() is unreliable here —
-        // read the real database name straight from the .env file.
-        $database = 'coming_bro';
-        $envPath = base_path('.env');
-        if (is_file($envPath) && preg_match('/^DB_DATABASE=(.*)$/m', file_get_contents($envPath), $m)) {
-            $database = trim($m[1]);
-        }
-
-        config([
-            'database.default' => 'mysql',
-            'database.connections.mysql.database' => $database,
-        ]);
-
-        \DB::purge('mysql');
-    }
+    use RefreshDatabase;
 
     private function admin(): Admin
     {
@@ -58,6 +29,18 @@ class GodsEyeViewTest extends TestCase
             'email' => 'gods-eye-test-'.$unique.'@example.com',
             'password' => bcrypt('secret'),
         ]);
+    }
+
+    /**
+     * A phone number that can never collide with seeded/live data under the
+     * unique phone_number index: 13 digits (longer than any real 10-digit
+     * mobile) and unique within the run.
+     */
+    private function uniquePhone(): string
+    {
+        static $seq = 0;
+
+        return '999000000'.str_pad((string) (++$seq), 4, '0', STR_PAD_LEFT);
     }
 
     public function test_gods_eye_view_requires_admin_auth(): void
@@ -96,10 +79,10 @@ class GodsEyeViewTest extends TestCase
 
     public function test_feed_reflects_an_active_ride_with_driver_and_passenger(): void
     {
-        $customer = Customer::create(['full_name' => 'Jane Passenger', 'phone_number' => '9000000001']);
+        $customer = Customer::create(['full_name' => 'Jane Passenger', 'phone_number' => $this->uniquePhone()]);
         $driver = DriverUser::create([
             'full_name' => 'Online Driver GE',
-            'phone_number' => '9111110001',
+            'phone_number' => $this->uniquePhone(),
             'is_online' => true,
             'last_online_at' => now(),
             'location_latitude' => 19.07,
@@ -139,7 +122,7 @@ class GodsEyeViewTest extends TestCase
 
     public function test_status_buckets_map_real_world_values(): void
     {
-        $customer = Customer::create(['full_name' => 'P GE', 'phone_number' => '9000000002']);
+        $customer = Customer::create(['full_name' => 'P GE', 'phone_number' => $this->uniquePhone()]);
         $cases = [
             'Ride Placed' => 'placed',
             'Ride Active' => 'active',

@@ -35,9 +35,37 @@
                 </div>
 
                 <div>
-                    <label for="price" class="block mb-2 font-semibold">Price (&#8377;) <span class="text-danger">*</span></label>
-                    <input id="price" type="number" step="0.01" name="price" value="{{ old('price', $plan->price ?? '') }}"
+                    <label for="original_price" class="block mb-2 font-semibold">Original Price / MRP (&#8377;) <span class="text-danger">*</span></label>
+                    <input id="original_price" type="number" step="0.01" name="original_price" value="{{ old('original_price', $plan->original_price ?? '') }}"
+                           class="form-input" placeholder="99.00" required />
+                </div>
+
+                <div>
+                    <label for="base_price" class="block mb-2 font-semibold">Discounted Price excl. GST (&#8377;) <span class="text-danger">*</span></label>
+                    <input id="base_price" type="number" step="0.01" name="base_price"
+                           value="{{ old('base_price', isset($plan) ? round((float) $plan->price / (1 + (float) ($plan->gst_percent ?? 0) / 100), 2) : '') }}"
                            class="form-input" placeholder="49.00" required />
+                    <p class="mt-1 text-xs text-gray-500">Net selling price. GST is added on top to get the total the driver pays.</p>
+                </div>
+
+                <div>
+                    <label for="gst_percent" class="block mb-2 font-semibold">GST %</label>
+                    <input id="gst_percent" type="number" step="0.01" name="gst_percent" value="{{ old('gst_percent', $plan->gst_percent ?? 18) }}"
+                           class="form-input" placeholder="18" min="0" max="100" />
+                    <p class="mt-1 text-xs text-gray-500">Recorded per recharge for GST reporting.</p>
+                </div>
+
+                <div>
+                    <label for="discount_pct" class="block mb-2 font-semibold">Discount % <span class="text-xs font-normal text-gray-400">(auto)</span></label>
+                    <input id="discount_pct" type="number" class="form-input bg-gray-100 dark:bg-gray-800" placeholder="0" readonly
+                           value="{{ old('discount_pct', $plan->discount_pct ?? 0) }}" />
+                    <p class="mt-1 text-xs text-gray-500">Auto: (MRP − net price) ÷ MRP.</p>
+                </div>
+
+                <div>
+                    <label for="total_price_display" class="block mb-2 font-semibold">Total Price incl. GST (&#8377;) <span class="text-xs font-normal text-gray-400">(auto)</span></label>
+                    <input id="total_price_display" type="text" class="form-input bg-gray-100 dark:bg-gray-800 font-bold text-primary" readonly value="" />
+                    <p class="mt-1 text-xs text-gray-500">Amount charged to the driver &amp; sent to the app — no app change needed.</p>
                 </div>
 
                 <div>
@@ -45,25 +73,6 @@
                     <input id="rides" type="number" name="rides" value="{{ old('rides', $plan->rides ?? 0) }}"
                            class="form-input" placeholder="10" min="0" />
                     <p class="mt-1 text-xs text-gray-500">How many rides this recharge adds to the driver's quota. Use 0 for unlimited / validity-only plans.</p>
-                </div>
-
-                <div>
-                    <label for="original_price" class="block mb-2 font-semibold">Original Price (&#8377;) <span class="text-danger">*</span></label>
-                    <input id="original_price" type="number" step="0.01" name="original_price" value="{{ old('original_price', $plan->original_price ?? '') }}"
-                           class="form-input" placeholder="99.00" required />
-                </div>
-
-                <div>
-                    <label for="discount_pct" class="block mb-2 font-semibold">Discount %</label>
-                    <input id="discount_pct" type="number" name="discount_pct" value="{{ old('discount_pct', $plan->discount_pct ?? 0) }}"
-                           class="form-input" placeholder="50" min="0" max="100" />
-                </div>
-
-                <div>
-                    <label for="gst_percent" class="block mb-2 font-semibold">GST %</label>
-                    <input id="gst_percent" type="number" step="0.01" name="gst_percent" value="{{ old('gst_percent', $plan->gst_percent ?? 0) }}"
-                           class="form-input" placeholder="18" min="0" max="100" />
-                    <p class="mt-1 text-xs text-gray-500">Price is GST-inclusive. This % is recorded per recharge for GST reporting.</p>
                 </div>
 
                 <div>
@@ -179,6 +188,29 @@
 <script>
     let benefitIndex = {{ count($benefits) }};
     let termIndex = {{ count($termsPoints) }};
+
+    // Live: enter MRP + net price + GST → auto discount % and GST-inclusive total.
+    // The total is what the server stores as `price` (what the app charges).
+    function recalcPlanPricing() {
+        const num = (id) => parseFloat(document.getElementById(id)?.value) || 0;
+        const base = num('base_price');
+        const mrp = num('original_price');
+        const gst = num('gst_percent');
+
+        const total = base * (1 + gst / 100);
+        const discount = mrp > 0 ? Math.max(0, Math.min(100, Math.floor(((mrp - base) / mrp) * 100))) : 0;
+
+        const totalEl = document.getElementById('total_price_display');
+        const discEl = document.getElementById('discount_pct');
+        if (totalEl) totalEl.value = '₹' + total.toFixed(2);
+        if (discEl) discEl.value = discount;
+    }
+
+    ['base_price', 'original_price', 'gst_percent'].forEach((id) => {
+        document.getElementById(id)?.addEventListener('input', recalcPlanPricing);
+    });
+    document.addEventListener('DOMContentLoaded', recalcPlanPricing);
+    recalcPlanPricing();
 
     function addBenefit() {
         const container = document.getElementById('benefits-container');
