@@ -42,4 +42,12 @@ return [
         'server_key' => env('FCM_SERVER_KEY'),
     ],
 
+    // Firebase project the mobile apps belong to. The customer app performs
+    // Firebase phone auth on-device (Firebase sends the OTP SMS) and forwards
+    // the resulting ID token to /customer/firebase-login, which we verify
+    // against this project id. See App\Services\FirebaseTokenVerifier.
+    'firebase' => [
+        'project_id' => env('FIREBASE_PROJECT_ID', 'coming-bro'),
+    ],
+
 ];

@@ -171,6 +171,7 @@ Route::prefix('customer')->group(function () {
     // ── Public ──────────────────────────────────
     Route::post('/send-otp', [CustomerAuthController::class, 'sendOtp']);
     Route::post('/verify-otp', [CustomerAuthController::class, 'verifyOtp']);
+    Route::post('/firebase-login', [CustomerAuthController::class, 'firebaseLogin']);
     Route::post('/social-login', [CustomerAuthController::class, 'socialLogin']);
 
     Route::get('/settings', [CustomerHomeController::class, 'settings']);

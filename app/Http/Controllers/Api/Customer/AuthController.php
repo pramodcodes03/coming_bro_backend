@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Otp;
+use App\Services\FirebaseTokenVerifier;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -124,6 +125,109 @@ class AuthController extends Controller
                 'is_new_user' => $isNewUser,
             ],
         ]);
+    }
+
+    /**
+     * Log in / register a customer from a Firebase phone-auth ID token.
+     *
+     * The app performs Firebase phone verification on-device (Firebase sends the
+     * OTP SMS and checks the code), then posts the resulting ID token here. We
+     * verify the token against the Firebase project, trust its phone number as
+     * the account identity, and issue our own Sanctum token — mirroring the
+     * shape of verifyOtp() so the client handles both the same way.
+     */
+    public function firebaseLogin(Request $request): JsonResponse
+    {
+        $request->validate([
+            'id_token' => 'required|string',
+            'phone_number' => 'nullable|string',
+            'country_code' => 'nullable|string',
+        ]);
+
+        try {
+            $claims = FirebaseTokenVerifier::fromConfig()->verify($request->id_token);
+        } catch (\Throwable $e) {
+            \Log::warning('Firebase token verification failed: '.$e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid or expired authentication token.',
+                'data' => null,
+            ], 401);
+        }
+
+        // The verified phone number from Firebase is the source of truth. The
+        // app sends country_code/phone_number split for storage, but we only
+        // trust them when they reconstruct the verified E.164 number — otherwise
+        // a client could verify one number and claim another.
+        $verifiedPhone = $claims['phone_number'] ?? null;
+        if (! $verifiedPhone) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Authentication token has no phone number.',
+                'data' => null,
+            ], 422);
+        }
+
+        $countryCode = $request->country_code;
+        $phoneNumber = $request->phone_number;
+
+        $matchesVerified = $countryCode && $phoneNumber
+            && $this->digits($countryCode.$phoneNumber) === $this->digits($verifiedPhone);
+
+        if (! $matchesVerified) {
+            // Fall back to the verified number so the stored account always
+            // matches what Firebase actually verified.
+            $countryCode = null;
+            $phoneNumber = $verifiedPhone;
+        }
+
+        // Key on phone number alone — it is the account identity. firstOrCreate
+        // is atomic against the unique phone_number index, so concurrent logins
+        // can't create duplicate accounts.
+        $customer = Customer::firstOrCreate(
+            ['phone_number' => $phoneNumber],
+            [
+                'country_code' => $countryCode,
+                'login_type' => 'phone',
+                'register_ip' => $request->ip(),
+                'is_active' => true,
+                'wallet_amount' => '0',
+                'reviews_count' => '0.0',
+                'reviews_sum' => '0.0',
+            ]
+        );
+
+        $isNewUser = $customer->wasRecentlyCreated;
+
+        if (! $customer->is_active) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Your account has been blocked.',
+                'data' => null,
+            ], 403);
+        }
+
+        $customer->last_login_ip = $request->ip();
+        $customer->save();
+
+        $token = $customer->createToken('customer-auth-token')->plainTextToken;
+
+        return response()->json([
+            'success' => true,
+            'message' => $isNewUser ? 'Registration successful.' : 'Login successful.',
+            'data' => [
+                'customer' => $customer,
+                'token' => $token,
+                'is_new_user' => $isNewUser,
+            ],
+        ]);
+    }
+
+    /** Strip everything but digits, for comparing phone numbers across formats. */
+    private function digits(string $value): string
+    {
+        return preg_replace('/\D+/', '', $value) ?? '';
     }
 
     public function socialLogin(Request $request): JsonResponse
