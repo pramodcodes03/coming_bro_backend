@@ -11,6 +11,7 @@ use App\Models\WalletTransaction;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -27,34 +28,34 @@ class DashboardController extends Controller
             ->whereDate('created_date', $today)
             ->sum('amount');
 
-        // ── Ride counts ──────────────────────────────────────────────────
-        $totalRides = Order::where('driver_id', $driver->id)
-            ->where('status', 'Ride Completed')
-            ->count();
+        // ── Completed-trip counts (lifetime + today) ─────────────────────
+        // Status matched case-insensitively so 'Ride Completed' / 'Completed'
+        // etc. all count. Lifetime is date-independent; "today" filters on
+        // created_date.
+        $completedStatuses = ['completed', 'ride completed', 'ride end', 'end ride', 'finished'];
+        $lowerStatus = DB::raw('LOWER(TRIM(status))');
 
-        $totalIntercityRides = IntercityOrder::where('driver_id', $driver->id)
-            ->where('status', 'Ride Completed')
-            ->count();
+        $completedTrips = Order::where('driver_id', $driver->id)
+                ->whereIn($lowerStatus, $completedStatuses)->count()
+            + IntercityOrder::where('driver_id', $driver->id)
+                ->whereIn($lowerStatus, $completedStatuses)->count();
 
-        $todayRides = Order::where('driver_id', $driver->id)
-            ->where('status', 'Ride Completed')
-            ->whereDate('created_date', $today)
-            ->count();
+        $todayTrips = Order::where('driver_id', $driver->id)
+                ->whereIn($lowerStatus, $completedStatuses)
+                ->whereDate('created_date', $today)->count()
+            + IntercityOrder::where('driver_id', $driver->id)
+                ->whereIn($lowerStatus, $completedStatuses)
+                ->whereDate('created_date', $today)->count();
 
-        $todayIntercityRides = IntercityOrder::where('driver_id', $driver->id)
-            ->where('status', 'Ride Completed')
-            ->whereDate('created_date', $today)
-            ->count();
-
-        // ── Remaining rides from recharge ────────────────────────────────
+        // ── Ride credits from recharge (separate from completed trips) ───
         // remaining_rides is credited per recharge (plan.rides) and consumed on
-        // each completed ride; total_rides is the lifetime granted denominator.
-        // complimentary_rides are free rides on top, included in both so the
-        // displayed remaining/total stays consistent.
+        // each completed ride; ride_credits_total is the granted denominator.
+        // complimentary_rides are free rides on top, included in both.
         $remainingRides = (int) ($driver->remaining_rides ?? 0);
         $complimentaryRides = (int) ($driver->complimentary_rides ?? 0);
-        $totalRides = (int) ($driver->total_rides ?? 0) + $complimentaryRides;
-        $usedRides = max(0, $totalRides - ($remainingRides + $complimentaryRides));
+        $rideCreditsTotal = (int) ($driver->total_rides ?? 0) + $complimentaryRides;
+        $remainingTotal = $remainingRides + $complimentaryRides;
+        $usedRides = max(0, $rideCreditsTotal - $remainingTotal);
 
         // ── Rating ───────────────────────────────────────────────────────
         $reviewsCount = (int) ($driver->reviews_count ?? 0);
@@ -84,11 +85,18 @@ class DashboardController extends Controller
                 'today_earnings' => round((float) $todayEarnings, 2),
                 'wallet_amount' => round((float) ($driver->wallet_amount ?? 0), 2),
 
-                // Ride stats
-                'today_rides' => $todayRides + $todayIntercityRides,
-                'total_rides' => $totalRides + $totalIntercityRides,
-                'remaining_rides' => $remainingRides + $complimentaryRides,
-                'total_rides' => $totalRides,
+                // Ride stats. The home "Trips" card binds to `today_rides`, so we
+                // return the driver's LIFETIME completed trips there (the count
+                // the card is meant to show). `today_trips` carries the genuine
+                // rides-completed-today value; `completed_trips` is an explicit
+                // alias of the lifetime count.
+                'today_rides' => $completedTrips,
+                'completed_trips' => $completedTrips,
+                'today_trips' => $todayTrips,
+                // Recharge ride-credits (for the "Ride Credits X of Y" widget).
+                'remaining_rides' => $remainingTotal,
+                'total_rides' => $rideCreditsTotal,
+                'ride_credits_total' => $rideCreditsTotal,
                 'used_rides' => $usedRides,
 
                 // Rating
@@ -104,7 +112,7 @@ class DashboardController extends Controller
                 // Today's summary
                 'today_summary' => [
                     'earnings' => round((float) $todayEarnings, 2),
-                    'completed_rides' => $todayRides + $todayIntercityRides,
+                    'completed_rides' => $todayTrips,
                     'rating' => $avgRating,
                 ],
 
