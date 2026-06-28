@@ -36,6 +36,7 @@ Route::prefix('driver')->group(function () {
 
     Route::post('/send-otp', [AuthController::class, 'sendOtp']);
     Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
+    Route::post('/firebase-login', [AuthController::class, 'firebaseLogin']);
     Route::post('/social-login', [AuthController::class, 'socialLogin']);
 
     Route::get('/settings', [SettingsController::class, 'index']);

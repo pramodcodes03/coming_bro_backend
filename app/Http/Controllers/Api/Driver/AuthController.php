@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Driver;
 use App\Http\Controllers\Controller;
 use App\Models\DriverUser;
 use App\Models\Otp;
+use App\Services\FirebaseTokenVerifier;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -138,6 +139,108 @@ class AuthController extends Controller
                 'is_new_user' => $isNewUser,
             ],
         ]);
+    }
+
+    /**
+     * Firebase phone-auth login.
+     *
+     * The driver app performs Firebase phone verification on-device (Firebase
+     * sends the OTP SMS), then posts the resulting Firebase ID token here. We
+     * verify the token, firstOrCreate the driver keyed on the verified phone
+     * number, and return the same Sanctum response shape as verifyOtp().
+     */
+    public function firebaseLogin(Request $request): JsonResponse
+    {
+        $request->validate([
+            'id_token' => 'required|string',
+            'phone_number' => 'nullable|string',
+            'country_code' => 'nullable|string',
+        ]);
+
+        try {
+            $claims = FirebaseTokenVerifier::fromConfig()->verify($request->id_token);
+        } catch (\Throwable $e) {
+            \Log::warning('Firebase token verification failed: '.$e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid or expired authentication token.',
+                'data' => null,
+            ], 401);
+        }
+
+        // The phone number Firebase verified is the source of truth. We only
+        // trust the app's split country_code/phone_number when they reconstruct
+        // the verified E.164 number — otherwise a client could verify one number
+        // and claim another.
+        $verifiedPhone = $claims['phone_number'] ?? null;
+        if (! $verifiedPhone) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Authentication token has no phone number.',
+                'data' => null,
+            ], 422);
+        }
+
+        $countryCode = $request->country_code;
+        $phoneNumber = $request->phone_number;
+
+        $matchesVerified = $countryCode && $phoneNumber
+            && $this->digits($countryCode.$phoneNumber) === $this->digits($verifiedPhone);
+
+        if (! $matchesVerified) {
+            // Fall back to the verified number so the stored account always
+            // matches what Firebase actually verified.
+            $countryCode = null;
+            $phoneNumber = $verifiedPhone;
+        }
+
+        // Key on phone number alone — it is the account identity. firstOrCreate
+        // is atomic against the unique phone_number index, so concurrent logins
+        // can't create duplicate accounts.
+        $driver = DriverUser::firstOrCreate(
+            ['phone_number' => $phoneNumber],
+            [
+                'country_code' => $countryCode,
+                'login_type' => 'phone',
+                'register_ip' => $request->ip(),
+                'is_online' => false,
+                'document_verification' => false,
+                'wallet_amount' => 0,
+                'reviews_count' => 0,
+                'reviews_sum' => 0,
+                // New drivers start with no ride quota — they must recharge
+                // before they can go online and receive ride requests.
+                'remaining_rides' => 0,
+                'total_rides' => 0,
+            ]
+        );
+
+        $isNewUser = $driver->wasRecentlyCreated;
+
+        $driver->last_login_ip = $request->ip();
+        $driver->save();
+
+        $token = $driver->createToken('driver-auth-token')->plainTextToken;
+
+        return response()->json([
+            'success' => true,
+            'message' => $isNewUser ? 'Registration successful.' : 'Login successful.',
+            'data' => [
+                'driver' => $driver,
+                'token' => $token,
+                'is_new_user' => $isNewUser,
+            ],
+        ]);
+    }
+
+    /**
+     * Strip everything but digits, so a split country_code + phone_number can be
+     * compared against Firebase's verified E.164 number.
+     */
+    private function digits(string $value): string
+    {
+        return preg_replace('/\D+/', '', $value) ?? '';
     }
 
     /**
