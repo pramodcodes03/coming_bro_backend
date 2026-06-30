@@ -31,7 +31,7 @@ class RechargePlanController extends Controller
     {
         $validated = $request->validate([
             'label'          => 'required|string|max:255',
-            'base_price'     => 'required|numeric|min:0',
+            'price'          => 'required|numeric|min:0',
             'rides'          => 'nullable|integer|min:0',
             'original_price' => 'required|numeric|min:0',
             'gst_percent'    => 'nullable|numeric|min:0|max:100',
@@ -54,16 +54,14 @@ class RechargePlanController extends Controller
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
         $validated['rides'] = $validated['rides'] ?? 0;
 
-        // Admin enters the net price (excl. GST). The driver pays the
-        // GST-inclusive total, which is what we store in `price` — the API
-        // returns this and the app charges it as-is, so no app change is needed.
-        // Discount is derived from MRP vs the net price.
-        $base = (float) $validated['base_price'];
+        // Admin enters the GST-INCLUSIVE price the driver actually pays. We store
+        // it as-is in `price` (the API returns it and the app charges it, so no
+        // app change is needed); GST is back-calculated from it for reporting.
+        // Discount is derived from MRP vs the price paid.
+        $price = round((float) $validated['price'], 2);
         $mrp = (float) $validated['original_price'];
-        $gst = (float) $validated['gst_percent'];
-        $validated['price'] = round($base * (1 + $gst / 100), 2);
-        $validated['discount_pct'] = $mrp > 0 ? max(0, min(100, (int) ((($mrp - $base) / $mrp) * 100))) : 0;
-        unset($validated['base_price']);
+        $validated['price'] = $price;
+        $validated['discount_pct'] = $mrp > 0 ? max(0, min(100, (int) ((($mrp - $price) / $mrp) * 100))) : 0;
 
         // Filter out empty benefits and terms
         if (isset($validated['benefits'])) {
@@ -92,7 +90,7 @@ class RechargePlanController extends Controller
 
         $validated = $request->validate([
             'label'          => 'required|string|max:255',
-            'base_price'     => 'required|numeric|min:0',
+            'price'          => 'required|numeric|min:0',
             'rides'          => 'nullable|integer|min:0',
             'original_price' => 'required|numeric|min:0',
             'gst_percent'    => 'nullable|numeric|min:0|max:100',
@@ -115,16 +113,14 @@ class RechargePlanController extends Controller
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
         $validated['rides'] = $validated['rides'] ?? 0;
 
-        // Admin enters the net price (excl. GST). The driver pays the
-        // GST-inclusive total, which is what we store in `price` — the API
-        // returns this and the app charges it as-is, so no app change is needed.
-        // Discount is derived from MRP vs the net price.
-        $base = (float) $validated['base_price'];
+        // Admin enters the GST-INCLUSIVE price the driver actually pays. We store
+        // it as-is in `price` (the API returns it and the app charges it, so no
+        // app change is needed); GST is back-calculated from it for reporting.
+        // Discount is derived from MRP vs the price paid.
+        $price = round((float) $validated['price'], 2);
         $mrp = (float) $validated['original_price'];
-        $gst = (float) $validated['gst_percent'];
-        $validated['price'] = round($base * (1 + $gst / 100), 2);
-        $validated['discount_pct'] = $mrp > 0 ? max(0, min(100, (int) ((($mrp - $base) / $mrp) * 100))) : 0;
-        unset($validated['base_price']);
+        $validated['price'] = $price;
+        $validated['discount_pct'] = $mrp > 0 ? max(0, min(100, (int) ((($mrp - $price) / $mrp) * 100))) : 0;
 
         if (isset($validated['benefits'])) {
             $validated['benefits'] = array_values(array_filter($validated['benefits'], fn($b) => !empty($b['title'])));

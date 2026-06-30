@@ -41,11 +41,11 @@
                 </div>
 
                 <div>
-                    <label for="base_price" class="block mb-2 font-semibold">Discounted Price excl. GST (&#8377;) <span class="text-danger">*</span></label>
-                    <input id="base_price" type="number" step="0.01" name="base_price"
-                           value="{{ old('base_price', isset($plan) ? round((float) $plan->price / (1 + (float) ($plan->gst_percent ?? 0) / 100), 2) : '') }}"
-                           class="form-input" placeholder="49.00" required />
-                    <p class="mt-1 text-xs text-gray-500">Net selling price. GST is added on top to get the total the driver pays.</p>
+                    <label for="price" class="block mb-2 font-semibold">Discounted Price incl. GST (&#8377;) <span class="text-danger">*</span></label>
+                    <input id="price" type="number" step="0.01" name="price"
+                           value="{{ old('price', $plan->price ?? '') }}"
+                           class="form-input" placeholder="10.00" required />
+                    <p class="mt-1 text-xs text-gray-500">Final amount the driver pays (GST already included). Base &amp; GST are split out below.</p>
                 </div>
 
                 <div>
@@ -56,10 +56,22 @@
                 </div>
 
                 <div>
+                    <label for="base_amount_display" class="block mb-2 font-semibold">Base Amount excl. GST (&#8377;) <span class="text-xs font-normal text-gray-400">(auto)</span></label>
+                    <input id="base_amount_display" type="text" class="form-input bg-gray-100 dark:bg-gray-800 font-semibold" readonly value="" />
+                    <p class="mt-1 text-xs text-gray-500">Auto: price ÷ (1 + GST%). The taxable value.</p>
+                </div>
+
+                <div>
+                    <label for="gst_amount_display" class="block mb-2 font-semibold">GST Amount (&#8377;) <span class="text-xs font-normal text-gray-400">(auto)</span></label>
+                    <input id="gst_amount_display" type="text" class="form-input bg-gray-100 dark:bg-gray-800 font-semibold" readonly value="" />
+                    <p class="mt-1 text-xs text-gray-500">Auto: price − base amount. The GST collected.</p>
+                </div>
+
+                <div>
                     <label for="discount_pct" class="block mb-2 font-semibold">Discount % <span class="text-xs font-normal text-gray-400">(auto)</span></label>
                     <input id="discount_pct" type="number" class="form-input bg-gray-100 dark:bg-gray-800" placeholder="0" readonly
                            value="{{ old('discount_pct', $plan->discount_pct ?? 0) }}" />
-                    <p class="mt-1 text-xs text-gray-500">Auto: (MRP − net price) ÷ MRP.</p>
+                    <p class="mt-1 text-xs text-gray-500">Auto: (MRP − price) ÷ MRP.</p>
                 </div>
 
                 <div>
@@ -189,24 +201,27 @@
     let benefitIndex = {{ count($benefits) }};
     let termIndex = {{ count($termsPoints) }};
 
-    // Live: enter MRP + net price + GST → auto discount % and GST-inclusive total.
-    // The total is what the server stores as `price` (what the app charges).
+    // Live: the entered price is GST-INCLUSIVE (what the driver pays). We split
+    // it into base + GST for display, and derive discount % from MRP vs price.
+    // The stored `price` is exactly what was entered — the app charges it as-is.
     function recalcPlanPricing() {
         const num = (id) => parseFloat(document.getElementById(id)?.value) || 0;
-        const base = num('base_price');
+        const price = num('price');       // GST-inclusive total the driver pays
         const mrp = num('original_price');
         const gst = num('gst_percent');
 
-        const total = base * (1 + gst / 100);
-        const discount = mrp > 0 ? Math.max(0, Math.min(100, Math.floor(((mrp - base) / mrp) * 100))) : 0;
+        const base = gst > 0 ? price / (1 + gst / 100) : price;
+        const gstAmount = price - base;
+        const discount = mrp > 0 ? Math.max(0, Math.min(100, Math.floor(((mrp - price) / mrp) * 100))) : 0;
 
-        const totalEl = document.getElementById('total_price_display');
-        const discEl = document.getElementById('discount_pct');
-        if (totalEl) totalEl.value = '₹' + total.toFixed(2);
-        if (discEl) discEl.value = discount;
+        const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
+        set('base_amount_display', '₹' + base.toFixed(2));
+        set('gst_amount_display', '₹' + gstAmount.toFixed(2));
+        set('total_price_display', '₹' + price.toFixed(2));
+        set('discount_pct', discount);
     }
 
-    ['base_price', 'original_price', 'gst_percent'].forEach((id) => {
+    ['price', 'original_price', 'gst_percent'].forEach((id) => {
         document.getElementById(id)?.addEventListener('input', recalcPlanPricing);
     });
     document.addEventListener('DOMContentLoaded', recalcPlanPricing);
