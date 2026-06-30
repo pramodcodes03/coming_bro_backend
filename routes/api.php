@@ -79,6 +79,8 @@ Route::prefix('driver')->group(function () {
         Route::get('/orders', [OrderController::class, 'index']);
         Route::get('/orders/{id}', [OrderController::class, 'show']);
         Route::put('/orders/{id}', [OrderController::class, 'update']);
+        Route::post('/orders/{id}/cancel', [OrderController::class, 'cancel']);
+        Route::get('/cancel-reasons', [OrderController::class, 'cancelReasons']);
         Route::post('/orders/{orderId}/accept', [OrderController::class, 'accept']);
         Route::get('/orders/{orderId}/accepted/{driverId}', [OrderController::class, 'getAcceptedDriver']);
 
@@ -216,6 +218,8 @@ Route::prefix('customer')->group(function () {
         Route::get('/orders/first-order/{userId}', [CustomerOrderController::class, 'firstOrder']);
         Route::get('/orders/{id}', [CustomerOrderController::class, 'show']);
         Route::put('/orders/{id}', [CustomerOrderController::class, 'update']);
+        Route::post('/orders/{id}/cancel', [CustomerOrderController::class, 'cancel']);
+        Route::get('/cancel-reasons', [CustomerOrderController::class, 'cancelReasons']);
         Route::get('/orders/{id}/accepted-drivers', [CustomerOrderController::class, 'acceptedDrivers']);
         Route::get('/orders/{id}/payment-status', [CustomerOrderController::class, 'paymentStatus']);
         Route::post('/orders/referral/update-amount', [CustomerOrderController::class, 'updateReferralAmount']);

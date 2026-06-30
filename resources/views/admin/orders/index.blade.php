@@ -86,6 +86,11 @@
                                     <span class="badge {{ $badgeClass }}">
                                         {{ ucfirst(str_replace('_', ' ', $order->status)) }}
                                     </span>
+                                    @if($order->cancel_reason)
+                                        <div class="mt-1 text-[11px] text-danger max-w-[200px] truncate" title="{{ $order->cancel_reason }}">
+                                            ✕ {{ $order->cancel_reason }}
+                                        </div>
+                                    @endif
                                 </td>
                                 <td class="capitalize">{{ $order->payment_type ?? '-' }}</td>
                                 <td class="font-semibold text-right whitespace-nowrap">

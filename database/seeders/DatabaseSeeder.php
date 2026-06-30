@@ -54,6 +54,7 @@ class DatabaseSeeder extends Seeder
             FaqSeeder::class,
             CouponSeeder::class,
             RechargePlanSeeder::class,
+            CancelReasonSeeder::class,
         ]);
     }
 }

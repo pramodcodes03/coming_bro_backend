@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Driver;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcceptedDriver;
+use App\Models\CancelReason;
 use App\Models\DriverUser;
 use App\Models\Order;
 use App\Events\OrderUpdated;
@@ -85,6 +86,17 @@ class OrderController extends Controller
         $order->fill($updateData);
         $order->save();
 
+        // One fare everywhere — if the driver's bid/accept changes the fare,
+        // keep offer_rate and final_rate identical so both apps show one price.
+        if ($request->hasAny(['final_rate', 'offer_rate'])) {
+            $fare = Order::singleFare($request->input('offer_rate'), $request->input('final_rate'));
+            if ($fare !== null && ((float) $order->offer_rate !== $fare || (float) $order->final_rate !== $fare)) {
+                $order->offer_rate = $fare;
+                $order->final_rate = $fare;
+                $order->save();
+            }
+        }
+
         // When a ride first transitions into a completed state, consume one of
         // the driver's recharge rides (floored at 0 — never goes negative).
         if (! $wasCompleted && $this->isCompletedStatus($order->status)) {
@@ -97,6 +109,68 @@ class OrderController extends Controller
             'success' => true,
             'message' => 'Order updated successfully.',
             'data' => $order->fresh(),
+        ]);
+    }
+
+    /** Admin-managed cancel reasons shown on the driver cancel sheet. */
+    public function cancelReasons(): JsonResponse
+    {
+        return response()->json([
+            'success' => true,
+            'message' => 'Cancel reasons retrieved successfully.',
+            'data' => CancelReason::forAudience('driver')->get(['id', 'reason', 'applies_to']),
+        ]);
+    }
+
+    /**
+     * Driver cancels an assigned ride and records why. Sends the chosen reason
+     * (and optional free text). Only the assigned driver can cancel, and only
+     * before the ride is completed/cancelled.
+     */
+    public function cancel(Request $request, string $id): JsonResponse
+    {
+        $validated = $request->validate([
+            'cancel_reason' => 'required|string|max:255',
+            'cancel_note'   => 'nullable|string|max:500',
+        ]);
+
+        $order = Order::where('id', $id)
+            ->where('driver_id', $request->user()->id)
+            ->firstOrFail();
+
+        $current = strtolower(trim((string) $order->status));
+        if (in_array($current, ['ride completed', 'completed', 'ride canceled', 'ride cancelled', 'cancelled', 'canceled'], true)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'This ride can no longer be cancelled.',
+                'data' => $order,
+            ], 409);
+        }
+
+        $reason = trim($validated['cancel_reason']);
+        if (! empty($validated['cancel_note'])) {
+            $reason .= ' — '.trim($validated['cancel_note']);
+        }
+
+        $order->status = Order::STATUS_RIDE_CANCELED;
+        $order->cancel_reason = $reason;
+        $order->cancelled_by = 'driver';
+        $order->cancelled_at = now();
+        $order->update_date = now();
+        $order->save();
+
+        event(new OrderUpdated($order));
+
+        Log::channel('stack')->info('[RIDE_FLOW] Driver cancelled ride', [
+            'order_id' => $order->id,
+            'driver_id' => $request->user()->id,
+            'cancel_reason' => $reason,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Ride cancelled successfully.',
+            'data' => $order,
         ]);
     }
 

@@ -21,7 +21,25 @@ class Order extends Model
      */
     public const STATUS_RIDE_PLACED = 'Ride Placed';
 
+    /** Canonical status when a ride is cancelled (matches the cancelled bucket). */
+    public const STATUS_RIDE_CANCELED = 'Ride Canceled';
+
     public $timestamps = false;
+
+    /**
+     * One fare everywhere: the customer's offered fare (`offer_rate`) is the
+     * single source of truth — what the customer sees & agrees to is what the
+     * driver sees/earns and what payment charges. We keep `offer_rate` and
+     * `final_rate` in sync on create/update via this helper. Falls back to
+     * `final_rate` when no offer was sent. Returns null if neither is numeric.
+     */
+    public static function singleFare($offer, $final): ?float
+    {
+        $offer = is_numeric($offer) ? (float) $offer : null;
+        $final = is_numeric($final) ? (float) $final : null;
+
+        return $offer ?? $final;
+    }
 
     /**
      * Expose return-ride flags in every JSON response (apps + admin) without
@@ -72,6 +90,9 @@ class Order extends Model
         'admin_commission',
         'zone',
         'zone_id',
+        'cancel_reason',
+        'cancelled_by',
+        'cancelled_at',
         'created_date',
         'update_date',
     ];
@@ -89,6 +110,7 @@ class Order extends Model
             'zone' => 'array',
             'payment_status' => 'boolean',
             'is_ac_selected' => 'boolean',
+            'cancelled_at' => 'datetime',
             'created_date' => 'datetime',
             'update_date' => 'datetime',
         ];

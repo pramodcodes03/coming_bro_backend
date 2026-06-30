@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AirportController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CancelReasonController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\CouponController;
@@ -186,6 +187,10 @@ Route::middleware('auth:admin')->group(function () {
     // Payout Requests
     Route::get('payout-requests', [PayoutRequestController::class, 'index'])->name('admin.payout-requests.index');
     Route::patch('payout-requests/{id}/status', [PayoutRequestController::class, 'updateStatus'])->name('admin.payout-requests.update-status');
+
+    // Cancel Reasons (managed list shown on the apps' cancel sheets)
+    Route::resource('cancel-reasons', CancelReasonController::class)->names('admin.cancel-reasons');
+    Route::patch('cancel-reasons/{cancel_reason}/toggle-status', [CancelReasonController::class, 'toggleStatus'])->name('admin.cancel-reasons.toggle-status');
 
     // Recharges (GST register)
     Route::get('recharges', [RechargeController::class, 'index'])->name('admin.recharges.index');

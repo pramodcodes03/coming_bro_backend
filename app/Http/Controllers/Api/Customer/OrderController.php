@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcceptedDriver;
+use App\Models\CancelReason;
 use App\Models\DriverUser;
 use App\Models\Order;
 use App\Models\Referral;
@@ -54,6 +55,14 @@ class OrderController extends Controller
         $data['created_date'] = now();
         $data['update_date'] = now();
 
+        // One fare everywhere — keep offer_rate (customer view) and final_rate
+        // (driver view + payment) identical so both apps show the same price.
+        $fare = Order::singleFare($data['offer_rate'] ?? null, $data['final_rate'] ?? null);
+        if ($fare !== null) {
+            $data['offer_rate'] = $fare;
+            $data['final_rate'] = $fare;
+        }
+
         $order = Order::create($data);
 
         event(new OrderUpdated($order));
@@ -95,6 +104,68 @@ class OrderController extends Controller
             'message' => 'Order created successfully.',
             'data' => $order,
         ], 201);
+    }
+
+    /** Admin-managed cancel reasons shown on the customer cancel sheet. */
+    public function cancelReasons(): JsonResponse
+    {
+        return response()->json([
+            'success' => true,
+            'message' => 'Cancel reasons retrieved successfully.',
+            'data' => CancelReason::forAudience('customer')->get(['id', 'reason', 'applies_to']),
+        ]);
+    }
+
+    /**
+     * Cancel a ride and record why. The customer app sends the chosen reason
+     * (and optional free text when "My reason is not listed" is picked). Only
+     * the order's owner can cancel it, and only before it is completed/cancelled.
+     */
+    public function cancel(Request $request, string $id): JsonResponse
+    {
+        $validated = $request->validate([
+            'cancel_reason' => 'required|string|max:255',
+            'cancel_note'   => 'nullable|string|max:500',
+        ]);
+
+        $order = Order::where('id', $id)
+            ->where('user_id', $request->user()->id)
+            ->firstOrFail();
+
+        $current = strtolower(trim((string) $order->status));
+        if (in_array($current, ['ride completed', 'completed', 'ride canceled', 'ride cancelled', 'cancelled', 'canceled'], true)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'This ride can no longer be cancelled.',
+                'data' => $order,
+            ], 409);
+        }
+
+        $reason = trim($validated['cancel_reason']);
+        if (! empty($validated['cancel_note'])) {
+            $reason .= ' — '.trim($validated['cancel_note']);
+        }
+
+        $order->status = Order::STATUS_RIDE_CANCELED;
+        $order->cancel_reason = $reason;
+        $order->cancelled_by = 'customer';
+        $order->cancelled_at = now();
+        $order->update_date = now();
+        $order->save();
+
+        event(new OrderUpdated($order));
+
+        Log::channel('stack')->info('[RIDE_FLOW] Customer cancelled ride', [
+            'order_id' => $order->id,
+            'user_id' => $order->user_id,
+            'cancel_reason' => $reason,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Ride cancelled successfully.',
+            'data' => $order,
+        ]);
     }
 
     /**
@@ -205,6 +276,17 @@ class OrderController extends Controller
             'ac_non_ac_charges',
             'coupon',
         ]));
+
+        // One fare everywhere — keep offer_rate and final_rate identical when
+        // either is changed, so the customer and driver always see one price.
+        if ($request->hasAny(['final_rate', 'offer_rate'])) {
+            $fare = Order::singleFare($request->input('offer_rate'), $request->input('final_rate'));
+            if ($fare !== null) {
+                $order->offer_rate = $fare;
+                $order->final_rate = $fare;
+            }
+        }
+
         $order->update_date = now();
         $order->save();
 

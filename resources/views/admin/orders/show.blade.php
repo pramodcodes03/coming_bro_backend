@@ -81,6 +81,21 @@
                         <span class="text-sm text-gray-500 dark:text-gray-400">Updated</span>
                         <span class="text-sm font-medium text-gray-900 dark:text-white">{{ $order->update_date ? $order->update_date->format('d M Y, h:i A') : '-' }}</span>
                     </div>
+
+                    @if($order->cancel_reason || $order->cancelled_at)
+                        <div class="p-3 mt-3 border rounded-lg bg-danger/10 border-danger/20">
+                            <div class="flex items-start justify-between gap-3">
+                                <span class="text-sm font-semibold text-danger">Cancel Reason</span>
+                                <span class="text-sm font-semibold text-right text-danger">{{ $order->cancel_reason ?? '-' }}</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-1">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Cancelled by</span>
+                                <span class="text-xs font-medium text-gray-700 capitalize dark:text-gray-300">
+                                    {{ $order->cancelled_by ?? '-' }}{{ $order->cancelled_at ? ' · '.$order->cancelled_at->format('d M Y, h:i A') : '' }}
+                                </span>
+                            </div>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Status Update Form -->

@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 
@@ -40,10 +41,17 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->redirectGuestsTo(function ($request) {
+            // API guests must never be redirected — there is no `login` web
+            // route, so redirecting them throws RouteNotFoundException (500).
+            // Returning null lets the auth middleware raise an
+            // AuthenticationException, rendered below as a clean JSON 401.
+            if ($request->expectsJson() || $request->is('api/*')) {
+                return null;
+            }
             if ($request->is('admin/*') || $request->is('admin')) {
                 return route('admin.login');
             }
-            return route('login');
+            return route('admin.login');
         });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
@@ -54,6 +62,16 @@ return Application::configure(basePath: dirname(__DIR__))
                     'message' => $e->getMessage(),
                     'errors' => $e->errors(),
                 ], $e->status);
+            }
+        });
+
+        $exceptions->render(function (AuthenticationException $e, Request $request) {
+            if ($request->expectsJson() || $request->is('api/*')) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Unauthenticated.',
+                    'data' => null,
+                ], 401);
             }
         });
     })->create();

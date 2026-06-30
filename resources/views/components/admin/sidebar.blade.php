@@ -151,6 +151,18 @@
                     </a>
                 </li>
 
+                {{-- Cancel Reasons --}}
+                <li class="menu nav-item">
+                    <a href="{{ route('admin.cancel-reasons.index') }}" class="nav-link group {{ request()->routeIs('admin.cancel-reasons.*') ? 'active' : '' }}">
+                        <div class="flex items-center">
+                            <svg class="group-hover:!text-primary shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="9" /><path d="M9 9l6 6M15 9l-6 6" stroke-linecap="round" />
+                            </svg>
+                            <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Cancel Reasons</span>
+                        </div>
+                    </a>
+                </li>
+
                 {{-- ===== SERVICE MANAGEMENT ===== --}}
                 <h2 class="-mx-4 mb-1 flex items-center bg-white-light/30 py-3 px-7 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
                     <span>Service Management</span>
