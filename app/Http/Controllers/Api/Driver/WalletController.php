@@ -46,11 +46,25 @@ class WalletController extends Controller
         $lots = $this->rideWallet->activeLots($driver);
 
         $plans = $lots->map(function ($lot) {
+            $plan = $lot->rechargePlan;
+            $price = $plan ? (float) $plan->price : 0.0;
+            $gstPercent = $plan ? (float) $plan->gst_percent : 0.0;
+
+            // GST-inclusive split (matches the admin form & recharge flow):
+            // base rounded to whole rupees, GST = price − base.
+            $base = $gstPercent > 0 ? round($price / (1 + $gstPercent / 100)) : round($price);
+            $gstAmount = round($price - $base, 2);
+
             return [
                 'id' => $lot->id,
                 'plan_id' => $lot->recharge_plan_id,
-                'label' => $lot->rechargePlan?->label ?? ucfirst(str_replace('_', ' ', $lot->source)),
+                'label' => $plan?->label ?? ucfirst(str_replace('_', ' ', $lot->source)),
                 'source' => $lot->source,
+                'price' => $price,
+                'original_price' => $plan ? (float) $plan->original_price : 0.0,
+                'gst_percent' => $gstPercent,
+                'base_amount' => (float) $base,
+                'gst_amount' => (float) $gstAmount,
                 'rides_total' => (int) $lot->rides_total,
                 'rides_remaining' => (int) $lot->rides_remaining,
                 'rides_used' => (int) $lot->rides_total - (int) $lot->rides_remaining,

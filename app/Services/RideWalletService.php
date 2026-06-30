@@ -5,8 +5,6 @@ namespace App\Services;
 use App\Models\DriverUser;
 use App\Models\RechargePlan;
 use App\Models\RideLot;
-use App\Models\WalletTransaction;
-use Carbon\CarbonInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -194,7 +192,7 @@ class RideWalletService
 
         return RideLot::active()
             ->where('driver_id', $driver->id)
-            ->with('rechargePlan:id,label')
+            ->with('rechargePlan:id,label,price,original_price,gst_percent')
             ->orderBy('created_at')
             ->orderBy('id')
             ->get();
