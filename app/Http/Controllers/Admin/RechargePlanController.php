@@ -33,6 +33,7 @@ class RechargePlanController extends Controller
             'label'          => 'required|string|max:255',
             'price'          => 'required|numeric|min:0',
             'rides'          => 'nullable|integer|min:0',
+            'validity_days'  => 'nullable|integer|min:0|max:3650',
             'original_price' => 'required|numeric|min:0',
             'gst_percent'    => 'nullable|numeric|min:0|max:100',
             'is_best_value'  => 'nullable|boolean',
@@ -53,6 +54,8 @@ class RechargePlanController extends Controller
         $validated['gst_percent'] = $validated['gst_percent'] ?? 0;
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
         $validated['rides'] = $validated['rides'] ?? 0;
+        // 0 / blank validity means "no expiry" — store as NULL for clarity.
+        $validated['validity_days'] = ! empty($validated['validity_days']) ? (int) $validated['validity_days'] : null;
 
         // Admin enters the GST-INCLUSIVE price the driver actually pays. We store
         // it as-is in `price` (the API returns it and the app charges it, so no
@@ -92,6 +95,7 @@ class RechargePlanController extends Controller
             'label'          => 'required|string|max:255',
             'price'          => 'required|numeric|min:0',
             'rides'          => 'nullable|integer|min:0',
+            'validity_days'  => 'nullable|integer|min:0|max:3650',
             'original_price' => 'required|numeric|min:0',
             'gst_percent'    => 'nullable|numeric|min:0|max:100',
             'is_best_value'  => 'nullable|boolean',
@@ -112,6 +116,8 @@ class RechargePlanController extends Controller
         $validated['gst_percent'] = $validated['gst_percent'] ?? 0;
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
         $validated['rides'] = $validated['rides'] ?? 0;
+        // 0 / blank validity means "no expiry" — store as NULL for clarity.
+        $validated['validity_days'] = ! empty($validated['validity_days']) ? (int) $validated['validity_days'] : null;
 
         // Admin enters the GST-INCLUSIVE price the driver actually pays. We store
         // it as-is in `price` (the API returns it and the app charges it, so no

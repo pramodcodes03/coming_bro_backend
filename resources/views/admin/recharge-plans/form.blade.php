@@ -88,6 +88,13 @@
                 </div>
 
                 <div>
+                    <label for="validity_days" class="block mb-2 font-semibold">Validity (days)</label>
+                    <input id="validity_days" type="number" name="validity_days" value="{{ old('validity_days', $plan->validity_days ?? '') }}"
+                           class="form-input" placeholder="30" min="0" />
+                    <p class="mt-1 text-xs text-gray-500">Days the rides stay valid after purchase. <strong>30</strong> = 1 month, <strong>7</strong> = a week. Leave blank or <strong>0</strong> for <strong>no expiry</strong>.</p>
+                </div>
+
+                <div>
                     <label for="sort_order" class="block mb-2 font-semibold">Sort Order</label>
                     <input id="sort_order" type="number" name="sort_order" value="{{ old('sort_order', $plan->sort_order ?? 0) }}"
                            class="form-input" placeholder="1" min="0" />

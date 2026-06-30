@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DriverUser;
 use App\Models\Service;
 use App\Models\WalletTransaction;
+use App\Services\RideWalletService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,10 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class DriverController extends Controller
 {
+    public function __construct(private readonly RideWalletService $rideWallet)
+    {
+    }
+
     public function index(Request $request)
     {
         $drivers = $this->filteredQuery($request)
@@ -188,28 +193,20 @@ class DriverController extends Controller
         $driver = DriverUser::findOrFail($id);
 
         $validated = $request->validate([
-            'rides' => 'required|integer|min:1|max:1000',
-            'note'  => 'nullable|string|max:255',
+            'rides'         => 'required|integer|min:1|max:1000',
+            'note'          => 'nullable|string|max:255',
+            'validity_days' => 'nullable|integer|min:0|max:3650',
         ]);
 
         $rides = (int) $validated['rides'];
+        $validityDays = isset($validated['validity_days']) ? (int) $validated['validity_days'] : 0;
         $note = trim($validated['note'] ?? '') ?: "Free {$rides} ".($rides === 1 ? 'ride' : 'rides').' granted by admin';
 
-        DB::transaction(function () use ($driver, $rides, $note) {
-            // Credit the usable ride wallet (NULL-safe — new drivers may be NULL).
-            $driver->remaining_rides = (int) $driver->remaining_rides + $rides;
-            $driver->total_rides = (int) $driver->total_rides + $rides;
-            $driver->free_rides_total = (int) $driver->free_rides_total + $rides;
-
-            // A driver who was taken offline for zero quota can come back online
-            // once they have rides again — but don't force them online; just let
-            // the balance reflect.
-            $driver->save();
-
+        DB::transaction(function () use ($driver, $rides, $validityDays, $note) {
             // Audit + history row. Amount/GST are zero (it's free); we stash the
             // ride count in the note and mark order_type so the app and admin can
             // render it distinctly from a paid recharge.
-            WalletTransaction::create([
+            $transaction = WalletTransaction::create([
                 'user_id'             => $driver->id,
                 'amount'              => 0,
                 'base_amount'         => 0,
@@ -225,7 +222,23 @@ class DriverController extends Controller
                 'granted_by_admin_id' => Auth::guard('admin')->id() ?? Auth::id(),
                 'created_date'        => now(),
             ]);
+
+            // Credit as a ride lot (FIFO + optional expiry). The service keeps
+            // remaining_rides / total_rides in sync from the lot ledger.
+            $this->rideWallet->credit(
+                driver: $driver,
+                rides: $rides,
+                source: 'free',
+                walletTransactionId: $transaction->id,
+                validityDays: $validityDays > 0 ? $validityDays : null,
+            );
+
+            // free_rides_total is a separate lifetime tally of free rides given.
+            $driver->free_rides_total = (int) $driver->free_rides_total + $rides;
+            $driver->saveQuietly();
         });
+
+        $driver->refresh();
 
         return redirect()->route('admin.drivers.view', $driver->id)
             ->with('success', "Granted {$rides} free ".($rides === 1 ? 'ride' : 'rides')." to {$driver->full_name}. They now have {$driver->remaining_rides} rides remaining.");

@@ -8,6 +8,7 @@ use App\Models\DriverUser;
 use App\Models\RechargePlan;
 use App\Models\WalletTransaction;
 use App\Services\RazorpayService;
+use App\Services\RideWalletService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -24,7 +25,10 @@ use Illuminate\Support\Facades\Log;
  */
 class RazorpayWebhookController extends Controller
 {
-    public function __construct(private readonly RazorpayService $razorpay) {}
+    public function __construct(
+        private readonly RazorpayService $razorpay,
+        private readonly RideWalletService $rideWallet,
+    ) {}
 
     public function handle(Request $request): JsonResponse
     {
@@ -108,12 +112,16 @@ class RazorpayWebhookController extends Controller
                 : (RechargePlan::where('is_active', true)->where('price', $amountPaise / 100)->orderBy('sort_order')->first()
                     ?? ($purpose === 'return_ride_recharge' ? RechargePlan::where('label', 'like', 'Return Ride%')->first() : null));
             $price = $plan ? (float) $plan->price : $amountPaise / 100;
-            $this->record('driver', $userId, $price, $plan?->id, $orderId, $paymentId, 'wallet_recharge', (float) ($plan?->gst_percent ?? 0));
-            $rides = (int) ($plan?->rides ?? 0);
-            if ($rides > 0) {
-                $driver->increment('remaining_rides', $rides);
-                $driver->increment('total_rides', $rides);
-            }
+            $transaction = $this->record('driver', $userId, $price, $plan?->id, $orderId, $paymentId, 'wallet_recharge', (float) ($plan?->gst_percent ?? 0));
+
+            // Credit as a ride lot (FIFO + the plan's own expiry). The service
+            // keeps remaining_rides / total_rides in sync from the lot ledger.
+            $this->rideWallet->creditFromPlan(
+                driver: $driver,
+                plan: $plan,
+                source: $purpose === 'return_ride_recharge' ? 'return_recharge' : 'recharge',
+                walletTransactionId: $transaction->id,
+            );
 
             return;
         }
@@ -130,9 +138,9 @@ class RazorpayWebhookController extends Controller
         }
     }
 
-    private function record(string $userType, int $userId, float $amount, ?int $planId, string $orderId, string $paymentId, string $orderType, float $gstPercent): void
+    private function record(string $userType, int $userId, float $amount, ?int $planId, string $orderId, string $paymentId, string $orderType, float $gstPercent): WalletTransaction
     {
-        WalletTransaction::create([
+        return WalletTransaction::create([
             'user_id' => $userId,
             'user_type' => $userType,
             'amount' => $amount,

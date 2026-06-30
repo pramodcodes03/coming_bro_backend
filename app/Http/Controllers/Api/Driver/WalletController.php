@@ -6,12 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\RechargePlan;
 use App\Models\WalletTransaction;
 use App\Services\RazorpayService;
+use App\Services\RideWalletService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class WalletController extends Controller
 {
+    public function __construct(private readonly RideWalletService $rideWallet)
+    {
+    }
+
     /**
      * Get driver's wallet transactions.
      */
@@ -27,6 +32,43 @@ class WalletController extends Controller
             'success' => true,
             'message' => 'Wallet transactions retrieved successfully.',
             'data' => $transactions,
+        ]);
+    }
+
+    /**
+     * Driver's current (active) ride plans — the live lots that still have
+     * rides and haven't expired, oldest first (the order they'll be consumed).
+     * Expired lots are retired on read so the totals are always accurate.
+     */
+    public function currentPlans(Request $request): JsonResponse
+    {
+        $driver = $request->user();
+        $lots = $this->rideWallet->activeLots($driver);
+
+        $plans = $lots->map(function ($lot) {
+            return [
+                'id' => $lot->id,
+                'plan_id' => $lot->recharge_plan_id,
+                'label' => $lot->rechargePlan?->label ?? ucfirst(str_replace('_', ' ', $lot->source)),
+                'source' => $lot->source,
+                'rides_total' => (int) $lot->rides_total,
+                'rides_remaining' => (int) $lot->rides_remaining,
+                'rides_used' => (int) $lot->rides_total - (int) $lot->rides_remaining,
+                'purchased_at' => optional($lot->created_at)->toIso8601String(),
+                'expires_at' => optional($lot->expires_at)->toIso8601String(),
+                'never_expires' => $lot->expires_at === null,
+                'days_left' => $lot->expires_at ? max(0, (int) now()->diffInDays($lot->expires_at, false)) : null,
+            ];
+        })->values();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Current plans retrieved successfully.',
+            'data' => [
+                'remaining_rides' => (int) $driver->remaining_rides,
+                'total_rides' => (int) $driver->total_rides,
+                'active_plans' => $plans,
+            ],
         ]);
     }
 
@@ -192,24 +234,27 @@ class WalletController extends Controller
             'razorpay_payment_id' => $transaction->razorpay_payment_id,
         ]);
 
-        // Credit the plan's ride quota to the driver. Recharges stack: buying a
-        // 10-ride plan twice leaves the driver at 20 total (e.g. 5/20 remaining).
-        // Unlimited / validity-only plans carry rides = 0 and are skipped here.
+        // Credit the plan's ride quota as a new lot (FIFO + per-plan expiry).
+        // Recharges stack: buying a 10-ride plan twice creates two lots (20
+        // total). Unlimited / validity-only plans carry rides = 0 and add no lot.
         if ($rechargePlanId) {
-            $rides = (int) RechargePlan::whereKey($rechargePlanId)->value('rides');
-            if ($rides > 0) {
-                // NULL-safe credit: a brand-new driver's quota columns may be NULL,
-                // and `NULL + n` is NULL in SQL — so coalesce to 0 before adding.
-                $driver->remaining_rides = (int) $driver->remaining_rides + $rides;
-                $driver->total_rides = (int) $driver->total_rides + $rides;
-                $driver->save();
+            $plan = RechargePlan::find($rechargePlanId);
+            $lot = $this->rideWallet->creditFromPlan(
+                driver: $driver,
+                plan: $plan,
+                source: 'recharge',
+                walletTransactionId: $transaction->id,
+            );
+            $driver->refresh();
 
-                Log::info('[RECHARGE] ride quota credited', [
+            if ($lot) {
+                Log::info('[RECHARGE] ride lot credited', [
                     'driver_id' => $driver->id,
                     'plan_id' => $rechargePlanId,
-                    'rides_added' => $rides,
+                    'lot_id' => $lot->id,
+                    'rides_added' => $lot->rides_total,
+                    'expires_at' => optional($lot->expires_at)->toDateTimeString(),
                     'remaining_rides' => (int) $driver->remaining_rides,
-                    'total_rides' => (int) $driver->total_rides,
                 ]);
             } else {
                 Log::info('[RECHARGE] plan grants no ride count (validity/unlimited plan)', [

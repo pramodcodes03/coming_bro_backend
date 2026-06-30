@@ -121,6 +121,9 @@ Route::prefix('driver')->group(function () {
         Route::put('/wallet/update', [WalletController::class, 'updateWallet']);
         Route::post('/wallet/razorpay/create-order', [WalletController::class, 'createRazorpayOrder']);
 
+        // Driver's active ride plans (live lots: remaining rides + expiry, FIFO order).
+        Route::get('/current-plans', [WalletController::class, 'currentPlans']);
+
         Route::get('/bank-details', [BankController::class, 'show']);
         Route::put('/bank-details', [BankController::class, 'update']);
         Route::get('/bank-details/check', [BankController::class, 'check']);

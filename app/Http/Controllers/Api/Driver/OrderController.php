@@ -8,6 +8,7 @@ use App\Models\CancelReason;
 use App\Models\DriverUser;
 use App\Models\Order;
 use App\Events\OrderUpdated;
+use App\Services\RideWalletService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -186,8 +187,9 @@ class OrderController extends Controller
     }
 
     /**
-     * Consume one recharge ride from the order's assigned driver, never letting
-     * remaining_rides drop below zero.
+     * Consume one recharge ride from the order's assigned driver, oldest lot
+     * first (FIFO). remaining_rides is recomputed from the lot ledger and never
+     * goes below zero.
      */
     private function consumeDriverRide(Order $order): void
     {
@@ -195,16 +197,19 @@ class OrderController extends Controller
             return;
         }
 
-        DriverUser::whereKey($order->driver_id)
-            ->where('remaining_rides', '>', 0)
-            ->decrement('remaining_rides');
+        $driver = DriverUser::find($order->driver_id);
+        if (! $driver) {
+            return;
+        }
+
+        app(RideWalletService::class)->consume($driver, 1);
+        $driver->refresh();
 
         // When the quota hits zero, take the driver offline so the matching
         // engine stops sending them requests until they recharge.
-        $driver = DriverUser::find($order->driver_id);
-        if ($driver && (int) $driver->remaining_rides <= 0 && $driver->is_online) {
+        if ((int) $driver->remaining_rides <= 0 && $driver->is_online) {
             $driver->is_online = false;
-            $driver->save();
+            $driver->saveQuietly();
         }
     }
 

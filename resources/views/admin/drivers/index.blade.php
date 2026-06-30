@@ -248,6 +248,14 @@
                         </div>
                     </div>
 
+                    <!-- Validity -->
+                    <div>
+                        <label for="list_free_rides_validity" class="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-300">Validity (days) <span class="font-normal text-gray-400">(0 / blank = never expires)</span></label>
+                        <input id="list_free_rides_validity" type="number" name="validity_days" min="0" max="3650"
+                            placeholder="0 = no expiry"
+                            class="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50 border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 outline-none">
+                    </div>
+
                     <!-- Note -->
                     <div>
                         <label for="list_free_rides_note" class="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-300">Reason / note <span class="font-normal text-gray-400">(optional)</span></label>

@@ -10,6 +10,7 @@ class RechargePlan extends Model
         'label',
         'price',
         'rides',
+        'validity_days',
         'original_price',
         'discount_pct',
         'gst_percent',
@@ -27,6 +28,7 @@ class RechargePlan extends Model
         return [
             'price' => 'decimal:2',
             'rides' => 'integer',
+            'validity_days' => 'integer',
             'original_price' => 'decimal:2',
             'discount_pct' => 'integer',
             'gst_percent' => 'decimal:2',

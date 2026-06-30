@@ -11,6 +11,7 @@ use App\Models\ReturnRideOffer;
 use App\Models\WalletTransaction;
 use App\Services\PushNotificationService;
 use App\Services\RazorpayService;
+use App\Services\RideWalletService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -28,6 +29,7 @@ class ReturnRideController extends Controller
     public function __construct(
         private readonly PushNotificationService $push,
         private readonly RazorpayService $razorpay,
+        private readonly RideWalletService $rideWallet,
     ) {}
 
     /**
@@ -138,7 +140,7 @@ class ReturnRideController extends Controller
             'plan_id' => $plan?->id,
         ]);
 
-        WalletTransaction::create([
+        $transaction = WalletTransaction::create([
             'amount'              => $price,
             'user_id'             => $driver->id,
             'user_type'           => 'driver',
@@ -155,17 +157,22 @@ class ReturnRideController extends Controller
             'created_date'        => now(),
         ]);
 
-        // Credit the shared ride wallet.
-        $rides = (int) ($plan?->rides ?? 0);
-        if ($rides > 0) {
-            // NULL-safe credit (a new driver's quota columns may be NULL).
-            $driver->remaining_rides = (int) $driver->remaining_rides + $rides;
-            $driver->total_rides = (int) $driver->total_rides + $rides;
-            $driver->save();
-            Log::info('[RECHARGE] ride quota credited (return-ride screen)', [
+        // Credit the ride wallet as a new lot (FIFO + the plan's own expiry).
+        $lot = $this->rideWallet->creditFromPlan(
+            driver: $driver,
+            plan: $plan,
+            source: 'return_recharge',
+            walletTransactionId: $transaction->id,
+        );
+        $driver->refresh();
+
+        if ($lot) {
+            Log::info('[RECHARGE] ride lot credited (return-ride screen)', [
                 'driver_id' => $driver->id,
                 'plan_id' => $plan?->id,
-                'rides_added' => $rides,
+                'lot_id' => $lot->id,
+                'rides_added' => $lot->rides_total,
+                'expires_at' => optional($lot->expires_at)->toDateTimeString(),
                 'remaining_rides' => (int) $driver->remaining_rides,
             ]);
         } else {
