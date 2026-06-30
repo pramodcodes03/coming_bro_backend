@@ -26,6 +26,7 @@ class WalletTransaction extends Model
         'note',
         'order_type',
         'user_type',
+        'granted_by_admin_id',
         'created_date',
     ];
 

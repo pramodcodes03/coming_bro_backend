@@ -6,7 +6,10 @@ use App\Exports\DriverExport;
 use App\Http\Controllers\Controller;
 use App\Models\DriverUser;
 use App\Models\Service;
+use App\Models\WalletTransaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DriverController extends Controller
@@ -98,7 +101,14 @@ class DriverController extends Controller
         $driver = DriverUser::with(['bankDetail', 'driverDocument', 'reviews', 'orders'])
             ->findOrFail($id);
 
-        return view('admin.drivers.view', compact('driver'));
+        // Free rides granted to this driver, newest first, for the history table.
+        $freeRideGrants = WalletTransaction::where('user_id', $driver->id)
+            ->where('order_type', 'free_ride')
+            ->orderByDesc('created_date')
+            ->limit(50)
+            ->get();
+
+        return view('admin.drivers.view', compact('driver', 'freeRideGrants'));
     }
 
     public function edit($id)
@@ -163,5 +173,61 @@ class DriverController extends Controller
 
         return redirect()->back()
             ->with('success', 'Driver online status updated successfully.');
+    }
+
+    /**
+     * Grant complimentary (free) rides to a driver. These reuse the same ride
+     * wallet a paid recharge fills (remaining_rides / total_rides), so the
+     * driver can immediately use them for simple or return rides. We also bump
+     * free_rides_total (lifetime free tally) and write a wallet_transactions row
+     * with order_type='free_ride' so the grant shows up in the driver app's
+     * plan/recharge history exactly like a recharge, but at ₹0.
+     */
+    public function grantFreeRides(Request $request, $id)
+    {
+        $driver = DriverUser::findOrFail($id);
+
+        $validated = $request->validate([
+            'rides' => 'required|integer|min:1|max:1000',
+            'note'  => 'nullable|string|max:255',
+        ]);
+
+        $rides = (int) $validated['rides'];
+        $note = trim($validated['note'] ?? '') ?: "Free {$rides} ".($rides === 1 ? 'ride' : 'rides').' granted by admin';
+
+        DB::transaction(function () use ($driver, $rides, $note) {
+            // Credit the usable ride wallet (NULL-safe — new drivers may be NULL).
+            $driver->remaining_rides = (int) $driver->remaining_rides + $rides;
+            $driver->total_rides = (int) $driver->total_rides + $rides;
+            $driver->free_rides_total = (int) $driver->free_rides_total + $rides;
+
+            // A driver who was taken offline for zero quota can come back online
+            // once they have rides again — but don't force them online; just let
+            // the balance reflect.
+            $driver->save();
+
+            // Audit + history row. Amount/GST are zero (it's free); we stash the
+            // ride count in the note and mark order_type so the app and admin can
+            // render it distinctly from a paid recharge.
+            WalletTransaction::create([
+                'user_id'             => $driver->id,
+                'amount'              => 0,
+                'base_amount'         => 0,
+                'gst_percent'         => 0,
+                'gst_amount'          => 0,
+                'total_amount'        => 0,
+                'recharge_plan_id'    => null,
+                'transaction_id'      => 'FREE-'.$driver->id.'-'.now()->format('YmdHis'),
+                'payment_type'        => 'free',
+                'note'                => $note,
+                'order_type'          => 'free_ride',
+                'user_type'           => 'driver',
+                'granted_by_admin_id' => Auth::guard('admin')->id() ?? Auth::id(),
+                'created_date'        => now(),
+            ]);
+        });
+
+        return redirect()->route('admin.drivers.view', $driver->id)
+            ->with('success', "Granted {$rides} free ".($rides === 1 ? 'ride' : 'rides')." to {$driver->full_name}. They now have {$driver->remaining_rides} rides remaining.");
     }
 }

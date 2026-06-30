@@ -1,5 +1,20 @@
 <x-layout.admin>
-    <div class="space-y-6">
+    <div class="space-y-6"
+         x-data="{
+            open: false,
+            rides: 1,
+            driverId: null,
+            driverName: '',
+            driverRemaining: 0,
+            actionUrl: '{{ url('admin/drivers') }}',
+            give(id, name, remaining) {
+                this.driverId = id;
+                this.driverName = name;
+                this.driverRemaining = parseInt(remaining) || 0;
+                this.rides = 1;
+                this.open = true;
+            }
+         }">
         <!-- Page Header -->
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
@@ -91,6 +106,7 @@
                     <thead>
                         <tr>
                             <th class="w-12">#</th>
+                            <th class="text-center w-64">Actions</th>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Email</th>
@@ -98,13 +114,32 @@
                             <th>Service</th>
                             <th class="text-center">Online</th>
                             <th class="text-center">Verified</th>
-                            <th class="text-center w-44">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($drivers as $driver)
                             <tr>
                                 <td>{{ $driver->id }}</td>
+                                <td class="text-center">
+                                    <div class="flex items-center justify-center gap-2">
+                                        <a href="{{ route('admin.drivers.view', $driver->id) }}"
+                                           class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-emerald-600 bg-emerald-50 rounded-md hover:bg-emerald-100 transition dark:bg-emerald-900/20 dark:hover:bg-emerald-900/30">
+                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                            View
+                                        </a>
+                                        <a href="{{ route('admin.drivers.edit', $driver->id) }}"
+                                           class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-[#018DBD] bg-[#018DBD]/10 rounded-md hover:bg-[#018DBD]/20 transition">
+                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                            Edit
+                                        </a>
+                                        <button type="button"
+                                           @click="give({{ $driver->id }}, @js($driver->full_name), {{ (int) ($driver->remaining_rides ?? 0) }})"
+                                           class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-white rounded-md bg-gradient-to-r from-emerald-500 to-green-500 hover:opacity-90 transition">
+                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 3l-2.286 6.857L5 12l5.714 2.143L13 21l2.286-6.857L21 12l-5.714-2.143L13 3z"/></svg>
+                                            Free Ride
+                                        </button>
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="flex items-center gap-3">
                                         @if($driver->profile_pic)
@@ -138,20 +173,6 @@
                                         {{ $driver->document_verification ? 'Verified' : 'Pending' }}
                                     </span>
                                 </td>
-                                <td class="text-center">
-                                    <div class="flex items-center justify-center gap-2">
-                                        <a href="{{ route('admin.drivers.view', $driver->id) }}"
-                                           class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-emerald-600 bg-emerald-50 rounded-md hover:bg-emerald-100 transition dark:bg-emerald-900/20 dark:hover:bg-emerald-900/30">
-                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                                            View
-                                        </a>
-                                        <a href="{{ route('admin.drivers.edit', $driver->id) }}"
-                                           class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-[#018DBD] bg-[#018DBD]/10 rounded-md hover:bg-[#018DBD]/20 transition">
-                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                                            Edit
-                                        </a>
-                                    </div>
-                                </td>
                             </tr>
                         @empty
                             <tr>
@@ -174,5 +195,93 @@
                 </div>
             @endif
         </div>
+
+        <!-- Shared Give Free Rides Modal -->
+        <div x-show="open" x-cloak
+             class="fixed inset-0 z-[60] flex items-center justify-center p-4"
+             x-transition.opacity>
+            <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" @click="open = false"></div>
+
+            <div class="relative w-full max-w-md overflow-hidden bg-white shadow-2xl dark:bg-gray-900 rounded-2xl"
+                 x-show="open" x-transition @keydown.escape.window="open = false">
+                <!-- Gradient header -->
+                <div class="relative px-6 py-5 text-white bg-gradient-to-r from-emerald-500 to-green-500">
+                    <button type="button" @click="open = false"
+                        class="absolute p-1 rounded-lg top-4 right-4 hover:bg-white/20 transition">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center justify-center rounded-full w-11 h-11 bg-white/20">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 3l-2.286 6.857L5 12l5.714 2.143L13 21l2.286-6.857L21 12l-5.714-2.143L13 3z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Give Free Rides</h3>
+                            <p class="text-sm text-white/80">to <span x-text="driverName"></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <form method="POST" :action="`${actionUrl}/${driverId}/free-rides`" class="px-6 py-5 space-y-5">
+                    @csrf
+
+                    <!-- Quick-pick chips -->
+                    <div>
+                        <label class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">How many rides?</label>
+                        <div class="grid grid-cols-4 gap-2">
+                            <template x-for="n in [1, 3, 5, 10]" :key="n">
+                                <button type="button" @click="rides = n"
+                                    :class="rides == n ? 'border-emerald-500 bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300' : 'border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-emerald-300'"
+                                    class="py-2.5 text-sm font-bold border rounded-lg transition"
+                                    x-text="n"></button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Custom amount -->
+                    <div>
+                        <label for="list_free_rides_input" class="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-300">Or enter a custom amount</label>
+                        <div class="relative">
+                            <input id="list_free_rides_input" type="number" name="rides" min="1" max="1000" required
+                                x-model.number="rides"
+                                class="w-full px-4 py-3 text-lg font-bold text-center text-gray-900 bg-gray-50 border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 outline-none">
+                            <span class="absolute text-sm text-gray-400 -translate-y-1/2 right-4 top-1/2 pointer-events-none">rides</span>
+                        </div>
+                    </div>
+
+                    <!-- Note -->
+                    <div>
+                        <label for="list_free_rides_note" class="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-300">Reason / note <span class="font-normal text-gray-400">(optional)</span></label>
+                        <input id="list_free_rides_note" type="text" name="note" maxlength="255"
+                            placeholder="e.g. Festival bonus, support compensation…"
+                            class="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50 border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 outline-none">
+                    </div>
+
+                    <!-- Live preview -->
+                    <div class="flex items-center gap-3 p-3.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/40">
+                        <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <p class="text-sm text-emerald-800 dark:text-emerald-200">
+                            Driver will have
+                            <span class="font-bold" x-text="driverRemaining + (parseInt(rides) || 0)"></span>
+                            rides remaining (currently <span x-text="driverRemaining"></span>).
+                        </p>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex gap-3 pt-1">
+                        <button type="button" @click="open = false"
+                            class="flex-1 px-4 py-2.5 text-sm font-semibold text-gray-700 bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                            Cancel
+                        </button>
+                        <button type="submit"
+                            :disabled="!rides || rides < 1"
+                            class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-white rounded-lg bg-gradient-to-r from-emerald-500 to-green-500 shadow-sm hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Grant <span x-text="rides || 0"></span> Rides
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /Shared Give Free Rides Modal -->
     </div>
 </x-layout.admin>
