@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\DriverExport;
 use App\Http\Controllers\Controller;
 use App\Models\DriverUser;
+use App\Models\RechargePlan;
 use App\Models\Service;
 use App\Models\WalletTransaction;
 use App\Services\RideWalletService;
@@ -113,7 +114,13 @@ class DriverController extends Controller
             ->limit(50)
             ->get();
 
-        return view('admin.drivers.view', compact('driver', 'freeRideGrants'));
+        // Active plans this driver is buyable from the admin panel.
+        $rechargePlans = RechargePlan::where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
+
+        return view('admin.drivers.view', compact('driver', 'freeRideGrants', 'rechargePlans'));
     }
 
     public function edit($id)
@@ -242,5 +249,68 @@ class DriverController extends Controller
 
         return redirect()->route('admin.drivers.view', $driver->id)
             ->with('success', "Granted {$rides} free ".($rides === 1 ? 'ride' : 'rides')." to {$driver->full_name}. They now have {$driver->remaining_rides} rides remaining.");
+    }
+
+    /**
+     * Assign (admin "buy") a recharge plan to a driver. This credits the plan's
+     * rides as a new lot with the plan's own validity, and records a paid-style
+     * wallet_transactions row (with the plan's GST-inclusive price split) so it
+     * appears in the driver app's recharge history and /current-plans exactly
+     * like a self-purchased recharge — just marked as admin-assigned.
+     */
+    public function assignPlan(Request $request, $id)
+    {
+        $driver = DriverUser::findOrFail($id);
+
+        $validated = $request->validate([
+            'recharge_plan_id' => 'required|integer|exists:recharge_plans,id',
+            'note'             => 'nullable|string|max:255',
+        ]);
+
+        $plan = RechargePlan::findOrFail($validated['recharge_plan_id']);
+        $note = trim($validated['note'] ?? '') ?: "Plan \"{$plan->label}\" assigned by admin";
+
+        if ((int) $plan->rides <= 0) {
+            return redirect()->route('admin.drivers.view', $driver->id)
+                ->withErrors(['recharge_plan_id' => 'This plan grants 0 rides — pick a plan with a ride count.']);
+        }
+
+        // GST-inclusive split of the plan price (whole-rupee base, GST = price − base).
+        $price = (float) $plan->price;
+        $gstPercent = (float) $plan->gst_percent;
+        $base = $gstPercent > 0 ? round($price / (1 + $gstPercent / 100)) : round($price);
+        $gstAmount = round($price - $base, 2);
+
+        DB::transaction(function () use ($driver, $plan, $note, $price, $gstPercent, $base, $gstAmount) {
+            $transaction = WalletTransaction::create([
+                'user_id'             => $driver->id,
+                'amount'              => $price,
+                'base_amount'         => $base,
+                'gst_percent'         => $gstPercent,
+                'gst_amount'          => $gstAmount,
+                'total_amount'        => $price,
+                'recharge_plan_id'    => $plan->id,
+                'transaction_id'      => 'ADMIN-'.$driver->id.'-'.now()->format('YmdHis'),
+                'payment_type'        => 'admin_assigned',
+                'note'                => $note,
+                'order_type'          => 'wallet_recharge',
+                'user_type'           => 'driver',
+                'granted_by_admin_id' => Auth::guard('admin')->id() ?? Auth::id(),
+                'created_date'        => now(),
+            ]);
+
+            // Credit as a ride lot — takes the plan's ride count and validity.
+            $this->rideWallet->creditFromPlan(
+                driver: $driver,
+                plan: $plan,
+                source: 'recharge',
+                walletTransactionId: $transaction->id,
+            );
+        });
+
+        $driver->refresh();
+
+        return redirect()->route('admin.drivers.view', $driver->id)
+            ->with('success', "Assigned \"{$plan->label}\" (+{$plan->rides} rides) to {$driver->full_name}. They now have {$driver->remaining_rides} rides remaining.");
     }
 }

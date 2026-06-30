@@ -75,6 +75,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::delete('drivers/{driver}', [DriverController::class, 'destroy'])->name('admin.drivers.destroy');
     Route::patch('drivers/{driver}/toggle-status', [DriverController::class, 'toggleStatus'])->name('admin.drivers.toggle-status');
     Route::post('drivers/{driver}/free-rides', [DriverController::class, 'grantFreeRides'])->name('admin.drivers.free-rides');
+    Route::post('drivers/{driver}/assign-plan', [DriverController::class, 'assignPlan'])->name('admin.drivers.assign-plan');
 
     // Driver Documents
     Route::resource('driver-documents', DocumentController::class)->names('admin.driver-documents');
