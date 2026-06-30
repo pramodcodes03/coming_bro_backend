@@ -244,11 +244,14 @@ class WalletController extends Controller
 
         $gstPercent = $gstPercent ?? 0.0;
 
+        // Round the base to whole rupees and derive GST as (total − base) so the
+        // parts always add up to the exact amount the driver paid. Matches the
+        // admin recharge-plan form's GST split.
         if ($gstPercent > 0) {
-            $base = round($total / (1 + $gstPercent / 100), 2);
+            $base = round($total / (1 + $gstPercent / 100));
             $gstAmount = round($total - $base, 2);
         } else {
-            $base = round($total, 2);
+            $base = round($total);
             $gstAmount = 0.0;
         }
 

@@ -210,12 +210,14 @@
         const mrp = num('original_price');
         const gst = num('gst_percent');
 
-        const base = gst > 0 ? price / (1 + gst / 100) : price;
+        // Round base & GST to whole rupees, but keep the price the driver pays
+        // exact: GST is derived as (price − rounded base) so base + GST = price.
+        const base = gst > 0 ? Math.round(price / (1 + gst / 100)) : Math.round(price);
         const gstAmount = price - base;
         const discount = mrp > 0 ? Math.max(0, Math.min(100, Math.floor(((mrp - price) / mrp) * 100))) : 0;
 
         const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
-        set('base_amount_display', '₹' + base.toFixed(2));
+        set('base_amount_display', '₹' + base.toFixed(0));
         set('gst_amount_display', '₹' + gstAmount.toFixed(2));
         set('total_price_display', '₹' + price.toFixed(2));
         set('discount_pct', discount);
