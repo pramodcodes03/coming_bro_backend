@@ -13,6 +13,26 @@
                 this.driverRemaining = parseInt(remaining) || 0;
                 this.rides = 1;
                 this.open = true;
+            },
+            planOpen: false,
+            selectedPlanId: '',
+            assignAction: '',
+            plans: {{ Illuminate\Support\Js::from($rechargePlans->map(fn($p) => [
+                'id' => $p->id,
+                'label' => $p->label,
+                'rides' => (int) $p->rides,
+                'price' => (float) $p->price,
+                'validity_days' => $p->validity_days ? (int) $p->validity_days : 0,
+            ])) }},
+            get selectedPlan() { return this.plans.find(p => p.id == this.selectedPlanId) || null; },
+            planLabel(p) { return p.label + ' — ' + p.rides + ' rides · ₹' + p.price.toFixed(2) + ' · ' + (p.validity_days > 0 ? p.validity_days + 'd' : 'no expiry'); },
+            assignPlan(id, name, remaining) {
+                this.driverId = id;
+                this.driverName = name;
+                this.driverRemaining = parseInt(remaining) || 0;
+                this.selectedPlanId = '';
+                this.assignAction = this.actionUrl + '/' + id + '/assign-plan';
+                this.planOpen = true;
             }
          }">
         <!-- Page Header -->
@@ -106,7 +126,7 @@
                     <thead>
                         <tr>
                             <th class="w-12">#</th>
-                            <th class="text-center w-64">Actions</th>
+                            <th class="text-center w-72">Actions</th>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Email</th>
@@ -121,7 +141,7 @@
                             <tr>
                                 <td>{{ $driver->id }}</td>
                                 <td class="text-center">
-                                    <div class="flex items-center justify-center gap-2">
+                                    <div class="flex flex-wrap items-center justify-center gap-2">
                                         <a href="{{ route('admin.drivers.view', $driver->id) }}"
                                            class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-emerald-600 bg-emerald-50 rounded-md hover:bg-emerald-100 transition dark:bg-emerald-900/20 dark:hover:bg-emerald-900/30">
                                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
@@ -132,6 +152,12 @@
                                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                                             Edit
                                         </a>
+                                        <button type="button"
+                                           @click="assignPlan({{ $driver->id }}, @js($driver->full_name), {{ (int) ($driver->remaining_rides ?? 0) }})"
+                                           class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-white rounded-md bg-gradient-to-r from-[#018DBD] to-[#13C3C3] hover:opacity-90 transition">
+                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                                            Plan
+                                        </button>
                                         <button type="button"
                                            @click="give({{ $driver->id }}, @js($driver->full_name), {{ (int) ($driver->remaining_rides ?? 0) }})"
                                            class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-white rounded-md bg-gradient-to-r from-emerald-500 to-green-500 hover:opacity-90 transition">
@@ -291,5 +317,7 @@
             </div>
         </div>
         <!-- /Shared Give Free Rides Modal -->
+
+        @include('admin.drivers.partials.assign-plan-modal')
     </div>
 </x-layout.admin>

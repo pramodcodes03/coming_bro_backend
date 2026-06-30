@@ -28,7 +28,13 @@ class DriverController extends Controller
             ->paginate(15)
             ->withQueryString();
 
-        return view('admin.drivers.index', compact('drivers'));
+        // Active plans for the per-row "Assign Plan" modal.
+        $rechargePlans = RechargePlan::where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
+
+        return view('admin.drivers.index', compact('drivers', 'rechargePlans'));
     }
 
     /**
